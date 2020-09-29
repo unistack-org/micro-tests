@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package helloworld;
+option go_package = ".;helloworld";
+
+service Test {
+	rpc Call(Request) returns (Response) {};
+	rpc Stream(stream Request) returns (stream Response) {};
+}
+
+message Request {
+  string uuid = 1;
+	string name = 2;
+}
+
+message Response {
+	string msg = 1;
+}
