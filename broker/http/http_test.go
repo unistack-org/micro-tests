@@ -1,6 +1,7 @@
 package http_test
 
 import (
+	"context"
 	"sync"
 	"testing"
 	"time"
@@ -55,7 +56,7 @@ var (
 )
 
 func newTestRegistry() registry.Registry {
-	return rmemory.NewRegistry(rmemory.Services(testData))
+	return rmemory.NewRegistry()
 }
 
 func sub(be *testing.B, c int) {
@@ -69,7 +70,7 @@ func sub(be *testing.B, c int) {
 		be.Fatalf("Unexpected init error: %v", err)
 	}
 
-	if err := b.Connect(); err != nil {
+	if err := b.Connect(context.TODO()); err != nil {
 		be.Fatalf("Unexpected connect error: %v", err)
 	}
 
@@ -84,7 +85,7 @@ func sub(be *testing.B, c int) {
 	done := make(chan bool, c)
 
 	for i := 0; i < c; i++ {
-		sub, err := b.Subscribe(topic, func(p broker.Event) error {
+		sub, err := b.Subscribe(context.TODO(), topic, func(p broker.Event) error {
 			done <- true
 			m := p.Message()
 
@@ -102,7 +103,7 @@ func sub(be *testing.B, c int) {
 
 	for i := 0; i < be.N; i++ {
 		be.StartTimer()
-		if err := b.Publish(topic, msg); err != nil {
+		if err := b.Publish(context.TODO(), topic, msg); err != nil {
 			be.Fatalf("Unexpected publish error: %v", err)
 		}
 		<-done
@@ -110,10 +111,10 @@ func sub(be *testing.B, c int) {
 	}
 
 	for _, sub := range subs {
-		sub.Unsubscribe()
+		sub.Unsubscribe(context.TODO())
 	}
 
-	if err := b.Disconnect(); err != nil {
+	if err := b.Disconnect(context.TODO()); err != nil {
 		be.Fatalf("Unexpected disconnect error: %v", err)
 	}
 }
@@ -128,7 +129,7 @@ func pub(be *testing.B, c int) {
 		be.Fatalf("Unexpected init error: %v", err)
 	}
 
-	if err := b.Connect(); err != nil {
+	if err := b.Connect(context.TODO()); err != nil {
 		be.Fatalf("Unexpected connect error: %v", err)
 	}
 
@@ -141,7 +142,7 @@ func pub(be *testing.B, c int) {
 
 	done := make(chan bool, c*4)
 
-	sub, err := b.Subscribe(topic, func(p broker.Event) error {
+	sub, err := b.Subscribe(context.TODO(), topic, func(p broker.Event) error {
 		done <- true
 		m := p.Message()
 		if string(m.Body) != string(msg.Body) {
@@ -160,7 +161,7 @@ func pub(be *testing.B, c int) {
 	for i := 0; i < c; i++ {
 		go func() {
 			for range ch {
-				if err := b.Publish(topic, msg); err != nil {
+				if err := b.Publish(context.TODO(), topic, msg); err != nil {
 					be.Fatalf("Unexpected publish error: %v", err)
 				}
 				select {
@@ -179,11 +180,11 @@ func pub(be *testing.B, c int) {
 
 	wg.Wait()
 	be.StopTimer()
-	sub.Unsubscribe()
+	sub.Unsubscribe(context.TODO())
 	close(ch)
 	close(done)
 
-	if err := b.Disconnect(); err != nil {
+	if err := b.Disconnect(context.TODO()); err != nil {
 		be.Fatalf("Unexpected disconnect error: %v", err)
 	}
 }
@@ -196,7 +197,7 @@ func TestBroker(t *testing.T) {
 		t.Fatalf("Unexpected init error: %v", err)
 	}
 
-	if err := b.Connect(); err != nil {
+	if err := b.Connect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected connect error: %v", err)
 	}
 
@@ -209,7 +210,7 @@ func TestBroker(t *testing.T) {
 
 	done := make(chan bool)
 
-	sub, err := b.Subscribe("test", func(p broker.Event) error {
+	sub, err := b.Subscribe(context.TODO(), "test", func(p broker.Event) error {
 		m := p.Message()
 
 		if string(m.Body) != string(msg.Body) {
@@ -223,14 +224,14 @@ func TestBroker(t *testing.T) {
 		t.Fatalf("Unexpected subscribe error: %v", err)
 	}
 
-	if err := b.Publish("test", msg); err != nil {
+	if err := b.Publish(context.TODO(), "test", msg); err != nil {
 		t.Fatalf("Unexpected publish error: %v", err)
 	}
 
 	<-done
-	sub.Unsubscribe()
+	sub.Unsubscribe(context.TODO())
 
-	if err := b.Disconnect(); err != nil {
+	if err := b.Disconnect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected disconnect error: %v", err)
 	}
 }
@@ -243,7 +244,7 @@ func TestConcurrentSubBroker(t *testing.T) {
 		t.Fatalf("Unexpected init error: %v", err)
 	}
 
-	if err := b.Connect(); err != nil {
+	if err := b.Connect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected connect error: %v", err)
 	}
 
@@ -258,7 +259,7 @@ func TestConcurrentSubBroker(t *testing.T) {
 	var wg sync.WaitGroup
 
 	for i := 0; i < 10; i++ {
-		sub, err := b.Subscribe("test", func(p broker.Event) error {
+		sub, err := b.Subscribe(context.TODO(), "test", func(p broker.Event) error {
 			defer wg.Done()
 
 			m := p.Message()
@@ -277,17 +278,17 @@ func TestConcurrentSubBroker(t *testing.T) {
 		subs = append(subs, sub)
 	}
 
-	if err := b.Publish("test", msg); err != nil {
+	if err := b.Publish(context.TODO(), "test", msg); err != nil {
 		t.Fatalf("Unexpected publish error: %v", err)
 	}
 
 	wg.Wait()
 
 	for _, sub := range subs {
-		sub.Unsubscribe()
+		sub.Unsubscribe(context.TODO())
 	}
 
-	if err := b.Disconnect(); err != nil {
+	if err := b.Disconnect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected disconnect error: %v", err)
 	}
 }
@@ -300,7 +301,7 @@ func TestConcurrentPubBroker(t *testing.T) {
 		t.Fatalf("Unexpected init error: %v", err)
 	}
 
-	if err := b.Connect(); err != nil {
+	if err := b.Connect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected connect error: %v", err)
 	}
 
@@ -313,7 +314,7 @@ func TestConcurrentPubBroker(t *testing.T) {
 
 	var wg sync.WaitGroup
 
-	sub, err := b.Subscribe("test", func(p broker.Event) error {
+	sub, err := b.Subscribe(context.TODO(), "test", func(p broker.Event) error {
 		defer wg.Done()
 
 		m := p.Message()
@@ -331,16 +332,16 @@ func TestConcurrentPubBroker(t *testing.T) {
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
 
-		if err := b.Publish("test", msg); err != nil {
+		if err := b.Publish(context.TODO(), "test", msg); err != nil {
 			t.Fatalf("Unexpected publish error: %v", err)
 		}
 	}
 
 	wg.Wait()
 
-	sub.Unsubscribe()
+	sub.Unsubscribe(context.TODO())
 
-	if err := b.Disconnect(); err != nil {
+	if err := b.Disconnect(context.TODO()); err != nil {
 		t.Fatalf("Unexpected disconnect error: %v", err)
 	}
 }
