@@ -1,6 +1,7 @@
 package tcp_test
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net"
@@ -20,6 +21,7 @@ type testHandler struct {
 }
 
 func TestTCPServer(t *testing.T) {
+	ctx := context.Background()
 	reg := rmemory.NewRegistry()
 	brk := bmemory.NewBroker(broker.Registry(reg))
 	// create server
@@ -39,7 +41,7 @@ func TestTCPServer(t *testing.T) {
 	}
 
 	// lookup server
-	service, err := reg.GetService(server.DefaultName)
+	service, err := reg.GetService(ctx, server.DefaultName)
 	if err != nil {
 		t.Fatal(err)
 	}

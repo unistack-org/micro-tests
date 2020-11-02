@@ -1,6 +1,7 @@
 package http_test
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -13,6 +14,7 @@ import (
 
 func TestHTTPServer(t *testing.T) {
 	reg := memory.NewRegistry()
+	ctx := context.Background()
 
 	// create server
 	srv := httpsrv.NewServer(server.Registry(reg))
@@ -37,7 +39,7 @@ func TestHTTPServer(t *testing.T) {
 	}
 
 	// lookup server
-	service, err := reg.GetService(server.DefaultName)
+	service, err := reg.GetService(ctx, server.DefaultName)
 	if err != nil {
 		t.Fatal(err)
 	}

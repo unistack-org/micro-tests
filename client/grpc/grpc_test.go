@@ -53,6 +53,7 @@ func (g *testServer) Stream(stream pb.Test_StreamServer) error {
 }
 
 func TestGRPCClient(t *testing.T) {
+	ctx := context.Background()
 	l, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		t.Fatalf("failed to listen: %v", err)
@@ -73,7 +74,7 @@ func TestGRPCClient(t *testing.T) {
 	r := rmemory.NewRegistry()
 
 	// register service
-	if err := r.Register(&registry.Service{
+	if err := r.Register(ctx, &registry.Service{
 		Name:    "helloworld",
 		Version: "test",
 		Nodes: []*registry.Node{
