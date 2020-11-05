@@ -287,8 +287,8 @@ github.com/unistack-org/micro-config-cmd v0.0.0-20200909210755-6e7e85eeab34/go.m
 github.com/unistack-org/micro-config-cmd v0.0.0-20200920140133-0853deb2e5dc/go.mod h1:il8nz4ZEcX3Usyfrtwy+YtQcb7xSUSFJdSe8PBJ9gOA=
 github.com/unistack-org/micro-config-cmd v0.0.0-20201028144621-5a55f1aad70a h1:VjlqP1qZkjC0Chmx5MKFPIbtSCigeICFDf8vaLZGh9o=
 github.com/unistack-org/micro-config-cmd v0.0.0-20201028144621-5a55f1aad70a/go.mod h1:MzMg+qh1wORZwYtg5AVgFkNFrXVVbdPKW7s/Is+A994=
-github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105183335-7e2d2ae89e38 h1:mEmyX5PQDHIUUDWG3Z+jhlR0L6S8cyDeLzHhl6AdMJk=
-github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105183335-7e2d2ae89e38/go.mod h1:/tk793OnoBSCM7m2nYA4rW0vUdQjP6ASc22BVt6S7Y0=
+github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105195351-bd57ee0e4bd6 h1:5MH9y5Zn8OyVwD6XWyP2ejuktpqLHD1JOVYoOwYZ1mo=
+github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105195351-bd57ee0e4bd6/go.mod h1:0f9qV/bM07qO2sNuNnr3qOEozsYpmkTxuEgauWLWDec=
 github.com/unistack-org/micro-router-registry v0.0.2-0.20201105175056-773128885d9e h1:spzPFROFgxXCoggEv0dapiH3Hfp0x/HqQy4rimQ1rbU=
 github.com/unistack-org/micro-router-registry v0.0.2-0.20201105175056-773128885d9e/go.mod h1:nvJqRLixa2UqbctfnMx1WJ6IJdPJQ9FheJnh+03QsXA=
 github.com/unistack-org/micro-server-grpc v0.0.2-0.20201104230137-31c35661ae73 h1:12YaMyj2b+P9MO9QJ2zu2fjtcASFK7pD3O/dyp55iUQ=

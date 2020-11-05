@@ -10,7 +10,7 @@ require (
 	github.com/unistack-org/micro-broker-http v0.0.0-20201102230515-e1a6d448f88f
 	github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd
 	github.com/unistack-org/micro-client-grpc v0.0.2-0.20201028070730-15a5d7d2cde8
-	github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105183335-7e2d2ae89e38
+	github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105195351-bd57ee0e4bd6
 	github.com/unistack-org/micro-router-registry v0.0.2-0.20201105175056-773128885d9e
 	github.com/unistack-org/micro-server-grpc v0.0.2-0.20201104230137-31c35661ae73
 	github.com/unistack-org/micro-server-http v0.0.2-0.20201104225538-7d3dc63ae435
