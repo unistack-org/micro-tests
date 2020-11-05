@@ -21,6 +21,5 @@ require (
 	google.golang.org/protobuf v1.25.0
 )
 
-replace github.com/unistack-org/micro/v3 => ../micro
-
-replace github.com/unistack-org/micro-registry-memory => ../done/micro-registry-memory
+//replace github.com/unistack-org/micro/v3 => ../micro
+//replace github.com/unistack-org/micro-registry-memory => ../done/micro-registry-memory
