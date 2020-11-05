@@ -22,8 +22,17 @@ type testHandler struct {
 
 func TestTCPServer(t *testing.T) {
 	ctx := context.Background()
+
+	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
 	reg := rmemory.NewRegistry()
+	if err := reg.Init(); err != nil {
+		t.Fatal(err)
+	}
+
 	brk := bmemory.NewBroker(broker.Registry(reg))
+	if err := brk.Init(); err != nil {
+		t.Fatal(err)
+	}
 	// create server
 	srv := tcp.NewServer(server.Registry(reg), server.Broker(brk), server.Address("127.0.0.1:65000"))
 
@@ -32,6 +41,10 @@ func TestTCPServer(t *testing.T) {
 
 	// register handler
 	if err := srv.Handle(srv.NewHandler(h)); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := srv.Init(); err != nil {
 		t.Fatal(err)
 	}
 
@@ -86,7 +99,7 @@ func (h *testHandler) Serve(c net.Conn) {
 		if err != nil && err == io.EOF {
 			return
 		} else if err != nil {
-			logger.Fatal(err)
+			logger.Fatal(err.Error())
 		}
 		fmt.Printf("%s", buf[:n])
 		close(h.done)
