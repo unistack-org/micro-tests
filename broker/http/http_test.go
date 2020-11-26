@@ -8,6 +8,7 @@ import (
 
 	"github.com/google/uuid"
 	http "github.com/unistack-org/micro-broker-http"
+	jsoncodec "github.com/unistack-org/micro-codec-json"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/registry"
@@ -63,7 +64,7 @@ func sub(be *testing.B, c int) {
 	be.StopTimer()
 	m := newTestRegistry()
 
-	b := http.NewBroker(broker.Registry(m))
+	b := http.NewBroker(broker.Codec(jsoncodec.NewCodec()), broker.Registry(m))
 	topic := uuid.New().String()
 
 	if err := b.Init(); err != nil {
@@ -122,7 +123,7 @@ func sub(be *testing.B, c int) {
 func pub(be *testing.B, c int) {
 	be.StopTimer()
 	m := newTestRegistry()
-	b := http.NewBroker(broker.Registry(m))
+	b := http.NewBroker(broker.Codec(jsoncodec.NewCodec()), broker.Registry(m))
 	topic := uuid.New().String()
 
 	if err := b.Init(); err != nil {
@@ -191,7 +192,7 @@ func pub(be *testing.B, c int) {
 
 func TestBroker(t *testing.T) {
 	m := newTestRegistry()
-	b := http.NewBroker(broker.Registry(m))
+	b := http.NewBroker(broker.Codec(jsoncodec.NewCodec()), broker.Registry(m))
 
 	if err := b.Init(); err != nil {
 		t.Fatalf("Unexpected init error: %v", err)
@@ -238,7 +239,7 @@ func TestBroker(t *testing.T) {
 
 func TestConcurrentSubBroker(t *testing.T) {
 	m := newTestRegistry()
-	b := http.NewBroker(broker.Registry(m))
+	b := http.NewBroker(broker.Codec(jsoncodec.NewCodec()), broker.Registry(m))
 
 	if err := b.Init(); err != nil {
 		t.Fatalf("Unexpected init error: %v", err)
@@ -295,7 +296,7 @@ func TestConcurrentSubBroker(t *testing.T) {
 
 func TestConcurrentPubBroker(t *testing.T) {
 	m := newTestRegistry()
-	b := http.NewBroker(broker.Registry(m))
+	b := http.NewBroker(broker.Codec(jsoncodec.NewCodec()), broker.Registry(m))
 
 	if err := b.Init(); err != nil {
 		t.Fatalf("Unexpected init error: %v", err)

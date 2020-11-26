@@ -10,6 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	rbroker "github.com/unistack-org/micro-broker-memory"
 	cli "github.com/unistack-org/micro-client-grpc"
+	jsoncodec "github.com/unistack-org/micro-codec-json"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	rrouter "github.com/unistack-org/micro-router-registry"
 	srv "github.com/unistack-org/micro-server-grpc"
@@ -79,11 +80,15 @@ func TestClient(t *testing.T) {
 			rt := rrouter.NewRouter(router.Registry(reg))
 
 			c := cli.NewClient(
+				client.Codec("application/grpc+json", jsoncodec.NewCodec()),
+				client.Codec("application/json", jsoncodec.NewCodec()),
 				client.Router(rt),
 				client.WrapCall(otwrapper.NewClientCallWrapper(otwrapper.WithTracer(tracer))),
 			)
 
 			s := srv.NewServer(
+				server.Codec("application/grpc+json", jsoncodec.NewCodec()),
+				server.Codec("application/json", jsoncodec.NewCodec()),
 				server.Name(serverName),
 				server.Version(serverVersion),
 				server.Id(serverID),

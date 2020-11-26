@@ -6,6 +6,7 @@ import (
 
 	bmemory "github.com/unistack-org/micro-broker-memory"
 	gclient "github.com/unistack-org/micro-client-grpc"
+	protocodec "github.com/unistack-org/micro-codec-proto"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	regRouter "github.com/unistack-org/micro-router-registry"
 	gserver "github.com/unistack-org/micro-server-grpc"
@@ -34,7 +35,7 @@ func TestGRPCServer(t *testing.T) {
 
 	r := rmemory.NewRegistry()
 	b := bmemory.NewBroker(broker.Registry(r))
-	s := gserver.NewServer(server.Address(":12345"), server.Registry(r), server.Name("helloworld"), gserver.Reflection(true))
+	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Registry(r), server.Name("helloworld"), gserver.Reflection(true))
 	// create router
 	rtr := regRouter.NewRouter(router.Registry(r))
 
@@ -59,7 +60,7 @@ func TestGRPCServer(t *testing.T) {
 	}()
 
 	// create client
-	c := gclient.NewClient(client.Router(rtr), client.Registry(r), client.Broker(b))
+	c := gclient.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr), client.Registry(r), client.Broker(b))
 
 	testMethods := []string{
 		"Test.Call",

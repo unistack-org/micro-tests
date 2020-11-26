@@ -9,6 +9,7 @@ import (
 	"time"
 
 	grpc "github.com/unistack-org/micro-client-grpc"
+	protocodec "github.com/unistack-org/micro-codec-proto"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	regRouter "github.com/unistack-org/micro-router-registry"
 	pb "github.com/unistack-org/micro-tests/client/grpc/proto"
@@ -94,7 +95,7 @@ func TestGRPCClient(t *testing.T) {
 	rtr := regRouter.NewRouter(router.Registry(r))
 
 	// create client
-	c := grpc.NewClient(client.Router(rtr))
+	c := grpc.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr))
 
 	testMethods := []string{
 		"/helloworld.Test/Call",
