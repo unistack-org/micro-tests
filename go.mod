@@ -16,6 +16,7 @@ require (
 	github.com/unistack-org/micro-codec-grpc v0.0.0-20201126055537-b2e5c1ec2168
 	github.com/unistack-org/micro-codec-json v0.0.0-20201125092251-38cf770f2eb0
 	github.com/unistack-org/micro-codec-proto v0.0.0-20201125092414-f627fea89e7e
+	github.com/unistack-org/micro-codec-segmentio v0.0.0-20201127144339-03740d564751
 	github.com/unistack-org/micro-metrics-prometheus v0.0.2-0.20201125232532-93104a0ff374
 	github.com/unistack-org/micro-registry-memory v0.0.2-0.20201105195351-bd57ee0e4bd6
 	github.com/unistack-org/micro-router-registry v0.0.2-0.20201105175056-773128885d9e

@@ -7,7 +7,8 @@ import (
 	bmemory "github.com/unistack-org/micro-broker-memory"
 	gclient "github.com/unistack-org/micro-client-grpc"
 
-	protocodec "github.com/unistack-org/micro-codec-proto"
+	//	protocodec "github.com/unistack-org/micro-codec-proto"
+	protocodec "github.com/unistack-org/micro-codec-segmentio/proto"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	regRouter "github.com/unistack-org/micro-router-registry"
 	gserver "github.com/unistack-org/micro-server-grpc"

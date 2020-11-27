@@ -263,6 +263,8 @@ github.com/russross/blackfriday/v2 v2.0.1 h1:lPqVAte+HuHNfhJ/0LC98ESWRz8afy9tM/0
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/sacloud/libsacloud v1.26.1/go.mod h1:79ZwATmHLIFZIMd7sxA3LwzVy/B77uj3LDoToVTxDoQ=
 github.com/satori/go.uuid v1.2.0/go.mod h1:dA0hQrYB0VpLJoorglMZABFdXlWrHn1NEOzdhQKdks0=
+github.com/segmentio/encoding v0.2.4 h1:TQRXhTlXj4urZe3Z5QVgxs9Ad1i7GYHg9peAtjOPe28=
+github.com/segmentio/encoding v0.2.4/go.mod h1:MJjRE6bMDocliO2FyFC2Dusp+uYdBfHWh5Bw7QyExto=
 github.com/shurcooL/sanitized_anchor_name v1.0.0 h1:PdmoCO6wvbs+7yrJyMORt4/BmY5IYyJwS/kOiWx8mHo=
 github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod h1:1NzhyTcUVG4SuEtjjoZeVRXNmyL/1OwPU0+IJeTBvfc=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
@@ -304,6 +306,8 @@ github.com/unistack-org/micro-codec-proto v0.0.0-20201102222202-769c2d6a4b92/go.
 github.com/unistack-org/micro-codec-proto v0.0.0-20201125092414-f627fea89e7e h1:5ScrWQSdUMfwm5JwC8Y+R94zd5Qceanp2MSJBrj6LeY=
 github.com/unistack-org/micro-codec-proto v0.0.0-20201125092414-f627fea89e7e/go.mod h1:aiEuyrEkIENBB+EKV8rRauT6v6amihDyVH43fWDkoRo=
 github.com/unistack-org/micro-codec-protorpc v0.0.0-20201102222610-3a343898c077/go.mod h1:Ct4uAVZaDEyBZj9Q0poDkbzu6zKXUCcSqJkv/MWPpeI=
+github.com/unistack-org/micro-codec-segmentio v0.0.0-20201127144339-03740d564751 h1:muyPprcObIbcNAtGujGZ/ksDwgAbAUv4iGojPkVlWdM=
+github.com/unistack-org/micro-codec-segmentio v0.0.0-20201127144339-03740d564751/go.mod h1:oYFH9TO09rNlDyZ20BpJ8qMz3eWaD02bwQ7queML0Q8=
 github.com/unistack-org/micro-config-cmd v0.0.0-20200828075439-d859b9d7265b/go.mod h1:6pm1cadbwsFcEW1ZbV5Fp0i3goR3TNfROMNSPih3I8k=
 github.com/unistack-org/micro-config-cmd v0.0.0-20200909210346-ec89783dc46c/go.mod h1:6pm1cadbwsFcEW1ZbV5Fp0i3goR3TNfROMNSPih3I8k=
 github.com/unistack-org/micro-config-cmd v0.0.0-20200909210755-6e7e85eeab34/go.mod h1:fT1gYn+TtfVZZ5tNx56bZIncJjmlji66g7GKdWua5hE=
