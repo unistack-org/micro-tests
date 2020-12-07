@@ -422,8 +422,8 @@ github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd
 github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd/go.mod h1:BlX+zLHGZxNngsiGiAaIqt0XjwIk3iurw4cqRFYRaVk=
 github.com/unistack-org/micro-client-grpc v0.0.2-0.20201125224558-067cf68d2312 h1:1bv8hdLhKLiYk4e5Q9N9s7Ztp+VzElWrAQeNWfOJLuY=
 github.com/unistack-org/micro-client-grpc v0.0.2-0.20201125224558-067cf68d2312/go.mod h1:l0d4iUMAOnOLXwZ+lnKRNJNad6igfLhITCCMrTGfup0=
-github.com/unistack-org/micro-client-http v0.0.0-20201125231021-64a08cf7fd5d h1:33tgJ2qlf80CSLk/4mx4DvtbXe+rf58AGe5NEo1nefg=
-github.com/unistack-org/micro-client-http v0.0.0-20201125231021-64a08cf7fd5d/go.mod h1:vb+5C+r23Q8H5FTpcwGT3XwaenKeGBY7SMcFo+UUV4k=
+github.com/unistack-org/micro-client-http v0.0.0-20201207194404-a4de68a7c403 h1:7iKLImRMGXG/ux8Z9SKSFlhRBOcQ4XFEZxcsEg87Bz4=
+github.com/unistack-org/micro-client-http v0.0.0-20201207194404-a4de68a7c403/go.mod h1:vb+5C+r23Q8H5FTpcwGT3XwaenKeGBY7SMcFo+UUV4k=
 github.com/unistack-org/micro-codec-bytes v0.0.0-20200827104921-3616a69473a6/go.mod h1:g5sOI8TWgGZiVHe8zoUPdtz7+0oLnqTnfBoai6Qb7jE=
 github.com/unistack-org/micro-codec-bytes v0.0.0-20200828083432-4e49e953d844/go.mod h1:g5sOI8TWgGZiVHe8zoUPdtz7+0oLnqTnfBoai6Qb7jE=
 github.com/unistack-org/micro-codec-grpc v0.0.0-20201129180052-c9fbcb46d2c7 h1:5trw/6cMGZmAMsZJBC7gXUBQpuexHbv3Dk/x+GzJMSo=

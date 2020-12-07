@@ -12,7 +12,7 @@ require (
 	github.com/unistack-org/micro-broker-http v0.0.0-20201125231853-bb4bd204b8c0
 	github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd
 	github.com/unistack-org/micro-client-grpc v0.0.2-0.20201125224558-067cf68d2312
-	github.com/unistack-org/micro-client-http v0.0.0-20201125231021-64a08cf7fd5d
+	github.com/unistack-org/micro-client-http v0.0.0-20201207194404-a4de68a7c403
 	github.com/unistack-org/micro-codec-grpc v0.0.0-20201129180052-c9fbcb46d2c7
 	github.com/unistack-org/micro-codec-json v0.0.0-20201129180318-74c22103001a
 	github.com/unistack-org/micro-codec-proto v0.0.0-20201129180614-012d8c3fcb03
