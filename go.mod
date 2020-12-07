@@ -28,6 +28,3 @@ require (
 	google.golang.org/grpc v1.34.0
 	google.golang.org/protobuf v1.25.0
 )
-
-//	github.com/unistack-org/micro-client-grpc => ../done/micro-client-grpc
-replace github.com/unistack-org/micro-client-http => ../done/micro-client-http
