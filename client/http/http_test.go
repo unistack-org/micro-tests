@@ -31,6 +31,24 @@ type Message struct {
 	Data string
 }
 
+type GithubRsp struct {
+	Name string `json:"name,omitempty"`
+}
+
+func TestNative(t *testing.T) {
+	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
+	req := c.NewRequest("github", "/users/vtolstov", nil)
+	rsp := &GithubRsp{}
+	err := c.Call(context.TODO(), req, rsp, mhttp.Method(http.MethodGet))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if rsp.Name != "Vasiliy Tolstov" {
+		t.Fatalf("invlid rsp received: %#+v\n", rsp)
+	}
+
+}
+
 func TestHTTPClient(t *testing.T) {
 	reg := rmemory.NewRegistry()
 	rtr := rrouter.NewRouter(router.Registry(reg))
