@@ -6,7 +6,6 @@ import (
 
 	bmemory "github.com/unistack-org/micro-broker-memory"
 	gclient "github.com/unistack-org/micro-client-grpc"
-
 	protocodec "github.com/unistack-org/micro-codec-proto"
 	rmemory "github.com/unistack-org/micro-registry-memory"
 	regRouter "github.com/unistack-org/micro-router-registry"
@@ -17,6 +16,7 @@ import (
 	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
+	jsonpb "google.golang.org/protobuf/encoding/protojson"
 )
 
 type testServer struct {
@@ -28,6 +28,8 @@ func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 		return &errors.Error{Id: "id", Code: 99, Detail: "detail"}
 	}
 	rsp.Msg = "Hello " + req.Name
+	rsp.Broken = &pb.Broken{Field: "12345"}
+
 	return nil
 }
 
@@ -72,9 +74,9 @@ func TestGRPCServer(t *testing.T) {
 			Name: "John",
 		})
 
-		rsp := pb.Response{}
+		rsp := &pb.Response{}
 
-		err = c.Call(context.TODO(), req, &rsp)
+		err = c.Call(context.TODO(), req, rsp)
 		if err != nil {
 			t.Fatalf("method: %s err: %v", method, err)
 		}
@@ -82,6 +84,14 @@ func TestGRPCServer(t *testing.T) {
 		if rsp.Msg != "Hello John" {
 			t.Fatalf("Got unexpected response %v", rsp.Msg)
 		}
+
+		enc := &jsonpb.MarshalOptions{EmitUnpopulated: true}
+		buf, err := enc.Marshal(rsp)
+		if err != nil {
+			t.Fatal(err)
+		}
+		t.Logf("json: %s\n", buf)
+
 	}
 
 	//rsp := rpb.ServerReflectionResponse{}
