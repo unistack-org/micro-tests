@@ -12,7 +12,7 @@ require (
 	github.com/unistack-org/micro-broker-http v0.0.0-20201125231853-bb4bd204b8c0
 	github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd
 	github.com/unistack-org/micro-client-grpc v0.0.2-0.20201228123319-bbd07bb0914a
-	github.com/unistack-org/micro-client-http v0.0.0-20201222205226-c4f2d68e4e3e
+	github.com/unistack-org/micro-client-http v0.0.0-20210105043204-d541c7cc54f5
 	github.com/unistack-org/micro-codec-grpc v0.0.0-20201220205513-cad30014cbf2
 	github.com/unistack-org/micro-codec-json v0.0.0-20201220205604-ed33fab21d87
 	github.com/unistack-org/micro-codec-proto v0.0.0-20201220205718-066176ab59b7
@@ -30,4 +30,5 @@ require (
 	google.golang.org/protobuf v1.25.0
 )
 
+//replace github.com/unistack-org/micro-client-http => ../done/micro-client-http
 //replace github.com/unistack-org/micro/v3 => ../micro

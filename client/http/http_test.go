@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net"
@@ -33,6 +34,31 @@ type Message struct {
 
 type GithubRsp struct {
 	Name string `json:"name,omitempty"`
+}
+
+type GithubRspError struct {
+	Message          string `json:"message"`
+	DocumentationUrl string `json:"documentation_url"`
+}
+
+func (e *GithubRspError) Error() string {
+	b, _ := json.Marshal(e)
+	return string(b)
+}
+
+func TestNativeError(t *testing.T) {
+	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
+	req := c.NewRequest("github", "/dddd", nil)
+	rsp := &GithubRsp{}
+	errMap := map[string]interface{}{"404": &GithubRspError{}}
+	err := c.Call(context.TODO(), req, rsp, mhttp.Method(http.MethodGet), mhttp.ErrorMap(errMap))
+	if err == nil {
+		t.Fatal("request must return non nil err")
+	}
+	if _, ok := err.(*GithubRspError); !ok {
+		t.Fatalf("invalid response received: %T is not *GithubRspError type", err)
+	}
+	t.Logf("reponse: %s", err.Error())
 }
 
 func TestNative(t *testing.T) {
