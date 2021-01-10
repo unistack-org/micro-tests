@@ -1,5 +1,3 @@
-// +build ignore
-
 package router_test
 
 import (
@@ -11,22 +9,24 @@ import (
 	"testing"
 	"time"
 
+	rpc "github.com/unistack-org/micro-api-handler-rpc"
+	rregistry "github.com/unistack-org/micro-api-router-registry"
+	rstatic "github.com/unistack-org/micro-api-router-static"
+	bmemory "github.com/unistack-org/micro-broker-memory"
+	gcli "github.com/unistack-org/micro-client-grpc"
+	jsoncodec "github.com/unistack-org/micro-codec-json"
+	protocodec "github.com/unistack-org/micro-codec-proto"
+	rmemory "github.com/unistack-org/micro-registry-memory"
+	regRouter "github.com/unistack-org/micro-router-registry"
+	gsrv "github.com/unistack-org/micro-server-grpc"
+	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/api"
 	"github.com/unistack-org/micro/v3/api/handler"
-	"github.com/unistack-org/micro/v3/api/handler/rpc"
 	"github.com/unistack-org/micro/v3/api/router"
-	rregistry "github.com/unistack-org/micro/v3/api/router/registry"
-	rstatic "github.com/unistack-org/micro/v3/api/router/static"
 	"github.com/unistack-org/micro/v3/broker"
-	bmemory "github.com/unistack-org/micro/v3/broker/memory"
 	"github.com/unistack-org/micro/v3/client"
-	gcli "github.com/unistack-org/micro/v3/client/grpc"
-	rmemory "github.com/unistack-org/micro/v3/registry/memory"
 	rt "github.com/unistack-org/micro/v3/router"
-	regRouter "github.com/unistack-org/micro/v3/router/registry"
 	"github.com/unistack-org/micro/v3/server"
-	gsrv "github.com/unistack-org/micro/v3/server/grpc"
-	pb "github.com/unistack-org/micro/v3/server/grpc/proto"
 )
 
 // server is used to implement helloworld.GreeterServer.
@@ -52,28 +52,52 @@ func (s *testServer) CallPcreInvalid(ctx context.Context, req *pb.Request, rsp *
 }
 
 func initial(t *testing.T) (server.Server, client.Client) {
+	//logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
 	r := rmemory.NewRegistry()
+	if err := r.Init(); err != nil {
+		t.Fatal(err)
+	}
+
 	b := bmemory.NewBroker(broker.Registry(r))
+	if err := b.Init(); err != nil {
+		t.Fatal(err)
+	}
 
 	// create a new client
 	s := gsrv.NewServer(
+		server.Codec("application/grpc+proto", protocodec.NewCodec()),
+		server.Codec("application/grpc+json", protocodec.NewCodec()),
+		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Name("foo"),
 		server.Broker(b),
 		server.Registry(r),
+		server.RegisterInterval(1*time.Second),
 	)
 
 	rtr := regRouter.NewRouter(
 		rt.Registry(r),
 	)
 
+	if err := rtr.Init(); err != nil {
+		t.Fatal(err)
+	}
+
 	// create a new server
 	c := gcli.NewClient(
+		client.Codec("application/grpc+proto", protocodec.NewCodec()),
+		client.Codec("application/grpc+json", protocodec.NewCodec()),
+		client.Codec("application/json", jsoncodec.NewCodec()),
+		client.Registry(r),
 		client.Router(rtr),
 		client.Broker(b),
 	)
 
 	h := &testServer{}
 	pb.RegisterTestHandler(s, h)
+
+	if err := s.Init(); err != nil {
+		t.Fatalf("failed to init: %v", err)
+	}
 
 	if err := s.Start(); err != nil {
 		t.Fatalf("failed to start: %v", err)
@@ -113,6 +137,10 @@ func TestRouterRegistryPcre(t *testing.T) {
 		router.WithHandler(rpc.Handler),
 		router.WithRegistry(s.Options().Registry),
 	)
+	if err := router.Init(); err != nil {
+		t.Fatal(err)
+	}
+
 	hrpc := rpc.NewHandler(
 		handler.WithClient(c),
 		handler.WithRouter(router),
@@ -132,7 +160,7 @@ func TestRouterRegistryPcre(t *testing.T) {
 
 	defer hsrv.Close()
 	time.Sleep(1 * time.Second)
-	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello TEST"}`)
+	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello "}`)
 }
 
 func TestRouterStaticPcre(t *testing.T) {
@@ -143,6 +171,9 @@ func TestRouterStaticPcre(t *testing.T) {
 		router.WithHandler(rpc.Handler),
 		router.WithRegistry(s.Options().Registry),
 	)
+	if err := router.Init(); err != nil {
+		t.Fatal(err)
+	}
 
 	err := router.Register(&api.Endpoint{
 		Name:    "foo.Test.Call",
