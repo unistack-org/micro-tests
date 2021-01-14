@@ -9,13 +9,13 @@ require (
 	github.com/prometheus/client_golang v1.9.0
 	github.com/prometheus/client_model v0.2.0
 	github.com/stretchr/testify v1.6.1
-	github.com/unistack-org/micro-api-handler-rpc v0.0.0-20210109162638-64670d8535df
-	github.com/unistack-org/micro-api-router-registry v0.0.0-20210110010133-d6468aa91d66
-	github.com/unistack-org/micro-api-router-static v0.0.0-20210109231342-6a822df8185c
+	github.com/unistack-org/micro-api-handler-rpc v0.0.0-20210113163127-3f36e7b3d99a
+	github.com/unistack-org/micro-api-router-registry v0.0.0-20210110113004-b9ccb4324370
+	github.com/unistack-org/micro-api-router-static v0.0.0-20210110113147-58f8ed2f7347
 	github.com/unistack-org/micro-broker-http v0.0.0-20201125231853-bb4bd204b8c0
 	github.com/unistack-org/micro-broker-memory v0.0.2-0.20201105185131-5ff932308afd
 	github.com/unistack-org/micro-client-grpc v0.0.2-0.20201228123319-bbd07bb0914a
-	github.com/unistack-org/micro-client-http v0.0.0-20210105043204-d541c7cc54f5
+	github.com/unistack-org/micro-client-http v0.0.0-20210110114810-59d77f7b8cf9
 	github.com/unistack-org/micro-codec-grpc v0.0.0-20201220205513-cad30014cbf2
 	github.com/unistack-org/micro-codec-json v0.0.0-20201220205604-ed33fab21d87
 	github.com/unistack-org/micro-codec-proto v0.0.0-20201220205718-066176ab59b7

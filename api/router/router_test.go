@@ -1,8 +1,10 @@
 package router_test
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -35,18 +37,11 @@ type testServer struct {
 
 // TestHello implements helloworld.GreeterServer
 func (s *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
-	rsp.Msg = "Hello " + req.Uuid
-	return nil
-}
-
-// TestHello implements helloworld.GreeterServer
-func (s *testServer) CallPcre(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
-	rsp.Msg = "Hello " + req.Uuid
-	return nil
-}
-
-// TestHello implements helloworld.GreeterServer
-func (s *testServer) CallPcreInvalid(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
+	if req.Name == "Timeout" {
+		time.Sleep(2 * time.Second)
+		rsp.Msg = "Timeout"
+		return nil
+	}
 	rsp.Msg = "Hello " + req.Uuid
 	return nil
 }
@@ -106,12 +101,18 @@ func initial(t *testing.T) (server.Server, client.Client) {
 	return s, c
 }
 
-func check(t *testing.T, addr string, path string, expected string) {
-	req, err := http.NewRequest("POST", fmt.Sprintf(path, addr), nil)
+func check(t *testing.T, addr string, path string, expected string, timeout bool) {
+	var r io.Reader
+
+	if timeout {
+		r = bytes.NewBuffer([]byte(`{"name":"Timeout"}`))
+	}
+	req, err := http.NewRequest("POST", fmt.Sprintf(path, addr), r)
 	if err != nil {
 		t.Fatalf("Failed to created http.Request: %v", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Timeout", "1") // set timeout to 1s
 	rsp, err := (&http.Client{}).Do(req)
 	if err != nil {
 		t.Fatalf("Failed to created http.Request: %v", err)
@@ -127,6 +128,40 @@ func check(t *testing.T, addr string, path string, expected string) {
 	if string(buf) != jsonMsg {
 		t.Fatalf("invalid message received, parsing error %s != %s", buf, jsonMsg)
 	}
+}
+
+func TestApiTimeout(t *testing.T) {
+	s, c := initial(t)
+	defer s.Stop()
+
+	router := rregistry.NewRouter(
+		router.WithHandler(rpc.Handler),
+		router.WithRegistry(s.Options().Registry),
+	)
+	if err := router.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	hrpc := rpc.NewHandler(
+		handler.WithClient(c),
+		handler.WithRouter(router),
+	)
+	hsrv := &http.Server{
+		Handler:        hrpc,
+		Addr:           "127.0.0.1:6543",
+		WriteTimeout:   15 * time.Second,
+		ReadTimeout:    15 * time.Second,
+		IdleTimeout:    20 * time.Second,
+		MaxHeaderBytes: 1024 * 1024 * 1, // 1Mb
+	}
+
+	go func() {
+		log.Println(hsrv.ListenAndServe())
+	}()
+
+	defer hsrv.Close()
+	time.Sleep(1 * time.Second)
+	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"Id":"go.micro.client","Code":408,"Detail":"context deadline exceeded","Status":"Request Timeout"}`, true)
 }
 
 func TestRouterRegistryPcre(t *testing.T) {
@@ -160,7 +195,7 @@ func TestRouterRegistryPcre(t *testing.T) {
 
 	defer hsrv.Close()
 	time.Sleep(1 * time.Second)
-	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello "}`)
+	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello "}`, false)
 }
 
 func TestRouterStaticPcre(t *testing.T) {
@@ -204,7 +239,7 @@ func TestRouterStaticPcre(t *testing.T) {
 	defer hsrv.Close()
 
 	time.Sleep(1 * time.Second)
-	check(t, hsrv.Addr, "http://%s/api/v0/test/call", `{"msg":"Hello "}`)
+	check(t, hsrv.Addr, "http://%s/api/v0/test/call", `{"msg":"Hello "}`, false)
 }
 
 func TestRouterStaticGpath(t *testing.T) {
@@ -245,7 +280,7 @@ func TestRouterStaticGpath(t *testing.T) {
 	defer hsrv.Close()
 
 	time.Sleep(1 * time.Second)
-	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello TEST"}`)
+	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello TEST"}`, false)
 }
 
 func TestRouterStaticPcreInvalid(t *testing.T) {
