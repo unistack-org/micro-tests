@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	rrouter "github.com/unistack-org/micro-router-registry"
+	rrouter "github.com/unistack-org/micro-router-registry/v3"
 	"github.com/unistack-org/micro/registry/memory"
 	"github.com/unistack-org/micro/v3/client"
 	microerr "github.com/unistack-org/micro/v3/errors"

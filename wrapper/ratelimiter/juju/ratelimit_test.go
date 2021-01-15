@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/juju/ratelimit"
-	bmemory "github.com/unistack-org/micro-broker-memory"
+	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	tmemory "github.com/unistack-org/micro-network-transport-memory"
-	rmemory "github.com/unistack-org/micro-registry-memory"
-	rrouter "github.com/unistack-org/micro-router-registry"
+	rmemory "github.com/unistack-org/micro-registry-memory/v3"
+	rrouter "github.com/unistack-org/micro-router-registry/v3"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/router"

@@ -3,9 +3,9 @@ package codec_test
 import (
 	"testing"
 
-	grpc "github.com/unistack-org/micro-codec-grpc"
-	json "github.com/unistack-org/micro-codec-json"
-	proto "github.com/unistack-org/micro-codec-proto"
+	grpc "github.com/unistack-org/micro-codec-grpc/v3"
+	json "github.com/unistack-org/micro-codec-json/v3"
+	proto "github.com/unistack-org/micro-codec-proto/v3"
 	"github.com/unistack-org/micro/v3/codec"
 )
 

@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	http "github.com/unistack-org/micro-broker-http"
-	jsoncodec "github.com/unistack-org/micro-codec-json"
-	rmemory "github.com/unistack-org/micro-registry-memory"
+	http "github.com/unistack-org/micro-broker-http/v3"
+	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
+	rmemory "github.com/unistack-org/micro-registry-memory/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/registry"
 )

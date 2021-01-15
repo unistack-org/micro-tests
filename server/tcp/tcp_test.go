@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	bmemory "github.com/unistack-org/micro-broker-memory"
-	rmemory "github.com/unistack-org/micro-registry-memory"
-	tcp "github.com/unistack-org/micro-server-tcp"
+	bmemory "github.com/unistack-org/micro-broker-memory/v3"
+	rmemory "github.com/unistack-org/micro-registry-memory/v3"
+	tcp "github.com/unistack-org/micro-server-tcp/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/logger"
 	"github.com/unistack-org/micro/v3/server"
@@ -99,7 +99,7 @@ func (h *testHandler) Serve(c net.Conn) {
 		if err != nil && err == io.EOF {
 			return
 		} else if err != nil {
-			logger.Fatal(err.Error())
+			logger.Fatal(context.TODO(), err.Error())
 		}
 		fmt.Printf("%s", buf[:n])
 		close(h.done)

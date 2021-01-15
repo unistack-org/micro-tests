@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"testing"
 
-	memory "github.com/unistack-org/micro-registry-memory"
-	httpsrv "github.com/unistack-org/micro-server-http"
+	memory "github.com/unistack-org/micro-registry-memory/v3"
+	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	"github.com/unistack-org/micro/v3/server"
 )
 
