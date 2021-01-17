@@ -36,5 +36,4 @@ func TestMultiple(t *testing.T) {
 	if cfg.String != "non_default" {
 		t.Fatalf("config not parsed by default source: %#+v\n", cfg)
 	}
-	t.Logf("config: %#+v\n", cfg)
 }

@@ -58,7 +58,6 @@ func TestNativeError(t *testing.T) {
 	if _, ok := err.(*GithubRspError); !ok {
 		t.Fatalf("invalid response received: %T is not *GithubRspError type", err)
 	}
-	t.Logf("reponse: %s", err.Error())
 }
 
 func TestNative(t *testing.T) {

@@ -90,8 +90,6 @@ func TestGRPCServer(t *testing.T) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		t.Logf("json: %s\n", buf)
-
 	}
 
 	//rsp := rpb.ServerReflectionResponse{}
