@@ -86,7 +86,7 @@ func TestGRPCServer(t *testing.T) {
 		}
 
 		enc := &jsonpb.MarshalOptions{EmitUnpopulated: true}
-		buf, err := enc.Marshal(rsp)
+		_, err := enc.Marshal(rsp)
 		if err != nil {
 			t.Fatal(err)
 		}
