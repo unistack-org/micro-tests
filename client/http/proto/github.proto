@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package github;
 option go_package = "github.com//unistack-org/micro-tests/client/http/proto;pb";
+
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
@@ -13,28 +14,19 @@ service Github {
         key: "default";
         value: {
           description: "Error response";
-          schema: {
-            json_schema: {
-              ref: ".github.Error";
-            }
-          }
+          schema: { json_schema: { ref: ".github.Error"; } }
         }
       }
     };
-		option (google.api.http) = {
-      get: "/users/{username}";
-    };
+		option (google.api.http) = { get: "/users/{username}"; };
   };
 };
-
 message LookupUserReq {
   string username = 1;
 };
-
 message LookupUserRsp {
   string name = 1;
 };
-
 message Error {
 	string message = 1;
 };

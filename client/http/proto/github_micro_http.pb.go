@@ -5,13 +5,8 @@ package pb
 import (
 	"context"
 	"fmt"
-	"net/http"
-	"reflect"
-	"strings"
 
-	"github.com/gorilla/mux"
 	micro_client_http "github.com/unistack-org/micro-client-http/v3"
-	micro_api "github.com/unistack-org/micro/v3/api"
 	micro_client "github.com/unistack-org/micro/v3/client"
 	micro_server "github.com/unistack-org/micro/v3/server"
 )
@@ -39,7 +34,6 @@ func (c *githubService) LookupUser(ctx context.Context, req *LookupUserReq, opts
 	nopts := append(opts,
 		micro_client_http.Method("GET"),
 		micro_client_http.Path("/users/{username}"),
-		micro_client_http.Body(""),
 		micro_client_http.ErrorMap(errmap),
 	)
 	rsp := &LookupUserRsp{}
@@ -63,32 +57,4 @@ type githubHandler struct {
 
 func (h *githubHandler) LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error {
 	return h.GithubHandler.LookupUser(ctx, req, rsp)
-}
-
-func Register(r *mux.Router, h interface{}, eps []*micro_api.Endpoint) error {
-	v := reflect.ValueOf(h)
-
-	methods := v.NumMethod()
-	if methods < 1 {
-		return fmt.Errorf("invalid handler specified: %#+v", h)
-	}
-
-	for _, ep := range eps {
-		idx := strings.Index(ep.Name, ".")
-		if idx < 1 || len(ep.Name) <= idx {
-			return fmt.Errorf("invalid api.Endpoint name: %s", ep.Name)
-		}
-		name := ep.Name[idx+1:]
-		m := v.MethodByName(name)
-		if !m.IsValid() || m.IsZero() {
-			return fmt.Errorf("invalid handler, method %s not found", name)
-		}
-
-		rh, ok := m.Interface().(func(http.ResponseWriter, *http.Request))
-		if !ok {
-			return fmt.Errorf("invalid handler: %#+v", m.Interface())
-		}
-		r.HandleFunc(ep.Path[0], rh).Methods(ep.Method...).Name(ep.Name)
-	}
-	return nil
 }

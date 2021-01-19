@@ -237,8 +237,6 @@ github.com/gorilla/context v1.1.1/go.mod h1:kBGZzfjB9CEq2AlWe17Uuf7NDRt0dE0s8S51
 github.com/gorilla/mux v1.6.2/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
 github.com/gorilla/mux v1.7.3 h1:gnP5JzjVOuiZD07fKKToCAOjS0yOpj/qPETTXCCS6hw=
 github.com/gorilla/mux v1.7.3/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
-github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
-github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/gorilla/websocket v0.0.0-20170926233335-4201258b820c/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
 github.com/grpc-ecosystem/go-grpc-middleware v1.0.1-0.20190118093823-f849b5445de4/go.mod h1:FiyG127CGDf3tlThmgyCl78X/SZQqEOJBCDaAfeWzPs=
 github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0/go.mod h1:8NvIoxWQoOIhqOTXgfV/d3M/q6VIi02HzZEHgUlZvzk=
@@ -524,8 +522,6 @@ github.com/unistack-org/micro-broker-memory/v3 v3.1.1 h1:cDBIh/dVxuh2EnzuRyUVCsw
 github.com/unistack-org/micro-broker-memory/v3 v3.1.1/go.mod h1:lSFmkUtAlfsizywNOT+nNfpXeagM5+8tFDda3qFSPwY=
 github.com/unistack-org/micro-client-grpc/v3 v3.1.1 h1:z0ic1qK3nRIPi30UQQTGJJReSA9K+Q33e8znYTcgtN4=
 github.com/unistack-org/micro-client-grpc/v3 v3.1.1/go.mod h1:mJ72LTougMlZ1jTRr0jS38JfK2MRo08ew4V8fpQFZMo=
-github.com/unistack-org/micro-client-http/v3 v3.1.1 h1:+gjRljMobCdeLB8aTo8hVIEQff6BpmAOrGxIQjqCTko=
-github.com/unistack-org/micro-client-http/v3 v3.1.1/go.mod h1:Ra1QDLHVJxaIk+z+1rwHd5wzwdHRFaS8byOoShDqYgw=
 github.com/unistack-org/micro-client-http/v3 v3.1.2 h1:Ipvgub65nNuX5iSb7Ehy0AZu92v6Xxz9iwMOs9YIOUI=
 github.com/unistack-org/micro-client-http/v3 v3.1.2/go.mod h1:7tddLMx5wijKxjK3p1ikhzxKlBubBZ3vlPgPPhS0edc=
 github.com/unistack-org/micro-codec-grpc/v3 v3.1.1 h1:h+x6ny1UeMEqZWPx7vhkfczetnFh00lbCxdLl9Rr0EU=
