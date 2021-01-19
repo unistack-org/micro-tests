@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package github;
+option go_package = "github.com//unistack-org/micro-tests/client/http/proto;pb";
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+service Github {
+	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
+		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "LookupUser";
+      responses: {
+        key: "default";
+        value: {
+          description: "Error response";
+          schema: {
+            json_schema: {
+              ref: ".github.Error";
+            }
+          }
+        }
+      }
+    };
+		option (google.api.http) = {
+      get: "/users/{username}";
+    };
+  };
+};
+
+message LookupUserReq {
+  string username = 1;
+};
+
+message LookupUserRsp {
+  string name = 1;
+};
+
+message Error {
+	string message = 1;
+};
+

@@ -15,6 +15,7 @@ import (
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	rmemory "github.com/unistack-org/micro-registry-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-registry/v3"
+	pb "github.com/unistack-org/micro-tests/client/http/proto"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/codec"
 	"github.com/unistack-org/micro/v3/registry"
@@ -46,7 +47,7 @@ func (e *GithubRspError) Error() string {
 	return string(b)
 }
 
-func TestNativeError(t *testing.T) {
+func TestError(t *testing.T) {
 	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
 	req := c.NewRequest("github", "/dddd", nil)
 	rsp := &GithubRsp{}
@@ -62,14 +63,15 @@ func TestNativeError(t *testing.T) {
 
 func TestNative(t *testing.T) {
 	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
-	req := c.NewRequest("github", "/users/vtolstov", nil)
-	rsp := &GithubRsp{}
-	err := c.Call(context.TODO(), req, rsp, mhttp.Method(http.MethodGet))
+	gh := pb.NewGithubService("github", c)
+
+	rsp, err := gh.LookupUser(context.TODO(), &pb.LookupUserReq{Username: "vtolstov"})
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	if rsp.Name != "Vasiliy Tolstov" {
-		t.Fatalf("invlid rsp received: %#+v\n", rsp)
+		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
 
 }
