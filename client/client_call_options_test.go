@@ -11,9 +11,9 @@ import (
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/client/grpc"
 	tmemory "github.com/unistack-org/micro/v3/network/transport/memory"
-	rmemory "github.com/unistack-org/micro/v3/registry/memory"
+	rmemory "github.com/unistack-org/micro/v3/register/memory"
 	"github.com/unistack-org/micro/v3/router"
-	rtreg "github.com/unistack-org/micro/v3/router/registry"
+	rtreg "github.com/unistack-org/micro/v3/router/register"
 	"github.com/unistack-org/micro/v3/server"
 	grpcsrv "github.com/unistack-org/micro/v3/server/grpc"
 	cw "github.com/unistack-org/micro/v3/util/client"
@@ -44,14 +44,14 @@ func TestStaticClient(t *testing.T) {
 	)
 	rsp := &TestRsp{}
 
-	reg := rmemory.NewRegistry()
-	brk := bmemory.NewBroker(broker.Registry(reg))
+	reg := rmemory.NewRegister()
+	brk := bmemory.NewBroker(broker.Register(reg))
 	tr := tmemory.NewTransport()
-	rtr := rtreg.NewRouter(router.Registry(reg))
+	rtr := rtreg.NewRouter(router.Register(reg))
 
 	srv := grpcsrv.NewServer(
 		server.Broker(brk),
-		server.Registry(reg),
+		server.Register(reg),
 		server.Name("go.micro.service.foo"),
 		server.Address("127.0.0.1:0"),
 		server.Transport(tr),

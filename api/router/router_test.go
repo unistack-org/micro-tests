@@ -12,14 +12,14 @@ import (
 	"time"
 
 	rpc "github.com/unistack-org/micro-api-handler-rpc/v3"
-	rregistry "github.com/unistack-org/micro-api-router-registry/v3"
+	rregister "github.com/unistack-org/micro-api-router-register/v3"
 	rstatic "github.com/unistack-org/micro-api-router-static/v3"
 	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	gcli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	regRouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gsrv "github.com/unistack-org/micro-server-grpc/v3"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/api"
@@ -48,12 +48,12 @@ func (s *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 
 func initial(t *testing.T) (server.Server, client.Client) {
 	//logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
-	r := rmemory.NewRegistry()
+	r := rmemory.NewRegister()
 	if err := r.Init(); err != nil {
 		t.Fatal(err)
 	}
 
-	b := bmemory.NewBroker(broker.Registry(r))
+	b := bmemory.NewBroker(broker.Register(r))
 	if err := b.Init(); err != nil {
 		t.Fatal(err)
 	}
@@ -65,12 +65,12 @@ func initial(t *testing.T) (server.Server, client.Client) {
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Name("foo"),
 		server.Broker(b),
-		server.Registry(r),
+		server.Register(r),
 		server.RegisterInterval(1*time.Second),
 	)
 
 	rtr := regRouter.NewRouter(
-		rt.Registry(r),
+		rt.Register(r),
 	)
 
 	if err := rtr.Init(); err != nil {
@@ -82,7 +82,7 @@ func initial(t *testing.T) (server.Server, client.Client) {
 		client.Codec("application/grpc+proto", protocodec.NewCodec()),
 		client.Codec("application/grpc+json", protocodec.NewCodec()),
 		client.Codec("application/json", jsoncodec.NewCodec()),
-		client.Registry(r),
+		client.Register(r),
 		client.Router(rtr),
 		client.Broker(b),
 	)
@@ -134,9 +134,9 @@ func TestApiTimeout(t *testing.T) {
 	s, c := initial(t)
 	defer s.Stop()
 
-	router := rregistry.NewRouter(
+	router := rregister.NewRouter(
 		router.WithHandler(rpc.Handler),
-		router.WithRegistry(s.Options().Registry),
+		router.WithRegister(s.Options().Register),
 	)
 	if err := router.Init(); err != nil {
 		t.Fatal(err)
@@ -164,13 +164,13 @@ func TestApiTimeout(t *testing.T) {
 	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"Id":"go.micro.client","Code":408,"Detail":"context deadline exceeded","Status":"Request Timeout"}`, true)
 }
 
-func TestRouterRegistryPcre(t *testing.T) {
+func TestRouterRegisterPcre(t *testing.T) {
 	s, c := initial(t)
 	defer s.Stop()
 
-	router := rregistry.NewRouter(
+	router := rregister.NewRouter(
 		router.WithHandler(rpc.Handler),
-		router.WithRegistry(s.Options().Registry),
+		router.WithRegister(s.Options().Register),
 	)
 	if err := router.Init(); err != nil {
 		t.Fatal(err)
@@ -204,7 +204,7 @@ func TestRouterStaticPcre(t *testing.T) {
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),
-		router.WithRegistry(s.Options().Registry),
+		router.WithRegister(s.Options().Register),
 	)
 	if err := router.Init(); err != nil {
 		t.Fatal(err)
@@ -248,7 +248,7 @@ func TestRouterStaticGpath(t *testing.T) {
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),
-		router.WithRegistry(s.Options().Registry),
+		router.WithRegister(s.Options().Register),
 	)
 
 	err := router.Register(&api.Endpoint{
@@ -292,7 +292,7 @@ func TestRouterStaticPcreInvalid(t *testing.T) {
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),
-		router.WithRegistry(s.Options().Registry),
+		router.WithRegister(s.Options().Register),
 	)
 
 	ep = &api.Endpoint{

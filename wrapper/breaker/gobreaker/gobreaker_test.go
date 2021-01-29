@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/sony/gobreaker"
-	"github.com/unistack-org/micro/registry/memory"
+	"github.com/unistack-org/micro/register/memory"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/router"
@@ -15,11 +15,11 @@ import (
 
 func TestBreaker(t *testing.T) {
 	// setup
-	r := memory.NewRegistry()
+	r := memory.NewRegister()
 
 	c := client.NewClient(
 		// set the selector
-		client.Router(rrouter.NewRouter(router.Registry(registry))),
+		client.Router(rrouter.NewRouter(router.Register(register))),
 		// add the breaker wrapper
 		client.Wrap(NewClientWrapper()),
 	)
@@ -48,11 +48,11 @@ func TestBreaker(t *testing.T) {
 
 func TestCustomBreaker(t *testing.T) {
 	// setup
-	r := memory.NewRegistry()
+	r := memory.NewRegister()
 
 	c := client.NewClient(
 		// set the selector
-		client.Router(rrouter.NewRouter(router.Registry(registry))),
+		client.Router(rrouter.NewRouter(router.Register(register))),
 		// add the breaker wrapper
 		client.Wrap(NewCustomClientWrapper(
 			gobreaker.Settings{},

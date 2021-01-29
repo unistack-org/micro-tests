@@ -7,17 +7,17 @@ import (
 	"net/http"
 	"testing"
 
-	memory "github.com/unistack-org/micro-registry-memory/v3"
+	memory "github.com/unistack-org/micro-register-memory/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	"github.com/unistack-org/micro/v3/server"
 )
 
 func TestHTTPServer(t *testing.T) {
-	reg := memory.NewRegistry()
+	reg := memory.NewRegister()
 	ctx := context.Background()
 
 	// create server
-	srv := httpsrv.NewServer(server.Registry(reg))
+	srv := httpsrv.NewServer(server.Register(reg))
 
 	// create server mux
 	mux := http.NewServeMux()
@@ -39,7 +39,7 @@ func TestHTTPServer(t *testing.T) {
 	}
 
 	// lookup server
-	service, err := reg.GetService(ctx, server.DefaultName)
+	service, err := reg.LookupService(ctx, server.DefaultName)
 	if err != nil {
 		t.Fatal(err)
 	}

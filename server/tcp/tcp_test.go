@@ -9,7 +9,7 @@ import (
 	"time"
 
 	bmemory "github.com/unistack-org/micro-broker-memory/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	tcp "github.com/unistack-org/micro-server-tcp/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/logger"
@@ -24,17 +24,17 @@ func TestTCPServer(t *testing.T) {
 	ctx := context.Background()
 
 	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
-	reg := rmemory.NewRegistry()
+	reg := rmemory.NewRegister()
 	if err := reg.Init(); err != nil {
 		t.Fatal(err)
 	}
 
-	brk := bmemory.NewBroker(broker.Registry(reg))
+	brk := bmemory.NewBroker(broker.Register(reg))
 	if err := brk.Init(); err != nil {
 		t.Fatal(err)
 	}
 	// create server
-	srv := tcp.NewServer(server.Registry(reg), server.Broker(brk), server.Address("127.0.0.1:65000"))
+	srv := tcp.NewServer(server.Register(reg), server.Broker(brk), server.Address("127.0.0.1:65000"))
 
 	// create handler
 	h := &testHandler{done: make(chan struct{})}
@@ -54,7 +54,7 @@ func TestTCPServer(t *testing.T) {
 	}
 
 	// lookup server
-	service, err := reg.GetService(ctx, server.DefaultName)
+	service, err := reg.LookupService(ctx, server.DefaultName)
 	if err != nil {
 		t.Fatal(err)
 	}

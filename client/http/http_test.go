@@ -13,12 +13,12 @@ import (
 
 	mhttp "github.com/unistack-org/micro-client-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	rrouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	rrouter "github.com/unistack-org/micro-router-register/v3"
 	pb "github.com/unistack-org/micro-tests/client/http/proto"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/codec"
-	"github.com/unistack-org/micro/v3/registry"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 )
 
@@ -77,8 +77,8 @@ func TestNative(t *testing.T) {
 }
 
 func TestHTTPClient(t *testing.T) {
-	reg := rmemory.NewRegistry()
-	rtr := rrouter.NewRouter(router.Registry(reg))
+	reg := rmemory.NewRegister()
+	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -129,9 +129,9 @@ func TestHTTPClient(t *testing.T) {
 	})
 	go http.Serve(l, mux)
 
-	if err := reg.Register(ctx, &registry.Service{
+	if err := reg.Register(ctx, &register.Service{
 		Name: "test.service",
-		Nodes: []*registry.Node{
+		Nodes: []*register.Node{
 			{
 				Id:      "test.service.1",
 				Address: l.Addr().String(),
@@ -164,8 +164,8 @@ func TestHTTPClient(t *testing.T) {
 }
 
 func TestHTTPClientStream(t *testing.T) {
-	reg := rmemory.NewRegistry()
-	rtr := rrouter.NewRouter(router.Registry(reg))
+	reg := rmemory.NewRegister()
+	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -291,9 +291,9 @@ func TestHTTPClientStream(t *testing.T) {
 	})
 	go http.Serve(l, mux)
 
-	if err := reg.Register(ctx, &registry.Service{
+	if err := reg.Register(ctx, &register.Service{
 		Name: "test.service",
-		Nodes: []*registry.Node{
+		Nodes: []*register.Node{
 			{
 				Id:      "test.service.1",
 				Address: l.Addr().String(),

@@ -7,8 +7,8 @@ import (
 	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	gclient "github.com/unistack-org/micro-client-grpc/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	regRouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gserver "github.com/unistack-org/micro-server-grpc/v3"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/broker"
@@ -36,11 +36,11 @@ func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 func TestGRPCServer(t *testing.T) {
 	var err error
 
-	r := rmemory.NewRegistry()
-	b := bmemory.NewBroker(broker.Registry(r))
-	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Registry(r), server.Name("helloworld"), gserver.Reflection(true))
+	r := rmemory.NewRegister()
+	b := bmemory.NewBroker(broker.Register(r))
+	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true))
 	// create router
-	rtr := regRouter.NewRouter(router.Registry(r))
+	rtr := regRouter.NewRouter(router.Register(r))
 
 	h := &testServer{}
 	err = pb.RegisterTestHandler(s, h)
@@ -63,7 +63,7 @@ func TestGRPCServer(t *testing.T) {
 	}()
 
 	// create client
-	c := gclient.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr), client.Registry(r), client.Broker(b))
+	c := gclient.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr), client.Register(r), client.Broker(b))
 
 	testMethods := []string{
 		"Test.Call",

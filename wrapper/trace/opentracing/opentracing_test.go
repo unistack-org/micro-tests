@@ -11,8 +11,8 @@ import (
 	rbroker "github.com/unistack-org/micro-broker-memory/v3"
 	cli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	rrouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	rrouter "github.com/unistack-org/micro-router-register/v3"
 	srv "github.com/unistack-org/micro-server-grpc/v3"
 	otwrapper "github.com/unistack-org/micro-wrapper-trace-opentracing/v3"
 	"github.com/unistack-org/micro/v3/broker"
@@ -70,14 +70,14 @@ func TestClient(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			tracer := mocktracer.New()
 
-			reg := rmemory.NewRegistry()
-			brk := rbroker.NewBroker(broker.Registry(reg))
+			reg := rmemory.NewRegister()
+			brk := rbroker.NewBroker(broker.Register(reg))
 
 			serverName := "micro.server.name"
 			serverID := "id-1234567890"
 			serverVersion := "1.0.0"
 
-			rt := rrouter.NewRouter(router.Registry(reg))
+			rt := rrouter.NewRouter(router.Register(reg))
 
 			c := cli.NewClient(
 				client.Codec("application/grpc+json", jsoncodec.NewCodec()),
@@ -92,7 +92,7 @@ func TestClient(t *testing.T) {
 				server.Name(serverName),
 				server.Version(serverVersion),
 				server.Id(serverID),
-				server.Registry(reg),
+				server.Register(reg),
 				server.Broker(brk),
 				server.WrapSubscriber(otwrapper.NewServerSubscriberWrapper(otwrapper.WithTracer(tracer))),
 				server.WrapHandler(otwrapper.NewServerHandlerWrapper(otwrapper.WithTracer(tracer))),

@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	rrouter "github.com/unistack-org/micro-router-registry/v3"
-	"github.com/unistack-org/micro/registry/memory"
+	rrouter "github.com/unistack-org/micro-router-register/v3"
+	"github.com/unistack-org/micro/register/memory"
 	"github.com/unistack-org/micro/v3/client"
 	microerr "github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/router"
@@ -71,14 +71,14 @@ func TestClient(t *testing.T) {
 			mt := mocktracer.Start()
 			defer mt.Stop()
 
-			registry := memory.NewRegistry()
+			register := memory.NewRegister()
 
 			serverName := "micro.server.name"
 			serverID := "id-1234567890"
 			serverVersion := "1.0.0"
 
 			c := cli.NewClient(
-				client.Router(rrouter.NewRouter(router.Registry(registry))),
+				client.Router(rrouter.NewRouter(router.Register(register))),
 				client.WrapCall(NewCallWrapper()),
 			)
 
@@ -86,7 +86,7 @@ func TestClient(t *testing.T) {
 				server.Name(serverName),
 				server.Version(serverVersion),
 				server.Id(serverID),
-				server.Registry(registry),
+				server.Register(register),
 				server.WrapSubscriber(NewSubscriberWrapper()),
 				server.WrapHandler(NewHandlerWrapper()),
 			)
@@ -151,14 +151,14 @@ func TestRace(t *testing.T) {
 	mt := mocktracer.Start()
 	defer mt.Stop()
 
-	registry := memory.NewRegistry()
+	register := memory.NewRegister()
 
 	serverName := "micro.server.name"
 	serverID := "id-1234567890"
 	serverVersion := "1.0.0"
 
 	c := cli.NewClient(
-		client.Router(rrouter.NewRouter(router.Registry(registry))),
+		client.Router(rrouter.NewRouter(router.Register(register))),
 		client.WrapCall(NewCallWrapper()),
 	)
 
@@ -166,7 +166,7 @@ func TestRace(t *testing.T) {
 		server.Name(serverName),
 		server.Version(serverVersion),
 		server.Id(serverID),
-		server.Registry(registry),
+		server.Register(register),
 		server.WrapSubscriber(NewSubscriberWrapper()),
 		server.WrapHandler(NewHandlerWrapper()),
 	)

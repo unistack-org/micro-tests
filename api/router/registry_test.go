@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/unistack-org/micro/v3/registry"
+	"github.com/unistack-org/micro/v3/register"
 )
 
 func TestStoreRegex(t *testing.T) {
@@ -15,11 +15,11 @@ func TestStoreRegex(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	router.store([]*registry.Service{
+	router.store([]*register.Service{
 		{
 			Name:    "Foobar",
 			Version: "latest",
-			Endpoints: []*registry.Endpoint{
+			Endpoints: []*register.Endpoint{
 				{
 					Name: "foo",
 					Metadata: map[string]string{

@@ -11,8 +11,8 @@ import (
 	"github.com/juju/ratelimit"
 	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	tmemory "github.com/unistack-org/micro-network-transport-memory"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	rrouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	rrouter "github.com/unistack-org/micro-router-register/v3"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/router"
@@ -29,7 +29,7 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 
 func TestRateClientLimit(t *testing.T) {
 	// setup
-	r := rmemory.NewRegistry()
+	r := rmemory.NewRegister()
 	tr := tmemory.NewTransport()
 	testRates := []int{1, 10, 20}
 
@@ -37,7 +37,7 @@ func TestRateClientLimit(t *testing.T) {
 		b := ratelimit.NewBucketWithRate(float64(limit), int64(limit))
 
 		c := client.NewClient(
-			client.Router(rrouter.NewRouter(router.Registry(registry))),
+			client.Router(rrouter.NewRouter(router.Register(register))),
 			client.Transport(tr),
 			// add the breaker wrapper
 			client.Wrap(NewClientWrapper(b, false)),
@@ -72,22 +72,22 @@ func TestRateServerLimit(t *testing.T) {
 	testRates := []int{1, 5, 6, 10}
 
 	for _, limit := range testRates {
-		r := rmemory.NewRegistry()
+		r := rmemory.NewRegister()
 		b := bmemory.NewBroker()
 		tr := tmemory.NewTransport()
 		_ = b
 
 		br := ratelimit.NewBucketWithRate(float64(limit), int64(limit))
 		c := client.NewClient(
-			client.Router(rrouter.NewRouter(router.Registry(registry))),
+			client.Router(rrouter.NewRouter(router.Register(register))),
 			client.Transport(tr))
 
 		name := fmt.Sprintf("test.service.%d", limit)
 
 		srv := server.NewServer(
 			server.Name(name),
-			// add registry
-			server.Registry(r),
+			// add register
+			server.Register(r),
 			server.Transport(tr),
 			// add broker
 			//server.Broker(b),

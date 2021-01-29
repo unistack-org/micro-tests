@@ -10,12 +10,12 @@ import (
 
 	grpc "github.com/unistack-org/micro-client-grpc/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	regRouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	regRouter "github.com/unistack-org/micro-router-register/v3"
 	pb "github.com/unistack-org/micro-tests/client/grpc/proto"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/registry"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	pgrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -71,14 +71,14 @@ func TestGRPCClient(t *testing.T) {
 	}()
 	defer s.Stop()
 
-	// create mock registry
-	r := rmemory.NewRegistry()
+	// create mock register
+	r := rmemory.NewRegister()
 
 	// register service
-	if err := r.Register(ctx, &registry.Service{
+	if err := r.Register(ctx, &register.Service{
 		Name:    "helloworld",
 		Version: "test",
-		Nodes: []*registry.Node{
+		Nodes: []*register.Node{
 			{
 				Id:      "test-1",
 				Address: l.Addr().String(),
@@ -92,7 +92,7 @@ func TestGRPCClient(t *testing.T) {
 	}
 
 	// create router
-	rtr := regRouter.NewRouter(router.Registry(r))
+	rtr := regRouter.NewRouter(router.Register(r))
 
 	// create client
 	c := grpc.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr))

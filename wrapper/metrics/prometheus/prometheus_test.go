@@ -12,8 +12,8 @@ import (
 	cli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	promwrapper "github.com/unistack-org/micro-metrics-prometheus/v3"
-	rmemory "github.com/unistack-org/micro-registry-memory/v3"
-	rrouter "github.com/unistack-org/micro-router-registry/v3"
+	rmemory "github.com/unistack-org/micro-register-memory/v3"
+	rrouter "github.com/unistack-org/micro-router-register/v3"
 	srv "github.com/unistack-org/micro-server-grpc/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
@@ -42,13 +42,13 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 func TestPrometheusMetrics(t *testing.T) {
 	client.DefaultRetries = 0
 	// setup
-	reg := rmemory.NewRegistry()
-	brk := bmemory.NewBroker(broker.Registry(reg))
+	reg := rmemory.NewRegister()
+	brk := bmemory.NewBroker(broker.Register(reg))
 
 	name := "test"
 	id := "id-1234567890"
 	version := "1.2.3.4"
-	rt := rrouter.NewRouter(router.Registry(reg))
+	rt := rrouter.NewRouter(router.Register(reg))
 
 	c := cli.NewClient(
 		client.Codec("application/grpc+json", jsoncodec.NewCodec()),
@@ -61,7 +61,7 @@ func TestPrometheusMetrics(t *testing.T) {
 		server.Name(name),
 		server.Version(version),
 		server.Id(id),
-		server.Registry(reg),
+		server.Register(reg),
 		server.Broker(brk),
 		server.WrapHandler(
 			promwrapper.NewHandlerWrapper(
