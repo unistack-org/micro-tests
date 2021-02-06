@@ -2,6 +2,7 @@ package grpc_test
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	bmemory "github.com/unistack-org/micro-broker-memory/v3"
@@ -23,6 +24,15 @@ type testServer struct {
 	pb.UnimplementedTestServer
 }
 
+func NewServerHandlerWrapper() server.HandlerWrapper {
+	return func(fn server.HandlerFunc) server.HandlerFunc {
+		return func(ctx context.Context, req server.Request, rsp interface{}) error {
+			fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
+			return fn(ctx, req, rsp)
+		}
+	}
+}
+
 func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
 	if req.Name == "Error" {
 		return &errors.Error{Id: "id", Code: 99, Detail: "detail"}
@@ -38,7 +48,9 @@ func TestGRPCServer(t *testing.T) {
 
 	r := rmemory.NewRegister()
 	b := bmemory.NewBroker(broker.Register(r))
-	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true))
+	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true),
+		server.WrapHandler(NewServerHandlerWrapper()),
+	)
 	// create router
 	rtr := regRouter.NewRouter(router.Register(r))
 
