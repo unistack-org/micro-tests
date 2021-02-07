@@ -64,11 +64,20 @@ func TestNativeClientServer(t *testing.T) {
 	reg := memory.NewRegister()
 	ctx := context.Background()
 
+	var mwfOk bool
+	mwf := func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			mwfOk = true
+			next.ServeHTTP(w, r)
+		})
+	}
+
 	// create server
 	srv := httpsrv.NewServer(
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
+		httpsrv.Middleware(mwf),
 		//server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
@@ -111,6 +120,10 @@ func TestNativeClientServer(t *testing.T) {
 
 	if rsp.Rsp != "name_my_name" {
 		t.Fatalf("invalid response: %#+v\n", rsp)
+	}
+
+	if !mwfOk {
+		t.Fatalf("http middleware not works")
 	}
 	// stop server
 	if err := srv.Stop(); err != nil {

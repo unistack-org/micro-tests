@@ -28,7 +28,7 @@ require (
 	github.com/unistack-org/micro-register-memory/v3 v3.2.2
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.2.2
-	github.com/unistack-org/micro-server-http/v3 v3.2.3
+	github.com/unistack-org/micro-server-http/v3 v3.2.4
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.1.1
 	github.com/unistack-org/micro/v3 v3.2.8
