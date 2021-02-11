@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/golang/protobuf v1.4.3
 	github.com/google/uuid v1.2.0
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.1.0
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.2.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.9.0
 	github.com/prometheus/client_model v0.2.0
@@ -28,11 +28,11 @@ require (
 	github.com/unistack-org/micro-register-memory/v3 v3.2.2
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.2.2
-	github.com/unistack-org/micro-server-http/v3 v3.2.4
+	github.com/unistack-org/micro-server-http/v3 v3.2.5
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.1.1
 	github.com/unistack-org/micro/v3 v3.2.8
-	google.golang.org/genproto v0.0.0-20210114201628-6edceaf6022f
+	google.golang.org/genproto v0.0.0-20210211221406-4ccc9a5e4183
 	google.golang.org/grpc v1.35.0
 	google.golang.org/protobuf v1.25.0
 )
