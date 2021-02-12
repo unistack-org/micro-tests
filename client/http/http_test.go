@@ -13,7 +13,6 @@ import (
 
 	mhttp "github.com/unistack-org/micro-client-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-register/v3"
 	pb "github.com/unistack-org/micro-tests/client/http/proto"
 	"github.com/unistack-org/micro/v3/client"
@@ -77,7 +76,7 @@ func TestNative(t *testing.T) {
 }
 
 func TestHTTPClient(t *testing.T) {
-	reg := rmemory.NewRegister()
+	reg := register.NewRegister()
 	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -164,7 +163,7 @@ func TestHTTPClient(t *testing.T) {
 }
 
 func TestHTTPClientStream(t *testing.T) {
-	reg := rmemory.NewRegister()
+	reg := register.NewRegister()
 	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())

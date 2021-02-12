@@ -14,11 +14,9 @@ import (
 	rpc "github.com/unistack-org/micro-api-handler-rpc/v3"
 	rregister "github.com/unistack-org/micro-api-router-register/v3"
 	rstatic "github.com/unistack-org/micro-api-router-static/v3"
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	gcli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gsrv "github.com/unistack-org/micro-server-grpc/v3"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
@@ -27,6 +25,7 @@ import (
 	"github.com/unistack-org/micro/v3/api/router"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
+	"github.com/unistack-org/micro/v3/register"
 	rt "github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
 )
@@ -48,12 +47,12 @@ func (s *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 
 func initial(t *testing.T) (server.Server, client.Client) {
 	//logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
-	r := rmemory.NewRegister()
+	r := register.NewRegister()
 	if err := r.Init(); err != nil {
 		t.Fatal(err)
 	}
 
-	b := bmemory.NewBroker(broker.Register(r))
+	b := broker.NewBroker(broker.Register(r))
 	if err := b.Init(); err != nil {
 		t.Fatal(err)
 	}

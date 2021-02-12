@@ -13,9 +13,7 @@ import (
 
 	metrics "github.com/VictoriaMetrics/metrics"
 	"github.com/stretchr/testify/assert"
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	gclient "github.com/unistack-org/micro-client-grpc/v3"
-	memory "github.com/unistack-org/micro-register-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-register/v3"
 	gserver "github.com/unistack-org/micro-server-grpc/v3"
 	"github.com/unistack-org/micro/v3/broker"
@@ -44,8 +42,8 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 
 func TestVictoriametrics(t *testing.T) {
 	// setup
-	r := memory.NewRegister()
-	b := bmemory.NewBroker(broker.Register(r))
+	r := register.NewRegister()
+	b := broker.NewBroker(broker.Register(r))
 
 	name := "test"
 	id := "id-1234567890"

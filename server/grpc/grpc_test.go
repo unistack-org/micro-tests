@@ -5,16 +5,15 @@ import (
 	"fmt"
 	"testing"
 
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	gclient "github.com/unistack-org/micro-client-grpc/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gserver "github.com/unistack-org/micro-server-grpc/v3"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
 	jsonpb "google.golang.org/protobuf/encoding/protojson"
@@ -46,8 +45,8 @@ func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 func TestGRPCServer(t *testing.T) {
 	var err error
 
-	r := rmemory.NewRegister()
-	b := bmemory.NewBroker(broker.Register(r))
+	r := register.NewRegister()
+	b := broker.NewBroker(broker.Register(r))
 	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true),
 		server.WrapHandler(NewServerHandlerWrapper()),
 	)

@@ -9,12 +9,11 @@ import (
 	"time"
 
 	"github.com/juju/ratelimit"
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
-	tmemory "github.com/unistack-org/micro-network-transport-memory"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-register/v3"
+	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
+	"github.com/unistack-org/micro/v3/network/transport"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
 )
@@ -29,8 +28,8 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 
 func TestRateClientLimit(t *testing.T) {
 	// setup
-	r := rmemory.NewRegister()
-	tr := tmemory.NewTransport()
+	r := register.NewRegister()
+	tr := transport.NewTransport()
 	testRates := []int{1, 10, 20}
 
 	for _, limit := range testRates {
@@ -72,9 +71,9 @@ func TestRateServerLimit(t *testing.T) {
 	testRates := []int{1, 5, 6, 10}
 
 	for _, limit := range testRates {
-		r := rmemory.NewRegister()
-		b := bmemory.NewBroker()
-		tr := tmemory.NewTransport()
+		r := register.NewRegister()
+		b := broker.NewBroker()
+		tr := transport.NewTransport()
 		_ = b
 
 		br := ratelimit.NewBucketWithRate(float64(limit), int64(limit))

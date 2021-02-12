@@ -10,7 +10,6 @@ import (
 
 	grpc "github.com/unistack-org/micro-client-grpc/v3"
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	regRouter "github.com/unistack-org/micro-router-register/v3"
 	pb "github.com/unistack-org/micro-tests/client/grpc/proto"
 	"github.com/unistack-org/micro/v3/client"
@@ -72,7 +71,7 @@ func TestGRPCClient(t *testing.T) {
 	defer s.Stop()
 
 	// create mock register
-	r := rmemory.NewRegister()
+	r := register.NewRegister()
 
 	// register service
 	if err := r.Register(ctx, &register.Service{

@@ -9,7 +9,6 @@ import (
 	"github.com/google/uuid"
 	http "github.com/unistack-org/micro-broker-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/register"
 )
@@ -57,7 +56,7 @@ var (
 )
 
 func newTestRegister() register.Register {
-	return rmemory.NewRegister()
+	return register.NewRegister()
 }
 
 func sub(be *testing.B, c int) {

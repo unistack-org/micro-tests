@@ -8,11 +8,10 @@ import (
 	"testing"
 	"time"
 
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	tcp "github.com/unistack-org/micro-server-tcp/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/logger"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/server"
 )
 
@@ -24,12 +23,12 @@ func TestTCPServer(t *testing.T) {
 	ctx := context.Background()
 
 	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
-	reg := rmemory.NewRegister()
+	reg := register.NewRegister()
 	if err := reg.Init(); err != nil {
 		t.Fatal(err)
 	}
 
-	brk := bmemory.NewBroker(broker.Register(reg))
+	brk := broker.NewBroker(broker.Register(reg))
 	if err := brk.Init(); err != nil {
 		t.Fatal(err)
 	}

@@ -2,22 +2,21 @@ package opentracing_test
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/mocktracer"
 	"github.com/stretchr/testify/assert"
-	rbroker "github.com/unistack-org/micro-broker-memory/v3"
 	cli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-register/v3"
 	srv "github.com/unistack-org/micro-server-grpc/v3"
 	otwrapper "github.com/unistack-org/micro-wrapper-trace-opentracing/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
+	"github.com/unistack-org/micro/v3/logger"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
 )
@@ -46,6 +45,7 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 }
 
 func TestClient(t *testing.T) {
+	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.ErrorLevel))
 	// setup
 	assert := assert.New(t)
 	for name, tt := range map[string]struct {
@@ -70,8 +70,8 @@ func TestClient(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			tracer := mocktracer.New()
 
-			reg := rmemory.NewRegister()
-			brk := rbroker.NewBroker(broker.Register(reg))
+			reg := register.NewRegister()
+			brk := broker.NewBroker(broker.Register(reg))
 
 			serverName := "micro.server.name"
 			serverID := "id-1234567890"
@@ -83,7 +83,7 @@ func TestClient(t *testing.T) {
 				client.Codec("application/grpc+json", jsoncodec.NewCodec()),
 				client.Codec("application/json", jsoncodec.NewCodec()),
 				client.Router(rt),
-				client.WrapCall(otwrapper.NewClientCallWrapper(otwrapper.WithTracer(tracer))),
+				client.Wrap(otwrapper.NewClientWrapper(otwrapper.WithTracer(tracer))),
 			)
 
 			s := srv.NewServer(
@@ -106,19 +106,20 @@ func TestClient(t *testing.T) {
 				*testHandler
 			}
 
-			s.Handle(s.NewHandler(&Test{new(testHandler)}))
+			if err := s.Handle(s.NewHandler(&Test{new(testHandler)})); err != nil {
+				t.Fatal(err)
+			}
 
 			if err := s.Start(); err != nil {
 				t.Fatalf("Unexpected error starting server: %v", err)
 			}
 
-			ctx, span, err := otwrapper.StartSpanFromContext(context.Background(), tracer, "root")
+			ctx, span, err := otwrapper.StartSpanFromOutgoingContext(context.Background(), tracer, "root")
 			assert.NoError(err)
 
 			req := c.NewRequest(serverName, "Test.Method", &TestRequest{IsError: tt.isError}, client.WithContentType("application/json"))
 			rsp := TestResponse{}
 			err = c.Call(ctx, req, &rsp)
-
 			if tt.isError {
 				assert.Error(err)
 			} else {
@@ -133,7 +134,6 @@ func TestClient(t *testing.T) {
 
 			var rootSpan opentracing.Span
 			for _, s := range spans {
-				fmt.Printf("%#+v\n", s)
 				// order of traces in buffer is not garanteed
 				switch s.OperationName {
 				case "root":

@@ -11,11 +11,11 @@ import (
 	httpcli "github.com/unistack-org/micro-client-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
-	memory "github.com/unistack-org/micro-register-memory/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/server/http/proto"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/metadata"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/server"
 )
 
@@ -61,7 +61,7 @@ func (h *Handler) CallError(ctx context.Context, req *pb.CallReq1, rsp *pb.CallR
 }
 
 func TestNativeClientServer(t *testing.T) {
-	reg := memory.NewRegister()
+	reg := register.NewRegister()
 	ctx := context.Background()
 
 	var mwfOk bool
@@ -133,7 +133,7 @@ func TestNativeClientServer(t *testing.T) {
 }
 
 func TestNativeServer(t *testing.T) {
-	reg := memory.NewRegister()
+	reg := register.NewRegister()
 	ctx := context.Background()
 
 	// create server
@@ -214,7 +214,7 @@ func TestNativeServer(t *testing.T) {
 }
 
 func TestHTTPServer(t *testing.T) {
-	reg := memory.NewRegister()
+	reg := register.NewRegister()
 	ctx := context.Background()
 
 	// create server

@@ -14,7 +14,6 @@ require (
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.2.2
-	github.com/unistack-org/micro-broker-memory/v3 v3.2.3
 	github.com/unistack-org/micro-client-grpc/v3 v3.2.3
 	github.com/unistack-org/micro-client-http/v3 v3.2.3
 	github.com/unistack-org/micro-codec-grpc/v3 v3.1.1
@@ -25,20 +24,20 @@ require (
 	github.com/unistack-org/micro-config-env/v3 v3.2.4
 	github.com/unistack-org/micro-config-vault/v3 v3.2.4
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
-	github.com/unistack-org/micro-register-memory/v3 v3.2.2
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.2.2
 	github.com/unistack-org/micro-server-http/v3 v3.2.5
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
-	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.1.1
-	github.com/unistack-org/micro/v3 v3.2.8
+	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.1.2-0.20210212140355-1844072047f2
+	github.com/unistack-org/micro/v3 v3.2.11
 	google.golang.org/genproto v0.0.0-20210211221406-4ccc9a5e4183
 	google.golang.org/grpc v1.35.0
 	google.golang.org/protobuf v1.25.0
 )
 
+//replace github.com/unistack-org/micro-wrapper-trace-opentracing/v3 => ../micro-wrapper-trace-opentracing
+//replace github.com/unistack-org/micro-client-grpc/v3 => ../micro-client-grpc
+//replace github.com/unistack-org/micro-server-grpc/v3 => ../micro-server-grpc
 //replace github.com/unistack-org/micro-server-http/v3 => ../micro-server-http
-
 //replace github.com/unistack-org/micro-client-http/v3 => ../micro-client-http
-
 //replace github.com/unistack-org/micro/v3 => ../micro

@@ -8,15 +8,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
 	"github.com/stretchr/testify/assert"
-	bmemory "github.com/unistack-org/micro-broker-memory/v3"
 	cli "github.com/unistack-org/micro-client-grpc/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	promwrapper "github.com/unistack-org/micro-metrics-prometheus/v3"
-	rmemory "github.com/unistack-org/micro-register-memory/v3"
 	rrouter "github.com/unistack-org/micro-router-register/v3"
 	srv "github.com/unistack-org/micro-server-grpc/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
+	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
 )
@@ -42,8 +41,8 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 func TestPrometheusMetrics(t *testing.T) {
 	client.DefaultRetries = 0
 	// setup
-	reg := rmemory.NewRegister()
-	brk := bmemory.NewBroker(broker.Register(reg))
+	reg := register.NewRegister()
+	brk := broker.NewBroker(broker.Register(reg))
 
 	name := "test"
 	id := "id-1234567890"
