@@ -30,7 +30,7 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
 	github.com/unistack-org/micro/v3 v3.2.11
-	google.golang.org/genproto v0.0.0-20210211221406-4ccc9a5e4183
+	google.golang.org/genproto v0.0.0-20210212180131-e7f2df4ecc2d
 	google.golang.org/grpc v1.35.0
 	google.golang.org/protobuf v1.25.0
 )
