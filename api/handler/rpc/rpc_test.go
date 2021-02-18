@@ -6,28 +6,9 @@ import (
 	"bytes"
 	"net/http"
 	"testing"
-
-	go_api "github.com/unistack-org/micro/v3/api/proto"
-	jsonpb "google.golang.org/protobuf/encoding/protojson"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestRequestPayloadFromRequest(t *testing.T) {
-
-	// our test event so that we can validate serialising / deserializing of true protos works
-	protoEvent := go_api.Event{
-		Name: "Test",
-	}
-
-	protoBytes, err := proto.Marshal(&protoEvent)
-	if err != nil {
-		t.Fatal("Failed to marshal proto", err)
-	}
-
-	jsonBytes, err := jsonpb.Marshal(&protoEvent)
-	if err != nil {
-		t.Fatal("Failed to marshal proto to JSON ", err)
-	}
 
 	jsonUrlBytes := []byte(`{"key1":"val1","key2":"val2","name":"Test"}`)
 
