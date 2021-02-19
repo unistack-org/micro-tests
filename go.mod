@@ -10,7 +10,7 @@ require (
 	github.com/prometheus/client_golang v1.9.0
 	github.com/prometheus/client_model v0.2.0
 	github.com/stretchr/testify v1.7.0
-	github.com/unistack-org/micro-api-handler-rpc/v3 v3.1.1
+	github.com/unistack-org/micro-api-handler-rpc/v3 v3.2.0
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.2.2
