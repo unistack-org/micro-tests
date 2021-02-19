@@ -521,6 +521,7 @@ github.com/transip/gotransip v0.0.0-20190812104329-6d8d9179b66f/go.mod h1:i0f4R4
 github.com/uber-go/atomic v1.3.2/go.mod h1:/Ct5t2lcmbJ4OSe/waGBoaVvVqtO0bmtfVNex1PFV8g=
 github.com/unistack-org/micro-api-handler-rpc/v3 v3.1.1 h1:0DjMFKXM19OQCTMnANRzvsML+0tnGaTon6OO6LIlmPM=
 github.com/unistack-org/micro-api-handler-rpc/v3 v3.1.1/go.mod h1:m1oT1yVC3ZiunltSdvoDTz/P7Azk7GfO6HwK3j3Mq9U=
+github.com/unistack-org/micro-api-handler-rpc/v3 v3.2.0/go.mod h1:24qiRO0ruGqzTGq/ncygnjFar3i3xbsWNTNjE+PQKS8=
 github.com/unistack-org/micro-api-router-register/v3 v3.2.2 h1:O8tIP+NFqyp/3F8vYnDMTati4etc2URxUSUH1VrEqOY=
 github.com/unistack-org/micro-api-router-register/v3 v3.2.2/go.mod h1:MZeqvmekQB/avrTRajp86+s7GuHkQ8HAee+hZtY+dWw=
 github.com/unistack-org/micro-api-router-static/v3 v3.2.1 h1:FMcEb8NYYX72OyQuMKHbtdEQV+eOFbmKyvwSY8cgan8=
