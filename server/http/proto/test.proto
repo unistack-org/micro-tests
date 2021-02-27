@@ -1,14 +1,16 @@
 syntax = "proto3";
 
 package test;
+
 option go_package = "github.com/unistack-org/micro-tests/server/http/proto;pb";
-import "google/api/annotations.proto";
-import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "api/annotations.proto";
+import "openapiv2/annotations.proto";
 import "google/protobuf/wrappers.proto";
 
 service Test {
 	rpc Call(CallReq) returns (CallRsp) {
-		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "Call";
         responses: {
           key: "default";
@@ -22,10 +24,10 @@ service Test {
           }
         }
     };
-		option (google.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
+		option (micro.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
   };
 	rpc CallError(CallReq1) returns (CallRsp1) {
-		option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "CallError";
         responses: {
           key: "default";
@@ -39,7 +41,7 @@ service Test {
           }
         }
     };
-		option (google.api.http) = { post: "/v1/test/callerror/{name}"; body: "*"; };
+		option (micro.api.http) = { post: "/v1/test/callerror/{name}"; body: "*"; };
   };
 
 };

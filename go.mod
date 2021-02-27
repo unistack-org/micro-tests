@@ -4,8 +4,8 @@ go 1.15
 
 require (
 	github.com/golang/protobuf v1.4.3
+	github.com/google/go-cmp v0.5.4 // indirect
 	github.com/google/uuid v1.2.0
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.3.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.9.0
 	github.com/prometheus/client_model v0.2.0
@@ -24,6 +24,7 @@ require (
 	github.com/unistack-org/micro-config-env/v3 v3.2.4
 	github.com/unistack-org/micro-config-vault/v3 v3.2.4
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
+	github.com/unistack-org/micro-proto v0.0.1
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.2.3
 	github.com/unistack-org/micro-server-http/v3 v3.2.6
