@@ -8,6 +8,7 @@ import (
 	api "github.com/unistack-org/micro/v3/api"
 	client "github.com/unistack-org/micro/v3/client"
 	server "github.com/unistack-org/micro/v3/server"
+	time "time"
 )
 
 type testClient struct {
@@ -28,6 +29,7 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
+	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
@@ -58,6 +60,9 @@ type testServer struct {
 }
 
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	var cancel context.CancelFunc
+	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	return h.TestServer.Call(ctx, req, rsp)
 }
 
