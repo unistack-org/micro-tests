@@ -3,49 +3,26 @@
 package pb
 
 import (
-	"context"
-
-	micro_api "github.com/unistack-org/micro/v3/api"
-	micro_client "github.com/unistack-org/micro/v3/client"
-	micro_server "github.com/unistack-org/micro/v3/server"
+	context "context"
+	api "github.com/unistack-org/micro/v3/api"
+	client "github.com/unistack-org/micro/v3/client"
 )
 
-// NewGithubEndpoints provides api endpoints metdata for Github service
-func NewGithubEndpoints() []*micro_api.Endpoint {
-	var endpoints []*micro_api.Endpoint
-	endpoint := &micro_api.Endpoint{
-		Name:    "Github.LookupUser",
-		Path:    []string{"/users/{username}"},
-		Method:  []string{"GET"},
-		Handler: "rpc",
+func NewGithubEndpoints() []*api.Endpoint {
+	return []*api.Endpoint{
+		&api.Endpoint{
+			Name:    "Github.LookupUser",
+			Path:    []string{"/users/{username}"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
 	}
-	endpoints = append(endpoints, endpoint)
-	return endpoints
 }
 
-// GithubService interface
-type GithubService interface {
-	LookupUser(context.Context, *LookupUserReq, ...micro_client.CallOption) (*LookupUserRsp, error)
+type GithubClient interface {
+	LookupUser(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error)
 }
 
-// Micro server stuff
-
-// GithubHandler server handler
-type GithubHandler interface {
-	LookupUser(context.Context, *LookupUserReq, *LookupUserRsp) error
-}
-
-// RegisterGithubHandler registers server handler
-func RegisterGithubHandler(s micro_server.Server, sh GithubHandler, opts ...micro_server.HandlerOption) error {
-	type github interface {
-		LookupUser(context.Context, *LookupUserReq, *LookupUserRsp) error
-	}
-	type Github struct {
-		github
-	}
-	h := &githubHandler{sh}
-	for _, endpoint := range NewGithubEndpoints() {
-		opts = append(opts, micro_api.WithEndpoint(endpoint))
-	}
-	return s.Handle(s.NewHandler(&Github{h}, opts...))
+type GithubServer interface {
+	LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
 }

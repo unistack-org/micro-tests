@@ -3,115 +3,79 @@
 package pb
 
 import (
-	"context"
-	"fmt"
-	//  "net/http"
-
-	micro_client_http "github.com/unistack-org/micro-client-http/v3"
-	micro_api "github.com/unistack-org/micro/v3/api"
-	micro_client "github.com/unistack-org/micro/v3/client"
-	micro_server "github.com/unistack-org/micro/v3/server"
+	context "context"
+	v3 "github.com/unistack-org/micro-client-http/v3"
+	api "github.com/unistack-org/micro/v3/api"
+	client "github.com/unistack-org/micro/v3/client"
+	server "github.com/unistack-org/micro/v3/server"
 )
 
-var (
-	_ micro_server.Option
-	_ micro_client.Option
-)
-
-type testService struct {
-	c    micro_client.Client
+type testClient struct {
+	c    client.Client
 	name string
 }
 
-// Micro client stuff
-
-// NewTestService create new service client
-func NewTestService(name string, c micro_client.Client) TestService {
-	return &testService{c: c, name: name}
+func NewTestClient(name string, c client.Client) TestClient {
+	return &testClient{c: c, name: name}
 }
 
-func (c *testService) Call(ctx context.Context, req *CallReq, opts ...micro_client.CallOption) (*CallRsp, error) {
+func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
 	errmap := make(map[string]interface{}, 1)
 	errmap["default"] = &Error{}
-
-	nopts := append(opts,
-		micro_client_http.Method("POST"),
-		micro_client_http.Path("/v1/test/call/{name}"),
-		micro_client_http.Body("*"),
-		micro_client_http.ErrorMap(errmap),
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+		v3.Method("POST"),
+		v3.Path("/v1/test/call/{name}"),
+		v3.Body("*"),
 	)
 	rsp := &CallRsp{}
-	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, nopts...)
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return rsp, nil
 }
 
-func (c *testService) CallError(ctx context.Context, req *CallReq1, opts ...micro_client.CallOption) (*CallRsp1, error) {
+func (c *testClient) CallError(ctx context.Context, req *CallReq1, opts ...client.CallOption) (*CallRsp1, error) {
 	errmap := make(map[string]interface{}, 1)
 	errmap["default"] = &Error{}
-
-	nopts := append(opts,
-		micro_client_http.Method("POST"),
-		micro_client_http.Path("/v1/test/callerror/{name}"),
-		micro_client_http.Body("*"),
-		micro_client_http.ErrorMap(errmap),
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+		v3.Method("POST"),
+		v3.Path("/v1/test/callerror/{name}"),
+		v3.Body("*"),
 	)
 	rsp := &CallRsp1{}
-	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallError", req), rsp, nopts...)
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallError", req), rsp, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return rsp, nil
 }
 
-// Micro server stuff
-
-type testHandler struct {
-	TestHandler
+type testServer struct {
+	TestServer
 }
 
-func (h *testHandler) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
-	return h.TestHandler.Call(ctx, req, rsp)
+func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	return h.TestServer.Call(ctx, req, rsp)
 }
 
-/*
-func (h *testHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-  fmt.Printf("new request: %#+v\n", r)
-  // HANDLE ALL STUFF
-}
-*/
-
-func (h *testHandler) CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error {
-	return h.TestHandler.CallError(ctx, req, rsp)
+func (h *testServer) CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error {
+	return h.TestServer.CallError(ctx, req, rsp)
 }
 
-/*
-func (h *testHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-  fmt.Printf("new request: %#+v\n", r)
-  // HANDLE ALL STUFF
-}
-*/
-
-// Error method to satisfy error interface
-func (e *Error) Error() string {
-	return fmt.Sprintf("%#v", e)
-}
-
-// RegisterTestHandler registers server handler
-func RegisterTestHandler(s micro_server.Server, sh TestHandler, opts ...micro_server.HandlerOption) error {
+func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOption) error {
 	type test interface {
-		Call(context.Context, *CallReq, *CallRsp) error
-		CallError(context.Context, *CallReq1, *CallRsp1) error
-		//        ServeHTTP(http.ResponseWriter, *http.Request)
+		Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
+		CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error
 	}
 	type Test struct {
 		test
 	}
-	h := &testHandler{sh}
+	h := &testServer{sh}
 	for _, endpoint := range NewTestEndpoints() {
-		opts = append(opts, micro_api.WithEndpoint(endpoint))
+		opts = append(opts, api.WithEndpoint(endpoint))
 	}
 	return s.Handle(s.NewHandler(&Test{h}, opts...))
 }

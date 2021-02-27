@@ -39,7 +39,7 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	if len(req.Nested.Uint64Args) != 3 || req.Nested.Uint64Args[2].Value != 3 {
 		h.t.Fatalf("invalid reflect merging")
 	}
-	md, ok := metadata.FromContext(ctx)
+	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
 		h.t.Fatalf("context without metadata")
 	}
@@ -56,8 +56,7 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 
 func (h *Handler) CallError(ctx context.Context, req *pb.CallReq1, rsp *pb.CallRsp1) error {
 	httpsrv.SetRspCode(ctx, http.StatusBadRequest)
-	return &pb.Error{Msg: "my_error"}
-	return nil
+	return httpsrv.SetError(&pb.Error{Msg: "my_error"})
 }
 
 func TestNativeClientServer(t *testing.T) {
@@ -82,7 +81,7 @@ func TestNativeClientServer(t *testing.T) {
 	)
 
 	h := &Handler{t: t}
-	pb.RegisterTestHandler(srv, h)
+	pb.RegisterTestServer(srv, h)
 
 	// start server
 	if err := srv.Start(); err != nil {
@@ -105,7 +104,7 @@ func TestNativeClientServer(t *testing.T) {
 
 	cli := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsonpbcodec.NewCodec())), client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
 
-	svc := pb.NewTestService("helloworld", cli)
+	svc := pb.NewTestClient("helloworld", cli)
 	rsp, err := svc.Call(ctx, &pb.CallReq{
 		Name: "my_name",
 		Nested: &pb.Nested{Uint64Args: []*wrapperpb.UInt64Value{
@@ -145,7 +144,7 @@ func TestNativeServer(t *testing.T) {
 	)
 
 	h := &Handler{t: t}
-	pb.RegisterTestHandler(srv, h)
+	pb.RegisterTestServer(srv, h)
 
 	// start server
 	if err := srv.Start(); err != nil {

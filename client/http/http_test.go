@@ -62,7 +62,7 @@ func TestError(t *testing.T) {
 
 func TestNative(t *testing.T) {
 	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
-	gh := pb.NewGithubService("github", c)
+	gh := pb.NewGithubClient("github", c)
 
 	rsp, err := gh.LookupUser(context.TODO(), &pb.LookupUserReq{Username: "vtolstov"})
 	if err != nil {

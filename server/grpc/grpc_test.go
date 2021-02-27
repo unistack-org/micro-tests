@@ -9,6 +9,7 @@ import (
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
 	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gserver "github.com/unistack-org/micro-server-grpc/v3"
+	gpb "github.com/unistack-org/micro-tests/server/grpc/gproto"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
@@ -54,7 +55,7 @@ func TestGRPCServer(t *testing.T) {
 	rtr := regRouter.NewRouter(router.Register(r))
 
 	h := &testServer{}
-	err = pb.RegisterTestHandler(s, h)
+	err = gpb.RegisterTestServer(s, h)
 	if err != nil {
 		t.Fatalf("can't register handler: %v", err)
 	}

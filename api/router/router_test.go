@@ -19,6 +19,7 @@ import (
 	protocodec "github.com/unistack-org/micro-codec-proto/v3"
 	regRouter "github.com/unistack-org/micro-router-register/v3"
 	gsrv "github.com/unistack-org/micro-server-grpc/v3"
+	gpb "github.com/unistack-org/micro-tests/server/grpc/gproto"
 	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
 	"github.com/unistack-org/micro/v3/api"
 	"github.com/unistack-org/micro/v3/api/handler"
@@ -87,7 +88,7 @@ func initial(t *testing.T) (server.Server, client.Client) {
 	)
 
 	h := &testServer{}
-	pb.RegisterTestHandler(s, h)
+	gpb.RegisterTestServer(s, h)
 
 	if err := s.Init(); err != nil {
 		t.Fatalf("failed to init: %v", err)

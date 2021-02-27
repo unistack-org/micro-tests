@@ -3,58 +3,57 @@
 package pb
 
 import (
-	"context"
-	"fmt"
-
-	micro_client_http "github.com/unistack-org/micro-client-http/v3"
-	micro_client "github.com/unistack-org/micro/v3/client"
-	micro_server "github.com/unistack-org/micro/v3/server"
+	context "context"
+	v3 "github.com/unistack-org/micro-client-http/v3"
+	api "github.com/unistack-org/micro/v3/api"
+	client "github.com/unistack-org/micro/v3/client"
+	server "github.com/unistack-org/micro/v3/server"
 )
 
-var (
-	_ micro_server.Option
-	_ micro_client.Option
-)
-
-type githubService struct {
-	c    micro_client.Client
+type githubClient struct {
+	c    client.Client
 	name string
 }
 
-// Micro client stuff
-
-// NewGithubService create new service client
-func NewGithubService(name string, c micro_client.Client) GithubService {
-	return &githubService{c: c, name: name}
+func NewGithubClient(name string, c client.Client) GithubClient {
+	return &githubClient{c: c, name: name}
 }
 
-func (c *githubService) LookupUser(ctx context.Context, req *LookupUserReq, opts ...micro_client.CallOption) (*LookupUserRsp, error) {
+func (c *githubClient) LookupUser(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error) {
 	errmap := make(map[string]interface{}, 1)
 	errmap["default"] = &Error{}
-	nopts := append(opts,
-		micro_client_http.Method("GET"),
-		micro_client_http.Path("/users/{username}"),
-		micro_client_http.ErrorMap(errmap),
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+		v3.Method("GET"),
+		v3.Path("/users/{username}"),
+		v3.Body(""),
 	)
 	rsp := &LookupUserRsp{}
-	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Github.LookupUser", req), rsp, nopts...)
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Github.LookupUser", req), rsp, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return rsp, nil
 }
 
-// Error method to satisfy error interface
-func (e *Error) Error() string {
-	return fmt.Sprintf("%#v", e)
+type githubServer struct {
+	GithubServer
 }
 
-// Micro server stuff
-
-type githubHandler struct {
-	GithubHandler
+func (h *githubServer) LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error {
+	return h.GithubServer.LookupUser(ctx, req, rsp)
 }
 
-func (h *githubHandler) LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error {
-	return h.GithubHandler.LookupUser(ctx, req, rsp)
+func RegisterGithubServer(s server.Server, sh GithubServer, opts ...server.HandlerOption) error {
+	type github interface {
+		LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
+	}
+	type Github struct {
+		github
+	}
+	h := &githubServer{sh}
+	for _, endpoint := range NewGithubEndpoints() {
+		opts = append(opts, api.WithEndpoint(endpoint))
+	}
+	return s.Handle(s.NewHandler(&Github{h}, opts...))
 }
