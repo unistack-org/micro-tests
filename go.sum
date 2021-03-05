@@ -465,6 +465,7 @@ github.com/unistack-org/micro-config-env/v3 v3.2.4 h1:mMle6VvwmhabvohRxGfNxhcOeV
 github.com/unistack-org/micro-config-env/v3 v3.2.4/go.mod h1:NzhRyDsCgNzRhEtuVathSToOIzmkHCEICiSNZsVN75U=
 github.com/unistack-org/micro-config-vault/v3 v3.2.4 h1:HUOsVbQoki8YdISUVk3jzTgKYVJSxkLsjGG2Hcu8rhk=
 github.com/unistack-org/micro-config-vault/v3 v3.2.4/go.mod h1:Xbj5R5psic0Dyuh7SrJqvFv0hSIHYKHx91p96rn/lxk=
+github.com/unistack-org/micro-config-vault/v3 v3.2.7/go.mod h1:bGiA3wWJRfn+uvaLczzaGqlWeWRBmMDKBzo+x3ESxP4=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1 h1:AZVQ8l1p1pIUyImQo/if/5t1g9C9du9ulMRqATSmgGo=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1/go.mod h1:QfquVeYZ2+BqBQ5bv1+uFAeWFiacvwanRDy3nGVqo3c=
 github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e h1:hQJ3V0QggeFdU5967wO5v6oWnaK42wUnG4UU4zWcyu4=
@@ -496,6 +497,8 @@ github.com/unistack-org/micro/v3 v3.2.15 h1:9Wg6FAFVPUijAm5ZFF+y4oYEd8zd/Pp48Qwm
 github.com/unistack-org/micro/v3 v3.2.15/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
 github.com/unistack-org/micro/v3 v3.2.16 h1:eQwEJr7RiB0jvOSAil+c6t2C1zW7MpfFAVx2u9PmItM=
 github.com/unistack-org/micro/v3 v3.2.16/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
+github.com/unistack-org/micro/v3 v3.2.17 h1:WNkkcKj1NMLViH9YgSDJRA2PJxIaDmY3GQBjHQV20DU=
+github.com/unistack-org/micro/v3 v3.2.17/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
 github.com/urfave/cli v1.22.1/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/vultr/govultr v0.1.4/go.mod h1:9H008Uxr/C4vFNGLqKx232C206GL0PBHzOP0809bGNA=
