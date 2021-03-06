@@ -14,6 +14,8 @@ import (
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/server/http/proto"
 	"github.com/unistack-org/micro/v3/client"
+	"github.com/unistack-org/micro/v3/logger"
+	lwrapper "github.com/unistack-org/micro/v3/logger/wrapper"
 	"github.com/unistack-org/micro/v3/metadata"
 	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/server"
@@ -79,6 +81,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
+		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(true), lwrapper.WithLevel(logger.InfoLevel))),
 		httpsrv.Middleware(mwf),
 		//server.WrapHandler(NewServerHandlerWrapper()),
 	)
