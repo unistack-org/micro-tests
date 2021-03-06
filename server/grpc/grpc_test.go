@@ -48,7 +48,7 @@ func TestGRPCServer(t *testing.T) {
 
 	r := register.NewRegister()
 	b := broker.NewBroker(broker.Register(r))
-	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":12345"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true),
+	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()), server.Address(":0"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true),
 		server.WrapHandler(NewServerHandlerWrapper()),
 	)
 	// create router

@@ -51,6 +51,9 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	}
 	rsp.Rsp = "name_my_name"
 	httpsrv.SetRspCode(ctx, http.StatusCreated)
+	md = metadata.New(1)
+	md.Set("my-key", "my-val")
+	metadata.SetOutgoingContext(ctx, md)
 	return nil
 }
 
@@ -183,6 +186,10 @@ func TestNativeServer(t *testing.T) {
 
 	if s := string(b); s != `{"rsp":"name_my_name"}` {
 		t.Fatalf("Expected response %s, got %s", `{"rsp":"name_my_name"}`, s)
+	}
+
+	if v := rsp.Header.Get("My-Key"); v != "my-val" {
+		t.Fatalf("empty response header: %#+v", rsp.Header)
 	}
 
 	// make request with error

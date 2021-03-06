@@ -26,6 +26,7 @@ import (
 	"github.com/unistack-org/micro/v3/api/router"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
+	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/register"
 	rt "github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
@@ -124,9 +125,16 @@ func check(t *testing.T, addr string, path string, expected string, timeout bool
 		t.Fatal(err)
 	}
 
-	jsonMsg := expected
-	if string(buf) != jsonMsg {
-		t.Fatalf("invalid message received, parsing error %s != %s", buf, jsonMsg)
+	reterr := errors.Parse(string(buf))
+	experr := errors.Parse(expected)
+	if reterr.Code != 0 || experr.Code != 0 {
+		if !errors.Equal(reterr, experr) {
+			t.Fatalf("invalid message received, parsing error %s != %s", buf, expected)
+		}
+	} else {
+		if string(buf) != expected {
+			t.Fatalf("invalid message received, parsing error %s != %s", buf, expected)
+		}
 	}
 }
 
