@@ -8,8 +8,30 @@ import "api/annotations.proto";
 import "openapiv2/annotations.proto";
 import "google/protobuf/wrappers.proto";
 
+service TestDouble {
+  //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
+	rpc CallDouble(CallReq) returns (CallRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "Call";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { post: "/v1/testdouble/call/{name}"; body: "*"; };
+		//option (micro.api.micro_method) = { timeout: 5; };
+  };
+};
+
 service Test {
-  option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
+  //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc Call(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "Call";
@@ -26,7 +48,7 @@ service Test {
         }
     };
 		option (micro.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		//option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc CallError(CallReq1) returns (CallRsp1) {
 		option (micro.openapiv2.openapiv2_operation) = {

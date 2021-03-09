@@ -34,6 +34,12 @@ func NewServerHandlerWrapper() server.HandlerWrapper {
 	}
 }
 
+func (h *Handler) CallDouble(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
+	rsp.Rsp = "name_double"
+	httpsrv.SetRspCode(ctx, http.StatusCreated)
+	return nil
+}
+
 func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
 	if req.Nested == nil {
 		h.t.Fatalf("invalid reflect merging")
@@ -87,7 +93,18 @@ func TestNativeClientServer(t *testing.T) {
 	)
 
 	h := &Handler{t: t}
-	pb.RegisterTestServer(srv, h)
+
+	// init server
+	if err := srv.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := pb.RegisterTestServer(srv, h); err != nil {
+		t.Fatal(err)
+	}
+	if err := pb.RegisterTestDoubleServer(srv, h); err != nil {
+		t.Fatal(err)
+	}
 
 	// start server
 	if err := srv.Start(); err != nil {
@@ -110,8 +127,8 @@ func TestNativeClientServer(t *testing.T) {
 
 	cli := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsonpbcodec.NewCodec())), client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
 
-	svc := pb.NewTestClient("helloworld", cli)
-	rsp, err := svc.Call(ctx, &pb.CallReq{
+	svc1 := pb.NewTestClient("helloworld", cli)
+	rsp, err := svc1.Call(ctx, &pb.CallReq{
 		Name: "my_name",
 		Nested: &pb.Nested{Uint64Args: []*wrapperpb.UInt64Value{
 			&wrapperpb.UInt64Value{Value: 1},
@@ -130,6 +147,20 @@ func TestNativeClientServer(t *testing.T) {
 	if !mwfOk {
 		t.Fatalf("http middleware not works")
 	}
+
+	t.Logf("test second server")
+	svc2 := pb.NewTestDoubleClient("helloworld", cli)
+	rsp, err = svc2.CallDouble(ctx, &pb.CallReq{
+		Name: "my_name",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if rsp.Rsp != "name_double" {
+		t.Fatalf("invalid response: %#+v\n", rsp)
+	}
+
 	// stop server
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)

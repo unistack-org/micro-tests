@@ -21,12 +21,15 @@ service Github {
 		option (micro.api.http) = { get: "/users/{username}"; };
   };
 };
+
 message LookupUserReq {
   string username = 1;
 };
+
 message LookupUserRsp {
   string name = 1;
 };
+
 message Error {
 	string message = 1;
 };

@@ -8,8 +8,55 @@ import (
 	api "github.com/unistack-org/micro/v3/api"
 	client "github.com/unistack-org/micro/v3/client"
 	server "github.com/unistack-org/micro/v3/server"
-	time "time"
 )
+
+type testDoubleClient struct {
+	c    client.Client
+	name string
+}
+
+func NewTestDoubleClient(name string, c client.Client) TestDoubleClient {
+	return &testDoubleClient{c: c, name: name}
+}
+
+func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+		v3.Method("POST"),
+		v3.Path("/v1/testdouble/call/{name}"),
+		v3.Body("*"),
+	)
+	rsp := &CallRsp{}
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestDouble.CallDouble", req), rsp, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return rsp, nil
+}
+
+type testDoubleServer struct {
+	TestDoubleServer
+}
+
+func (h *testDoubleServer) CallDouble(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	return h.TestDoubleServer.CallDouble(ctx, req, rsp)
+}
+
+func RegisterTestDoubleServer(s server.Server, sh TestDoubleServer, opts ...server.HandlerOption) error {
+	type testDouble interface {
+		CallDouble(ctx context.Context, req *CallReq, rsp *CallRsp) error
+	}
+	type TestDouble struct {
+		testDouble
+	}
+	h := &testDoubleServer{sh}
+	for _, endpoint := range NewTestDoubleEndpoints() {
+		opts = append(opts, api.WithEndpoint(endpoint))
+	}
+	return s.Handle(s.NewHandler(&TestDouble{h}, opts...))
+}
 
 type testClient struct {
 	c    client.Client
@@ -29,7 +76,6 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
@@ -60,9 +106,6 @@ type testServer struct {
 }
 
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
-	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
-	defer cancel()
 	return h.TestServer.Call(ctx, req, rsp)
 }
 

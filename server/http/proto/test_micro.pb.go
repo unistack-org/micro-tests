@@ -8,6 +8,26 @@ import (
 	client "github.com/unistack-org/micro/v3/client"
 )
 
+func NewTestDoubleEndpoints() []*api.Endpoint {
+	return []*api.Endpoint{
+		&api.Endpoint{
+			Name:    "TestDouble.CallDouble",
+			Path:    []string{"/v1/testdouble/call/{name}"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+	}
+}
+
+type TestDoubleClient interface {
+	CallDouble(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error)
+}
+
+type TestDoubleServer interface {
+	CallDouble(ctx context.Context, req *CallReq, rsp *CallRsp) error
+}
+
 func NewTestEndpoints() []*api.Endpoint {
 	return []*api.Endpoint{
 		&api.Endpoint{
