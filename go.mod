@@ -22,7 +22,7 @@ require (
 	github.com/unistack-org/micro-codec-proto/v3 v3.1.1
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.1.1
 	github.com/unistack-org/micro-config-env/v3 v3.2.4
-	github.com/unistack-org/micro-config-vault/v3 v3.2.7
+	github.com/unistack-org/micro-config-vault/v3 v3.2.8
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
 	github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
