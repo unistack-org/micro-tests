@@ -463,8 +463,7 @@ github.com/unistack-org/micro-codec-segmentio/v3 v3.1.1 h1:WFVNcXNm58bEOKnubTztB
 github.com/unistack-org/micro-codec-segmentio/v3 v3.1.1/go.mod h1:FSrl+q83cohF2N7CmIdi36D6bZsjfGKMhhw0WaozlLs=
 github.com/unistack-org/micro-config-env/v3 v3.2.4 h1:mMle6VvwmhabvohRxGfNxhcOeVUenLq2mR1goXpLJys=
 github.com/unistack-org/micro-config-env/v3 v3.2.4/go.mod h1:NzhRyDsCgNzRhEtuVathSToOIzmkHCEICiSNZsVN75U=
-github.com/unistack-org/micro-config-vault/v3 v3.2.7 h1:ShEoXpBgXBdZeVsnnVGE0GidD/BGjqpaL9xe6BJ5oQc=
-github.com/unistack-org/micro-config-vault/v3 v3.2.7/go.mod h1:bGiA3wWJRfn+uvaLczzaGqlWeWRBmMDKBzo+x3ESxP4=
+github.com/unistack-org/micro-config-vault/v3 v3.2.8 h1:yZjn76sGRSx6z2K7bDKwVkKj7gqi4F3qCK4BgnxShTQ=
 github.com/unistack-org/micro-config-vault/v3 v3.2.8/go.mod h1:n4QAJXVOLJUiFuXrNVWEH7/Q0BOUlsk08vtZHvaJ+rI=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1 h1:AZVQ8l1p1pIUyImQo/if/5t1g9C9du9ulMRqATSmgGo=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1/go.mod h1:QfquVeYZ2+BqBQ5bv1+uFAeWFiacvwanRDy3nGVqo3c=
@@ -487,7 +486,6 @@ github.com/unistack-org/micro/v3 v3.2.4/go.mod h1:J8XxJj4Pqa3Ee0a4biRRtut7UwTlfB
 github.com/unistack-org/micro/v3 v3.2.11/go.mod h1:uGPB8BhDWHj63tR3eaoCd3X+lPtAgFG630897yhB3Ag=
 github.com/unistack-org/micro/v3 v3.2.14/go.mod h1:3j13mSd/rILNjyP0tEVtDxyDkJBtnHUXShNCuPHkC5A=
 github.com/unistack-org/micro/v3 v3.2.15/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
-github.com/unistack-org/micro/v3 v3.2.16/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
 github.com/unistack-org/micro/v3 v3.2.20 h1:EY94FDfHR43QvKNjmCaVH8/7+D8bmLwySXbFK9iIQY0=
 github.com/unistack-org/micro/v3 v3.2.20/go.mod h1:y+fV+BPNK2IqGoLquRU396jTYifG0HCw3zxFfI4E0dc=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
@@ -686,14 +684,8 @@ google.golang.org/genproto v0.0.0-20190911173649-1774047e7e51/go.mod h1:IbNlFCBr
 google.golang.org/genproto v0.0.0-20191216164720-4f79533eabd1/go.mod h1:n3cpQtvxv34hfy77yVDNjmbRyujviMdxYliBSkLhpCc=
 google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013/go.mod h1:NbSheEEYHJ7i3ixzK3sjbqSGDJWnxyFXZblF3eUsNvo=
 google.golang.org/genproto v0.0.0-20200904004341-0bd0a958aa1d/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
-google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb h1:hcskBH5qZCOa7WpTUFUFvoebnSFZBYpjykLtjIp9DVk=
-google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
-google.golang.org/genproto v0.0.0-20210309190941-1aeedc14537d h1:sWOBy5pWexdIILaM1hND+dymU2yY4yvDUbUTQJdek6Q=
-google.golang.org/genproto v0.0.0-20210309190941-1aeedc14537d/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
-google.golang.org/genproto v0.0.0-20210310155132-4ce2db91004e h1:ajd1UAja5y1pRx7xOU6R6faEHLKigztzPRvZ+mpE1Fo=
-google.golang.org/genproto v0.0.0-20210310155132-4ce2db91004e/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
-google.golang.org/genproto v0.0.0-20210311153111-e2979279ddde h1:ZC8QEWwnT4z5oijBVf++MV+RKH6uYcT6zORNP014fi8=
-google.golang.org/genproto v0.0.0-20210311153111-e2979279ddde/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
+google.golang.org/genproto v0.0.0-20210312152112-fc591d9ea70f h1:YRBxgxUW6GFi+AKsn8WGA9k1SZohK+gGuEqdeT5aoNQ=
+google.golang.org/genproto v0.0.0-20210312152112-fc591d9ea70f/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/grpc v1.14.0/go.mod h1:yo6s7OP7yaDglbqo1J04qKzAhqBH6lvTonzMVmEdcZw=
 google.golang.org/grpc v1.17.0/go.mod h1:6QZJwpn2B+Zp71q/5VxRsJ6NXXVCE5NRUHRo+f3cWCs=
 google.golang.org/grpc v1.19.0/go.mod h1:mqu4LbDTu4XGKhr4mRzUsmM4RtVoemTSY81AxZiDr8c=
