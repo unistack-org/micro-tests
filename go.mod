@@ -15,7 +15,7 @@ require (
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.2.2
 	github.com/unistack-org/micro-client-grpc/v3 v3.2.4
-	github.com/unistack-org/micro-client-http/v3 v3.2.3
+	github.com/unistack-org/micro-client-http/v3 v3.2.4
 	github.com/unistack-org/micro-codec-grpc/v3 v3.1.1
 	github.com/unistack-org/micro-codec-json/v3 v3.1.1
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.1.1
@@ -30,7 +30,7 @@ require (
 	github.com/unistack-org/micro-server-http/v3 v3.2.11
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.2.22
+	github.com/unistack-org/micro/v3 v3.2.23
 	google.golang.org/genproto v0.0.0-20210315173758-2651cd453018
 	google.golang.org/grpc v1.36.0
 	google.golang.org/protobuf v1.25.1-0.20201208041424-160c7477e0e8
