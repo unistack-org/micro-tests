@@ -3,11 +3,10 @@ module github.com/unistack-org/micro-tests
 go 1.15
 
 require (
-	github.com/golang/protobuf v1.4.3
-	github.com/google/go-cmp v0.5.4 // indirect
+	github.com/golang/protobuf v1.5.1
 	github.com/google/uuid v1.2.0
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/prometheus/client_golang v1.9.0
+	github.com/prometheus/client_golang v1.10.0
 	github.com/prometheus/client_model v0.2.0
 	github.com/stretchr/testify v1.7.0
 	github.com/unistack-org/micro-api-handler-rpc/v3 v3.2.0
@@ -31,9 +30,9 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.2.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
 	github.com/unistack-org/micro/v3 v3.2.23
-	google.golang.org/genproto v0.0.0-20210317182105-75c7a8546eb9
+	google.golang.org/genproto v0.0.0-20210318145829-90b20ab00860
 	google.golang.org/grpc v1.36.0
-	google.golang.org/protobuf v1.25.1-0.20201208041424-160c7477e0e8
+	google.golang.org/protobuf v1.26.0
 )
 
 //replace github.com/unistack-org/micro-wrapper-trace-opentracing/v3 => ../micro-wrapper-trace-opentracing
