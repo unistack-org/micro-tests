@@ -24,6 +24,8 @@ func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ..
 	errmap["default"] = &Error{}
 	opts = append(opts,
 		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
 		v3.Method("POST"),
 		v3.Path("/v1/testdouble/call/{name}"),
 		v3.Body("*"),
@@ -72,6 +74,8 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 	errmap["default"] = &Error{}
 	opts = append(opts,
 		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
 		v3.Method("POST"),
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
@@ -89,6 +93,8 @@ func (c *testClient) CallError(ctx context.Context, req *CallReq1, opts ...clien
 	errmap["default"] = &Error{}
 	opts = append(opts,
 		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
 		v3.Method("POST"),
 		v3.Path("/v1/test/callerror/{name}"),
 		v3.Body("*"),

@@ -24,6 +24,8 @@ func (c *githubClient) LookupUser(ctx context.Context, req *LookupUserReq, opts 
 	errmap["default"] = &Error{}
 	opts = append(opts,
 		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
 		v3.Method("GET"),
 		v3.Path("/users/{username}"),
 		v3.Body(""),
