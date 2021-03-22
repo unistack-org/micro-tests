@@ -11,7 +11,8 @@ import (
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion6
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
 
 // TestClient is the client API for Test service.
 //
@@ -49,13 +50,20 @@ type TestServer interface {
 type UnimplementedTestServer struct {
 }
 
-func (*UnimplementedTestServer) Call(context.Context, *Request) (*Response, error) {
+func (UnimplementedTestServer) Call(context.Context, *Request) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Call not implemented")
 }
-func (*UnimplementedTestServer) mustEmbedUnimplementedTestServer() {}
+func (UnimplementedTestServer) mustEmbedUnimplementedTestServer() {}
 
-func RegisterTestServer(s *grpc.Server, srv TestServer) {
-	s.RegisterService(&_Test_serviceDesc, srv)
+// UnsafeTestServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to TestServer will
+// result in compilation errors.
+type UnsafeTestServer interface {
+	mustEmbedUnimplementedTestServer()
+}
+
+func RegisterTestServer(s grpc.ServiceRegistrar, srv TestServer) {
+	s.RegisterService(&Test_ServiceDesc, srv)
 }
 
 func _Test_Call_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -76,7 +84,10 @@ func _Test_Call_Handler(srv interface{}, ctx context.Context, dec func(interface
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Test_serviceDesc = grpc.ServiceDesc{
+// Test_ServiceDesc is the grpc.ServiceDesc for Test service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Test_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "helloworld.Test",
 	HandlerType: (*TestServer)(nil),
 	Methods: []grpc.MethodDesc{
