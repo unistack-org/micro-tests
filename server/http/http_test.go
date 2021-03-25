@@ -3,22 +3,27 @@ package http_test
 import (
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"testing"
 
-	wrapperpb "github.com/golang/protobuf/ptypes/wrappers"
 	httpcli "github.com/unistack-org/micro-client-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
+	vmeter "github.com/unistack-org/micro-meter-victoriametrics/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/server/http/proto"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/logger"
 	lwrapper "github.com/unistack-org/micro/v3/logger/wrapper"
 	"github.com/unistack-org/micro/v3/metadata"
+	handler "github.com/unistack-org/micro/v3/meter/handler"
+	mwrapper "github.com/unistack-org/micro/v3/meter/wrapper"
 	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/server"
+	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 type Handler struct {
@@ -82,11 +87,14 @@ func TestNativeClientServer(t *testing.T) {
 		})
 	}
 
+	m := vmeter.NewMeter()
 	// create server
 	srv := httpsrv.NewServer(
+		server.Meter(m),
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
+		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
 		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(true), lwrapper.WithLevel(logger.InfoLevel))),
 		httpsrv.Middleware(mwf),
 		//server.WrapHandler(NewServerHandlerWrapper()),
@@ -105,7 +113,9 @@ func TestNativeClientServer(t *testing.T) {
 	if err := pb.RegisterTestDoubleServer(srv, h); err != nil {
 		t.Fatal(err)
 	}
-
+	if err := handler.RegisterMeterServer(srv, handler.NewHandler(srv.Options().Meter)); err != nil {
+		t.Fatal(err)
+	}
 	// start server
 	if err := srv.Start(); err != nil {
 		t.Fatal(err)
@@ -130,10 +140,10 @@ func TestNativeClientServer(t *testing.T) {
 	svc1 := pb.NewTestClient("helloworld", cli)
 	rsp, err := svc1.Call(ctx, &pb.CallReq{
 		Name: "my_name",
-		Nested: &pb.Nested{Uint64Args: []*wrapperpb.UInt64Value{
-			&wrapperpb.UInt64Value{Value: 1},
-			&wrapperpb.UInt64Value{Value: 2},
-			&wrapperpb.UInt64Value{Value: 3},
+		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
+			&wrapperspb.UInt64Value{Value: 1},
+			&wrapperspb.UInt64Value{Value: 2},
+			&wrapperspb.UInt64Value{Value: 3},
 		}},
 	})
 	if err != nil {
@@ -161,6 +171,19 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatalf("invalid response: %#+v\n", rsp)
 	}
 
+	hr, err := http.Get(fmt.Sprintf("http://%s/metrics", service[0].Nodes[0].Address))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	buf, err := io.ReadAll(hr.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if !strings.Contains(string(buf), `micro_server_request_total{micro_status="success"}`) {
+		t.Fatalf("rsp not contains metrics: %s", buf)
+	}
 	// stop server
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
