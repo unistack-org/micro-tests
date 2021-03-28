@@ -97,7 +97,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
 		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(true), lwrapper.WithLevel(logger.InfoLevel))),
 		httpsrv.Middleware(mwf),
-		//server.WrapHandler(NewServerHandlerWrapper()),
+		server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
 	h := &Handler{t: t}

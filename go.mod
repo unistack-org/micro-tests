@@ -1,6 +1,6 @@
 module github.com/unistack-org/micro-tests
 
-go 1.15
+go 1.16
 
 require (
 	github.com/google/uuid v1.2.0
@@ -29,7 +29,7 @@ require (
 	github.com/unistack-org/micro-server-http/v3 v3.3.1
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.3.4
+	github.com/unistack-org/micro/v3 v3.3.8
 	google.golang.org/genproto v0.0.0-20210325224202-eed09b1b5210
 	google.golang.org/grpc v1.36.1
 	google.golang.org/protobuf v1.26.0
