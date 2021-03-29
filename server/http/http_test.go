@@ -1,6 +1,7 @@
 package http_test
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -33,7 +34,7 @@ type Handler struct {
 func NewServerHandlerWrapper() server.HandlerWrapper {
 	return func(fn server.HandlerFunc) server.HandlerFunc {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
+			fmt.Printf("wrap ctx: %s\n", req.Service())
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -113,7 +114,7 @@ func TestNativeClientServer(t *testing.T) {
 	if err := pb.RegisterTestDoubleServer(srv, h); err != nil {
 		t.Fatal(err)
 	}
-	if err := handler.RegisterMeterServer(srv, handler.NewHandler(srv.Options().Meter)); err != nil {
+	if err := handler.RegisterMeterServer(srv, handler.NewHandler(handler.Meter(srv.Options().Meter))); err != nil {
 		t.Fatal(err)
 	}
 	// start server
@@ -158,6 +159,38 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatalf("http middleware not works")
 	}
 
+	hb, err := jsonpbcodec.NewCodec().Marshal(&pb.CallReq{
+		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
+			&wrapperspb.UInt64Value{Value: 1},
+			&wrapperspb.UInt64Value{Value: 2},
+			&wrapperspb.UInt64Value{Value: 3},
+		}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Logf("test rsp code from net/http client to native micro http server")
+	hr, err := http.NewRequestWithContext(ctx, "POST", fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), bytes.NewReader(hb))
+	if err != nil {
+		t.Fatal(err)
+	}
+	hr.Header.Set("Content-Type", "application/json")
+
+	hrsp, err := http.DefaultClient.Do(hr)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer hrsp.Body.Close()
+	buf, err := io.ReadAll(hrsp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if hrsp.StatusCode != 201 {
+		t.Fatalf("invalid rsp code %#+v", hrsp)
+	}
+
 	t.Logf("test second server")
 	svc2 := pb.NewTestDoubleClient("helloworld", cli)
 	rsp, err = svc2.CallDouble(ctx, &pb.CallReq{
@@ -171,12 +204,12 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatalf("invalid response: %#+v\n", rsp)
 	}
 
-	hr, err := http.Get(fmt.Sprintf("http://%s/metrics", service[0].Nodes[0].Address))
+	hrsp, err = http.Get(fmt.Sprintf("http://%s/metrics", service[0].Nodes[0].Address))
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	buf, err := io.ReadAll(hr.Body)
+	buf, err = io.ReadAll(hrsp.Body)
 	if err != nil {
 		t.Fatal(err)
 	}
