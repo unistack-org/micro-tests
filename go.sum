@@ -481,8 +481,8 @@ github.com/unistack-org/micro-router-register/v3 v3.2.2 h1:lYCymDHkJfhZWYQ4+Sb7F
 github.com/unistack-org/micro-router-register/v3 v3.2.2/go.mod h1:Y9Qtlg4NHqq5rR6X6Jm+04LoSJMi7/OOCm2mRueZYTE=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.0 h1:iHKWqX5p747pLEiTJKdNBMYBhrkZOeyPvEw1y15wF7k=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.0/go.mod h1:dXEZ/hWrdgS4o3BrOMsiUiuyPJSPdhs1qWXELezcOAw=
-github.com/unistack-org/micro-server-http/v3 v3.3.1 h1:My80SQOaKfV8Q1rLDhQ8KXxjU1kliPdvpvr+lHTko+M=
-github.com/unistack-org/micro-server-http/v3 v3.3.1/go.mod h1:5/HIPtWwnH4cPLFcR85m3O3phLBfQvlZRPC2o8ei49M=
+github.com/unistack-org/micro-server-http/v3 v3.3.2 h1:RDp7M/W1nmMtWRU3qAESzAIfDLBgUwbpQB/tIKiOXsM=
+github.com/unistack-org/micro-server-http/v3 v3.3.2/go.mod h1:iN0AZoV+iIFL4f1C6HnGEWaPrSgBCaYwv7ti41PFH6k=
 github.com/unistack-org/micro-server-tcp/v3 v3.3.0 h1:YIj5SvuPm7Q0CTo/L8ALcQFoBHwiGrz33TxvpcPuXYI=
 github.com/unistack-org/micro-server-tcp/v3 v3.3.0/go.mod h1:3cxrSzkmrHOkWuYvi7dAK+gAsuO6EkxoT9Y0LUNhC3I=
 github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0 h1:PvemkpeCVUWfCoKwt1XmJ8uGK9My/7T29qOVxtYJohw=
@@ -596,8 +596,9 @@ golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4/go.mod h1:RBQZq4jEuRlivfhVLd
 golang.org/x/net v0.0.0-20210323141857-08027d57d8cf/go.mod h1:RBQZq4jEuRlivfhVLdyRGr576XBO4/greRjx4P4O3yc=
 golang.org/x/net v0.0.0-20210324051636-2c4c8ecb7826/go.mod h1:RBQZq4jEuRlivfhVLdyRGr576XBO4/greRjx4P4O3yc=
 golang.org/x/net v0.0.0-20210324205630-d1beb07c2056/go.mod h1:uSPa2vr4CLtc/ILN5odXGNXS6mhrKVzTaCXzk9m6W3k=
-golang.org/x/net v0.0.0-20210326220855-61e056675ecf h1:WUcCxqQqDT0aXO4VnQbfMvp4zh7m1Gb2clVuHUAGGRE=
 golang.org/x/net v0.0.0-20210326220855-61e056675ecf/go.mod h1:uSPa2vr4CLtc/ILN5odXGNXS6mhrKVzTaCXzk9m6W3k=
+golang.org/x/net v0.0.0-20210330142815-c8897c278d10 h1:j6SlnKgJhONcqBZAH/cLNz6hg79L7Q18RY4BiN0r0LI=
+golang.org/x/net v0.0.0-20210330142815-c8897c278d10/go.mod h1:uSPa2vr4CLtc/ILN5odXGNXS6mhrKVzTaCXzk9m6W3k=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
 golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
