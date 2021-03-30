@@ -8,6 +8,7 @@ import (
 	api "github.com/unistack-org/micro/v3/api"
 	client "github.com/unistack-org/micro/v3/client"
 	server "github.com/unistack-org/micro/v3/server"
+	http "net/http"
 )
 
 type githubClient struct {
@@ -26,12 +27,29 @@ func (c *githubClient) LookupUser(ctx context.Context, req *LookupUserReq, opts 
 		v3.ErrorMap(errmap),
 	)
 	opts = append(opts,
-		v3.Method("GET"),
+		v3.Method(http.MethodGet),
 		v3.Path("/users/{username}"),
-		v3.Body(""),
 	)
 	rsp := &LookupUserRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Github.LookupUser", req), rsp, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return rsp, nil
+}
+
+func (c *githubClient) LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
+		v3.Method(http.MethodGet),
+		v3.Path("/{username}"),
+	)
+	rsp := &LookupUserRsp{}
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Github.LookupUserWithoutPath", req), rsp, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -46,16 +64,22 @@ func (h *githubServer) LookupUser(ctx context.Context, req *LookupUserReq, rsp *
 	return h.GithubServer.LookupUser(ctx, req, rsp)
 }
 
+func (h *githubServer) LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error {
+	return h.GithubServer.LookupUserWithoutPath(ctx, req, rsp)
+}
+
 func RegisterGithubServer(s server.Server, sh GithubServer, opts ...server.HandlerOption) error {
 	type github interface {
 		LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
+		LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
 	}
 	type Github struct {
 		github
 	}
 	h := &githubServer{sh}
+	var nopts []server.HandlerOption
 	for _, endpoint := range NewGithubEndpoints() {
-		opts = append(opts, api.WithEndpoint(endpoint))
+		nopts = append(nopts, api.WithEndpoint(endpoint))
 	}
-	return s.Handle(s.NewHandler(&Github{h}, opts...))
+	return s.Handle(s.NewHandler(&Github{h}, append(nopts, opts...)...))
 }

@@ -16,13 +16,21 @@ func NewGithubEndpoints() []*api.Endpoint {
 			Method:  []string{"GET"},
 			Handler: "rpc",
 		},
+		&api.Endpoint{
+			Name:    "Github.LookupUserWithoutPath",
+			Path:    []string{"/{username}"},
+			Method:  []string{"GET"},
+			Handler: "rpc",
+		},
 	}
 }
 
 type GithubClient interface {
 	LookupUser(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error)
+	LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error)
 }
 
 type GithubServer interface {
 	LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
+	LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error
 }

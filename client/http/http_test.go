@@ -75,6 +75,21 @@ func TestNative(t *testing.T) {
 
 }
 
+func TestNativeWithoutPath(t *testing.T) {
+	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com/users"))
+	gh := pb.NewGithubClient("github", c)
+
+	rsp, err := gh.LookupUserWithoutPath(context.TODO(), &pb.LookupUserReq{Username: "vtolstov"})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if rsp.Name != "Vasiliy Tolstov" {
+		t.Fatalf("invalid rsp received: %#+v\n", rsp)
+	}
+
+}
+
 func TestHTTPClient(t *testing.T) {
 	reg := register.NewRegister()
 	rtr := rrouter.NewRouter(router.Register(reg))

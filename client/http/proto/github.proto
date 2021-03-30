@@ -20,6 +20,20 @@ service Github {
     };
 		option (micro.api.http) = { get: "/users/{username}"; };
   };
+	rpc LookupUserWithoutPath(LookupUserReq) returns (LookupUserRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "LookupUserWithoutPath";
+      responses: {
+        key: "default";
+        value: {
+          description: "Error response";
+          schema: { json_schema: { ref: ".github.Error"; } }
+        }
+      }
+    };
+		option (micro.api.http) = { get: "/{username}"; };
+  };
+
 };
 
 message LookupUserReq {
