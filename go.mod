@@ -13,7 +13,7 @@ require (
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.3.0
 	github.com/unistack-org/micro-client-grpc/v3 v3.2.4
-	github.com/unistack-org/micro-client-http/v3 v3.3.1
+	github.com/unistack-org/micro-client-http/v3 v3.3.2
 	github.com/unistack-org/micro-codec-grpc/v3 v3.1.1
 	github.com/unistack-org/micro-codec-json/v3 v3.1.1
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.1.1
