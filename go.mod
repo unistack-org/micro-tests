@@ -19,7 +19,7 @@ require (
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.1.1
 	github.com/unistack-org/micro-codec-proto/v3 v3.1.1
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.1.1
-	github.com/unistack-org/micro-config-env/v3 v3.2.4
+	github.com/unistack-org/micro-config-env/v3 v3.2.5
 	github.com/unistack-org/micro-config-vault/v3 v3.2.9
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.2.1
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
