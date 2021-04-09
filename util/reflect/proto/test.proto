@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package reflect;
+
+option go_package = "github.com/unistack-org/micro-tests/util/reflect/proto;pb";
+import "google/protobuf/wrappers.proto";
+
+message CallReq {
+  string name = 1;
+  string req = 2;
+  string arg1 = 3;
+  uint64 arg2 = 4;
+  Nested nested = 5;
+};
+
+message Nested {
+  repeated string string_args = 1;
+  repeated google.protobuf.UInt64Value uint64_args = 2;
+};

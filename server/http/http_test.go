@@ -7,6 +7,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -74,6 +75,108 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 func (h *Handler) CallError(ctx context.Context, req *pb.CallReq1, rsp *pb.CallRsp1) error {
 	httpsrv.SetRspCode(ctx, http.StatusBadRequest)
 	return httpsrv.SetError(&pb.Error{Msg: "my_error"})
+}
+
+func TestNativeFormUrlencoded(t *testing.T) {
+	reg := register.NewRegister()
+	ctx := context.Background()
+
+	// create server
+	srv := httpsrv.NewServer(
+		server.Name("helloworld"),
+		server.Register(reg),
+		server.Codec("application/json", jsoncodec.NewCodec()),
+		//server.WrapHandler(NewServerHandlerWrapper()),
+	)
+
+	if err := srv.Init(); err != nil {
+		t.Fatal(err)
+	}
+	h := &Handler{t: t}
+	pb.RegisterTestServer(srv, h)
+
+	// start server
+	if err := srv.Start(); err != nil {
+		t.Fatal(err)
+	}
+
+	// lookup server
+	service, err := reg.LookupService(ctx, "helloworld")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(service) != 1 {
+		t.Fatalf("Expected 1 service got %d: %+v", len(service), service)
+	}
+
+	if len(service[0].Nodes) != 1 {
+		t.Fatalf("Expected 1 node got %d: %+v", len(service[0].Nodes), service[0].Nodes)
+	}
+
+	t.Logf("test net/http client with application/x-www-form-urlencoded")
+	data := url.Values{}
+	data.Set("req", "fookey")
+	data.Set("arg1", "arg1val")
+	data.Add("nested.uint64_args", "1")
+	data.Add("nested.uint64_args", "2")
+	data.Add("nested.uint64_args", "3")
+	// make request
+	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), strings.NewReader(data.Encode())) // URL-encoded payload
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+	//req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
+
+	rsp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	b, err := ioutil.ReadAll(rsp.Body)
+	rsp.Body.Close()
+
+	if err != nil && err != io.EOF {
+		t.Fatal(err)
+	}
+
+	if rsp.StatusCode != http.StatusCreated {
+		t.Fatalf("invalid status received: %#+v\n%s\n", rsp, b)
+	}
+
+	if s := string(b); s != `{"rsp":"name_my_name"}` {
+		t.Fatalf("Expected response %s, got %s", `{"rsp":"name_my_name"}`, s)
+	}
+
+	if v := rsp.Header.Get("My-Key"); v != "my-val" {
+		t.Fatalf("empty response header: %#+v", rsp.Header)
+	}
+
+	t.Logf("test native client with application/x-www-form-urlencoded")
+	cli := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/x-www-form-urlencoded"), client.Codec("application/json", jsonpbcodec.
+		NewCodec())), client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
+
+	svc1 := pb.NewTestClient("helloworld", cli)
+	nrsp, err := svc1.Call(ctx, &pb.CallReq{
+		Name: "my_name",
+		Arg1: "arg1val",
+		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
+			&wrapperspb.UInt64Value{Value: 1},
+			&wrapperspb.UInt64Value{Value: 2},
+			&wrapperspb.UInt64Value{Value: 3},
+		}},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if nrsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid response: %#+v\n", nrsp)
+	}
+
+	// stop server
+	if err := srv.Stop(); err != nil {
+		t.Fatal(err)
+	}
+
 }
 
 func TestNativeClientServer(t *testing.T) {
@@ -259,7 +362,7 @@ func TestNativeServer(t *testing.T) {
 	}
 
 	// make request
-	rsp, err := http.Post(fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1,str2&nested.uint64_args=1,2,3", service[0].Nodes[0].Address), "application/json", nil)
+	rsp, err := http.Post(fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1&nested.string_args=str2&nested.uint64_args=1&nested.uint64_args=2&nested.uint64_args=3", service[0].Nodes[0].Address), "application/json", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -143,7 +143,7 @@ func TestGRPCClient(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 500*time.Millisecond)
 	defer cancel()
 
-	req := c.NewRequest("helloworld", "Test.Stream", &pb.Request{}, client.StreamingRequest())
+	req := c.NewRequest("helloworld", "Test.Stream", &pb.Request{}, client.StreamingRequest(true))
 	stream, err := c.Stream(ctx, req)
 	if err != nil {
 		t.Fatal(err)
