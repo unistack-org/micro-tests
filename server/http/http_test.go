@@ -51,7 +51,6 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	if req.Nested == nil {
 		h.t.Fatalf("invalid reflect merging")
 	}
-	fmt.Printf("%#+v\n", req.Nested)
 	if len(req.Nested.Uint64Args) != 3 || req.Nested.Uint64Args[2].Value != 3 {
 		h.t.Fatalf("invalid reflect merging")
 	}
@@ -363,7 +362,7 @@ func TestNativeServer(t *testing.T) {
 	}
 
 	// make request
-	rsp, err := http.Post(fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1,str2&nested.uint64_args=1,2,3", service[0].Nodes[0].Address), "application/json", nil)
+	rsp, err := http.Post(fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1&nested.string_args=str2&nested.uint64_args=1&nested.uint64_args=2&nested.uint64_args=3", service[0].Nodes[0].Address), "application/json", nil)
 	if err != nil {
 		t.Fatal(err)
 	}

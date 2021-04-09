@@ -87,12 +87,12 @@ func TestPrometheusMetrics(t *testing.T) {
 	}
 	defer s.Stop()
 
-	req := c.NewRequest(name, "Test.Method", &TestRequest{IsError: false}, client.WithContentType("application/json"))
+	req := c.NewRequest(name, "Test.Method", &TestRequest{IsError: false}, client.RequestContentType("application/json"))
 	rsp := TestResponse{}
 
 	assert.NoError(t, c.Call(context.TODO(), req, &rsp))
 
-	req = c.NewRequest(name, "Test.Method", &TestRequest{IsError: true}, client.WithContentType("application/json"))
+	req = c.NewRequest(name, "Test.Method", &TestRequest{IsError: true}, client.RequestContentType("application/json"))
 	assert.Error(t, c.Call(context.TODO(), req, &rsp))
 
 	list, _ := prometheus.DefaultGatherer.Gather()

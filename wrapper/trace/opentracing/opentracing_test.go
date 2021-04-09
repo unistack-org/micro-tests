@@ -117,7 +117,7 @@ func TestClient(t *testing.T) {
 			ctx, span, err := otwrapper.StartSpanFromOutgoingContext(context.Background(), tracer, "root")
 			assert.NoError(err)
 
-			req := c.NewRequest(serverName, "Test.Method", &TestRequest{IsError: tt.isError}, client.WithContentType("application/json"))
+			req := c.NewRequest(serverName, "Test.Method", &TestRequest{IsError: tt.isError}, client.RequestContentType("application/json"))
 			rsp := TestResponse{}
 			err = c.Call(ctx, req, &rsp)
 			if tt.isError {
