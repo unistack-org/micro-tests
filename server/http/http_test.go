@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"mime/multipart"
 	"net/http"
 	"net/url"
 	"strings"
@@ -30,6 +31,101 @@ import (
 
 type Handler struct {
 	t *testing.T
+}
+
+func multipartHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("%#+v\n", r)
+}
+
+func upload(client *http.Client, url string, values map[string]io.Reader) error {
+	var err error
+	b := bytes.NewBuffer(nil)
+	w := multipart.NewWriter(b)
+	for key, r := range values {
+		var fw io.Writer
+		if x, ok := r.(io.Closer); ok {
+			defer x.Close()
+		}
+		if fw, err = w.CreateFormFile(key, key); err != nil {
+			return err
+		}
+		if _, err = io.Copy(fw, r); err != nil {
+			return err
+		}
+
+	}
+	// Don't forget to close the multipart writer.
+	// If you don't close it, your request will be missing the terminating boundary.
+	w.Close()
+
+	// Now that you have a form, you can submit it to your handler.
+	req, err := http.NewRequest("POST", url, b)
+	if err != nil {
+		return err
+	}
+	// Don't forget to set the content type, this will contain the boundary.
+	req.Header.Set("Content-Type", w.FormDataContentType())
+
+	// Submit the request
+	res, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	// Check the response
+	if res.StatusCode != http.StatusOK && res.StatusCode != http.StatusCreated {
+		err = fmt.Errorf("bad status: %s", res.Status)
+	}
+
+	return err
+}
+
+func TestMultipart(t *testing.T) {
+	reg := register.NewRegister()
+	ctx := context.Background()
+
+	// create server
+	srv := httpsrv.NewServer(
+		server.Name("helloworld"),
+		server.Register(reg),
+		server.Codec("application/json", jsoncodec.NewCodec()),
+		httpsrv.PathHandler("/upload", multipartHandler),
+	)
+
+	if err := srv.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	h := &Handler{t: t}
+	pb.RegisterTestServer(srv, h)
+
+	// start server
+	if err := srv.Start(); err != nil {
+		t.Fatal(err)
+	}
+
+	// lookup server
+	service, err := reg.LookupService(ctx, "helloworld")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if len(service) != 1 {
+		t.Fatalf("Expected 1 service got %d: %+v", len(service), service)
+	}
+
+	if len(service[0].Nodes) != 1 {
+		t.Fatalf("Expected 1 node got %d: %+v", len(service[0].Nodes), service[0].Nodes)
+	}
+
+	t.Logf("test multipart upload")
+	values := make(map[string]io.Reader, 2)
+	values["first.txt"] = bytes.NewReader([]byte("first content"))
+	values["second.txt"] = bytes.NewReader([]byte("second content"))
+	err = upload(http.DefaultClient, "http://"+service[0].Nodes[0].Address+"/upload", values)
+	if err != nil {
+		t.Fatal(err)
+	}
 }
 
 func NewServerHandlerWrapper() server.HandlerWrapper {
