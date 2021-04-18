@@ -15,6 +15,7 @@ import (
 	httpcli "github.com/unistack-org/micro-client-http/v3"
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
+	urlencodecodec "github.com/unistack-org/micro-codec-urlencode/v3"
 	vmeter "github.com/unistack-org/micro-meter-victoriametrics/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/server/http/proto"
@@ -89,6 +90,7 @@ func TestMultipart(t *testing.T) {
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		httpsrv.PathHandler("/upload", multipartHandler),
 	)
 
@@ -182,6 +184,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		//server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
@@ -247,8 +250,13 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	}
 
 	t.Logf("test native client with application/x-www-form-urlencoded")
-	cli := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/x-www-form-urlencoded"), client.Codec("application/json", jsonpbcodec.
-		NewCodec())), client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
+	cli := client.NewClientCallOptions(
+		httpcli.NewClient(
+			client.ContentType("application/x-www-form-urlencoded"),
+			client.Codec("application/json", jsonpbcodec.NewCodec()),
+			client.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
+		),
+		client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
 
 	svc1 := pb.NewTestClient("helloworld", cli)
 	nrsp, err := svc1.Call(ctx, &pb.CallReq{
@@ -294,6 +302,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
 		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(true), lwrapper.WithLevel(logger.InfoLevel))),
 		httpsrv.Middleware(mwf),
@@ -432,6 +441,7 @@ func TestNativeServer(t *testing.T) {
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		//server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
@@ -516,6 +526,7 @@ func TestHTTPHandler(t *testing.T) {
 	srv := httpsrv.NewServer(
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 	)
 
 	// create server mux
@@ -588,6 +599,7 @@ func TestHTTPServer(t *testing.T) {
 		server.Register(reg),
 		httpsrv.Server(&http.Server{Handler: mux}),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 	)
 
 	if err := srv.Init(); err != nil {
