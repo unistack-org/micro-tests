@@ -31,6 +31,25 @@ service TestDouble {
 };
 
 service Test {
+	rpc CallRepeated(CallReq) returns (CallRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "CallRepeated";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { post: "/v1/test/call_repeated/{ids}"; body: "*"; };
+		//option (micro.api.micro_method) = { timeout: 5; };
+  };
+
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc Call(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
@@ -76,6 +95,7 @@ message CallReq {
   string arg1 = 3;
   uint64 arg2 = 4;
   Nested nested = 5;
+  repeated string ids = 6;
 };
 
 message Nested {

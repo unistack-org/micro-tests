@@ -145,6 +145,15 @@ func (h *Handler) CallDouble(ctx context.Context, req *pb.CallReq, rsp *pb.CallR
 	return nil
 }
 
+func (h *Handler) CallRepeated(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
+	if len(req.Ids) != 2 || req.Ids[0] != "123" {
+		h.t.Fatalf("invalid reflect merging")
+	}
+	rsp.Rsp = "name_my_name"
+	httpsrv.SetRspCode(ctx, http.StatusCreated)
+	return nil
+}
+
 func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
 	if req.Nested == nil {
 		h.t.Fatalf("invalid reflect merging")
@@ -509,6 +518,41 @@ func TestNativeServer(t *testing.T) {
 
 	if s := string(b); s != `{"msg":"my_error"}` {
 		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error"}`, s)
+	}
+
+	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated/?ids=123&ids=321", service[0].Nodes[0].Address), "application/json", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if rsp.StatusCode != http.StatusCreated {
+		buf, err := io.ReadAll(rsp.Body)
+		if err != nil {
+			t.Fatalf("invalid status received: %#+v err: %v\n", rsp, err)
+		}
+		t.Fatalf("invalid status received: %#+v buf: %s\n", rsp, buf)
+	}
+
+	b, err = ioutil.ReadAll(rsp.Body)
+	rsp.Body.Close()
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if s := string(b); s != `{"rsp":"name_my_name"}` {
+		t.Fatalf("Expected response %s, got %s", `{"rsp":"name_my_name"}`, s)
+	}
+
+	c := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("http://"+service[0].Nodes[0].Address))
+	pbc := pb.NewTestClient("test", c)
+
+	prsp, err := pbc.CallRepeated(context.TODO(), &pb.CallReq{Ids: []string{"123", "321"}})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if prsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
 
 	// stop server

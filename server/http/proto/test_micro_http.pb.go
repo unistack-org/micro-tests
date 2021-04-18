@@ -8,6 +8,7 @@ import (
 	api "github.com/unistack-org/micro/v3/api"
 	client "github.com/unistack-org/micro/v3/client"
 	server "github.com/unistack-org/micro/v3/server"
+	http "net/http"
 )
 
 type testDoubleClient struct {
@@ -26,7 +27,7 @@ func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ..
 		v3.ErrorMap(errmap),
 	)
 	opts = append(opts,
-		v3.Method("POST"),
+		v3.Method(http.MethodPost),
 		v3.Path("/v1/testdouble/call/{name}"),
 		v3.Body("*"),
 	)
@@ -54,10 +55,11 @@ func RegisterTestDoubleServer(s server.Server, sh TestDoubleServer, opts ...serv
 		testDouble
 	}
 	h := &testDoubleServer{sh}
+	var nopts []server.HandlerOption
 	for _, endpoint := range NewTestDoubleEndpoints() {
-		opts = append(opts, api.WithEndpoint(endpoint))
+		nopts = append(nopts, api.WithEndpoint(endpoint))
 	}
-	return s.Handle(s.NewHandler(&TestDouble{h}, opts...))
+	return s.Handle(s.NewHandler(&TestDouble{h}, append(nopts, opts...)...))
 }
 
 type testClient struct {
@@ -69,6 +71,25 @@ func NewTestClient(name string, c client.Client) TestClient {
 	return &testClient{c: c, name: name}
 }
 
+func (c *testClient) CallRepeated(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
+		v3.Method(http.MethodPost),
+		v3.Path("/v1/test/call_repeated/{ids}"),
+		v3.Body("*"),
+	)
+	rsp := &CallRsp{}
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeated", req), rsp, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return rsp, nil
+}
+
 func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
 	errmap := make(map[string]interface{}, 1)
 	errmap["default"] = &Error{}
@@ -76,7 +97,7 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.ErrorMap(errmap),
 	)
 	opts = append(opts,
-		v3.Method("POST"),
+		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
@@ -95,7 +116,7 @@ func (c *testClient) CallError(ctx context.Context, req *CallReq1, opts ...clien
 		v3.ErrorMap(errmap),
 	)
 	opts = append(opts,
-		v3.Method("POST"),
+		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/callerror/{name}"),
 		v3.Body("*"),
 	)
@@ -111,6 +132,10 @@ type testServer struct {
 	TestServer
 }
 
+func (h *testServer) CallRepeated(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	return h.TestServer.CallRepeated(ctx, req, rsp)
+}
+
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
 	return h.TestServer.Call(ctx, req, rsp)
 }
@@ -121,6 +146,7 @@ func (h *testServer) CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1
 
 func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOption) error {
 	type test interface {
+		CallRepeated(ctx context.Context, req *CallReq, rsp *CallRsp) error
 		Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 		CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error
 	}
@@ -128,8 +154,9 @@ func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOp
 		test
 	}
 	h := &testServer{sh}
+	var nopts []server.HandlerOption
 	for _, endpoint := range NewTestEndpoints() {
-		opts = append(opts, api.WithEndpoint(endpoint))
+		nopts = append(nopts, api.WithEndpoint(endpoint))
 	}
-	return s.Handle(s.NewHandler(&Test{h}, opts...))
+	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
 }
