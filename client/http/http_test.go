@@ -139,6 +139,7 @@ func TestHTTPClient(t *testing.T) {
 		}
 
 		// write response
+		w.Header().Add("Content-Type", "application/json")
 		w.Write(b)
 	})
 	go http.Serve(l, mux)
