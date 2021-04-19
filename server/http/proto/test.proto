@@ -31,9 +31,9 @@ service TestDouble {
 };
 
 service Test {
-	rpc CallRepeated(CallReq) returns (CallRsp) {
+	rpc CallRepeatedString(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
-      operation_id: "CallRepeated";
+      operation_id: "CallRepeatedString";
         responses: {
           key: "default";
           value: {
@@ -46,9 +46,28 @@ service Test {
           }
         }
     };
-		option (micro.api.http) = { post: "/v1/test/call_repeated/{ids}"; body: "*"; };
+		option (micro.api.http) = { post: "/v1/test/call_repeated_string/{string_ids}"; body: "*"; };
 		//option (micro.api.micro_method) = { timeout: 5; };
   };
+	rpc CallRepeatedInt64(CallReq) returns (CallRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "CallRepeatedInt64";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { post: "/v1/test/call_repeated_int64/{int64_ids}"; body: "*"; };
+		//option (micro.api.micro_method) = { timeout: 5; };
+  };
+
 
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc Call(CallReq) returns (CallRsp) {
@@ -95,7 +114,8 @@ message CallReq {
   string arg1 = 3;
   uint64 arg2 = 4;
   Nested nested = 5;
-  repeated string ids = 6;
+  repeated string string_ids = 6;
+  repeated int64 int64_ids = 7;
 };
 
 message Nested {

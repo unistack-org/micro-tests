@@ -31,8 +31,15 @@ type TestDoubleServer interface {
 func NewTestEndpoints() []*api.Endpoint {
 	return []*api.Endpoint{
 		&api.Endpoint{
-			Name:    "Test.CallRepeated",
-			Path:    []string{"/v1/test/call_repeated/{ids}"},
+			Name:    "Test.CallRepeatedString",
+			Path:    []string{"/v1/test/call_repeated_string/{string_ids}"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
+		&api.Endpoint{
+			Name:    "Test.CallRepeatedInt64",
+			Path:    []string{"/v1/test/call_repeated_int64/{int64_ids}"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
@@ -55,13 +62,15 @@ func NewTestEndpoints() []*api.Endpoint {
 }
 
 type TestClient interface {
-	CallRepeated(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error)
+	CallRepeatedString(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error)
+	CallRepeatedInt64(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error)
 	Call(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error)
 	CallError(ctx context.Context, req *CallReq1, opts ...client.CallOption) (*CallRsp1, error)
 }
 
 type TestServer interface {
-	CallRepeated(ctx context.Context, req *CallReq, rsp *CallRsp) error
+	CallRepeatedString(ctx context.Context, req *CallReq, rsp *CallRsp) error
+	CallRepeatedInt64(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error
 }

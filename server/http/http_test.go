@@ -145,9 +145,17 @@ func (h *Handler) CallDouble(ctx context.Context, req *pb.CallReq, rsp *pb.CallR
 	return nil
 }
 
-func (h *Handler) CallRepeated(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
-	if len(req.Ids) != 2 || req.Ids[0] != "123" {
-		h.t.Fatalf("invalid reflect merging")
+func (h *Handler) CallRepeatedString(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
+	if len(req.StringIds) != 2 || req.StringIds[0] != "123" {
+		h.t.Fatalf("invalid reflect merging, strings_ids invalid: %v", req.StringIds)
+	}
+	rsp.Rsp = "name_my_name"
+	httpsrv.SetRspCode(ctx, http.StatusCreated)
+	return nil
+}
+func (h *Handler) CallRepeatedInt64(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
+	if len(req.Int64Ids) != 2 || req.Int64Ids[0] != 123 {
+		h.t.Fatalf("invalid reflect merging, int64_ids invalid: %v", req.Int64Ids)
 	}
 	rsp.Rsp = "name_my_name"
 	httpsrv.SetRspCode(ctx, http.StatusCreated)
@@ -520,7 +528,7 @@ func TestNativeServer(t *testing.T) {
 		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error"}`, s)
 	}
 
-	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated/?ids=123&ids=321", service[0].Nodes[0].Address), "application/json", nil)
+	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated_string/?string_ids=123&string_ids=321", service[0].Nodes[0].Address), "application/json", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -546,7 +554,18 @@ func TestNativeServer(t *testing.T) {
 	c := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("http://"+service[0].Nodes[0].Address))
 	pbc := pb.NewTestClient("test", c)
 
-	prsp, err := pbc.CallRepeated(context.TODO(), &pb.CallReq{Ids: []string{"123", "321"}})
+	t.Logf("test with string_ids")
+	prsp, err := pbc.CallRepeatedString(context.TODO(), &pb.CallReq{StringIds: []string{"123", "321"}})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if prsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid rsp received: %#+v\n", rsp)
+	}
+
+	t.Logf("test with int64_ids")
+	prsp, err = pbc.CallRepeatedInt64(context.TODO(), &pb.CallReq{Int64Ids: []int64{123, 321}})
 	if err != nil {
 		t.Fatal(err)
 	}

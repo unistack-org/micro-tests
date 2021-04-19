@@ -71,7 +71,7 @@ func NewTestClient(name string, c client.Client) TestClient {
 	return &testClient{c: c, name: name}
 }
 
-func (c *testClient) CallRepeated(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
 	errmap := make(map[string]interface{}, 1)
 	errmap["default"] = &Error{}
 	opts = append(opts,
@@ -79,11 +79,30 @@ func (c *testClient) CallRepeated(ctx context.Context, req *CallReq, opts ...cli
 	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
-		v3.Path("/v1/test/call_repeated/{ids}"),
+		v3.Path("/v1/test/call_repeated_string/{string_ids}"),
 		v3.Body("*"),
 	)
 	rsp := &CallRsp{}
-	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeated", req), rsp, opts...)
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedString", req), rsp, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return rsp, nil
+}
+
+func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
+	opts = append(opts,
+		v3.Method(http.MethodPost),
+		v3.Path("/v1/test/call_repeated_int64/{int64_ids}"),
+		v3.Body("*"),
+	)
+	rsp := &CallRsp{}
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedInt64", req), rsp, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,8 +151,12 @@ type testServer struct {
 	TestServer
 }
 
-func (h *testServer) CallRepeated(ctx context.Context, req *CallReq, rsp *CallRsp) error {
-	return h.TestServer.CallRepeated(ctx, req, rsp)
+func (h *testServer) CallRepeatedString(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	return h.TestServer.CallRepeatedString(ctx, req, rsp)
+}
+
+func (h *testServer) CallRepeatedInt64(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	return h.TestServer.CallRepeatedInt64(ctx, req, rsp)
 }
 
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
@@ -146,7 +169,8 @@ func (h *testServer) CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1
 
 func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOption) error {
 	type test interface {
-		CallRepeated(ctx context.Context, req *CallReq, rsp *CallRsp) error
+		CallRepeatedString(ctx context.Context, req *CallReq, rsp *CallRsp) error
+		CallRepeatedInt64(ctx context.Context, req *CallReq, rsp *CallRsp) error
 		Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 		CallError(ctx context.Context, req *CallReq1, rsp *CallRsp1) error
 	}

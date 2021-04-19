@@ -457,8 +457,8 @@ github.com/unistack-org/micro-broker-http/v3 v3.3.0 h1:IjdBtcmxl4OniyHG+FAkNoZS9
 github.com/unistack-org/micro-broker-http/v3 v3.3.0/go.mod h1:soBy700MUOHV5YcyIG949uxqd+FMUinQQr+Qi7ilE4A=
 github.com/unistack-org/micro-client-grpc/v3 v3.3.1 h1:KP3jBK+R03jffjwWbeMYkzZDIPspuyVGlVxYJxHiYeE=
 github.com/unistack-org/micro-client-grpc/v3 v3.3.1/go.mod h1:FG7t8s5Jb6VChxyBq75SS9v2/CA6Isikk/tOjtpa+xc=
-github.com/unistack-org/micro-client-http/v3 v3.3.8 h1:DB/E2GJG7teU3Mw7q+eMqJ1SYf+Hb1wUJ91aIZIjBso=
-github.com/unistack-org/micro-client-http/v3 v3.3.8/go.mod h1:hOoUW9Z8U3IpsvgLeDSFC51zGeLP3o/fulsfKSa0eO0=
+github.com/unistack-org/micro-client-http/v3 v3.3.9 h1:tQQ2WoZ1d5D9WO5sm8iQqxbS4N8J6jNtNmXmQa8fXQI=
+github.com/unistack-org/micro-client-http/v3 v3.3.9/go.mod h1:6rBuxkFO3ccvrYU6nkok7la87kb/O60AFnTQSWb8wZ4=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.1 h1:C+9DHTtRSvodlVOFo0+zMhBXoIye/hMleXlRv0o1yIU=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.1/go.mod h1:kaEdCPyWsa4o44cD4oS0+KzJWtshlXocZgnzEY+LZHQ=
 github.com/unistack-org/micro-codec-json/v3 v3.2.1 h1:nMRBnEvCttwX4yPAWuRSAvzcfLazRetqO4DpqJJHjY8=
@@ -500,8 +500,9 @@ github.com/unistack-org/micro/v3 v3.3.0/go.mod h1:iJwCWq2PECMxigfqe6TPC5GLWvj6P9
 github.com/unistack-org/micro/v3 v3.3.10/go.mod h1:5ragE2E8ER5d4FZQJG9pB6qdfOoLXLfKW89l77Dy3jQ=
 github.com/unistack-org/micro/v3 v3.3.11/go.mod h1:PPCt675o3HPcODFbJ4iRWPmQFAk1WQ+asQSOb/syq6U=
 github.com/unistack-org/micro/v3 v3.3.13/go.mod h1:98hNcMXp/WyWJwLwCuwrhN1Jm7aCWaRNsMfRjK8Fq+Y=
-github.com/unistack-org/micro/v3 v3.3.14 h1:CAkDMjHZT8/D6GGF5h3gK84m6tlWZC17IGPb2GkAn/4=
 github.com/unistack-org/micro/v3 v3.3.14/go.mod h1:ETGcQQUcjxGaD44LUMX+0fgo8Loh7ExldfIPLvfUmDo=
+github.com/unistack-org/micro/v3 v3.3.15 h1:rj+spzhezCg4gmj1nuF0FRGixC51/7xFACOchB/23/E=
+github.com/unistack-org/micro/v3 v3.3.15/go.mod h1:ETGcQQUcjxGaD44LUMX+0fgo8Loh7ExldfIPLvfUmDo=
 github.com/urfave/cli v1.20.0/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
 github.com/urfave/cli v1.22.1/go.mod h1:Gos4lmkARVdJ6EkW0WaNv/tZAAMe9V7XWyB60NtXRu0=
 github.com/valyala/fastrand v1.0.0 h1:LUKT9aKer2dVQNUi3waewTbKV+7H17kvWFNKs2ObdkI=
