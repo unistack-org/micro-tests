@@ -79,7 +79,7 @@ func TestGRPCClient(t *testing.T) {
 		Version: "test",
 		Nodes: []*register.Node{
 			{
-				Id:      "test-1",
+				ID:      "test-1",
 				Address: l.Addr().String(),
 				Metadata: map[string]string{
 					"protocol": "grpc",

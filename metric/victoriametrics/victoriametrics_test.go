@@ -35,7 +35,7 @@ type testHandler struct{}
 
 func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestResponse) error {
 	if req.IsError {
-		return fmt.Errorf("test error")
+		return fmt.Errorf("victoriametrics test error")
 	}
 	return nil
 }

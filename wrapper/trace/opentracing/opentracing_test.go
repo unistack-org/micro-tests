@@ -15,7 +15,6 @@ import (
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
 	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/logger"
 	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
@@ -45,7 +44,6 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 }
 
 func TestClient(t *testing.T) {
-	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.ErrorLevel))
 	// setup
 	assert := assert.New(t)
 	for name, tt := range map[string]struct {
@@ -91,7 +89,7 @@ func TestClient(t *testing.T) {
 				server.Codec("application/json", jsoncodec.NewCodec()),
 				server.Name(serverName),
 				server.Version(serverVersion),
-				server.Id(serverID),
+				server.ID(serverID),
 				server.Register(reg),
 				server.Broker(brk),
 				server.WrapSubscriber(otwrapper.NewServerSubscriberWrapper(otwrapper.WithTracer(tracer))),

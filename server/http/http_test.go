@@ -35,7 +35,7 @@ type Handler struct {
 }
 
 func multipartHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("%#+v\n", r)
+	//fmt.Printf("%#+v\n", r)
 }
 
 func upload(client *http.Client, url string, values map[string]io.Reader) error {
@@ -133,7 +133,7 @@ func TestMultipart(t *testing.T) {
 func NewServerHandlerWrapper() server.HandlerWrapper {
 	return func(fn server.HandlerFunc) server.HandlerFunc {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			fmt.Printf("wrap ctx: %s\n", req.Service())
+			//fmt.Printf("wrap ctx: %s\n", req.Service())
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -321,7 +321,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
-		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(true), lwrapper.WithLevel(logger.InfoLevel))),
+		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(false), lwrapper.WithLevel(logger.ErrorLevel))),
 		httpsrv.Middleware(mwf),
 		server.WrapHandler(NewServerHandlerWrapper()),
 	)
@@ -439,7 +439,7 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if !strings.Contains(string(buf), `micro_server_request_total{micro_status="success"}`) {
+	if !strings.Contains(string(buf), `micro_server_request_total`) {
 		t.Fatalf("rsp not contains metrics: %s", buf)
 	}
 	// stop server

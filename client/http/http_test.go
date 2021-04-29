@@ -148,7 +148,7 @@ func TestHTTPClient(t *testing.T) {
 		Name: "test.service",
 		Nodes: []*register.Node{
 			{
-				Id:      "test.service.1",
+				ID:      "test.service.1",
 				Address: l.Addr().String(),
 				Metadata: map[string]string{
 					"protocol": "http",
@@ -310,7 +310,7 @@ func TestHTTPClientStream(t *testing.T) {
 		Name: "test.service",
 		Nodes: []*register.Node{
 			{
-				Id:      "test.service.1",
+				ID:      "test.service.1",
 				Address: l.Addr().String(),
 				Metadata: map[string]string{
 					"protocol": "http",

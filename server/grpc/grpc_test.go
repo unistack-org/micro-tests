@@ -2,7 +2,6 @@ package grpc_test
 
 import (
 	"context"
-	"fmt"
 	"io"
 	"net/http"
 	"testing"
@@ -32,7 +31,7 @@ type testServer struct {
 func NewServerHandlerWrapper() server.HandlerWrapper {
 	return func(fn server.HandlerFunc) server.HandlerFunc {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
+			//fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
 			return fn(ctx, req, rsp)
 		}
 	}

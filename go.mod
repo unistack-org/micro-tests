@@ -11,9 +11,9 @@ require (
 	github.com/unistack-org/micro-api-handler-rpc/v3 v3.3.0
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
-	github.com/unistack-org/micro-broker-http/v3 v3.3.0
-	github.com/unistack-org/micro-client-grpc/v3 v3.3.2
-	github.com/unistack-org/micro-client-http/v3 v3.3.9
+	github.com/unistack-org/micro-broker-http/v3 v3.3.1
+	github.com/unistack-org/micro-client-grpc/v3 v3.3.3
+	github.com/unistack-org/micro-client-http/v3 v3.3.11
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.1
 	github.com/unistack-org/micro-codec-json/v3 v3.2.1
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.2
@@ -22,16 +22,16 @@ require (
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.0.0
 	github.com/unistack-org/micro-config-env/v3 v3.2.5
 	github.com/unistack-org/micro-config-vault/v3 v3.2.9
-	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.0
+	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
 	github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
-	github.com/unistack-org/micro-server-grpc/v3 v3.3.4
-	github.com/unistack-org/micro-server-http/v3 v3.3.12
-	github.com/unistack-org/micro-server-tcp/v3 v3.3.1
+	github.com/unistack-org/micro-server-grpc/v3 v3.3.6
+	github.com/unistack-org/micro-server-http/v3 v3.3.14
+	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.3.16
-	google.golang.org/genproto v0.0.0-20210423144448-3a41ef94ed2b
+	github.com/unistack-org/micro/v3 v3.3.17
+	google.golang.org/genproto v0.0.0-20200904004341-0bd0a958aa1d
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0
 )
