@@ -22,11 +22,11 @@ var (
 				Version: "1.0.0",
 				Nodes: []*register.Node{
 					{
-						Id:      "foo-1.0.0-123",
+						ID:      "foo-1.0.0-123",
 						Address: "localhost:9999",
 					},
 					{
-						Id:      "foo-1.0.0-321",
+						ID:      "foo-1.0.0-321",
 						Address: "localhost:9999",
 					},
 				},
@@ -36,7 +36,7 @@ var (
 				Version: "1.0.1",
 				Nodes: []*register.Node{
 					{
-						Id:      "foo-1.0.1-321",
+						ID:      "foo-1.0.1-321",
 						Address: "localhost:6666",
 					},
 				},
@@ -46,7 +46,7 @@ var (
 				Version: "1.0.3",
 				Nodes: []*register.Node{
 					{
-						Id:      "foo-1.0.3-345",
+						ID:      "foo-1.0.3-345",
 						Address: "localhost:8888",
 					},
 				},

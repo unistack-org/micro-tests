@@ -22,7 +22,6 @@ type testHandler struct {
 func TestTCPServer(t *testing.T) {
 	ctx := context.Background()
 
-	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
 	reg := register.NewRegister()
 	if err := reg.Init(); err != nil {
 		t.Fatal(err)

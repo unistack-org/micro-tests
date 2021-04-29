@@ -48,7 +48,6 @@ func (s *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 }
 
 func initial(t *testing.T) (server.Server, client.Client) {
-	//logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
 	r := register.NewRegister()
 	if err := r.Init(); err != nil {
 		t.Fatal(err)
