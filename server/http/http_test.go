@@ -130,10 +130,14 @@ func TestMultipart(t *testing.T) {
 	}
 }
 
-func NewServerHandlerWrapper() server.HandlerWrapper {
+func NewServerHandlerWrapper(t *testing.T) server.HandlerWrapper {
 	return func(fn server.HandlerFunc) server.HandlerFunc {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			//fmt.Printf("wrap ctx: %s\n", req.Service())
+			md, ok := metadata.FromIncomingContext(ctx)
+			if !ok {
+				t.Fatal("metadata empty")
+			}
+			t.Logf("md: %v", md)
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -202,7 +206,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-		//server.WrapHandler(NewServerHandlerWrapper()),
+	//server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
 	if err := srv.Init(); err != nil {
@@ -323,7 +327,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
 		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(false), lwrapper.WithLevel(logger.ErrorLevel))),
 		httpsrv.Middleware(mwf),
-		server.WrapHandler(NewServerHandlerWrapper()),
+		server.WrapHandler(NewServerHandlerWrapper(t)),
 	)
 
 	h := &Handler{t: t}
@@ -459,7 +463,7 @@ func TestNativeServer(t *testing.T) {
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-		//server.WrapHandler(NewServerHandlerWrapper()),
+		server.WrapHandler(NewServerHandlerWrapper(t)),
 	)
 
 	h := &Handler{t: t}
@@ -485,10 +489,17 @@ func TestNativeServer(t *testing.T) {
 	}
 
 	// make request
-	rsp, err := http.Post(fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1&nested.string_args=str2&nested.uint64_args=1&nested.uint64_args=2&nested.uint64_args=3", service[0].Nodes[0].Address), "application/json", nil)
+	req, err := http.NewRequest("POST", fmt.Sprintf("http://%s/v1/test/call/my_name?req=key&arg1=arg1&arg2=12345&nested.string_args=str1&nested.string_args=str2&nested.uint64_args=1&nested.uint64_args=2&nested.uint64_args=3", service[0].Nodes[0].Address), nil)
 	if err != nil {
 		t.Fatal(err)
 	}
+	req.Header.Set("Authorization", "test")
+	req.Header.Set("Content-Type", "application/json")
+	rsp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	if rsp.StatusCode != http.StatusCreated {
 		t.Fatalf("invalid status received: %#+v\n", rsp)
 	}
