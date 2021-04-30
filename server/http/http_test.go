@@ -137,7 +137,16 @@ func NewServerHandlerWrapper(t *testing.T) server.HandlerWrapper {
 			if !ok {
 				t.Fatal("metadata empty")
 			}
-			t.Logf("md: %v", md)
+			if v, ok := md.Get("Authorization"); ok && v == "test" {
+				type err struct {
+					detail string
+				}
+				nmd := metadata.New(1)
+				nmd.Set("my-key", "my-val")
+				metadata.SetOutgoingContext(ctx, nmd)
+				httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
+				return httpsrv.SetError(&pb.CallRsp{Rsp: "name_my_name"})
+			}
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -500,7 +509,7 @@ func TestNativeServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if rsp.StatusCode != http.StatusCreated {
+	if rsp.StatusCode != http.StatusUnauthorized {
 		t.Fatalf("invalid status received: %#+v\n", rsp)
 	}
 
