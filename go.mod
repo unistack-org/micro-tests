@@ -27,11 +27,11 @@ require (
 	github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.3.6
-	github.com/unistack-org/micro-server-http/v3 v3.3.16
+	github.com/unistack-org/micro-server-http/v3 v3.3.17
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
 	github.com/unistack-org/micro/v3 v3.3.17
-	google.golang.org/genproto v0.0.0-20210429181445-86c259c2b4ab
+	google.golang.org/genproto v0.0.0-20210505142820-a42aa055cf76
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0
 )
