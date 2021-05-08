@@ -20,7 +20,7 @@ require (
 	github.com/unistack-org/micro-codec-proto/v3 v3.2.2
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.2
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.0.0
-	github.com/unistack-org/micro-config-env/v3 v3.2.5
+	github.com/unistack-org/micro-config-env/v3 v3.3.0
 	github.com/unistack-org/micro-config-vault/v3 v3.2.9
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
@@ -31,7 +31,7 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
 	github.com/unistack-org/micro/v3 v3.3.17
-	google.golang.org/genproto v0.0.0-20210505142820-a42aa055cf76
+	google.golang.org/genproto v0.0.0-20210506142907-4a47615972c2
 	google.golang.org/grpc v1.37.0
 	google.golang.org/protobuf v1.26.0
 )
