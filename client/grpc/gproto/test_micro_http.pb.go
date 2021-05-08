@@ -4,6 +4,7 @@ package helloworld
 
 import (
 	context "context"
+	_ "github.com/unistack-org/micro-client-http/v3"
 	proto "github.com/unistack-org/micro-tests/client/grpc/proto"
 	api "github.com/unistack-org/micro/v3/api"
 	client "github.com/unistack-org/micro/v3/client"

@@ -44,8 +44,9 @@ func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOp
 		test
 	}
 	h := &testServer{sh}
+	var nopts []server.HandlerOption
 	for _, endpoint := range NewTestEndpoints() {
-		opts = append(opts, api.WithEndpoint(endpoint))
+		nopts = append(nopts, api.WithEndpoint(endpoint))
 	}
-	return s.Handle(s.NewHandler(&Test{h}, opts...))
+	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
 }

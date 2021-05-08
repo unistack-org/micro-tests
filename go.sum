@@ -479,8 +479,8 @@ github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1 h1:zsGJSjQrkz60xvq
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1/go.mod h1:7FsTyXS62RNA+RDiNscRMjHhVc7iHbpTHbdVYKFktLA=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1 h1:AZVQ8l1p1pIUyImQo/if/5t1g9C9du9ulMRqATSmgGo=
 github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1/go.mod h1:QfquVeYZ2+BqBQ5bv1+uFAeWFiacvwanRDy3nGVqo3c=
-github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e h1:hQJ3V0QggeFdU5967wO5v6oWnaK42wUnG4UU4zWcyu4=
-github.com/unistack-org/micro-proto v0.0.2-0.20210227213711-77c7563bd01e/go.mod h1:GYO53DWmeldRIo90cAdQx8bLr/WJMxW62W4ja74p1Ac=
+github.com/unistack-org/micro-proto v0.0.2 h1:mL1ZPRGPCWJOiMBiJrkk8Y513rPrJmhJWxyLceckAXU=
+github.com/unistack-org/micro-proto v0.0.2/go.mod h1:GYO53DWmeldRIo90cAdQx8bLr/WJMxW62W4ja74p1Ac=
 github.com/unistack-org/micro-router-register/v3 v3.2.2 h1:lYCymDHkJfhZWYQ4+Sb7Fu+NlqoysQCnpJytHGhdnws=
 github.com/unistack-org/micro-router-register/v3 v3.2.2/go.mod h1:Y9Qtlg4NHqq5rR6X6Jm+04LoSJMi7/OOCm2mRueZYTE=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.6 h1:z4Koe7K4tVVs4XAo6C34XAvg+HH4/yW6pf/RFyTjkq0=

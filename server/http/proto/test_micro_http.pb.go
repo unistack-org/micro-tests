@@ -9,6 +9,7 @@ import (
 	client "github.com/unistack-org/micro/v3/client"
 	server "github.com/unistack-org/micro/v3/server"
 	http "net/http"
+	time "time"
 )
 
 type testDoubleClient struct {
@@ -31,6 +32,7 @@ func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ..
 		v3.Path("/v1/testdouble/call/{name}"),
 		v3.Body("*"),
 	)
+	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestDouble.CallDouble", req), rsp, opts...)
 	if err != nil {
@@ -44,6 +46,9 @@ type testDoubleServer struct {
 }
 
 func (h *testDoubleServer) CallDouble(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	var cancel context.CancelFunc
+	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	return h.TestDoubleServer.CallDouble(ctx, req, rsp)
 }
 
@@ -82,6 +87,7 @@ func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts 
 		v3.Path("/v1/test/call_repeated_string/{string_ids}"),
 		v3.Body("*"),
 	)
+	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedString", req), rsp, opts...)
 	if err != nil {
@@ -101,6 +107,7 @@ func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts .
 		v3.Path("/v1/test/call_repeated_int64/{int64_ids}"),
 		v3.Body("*"),
 	)
+	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedInt64", req), rsp, opts...)
 	if err != nil {
@@ -120,6 +127,7 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
+	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
@@ -152,14 +160,23 @@ type testServer struct {
 }
 
 func (h *testServer) CallRepeatedString(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	var cancel context.CancelFunc
+	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	return h.TestServer.CallRepeatedString(ctx, req, rsp)
 }
 
 func (h *testServer) CallRepeatedInt64(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	var cancel context.CancelFunc
+	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	return h.TestServer.CallRepeatedInt64(ctx, req, rsp)
 }
 
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
+	var cancel context.CancelFunc
+	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	defer cancel()
 	return h.TestServer.Call(ctx, req, rsp)
 }
 

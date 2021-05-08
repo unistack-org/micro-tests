@@ -4,6 +4,7 @@ package test;
 
 option go_package = "github.com/unistack-org/micro-tests/server/http/proto;pb";
 
+import "tag/tag.proto";
 import "api/annotations.proto";
 import "openapiv2/annotations.proto";
 import "google/protobuf/wrappers.proto";
@@ -26,7 +27,7 @@ service TestDouble {
         }
     };
 		option (micro.api.http) = { post: "/v1/testdouble/call/{name}"; body: "*"; };
-		//option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: 5; };
   };
 };
 
@@ -47,7 +48,7 @@ service Test {
         }
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_string/{string_ids}"; body: "*"; };
-		//option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc CallRepeatedInt64(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
@@ -65,7 +66,7 @@ service Test {
         }
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_int64/{int64_ids}"; body: "*"; };
-		//option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: 5; };
   };
 
 
@@ -86,7 +87,7 @@ service Test {
         }
     };
 		option (micro.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
-		//option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc CallError(CallReq1) returns (CallRsp1) {
 		option (micro.openapiv2.openapiv2_operation) = {
@@ -109,7 +110,7 @@ service Test {
 };
 
 message CallReq {
-  string name = 1;
+  string name = 1 [(micro.tag.tags) = "xml:\",attr\"" ];
   string req = 2;
   string arg1 = 3;
   uint64 arg2 = 4;
