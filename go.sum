@@ -485,8 +485,8 @@ github.com/unistack-org/micro-router-register/v3 v3.2.2 h1:lYCymDHkJfhZWYQ4+Sb7F
 github.com/unistack-org/micro-router-register/v3 v3.2.2/go.mod h1:Y9Qtlg4NHqq5rR6X6Jm+04LoSJMi7/OOCm2mRueZYTE=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.6 h1:z4Koe7K4tVVs4XAo6C34XAvg+HH4/yW6pf/RFyTjkq0=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.6/go.mod h1:nmh12MeWm8bTWwkf6pSxrcO+jlcV5VgpN3QAtcNm9C8=
-github.com/unistack-org/micro-server-http/v3 v3.3.18 h1:0wqaWdzK6xrj8PSV+0zfgYvVVUHpGQwwkUY1HqVDi88=
-github.com/unistack-org/micro-server-http/v3 v3.3.18/go.mod h1:rcuRcHLpdynsJFTvEcSV6sU+TdT8f7mczxmLNcIUxEU=
+github.com/unistack-org/micro-server-http/v3 v3.3.19 h1:njrxK1X3XnfliOqBTb5pTChhfhxFnfU71tQNcU56ZEQ=
+github.com/unistack-org/micro-server-http/v3 v3.3.19/go.mod h1:rcuRcHLpdynsJFTvEcSV6sU+TdT8f7mczxmLNcIUxEU=
 github.com/unistack-org/micro-server-tcp/v3 v3.3.2 h1:x5FjxOuI61Jy6OzgCWElCRCWP9NffGNWajz/WJPEzdQ=
 github.com/unistack-org/micro-server-tcp/v3 v3.3.2/go.mod h1:981+kGQT3Js2LJrNaI2AyP/NcbnL7GU8WTnlRxj07Ao=
 github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0 h1:PvemkpeCVUWfCoKwt1XmJ8uGK9My/7T29qOVxtYJohw=
