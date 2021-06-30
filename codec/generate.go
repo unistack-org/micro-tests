@@ -1,3 +1,3 @@
 package codec
 
-//go:generate protoc -I./proto -I. -I/home/vtolstov/.cache/go-path/pkg/mod/github.com/unistack-org/micro/v3@v3.2.24 -I/home/vtolstov/.cache/go-path/pkg/mod/github.com/unistack-org/micro-proto@v0.0.1 --go_out=paths=source_relative:./proto --micro_out=components=micro|http,debug=true,paths=source_relative:./proto proto/test.proto
+//go:generate protoc -I./proto -I. -I/home/vtolstov/.cache/go-path/pkg/mod/github.com/unistack-org/micro/v3@v3.2.24 -I/home/vtolstov/.cache/go-path/pkg/mod/github.com/unistack-org/micro-proto@v0.0.1 --go_out=paths=source_relative:./proto --go-micro_out=components=micro|http,debug=true,paths=source_relative:./proto proto/test.proto

@@ -1,0 +1,73 @@
+syntax="proto3";
+
+package test;
+
+option go_package="/proto;pb";
+
+import "api/annotations.proto";
+import "codec/frame.proto";
+import "tag/tag.proto";
+
+service TestService {
+	rpc TestEndpoint(Request) returns (Response) {
+		option (micro.api.http) = {
+			get: "/users/test"
+		};
+	}
+	rpc UserByID(Request) returns (Response) {
+		option (micro.api.http) = {
+			get: "/users/{id}"
+		};
+	};
+	rpc UserImageByID(Request) returns (micro.codec.Frame) {
+		option (micro.api.http) = {
+			get: "/users/{id}/image"
+		};
+	};
+	rpc UploadFile(RequestImage) returns (ResponseImage) {
+		option (micro.api.http) = {
+			post: "/users/image/upload"
+		};
+	}
+	rpc KzAmlRs(RequestAml) returns (ResponseAml) {
+		option (micro.api.http) = {
+			post: "/aml"
+		};
+	}
+};
+
+message RequestAml {
+	KZAmlNewOnlineRs kzAmlNewOnlineRs = 1 [(micro.tag.tags) = "xml:\"KZAmlNewOnlineRs\"" ];
+}
+
+message KZAmlNewOnlineRs {
+	string rquid = 1 [(micro.tag.tags) = "xml:\"RqUID\"" ];
+	string rqtm = 2 [(micro.tag.tags) = "xml:\"RqTm\"" ];
+	Status status = 3 [(micro.tag.tags) = "xml:\"Status\"" ];
+	int64 terr_status = 4 [(micro.tag.tags) = "xml:\"TerrStatus\"" ];
+	int64 aml_status = 5 [(micro.tag.tags) = "xml:\"AMLStatus\"" ];
+}
+
+message Status {
+	int64 status_code = 1 [(micro.tag.tags) = "xml:\"StatusCode\"" ];
+}
+
+message ResponseAml {
+	string resp = 1;
+}
+
+message RequestImage {
+	bytes image = 1;
+	string file_name = 2;
+	string doc_type = 3;
+}
+
+message ResponseImage {}
+
+message Request {
+	string id = 1;
+}
+
+message Response {
+	string encoded_id = 1 [(micro.tag.tags) = "xml:\"encoded_id,attr\"" ];
+}

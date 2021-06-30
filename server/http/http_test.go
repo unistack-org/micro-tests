@@ -16,6 +16,7 @@ import (
 	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
 	urlencodecodec "github.com/unistack-org/micro-codec-urlencode/v3"
+	xmlcodec "github.com/unistack-org/micro-codec-xml/v3"
 	vmeter "github.com/unistack-org/micro-meter-victoriametrics/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/server/http/proto"
@@ -143,10 +144,19 @@ func NewServerHandlerWrapper(t *testing.T) server.HandlerWrapper {
 				}
 				nmd := metadata.New(1)
 				nmd.Set("my-key", "my-val")
+				nmd.Set("Content-Type", "text/xml")
 				metadata.SetOutgoingContext(ctx, nmd)
 				httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
 				return httpsrv.SetError(&pb.CallRsp{Rsp: "name_my_name"})
 			}
+
+			if v, ok := md.Get("Test-Content-Type"); ok && v != "" {
+				nmd := metadata.New(1)
+				nmd.Set("my-key", "my-val")
+				nmd.Set("Content-Type", v)
+				metadata.SetOutgoingContext(ctx, nmd)
+			}
+
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -470,6 +480,7 @@ func TestNativeServer(t *testing.T) {
 	srv := httpsrv.NewServer(
 		server.Name("helloworld"),
 		server.Register(reg),
+		server.Codec("text/xml", xmlcodec.NewCodec()),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		server.WrapHandler(NewServerHandlerWrapper(t)),
@@ -593,6 +604,8 @@ func TestNativeServer(t *testing.T) {
 	if prsp.Rsp != "name_my_name" {
 		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
+
+	// Test-Content-Type
 
 	// stop server
 	if err := srv.Stop(); err != nil {

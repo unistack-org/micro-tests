@@ -1,0 +1,180 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "test.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/aml": {
+      "post": {
+        "operationId": "TestService_KzAmlRs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/testResponseAml"
+            }
+          }
+        },
+        "tags": [
+          "TestService"
+        ]
+      }
+    },
+    "/users/image/upload": {
+      "post": {
+        "operationId": "TestService_UploadFile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/testResponseImage"
+            }
+          }
+        },
+        "tags": [
+          "TestService"
+        ]
+      }
+    },
+    "/users/test": {
+      "get": {
+        "operationId": "TestService_TestEndpoint",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/testResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TestService"
+        ]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "TestService_UserByID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/testResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TestService"
+        ]
+      }
+    },
+    "/users/{id}/image": {
+      "get": {
+        "operationId": "TestService_UserImageByID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/codecFrame"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TestService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "codecFrame": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "testKZAmlNewOnlineRs": {
+      "type": "object",
+      "properties": {
+        "rquid": {
+          "type": "string"
+        },
+        "rqtm": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/testStatus"
+        },
+        "terrStatus": {
+          "type": "string",
+          "format": "int64"
+        },
+        "amlStatus": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "testResponse": {
+      "type": "object",
+      "properties": {
+        "encodedId": {
+          "type": "string"
+        }
+      }
+    },
+    "testResponseAml": {
+      "type": "object",
+      "properties": {
+        "resp": {
+          "type": "string"
+        }
+      }
+    },
+    "testResponseImage": {
+      "type": "object"
+    },
+    "testStatus": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
