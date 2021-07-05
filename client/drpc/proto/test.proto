@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/unistack-org/micro-tests/client/drpc/proto;pb";
+
+package Test;
+
+service TestService {
+  rpc Call(CallReq) returns (CallRsp) {}
+  rpc Hello(CallReq) returns (CallRsp) {}
+}
+
+message CallReq {
+  string name = 1;
+}
+
+message CallRsp {
+  string name = 1;
+}

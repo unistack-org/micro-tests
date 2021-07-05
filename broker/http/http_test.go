@@ -205,16 +205,16 @@ func TestBroker(t *testing.T) {
 		Header: map[string]string{
 			"Content-Type": "application/json",
 		},
-		Body: []byte(`{"message": "Hello World"}`),
+		Body: []byte(`{"message":"Hello World"}`),
 	}
 
-	done := make(chan bool)
+	done := make(chan struct{})
 
 	sub, err := b.Subscribe(context.TODO(), "test", func(p broker.Event) error {
 		m := p.Message()
 
 		if string(m.Body) != string(msg.Body) {
-			t.Fatalf("Unexpected msg %s, expected %s", string(m.Body), string(msg.Body))
+			t.Errorf("Unexpected msg %s, expected %s", string(m.Body), string(msg.Body))
 		}
 
 		close(done)
@@ -229,6 +229,9 @@ func TestBroker(t *testing.T) {
 	}
 
 	<-done
+	if err != nil {
+		t.Error(err)
+	}
 	sub.Unsubscribe(context.TODO())
 
 	if err := b.Disconnect(context.TODO()); err != nil {
@@ -252,7 +255,7 @@ func TestConcurrentSubBroker(t *testing.T) {
 		Header: map[string]string{
 			"Content-Type": "application/json",
 		},
-		Body: []byte(`{"message": "Hello World"}`),
+		Body: []byte(`{"message":"Hello World"}`),
 	}
 
 	var subs []broker.Subscriber
@@ -265,7 +268,7 @@ func TestConcurrentSubBroker(t *testing.T) {
 			m := p.Message()
 
 			if string(m.Body) != string(msg.Body) {
-				t.Fatalf("Unexpected msg %s, expected %s", string(m.Body), string(msg.Body))
+				t.Errorf("Unexpected msg %s, expected %s", string(m.Body), string(msg.Body))
 			}
 
 			return nil
@@ -309,7 +312,7 @@ func TestConcurrentPubBroker(t *testing.T) {
 		Header: map[string]string{
 			"Content-Type": "application/json",
 		},
-		Body: []byte(`{"message": "Hello World"}`),
+		Body: []byte(`{"message":"Hello World"}`),
 	}
 
 	var wg sync.WaitGroup

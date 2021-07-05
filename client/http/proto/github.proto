@@ -46,5 +46,6 @@ message LookupUserRsp {
 
 message Error {
 	string message = 1;
+	string documentation_url = 2;
 };
 

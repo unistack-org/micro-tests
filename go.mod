@@ -12,9 +12,9 @@ require (
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.3.1
-	github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
+	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.3.3
-	github.com/unistack-org/micro-client-http/v3 v3.3.11
+	github.com/unistack-org/micro-client-http/v3 v3.4.0
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.1
 	github.com/unistack-org/micro-codec-json/v3 v3.2.1
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.2
@@ -22,8 +22,8 @@ require (
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.2
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.0.0
 	github.com/unistack-org/micro-codec-xml/v3 v3.2.2
-	github.com/unistack-org/micro-config-env/v3 v3.3.0
-	github.com/unistack-org/micro-config-vault/v3 v3.2.9
+	github.com/unistack-org/micro-config-env/v3 v3.4.0
+	github.com/unistack-org/micro-config-vault/v3 v3.4.0
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
 	github.com/unistack-org/micro-proto v0.0.2
@@ -32,10 +32,11 @@ require (
 	github.com/unistack-org/micro-server-http/v3 v3.3.19
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.4.2
-	google.golang.org/genproto v0.0.0-20210513213006-bf773b8c8384
-	google.golang.org/grpc v1.38.0
-	google.golang.org/protobuf v1.26.0
+	github.com/unistack-org/micro/v3 v3.4.5
+	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	google.golang.org/genproto v0.0.0-20210630183607-d20f26d13c79
+	google.golang.org/grpc v1.39.0
+	google.golang.org/protobuf v1.27.1
 	storj.io/drpc v0.0.23
 )
 
@@ -45,7 +46,5 @@ require (
 //replace github.com/unistack-org/micro-server-http/v3 => ../micro-server-http
 //replace github.com/unistack-org/micro-client-http/v3 => ../micro-client-http
 //replace github.com/unistack-org/micro-client-drpc/v3 => ../micro-client-drpc
-
 //replace github.com/unistack-org/micro/v3 => ../micro
-
 //replace github.com/unistack-org/micro-proto => ../micro-proto

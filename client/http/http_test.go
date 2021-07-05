@@ -50,13 +50,14 @@ func TestError(t *testing.T) {
 	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
 	req := c.NewRequest("github", "/dddd", &pb.LookupUserReq{})
 	rsp := &GithubRsp{}
-	errMap := map[string]interface{}{"404": &GithubRspError{}}
-	err := c.Call(context.TODO(), req, rsp, mhttp.Method(http.MethodGet), mhttp.ErrorMap(errMap))
+	errMap := map[string]interface{}{"404": &pb.Error{}}
+	err := mhttp.GetError(c.Call(context.TODO(), req, rsp, mhttp.Method(http.MethodGet), mhttp.ErrorMap(errMap)))
 	if err == nil {
 		t.Fatal("request must return non nil err")
 	}
-	if _, ok := err.(*GithubRspError); !ok {
-		t.Fatalf("invalid response received: %T is not *GithubRspError type: %#+v", err, err)
+
+	if _, ok := err.(*pb.Error); !ok {
+		t.Fatalf("invalid response received: %T is not *pb.Error type: %#+v", err, err)
 	}
 }
 

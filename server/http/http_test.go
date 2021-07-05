@@ -531,8 +531,8 @@ func TestNativeServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if s := string(b); s != `{"rsp":"name_my_name"}` {
-		t.Fatalf("Expected response %s, got %s", `{"rsp":"name_my_name"}`, s)
+	if s := string(b); s != `<CallRsp><Rsp>name_my_name</Rsp></CallRsp>` {
+		t.Fatalf("Expected response %s, got %s", `<CallRsp><Rsp>name_my_name</Rsp></CallRsp>`, s)
 	}
 
 	if v := rsp.Header.Get("My-Key"); v != "my-val" {

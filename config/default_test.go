@@ -1,11 +1,11 @@
 package config
 
 import (
+	"context"
 	"os"
 	"testing"
 
 	envconfig "github.com/unistack-org/micro-config-env/v3"
-	"github.com/unistack-org/micro/v3"
 	"github.com/unistack-org/micro/v3/config"
 )
 
@@ -14,20 +14,34 @@ type Config struct {
 }
 
 func TestMultiple(t *testing.T) {
+	ctx := context.Background()
 	cfg := &Config{}
-	svc := micro.NewService(micro.Configs(
-		config.NewConfig(config.Struct(cfg)),
-		envconfig.NewConfig(config.Struct(cfg)),
-	),
-	)
-	if err := svc.Init(); err != nil {
+
+	c1 := config.NewConfig(config.Struct(cfg))
+	c2 := envconfig.NewConfig(config.Struct(cfg))
+
+	if err := c1.Init(); err != nil {
 		t.Fatal(err)
 	}
+	if err := c2.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := c1.Load(ctx); err != nil {
+		t.Fatal(err)
+	}
+	if err := c2.Load(ctx); err != nil {
+		t.Fatal(err)
+	}
+
 	if cfg.String != "default" {
 		t.Fatalf("config not parsed by default source: %#+v\n", cfg)
 	}
 	os.Setenv("MICRO_TEST", "non_default")
-	if err := svc.Init(); err != nil {
+	if err := c1.Load(ctx, config.LoadOverride(true)); err != nil {
+		t.Fatal(err)
+	}
+	if err := c2.Load(ctx, config.LoadOverride(true)); err != nil {
 		t.Fatal(err)
 	}
 	if cfg.String == "default" {
