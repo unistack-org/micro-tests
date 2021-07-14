@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package test;
+
+option go_package = "github.com/unistack-org/micro-tests/flow/proto;pb";
+
+import "tag/tag.proto";
+import "api/annotations.proto";
+import "openapiv2/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+service TestService {
+  //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
+	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "LookupUser";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { get: "/v1/user/lookup/{name}"; };
+		option (micro.api.micro_method) = { timeout: 5; };
+  };
+};
+
+message LookupUserReq {
+  string name = 1;
+};
+
+message LookupUserRsp {
+  string birthday = 1;
+}
+
+message Error {
+	string msg = 1;
+};
