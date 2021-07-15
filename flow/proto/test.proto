@@ -26,9 +26,87 @@ service TestService {
           }
         }
     };
-		option (micro.api.http) = { get: "/v1/user/lookup/{name}"; };
+		option (micro.api.http) = { get: "/v1/user/{name}"; };
 		option (micro.api.micro_method) = { timeout: 5; };
   };
+	rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "UpdateUser";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { put: "/v1/user/{name}"; body:"*"; };
+		option (micro.api.micro_method) = { timeout: 5; };
+  };
+	rpc DeleteUser(DeleteUserReq) returns (DeleteUserRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "DeleteUser";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { delete: "/v1/user/{name}"; };
+		option (micro.api.micro_method) = { timeout: 5; };
+  };
+	rpc MailUser(MailUserReq) returns (MailUserRsp) {
+		option (micro.openapiv2.openapiv2_operation) = {
+      operation_id: "MailUser";
+        responses: {
+          key: "default";
+          value: {
+            description: "Error response";
+            schema: {
+              json_schema: {
+                ref: ".test.Error";
+              }
+            }
+          }
+        }
+    };
+		option (micro.api.http) = { post: "/v1/user/{name}/mail"; body:"*"; };
+		option (micro.api.micro_method) = { timeout: 5; };
+  };
+};
+
+message MailUserReq {
+  string name = 1;
+};
+
+message MailUserRsp {
+  string status = 1;
+};
+
+message UpdateUserReq {
+  string name = 1;
+};
+
+message UpdateUserRsp {
+
+};
+
+message DeleteUserReq {
+  string name = 1;
+};
+
+message DeleteUserRsp {
+
 };
 
 message LookupUserReq {

@@ -141,9 +141,11 @@ func TestHTTPClient(t *testing.T) {
 
 		// write response
 		w.Header().Add("Content-Type", "application/json")
-		w.Write(b)
+		_, _ = w.Write(b)
 	})
-	go http.Serve(l, mux)
+	go func() {
+		_ = http.Serve(l, mux)
+	}()
 
 	if err := reg.Register(ctx, &register.Service{
 		Name: "test.service",
@@ -257,7 +259,7 @@ func TestHTTPClientStream(t *testing.T) {
 		}
 
 		// write response
-		rsp.Write(bufrw)
+		_ = rsp.Write(bufrw)
 		bufrw.Flush()
 
 		reader := bufio.NewReader(conn)
@@ -301,11 +303,13 @@ func TestHTTPClientStream(t *testing.T) {
 			}
 
 			// write response
-			rsp.Write(bufrw)
+			_ = rsp.Write(bufrw)
 			bufrw.Flush()
 		}
 	})
-	go http.Serve(l, mux)
+	go func() {
+		_ = http.Serve(l, mux)
+	}()
 
 	if err := reg.Register(ctx, &register.Service{
 		Name: "test.service",

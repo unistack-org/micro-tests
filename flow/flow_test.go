@@ -2,10 +2,12 @@ package flow
 
 import (
 	"context"
+	"path/filepath"
 	"testing"
 	"time"
 
 	httpcli "github.com/unistack-org/micro-client-http/v3"
+	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
 	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
 	httpsrv "github.com/unistack-org/micro-server-http/v3"
 	pb "github.com/unistack-org/micro-tests/flow/proto"
@@ -21,7 +23,20 @@ import (
 
 type handler struct{}
 
+func (h *handler) DeleteUser(ctx context.Context, req *pb.DeleteUserReq, rsp *pb.DeleteUserRsp) error {
+	return nil
+}
+
+func (h *handler) UpdateUser(ctx context.Context, req *pb.UpdateUserReq, rsp *pb.UpdateUserRsp) error {
+	return nil
+}
+
+func (h *handler) MailUser(ctx context.Context, req *pb.MailUserReq, rsp *pb.MailUserRsp) error {
+	return nil
+}
+
 func (h *handler) LookupUser(ctx context.Context, req *pb.LookupUserReq, rsp *pb.LookupUserRsp) error {
+	rsp.Birthday = "31.07.1986"
 	return nil
 }
 
@@ -29,9 +44,16 @@ func TestFlow(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.TraceLevel))
+	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.DebugLevel))
 
 	s := store.DefaultStore
+	if err := s.Init(store.Codec(jsoncodec.NewCodec())); err != nil {
+		t.Fatal(err)
+	}
+	if err := s.Connect(ctx); err != nil {
+		t.Fatal(err)
+	}
+
 	c := client.NewClientCallOptions(
 		httpcli.NewClient(
 			client.ContentType("application/json"),
@@ -54,6 +76,7 @@ func TestFlow(t *testing.T) {
 			httpsrv.NewServer(
 				server.Codec("application/json", jsonpbcodec.NewCodec()),
 				server.Address("127.0.0.1:7989"),
+				httpsrv.RegisterRPCHandler(true),
 			),
 		),
 		micro.Context(ctx),
@@ -81,7 +104,7 @@ func TestFlow(t *testing.T) {
 	steps := []flow.Step{
 		flow.NewCallStep("test", pb.TestServiceName, "LookupUser", flow.StepID("test.TestService.LookupUser")),
 		flow.NewCallStep("test", pb.TestServiceName, "UpdateUser", flow.StepRequires("test.TestService.LookupUser")),
-		flow.NewCallStep("test", pb.TestServiceName, "RemoveUser", flow.StepRequires("test.TestService.UpdateUser")),
+		flow.NewCallStep("test", pb.TestServiceName, "DeleteUser", flow.StepRequires("test.TestService.UpdateUser")),
 		flow.NewCallStep("test", pb.TestServiceName, "MailUser", flow.StepRequires("test.TestService.UpdateUser")),
 	}
 	w, err := f.WorkflowCreate(ctx, "test", steps...)
@@ -89,11 +112,25 @@ func TestFlow(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	req := &pb.LookupUserReq{Name: "vtolstov"}
-	id, err := w.Execute(ctx, req, flow.ExecuteTimeout(2*time.Second))
+	req, err := jsonpbcodec.NewCodec().Marshal(&pb.LookupUserReq{Name: "vtolstov"})
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	t.Logf("execution id: %s", id)
+	id, err := w.Execute(ctx, &flow.Message{Body: req}, flow.ExecuteTimeout(2*time.Second))
+	keys, err := s.List(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	keys, err = store.NewNamespaceStore(s, filepath.Join("workflows", id)).List(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	keys, err = store.NewNamespaceStore(s, filepath.Join("steps", id)).List(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = keys
+	t.Logf("execution id: %s, result: %v", id, err)
+
 }

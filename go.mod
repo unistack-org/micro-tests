@@ -3,18 +3,20 @@ module github.com/unistack-org/micro-tests
 go 1.16
 
 require (
-	github.com/google/uuid v1.2.0
+	github.com/google/uuid v1.3.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.10.0
 	github.com/prometheus/client_model v0.2.0
+	github.com/segmentio/kafka-go v0.4.16
 	github.com/stretchr/testify v1.7.0
 	github.com/unistack-org/micro-api-handler-rpc/v3 v3.3.0
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.3.1
+	github.com/unistack-org/micro-broker-segmentio/v3 v3.0.0-00010101000000-000000000000
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.3.3
-	github.com/unistack-org/micro-client-http/v3 v3.4.0
+	github.com/unistack-org/micro-client-http/v3 v3.4.5
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.1
 	github.com/unistack-org/micro-codec-json/v3 v3.2.1
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.2
@@ -29,10 +31,10 @@ require (
 	github.com/unistack-org/micro-proto v0.0.2
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.3.6
-	github.com/unistack-org/micro-server-http/v3 v3.3.19
+	github.com/unistack-org/micro-server-http/v3 v3.4.1
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.4.5
+	github.com/unistack-org/micro/v3 v3.4.9
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	google.golang.org/genproto v0.0.0-20210630183607-d20f26d13c79
 	google.golang.org/grpc v1.39.0
@@ -46,5 +48,8 @@ require (
 //replace github.com/unistack-org/micro-server-http/v3 => ../micro-server-http
 //replace github.com/unistack-org/micro-client-http/v3 => ../micro-client-http
 //replace github.com/unistack-org/micro-client-drpc/v3 => ../micro-client-drpc
+replace github.com/unistack-org/micro-broker-segmentio/v3 => ../micro-broker-segmentio
+
 //replace github.com/unistack-org/micro/v3 => ../micro
+
 //replace github.com/unistack-org/micro-proto => ../micro-proto
