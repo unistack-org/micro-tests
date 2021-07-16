@@ -63,6 +63,7 @@ func initial(t *testing.T) (server.Server, client.Client) {
 		server.Codec("application/grpc+proto", protocodec.NewCodec()),
 		server.Codec("application/grpc+json", protocodec.NewCodec()),
 		server.Codec("application/json", jsoncodec.NewCodec()),
+		server.Address("127.0.0.1:0"),
 		server.Name("foo"),
 		server.Broker(b),
 		server.Register(r),

@@ -94,6 +94,7 @@ func TestClient(t *testing.T) {
 				server.Broker(brk),
 				server.WrapSubscriber(otwrapper.NewServerSubscriberWrapper(otwrapper.WithTracer(tracer))),
 				server.WrapHandler(otwrapper.NewServerHandlerWrapper(otwrapper.WithTracer(tracer))),
+				server.Address("127.0.0.1:0"),
 			)
 			if err := s.Init(); err != nil {
 				t.Fatal(err)

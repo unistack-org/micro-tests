@@ -88,6 +88,7 @@ func TestMultipart(t *testing.T) {
 
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
@@ -221,6 +222,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
@@ -338,6 +340,7 @@ func TestNativeClientServer(t *testing.T) {
 	m := vmeter.NewMeter()
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Meter(m),
 		server.Name("helloworld"),
 		server.Register(reg),
@@ -478,6 +481,7 @@ func TestNativeServer(t *testing.T) {
 
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Name("helloworld"),
 		server.Register(reg),
 		server.Codec("text/xml", xmlcodec.NewCodec()),
@@ -620,6 +624,7 @@ func TestHTTPHandler(t *testing.T) {
 
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
@@ -692,6 +697,7 @@ func TestHTTPServer(t *testing.T) {
 
 	// create server
 	srv := httpsrv.NewServer(
+		server.Address("127.0.0.1:0"),
 		server.Register(reg),
 		httpsrv.Server(&http.Server{Handler: mux}),
 		server.Codec("application/json", jsoncodec.NewCodec()),

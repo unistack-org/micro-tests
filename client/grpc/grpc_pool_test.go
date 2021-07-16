@@ -15,7 +15,7 @@ import (
 
 func testPool(t *testing.T, size int, ttl time.Duration, idle int, ms int) {
 	// setup server
-	l, err := net.Listen("tcp", ":0")
+	l, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		t.Fatalf("failed to listen: %v", err)
 	}

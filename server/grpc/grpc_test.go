@@ -57,7 +57,10 @@ func TestGRPCServer(t *testing.T) {
 	b := broker.NewBroker(broker.Register(r))
 	s := gserver.NewServer(
 		server.Codec("application/grpc+proto", protocodec.NewCodec()),
-		server.Address(":0"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true),
+		server.Address("127.0.0.1:0"),
+		server.Register(r),
+		server.Name("helloworld"),
+		gserver.Reflection(true),
 		server.WrapHandler(NewServerHandlerWrapper()),
 	)
 	// create router
@@ -69,7 +72,7 @@ func TestGRPCServer(t *testing.T) {
 	}
 
 	srv := httpsrv.NewServer(
-		server.Address(":0"),
+		server.Address("127.0.0.1:0"),
 		server.Codec("text/plain", codec.NewCodec()),
 	)
 	if err = health.RegisterHealthServer(srv, health.NewHandler(health.Version("0.0.1"))); err != nil {
