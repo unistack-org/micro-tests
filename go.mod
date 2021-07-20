@@ -3,16 +3,17 @@ module github.com/unistack-org/micro-tests
 go 1.16
 
 require (
-	github.com/frankban/quicktest v1.11.3 // indirect
 	github.com/google/uuid v1.3.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/prometheus/client_golang v1.10.0
 	github.com/prometheus/client_model v0.2.0
+	github.com/segmentio/kafka-go v0.4.17
 	github.com/stretchr/testify v1.7.0
 	github.com/unistack-org/micro-api-handler-rpc/v3 v3.3.0
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-http/v3 v3.3.1
+	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.1
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.3.3
 	github.com/unistack-org/micro-client-http/v3 v3.4.5
@@ -34,8 +35,9 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
 	github.com/unistack-org/micro/v3 v3.4.9
+	golang.org/x/net v0.0.0-20210716203947-853a461950ff // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
-	google.golang.org/genproto v0.0.0-20210716133855-ce7ef5c701ea
+	google.golang.org/genproto v0.0.0-20210719143636-1d5a45f8e492
 	google.golang.org/grpc v1.39.0
 	google.golang.org/protobuf v1.27.1
 	storj.io/drpc v0.0.24
@@ -48,7 +50,5 @@ require (
 //replace github.com/unistack-org/micro-client-http/v3 => ../micro-client-http
 //replace github.com/unistack-org/micro-client-drpc/v3 => ../micro-client-drpc
 //replace github.com/unistack-org/micro-broker-segmentio/v3 => ../micro-broker-segmentio
-
 //replace github.com/unistack-org/micro/v3 => ../micro
-
 //replace github.com/unistack-org/micro-proto => ../micro-proto
