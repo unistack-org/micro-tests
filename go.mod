@@ -26,7 +26,7 @@ require (
 	github.com/unistack-org/micro-codec-xml/v3 v3.2.2
 	github.com/unistack-org/micro-config-env/v3 v3.4.0
 	github.com/unistack-org/micro-config-vault/v3 v3.4.0
-	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.1
+	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.2
 	github.com/unistack-org/micro-metrics-prometheus/v3 v3.1.1
 	github.com/unistack-org/micro-proto v0.0.2
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
@@ -34,7 +34,7 @@ require (
 	github.com/unistack-org/micro-server-http/v3 v3.4.1
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.2.0
-	github.com/unistack-org/micro/v3 v3.4.9
+	github.com/unistack-org/micro/v3 v3.4.11
 	golang.org/x/net v0.0.0-20210716203947-853a461950ff // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	google.golang.org/genproto v0.0.0-20210719143636-1d5a45f8e492
