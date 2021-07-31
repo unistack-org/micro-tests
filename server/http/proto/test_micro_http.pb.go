@@ -31,7 +31,7 @@ func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ..
 	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
-		v3.Path("/v1/testdouble/call/{name}"),
+		v3.Path("/v1/testdouble/call/name/{name}"),
 		v3.Body("*"),
 	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))

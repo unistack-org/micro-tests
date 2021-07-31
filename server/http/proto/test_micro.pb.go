@@ -16,7 +16,7 @@ var (
 	TestDoubleEndpoints = []api.Endpoint{
 		api.Endpoint{
 			Name:    "TestDouble.CallDouble",
-			Path:    []string{"/v1/testdouble/call/{name}"},
+			Path:    []string{"/v1/testdouble/call/name/{name}"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
