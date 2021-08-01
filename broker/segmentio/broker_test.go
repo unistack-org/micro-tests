@@ -38,12 +38,14 @@ var (
 )
 
 func TestConsumerGroup(t *testing.T) {
-	topic := fmt.Sprintf("test_topic")
+	topic := "test_topic"
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
 		t.Skip()
 	}
 
-	logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel))
+	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel)); err != nil {
+		t.Fatal(err)
+	}
 	ctx := context.Background()
 
 	var addrs []string
@@ -189,12 +191,14 @@ func TestConsumerGroup(t *testing.T) {
 }
 
 func TestSub(t *testing.T) {
-	topic := fmt.Sprintf("test_topic")
+	topic := "test_topic"
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
 		t.Skip()
 	}
 
-	logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel))
+	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel)); err != nil {
+		t.Fatal(err)
+	}
 	ctx := context.Background()
 
 	var addrs []string
@@ -256,6 +260,7 @@ func TestSub(t *testing.T) {
 	}()
 
 	fmt.Printf("prefill topic\n")
+
 	go func() {
 		for i := 0; i < 900000; i++ {
 			if err := brk.Publish(ctx, topic, bm); err != nil {
@@ -326,7 +331,9 @@ func BenchmarkPub(b *testing.B) {
 		b.Skip()
 	}
 
-	logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel))
+	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel)); err != nil {
+		b.Fatal(err)
+	}
 	ctx := context.Background()
 
 	var addrs []string
@@ -415,7 +422,7 @@ func BenchmarkPub(b *testing.B) {
 func BenchmarkPubSub(b *testing.B) {
 	b.Skip()
 	ctx := context.Background()
-	topic := fmt.Sprintf("test_topic")
+	topic := "test_topic"
 	var addrs []string
 	if addr := os.Getenv("BROKER_ADDRS"); len(addr) == 0 {
 		addrs = []string{"127.0.0.1:9092"}
@@ -500,7 +507,9 @@ func TestPubSub(t *testing.T) {
 		t.Skip()
 	}
 
-	logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel))
+	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel)); err != nil {
+		t.Fatal(err)
+	}
 	ctx := context.Background()
 
 	var addrs []string

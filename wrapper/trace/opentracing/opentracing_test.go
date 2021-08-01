@@ -99,7 +99,9 @@ func TestClient(t *testing.T) {
 			if err := s.Init(); err != nil {
 				t.Fatal(err)
 			}
-			defer s.Stop()
+			defer func() {
+				_ = s.Stop()
+			}()
 
 			type Test struct {
 				*testHandler

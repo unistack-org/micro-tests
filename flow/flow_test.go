@@ -118,14 +118,21 @@ func TestFlow(t *testing.T) {
 	}
 
 	id, err := w.Execute(ctx, &flow.Message{Body: req}, flow.ExecuteTimeout(2*time.Second))
-	keys, err := s.List(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	var keys []string
+	keys, err = s.List(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	_ = keys
 	keys, err = store.NewNamespaceStore(s, filepath.Join("workflows", id)).List(ctx)
 	if err != nil {
 		t.Fatal(err)
 	}
+	_ = keys
 	keys, err = store.NewNamespaceStore(s, filepath.Join("steps", id)).List(ctx)
 	if err != nil {
 		t.Fatal(err)

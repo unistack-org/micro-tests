@@ -101,7 +101,9 @@ func TestMultipart(t *testing.T) {
 	}
 
 	h := &Handler{t: t}
-	pb.RegisterTestServer(srv, h)
+	if err := pb.RegisterTestServer(srv, h); err != nil {
+		t.Fatal(err)
+	}
 
 	// start server
 	if err := srv.Start(); err != nil {
@@ -140,9 +142,6 @@ func NewServerHandlerWrapper(t *testing.T) server.HandlerWrapper {
 				t.Fatal("metadata empty")
 			}
 			if v, ok := md.Get("Authorization"); ok && v == "test" {
-				type err struct {
-					detail string
-				}
 				nmd := metadata.New(1)
 				nmd.Set("my-key", "my-val")
 				nmd.Set("Content-Type", "text/xml")
@@ -234,7 +233,9 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		t.Fatal(err)
 	}
 	h := &Handler{t: t}
-	pb.RegisterTestServer(srv, h)
+	if err := pb.RegisterTestServer(srv, h); err != nil {
+		t.Fatal(err)
+	}
 
 	// start server
 	if err := srv.Start(); err != nil {
@@ -266,6 +267,9 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), strings.NewReader(data.Encode())) // URL-encoded payload
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	//req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	rsp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -432,8 +436,11 @@ func TestNativeClientServer(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer hrsp.Body.Close()
-	buf, err := io.ReadAll(hrsp.Body)
+	defer func() {
+		_ = hrsp.Body.Close()
+	}()
+
+	_, err = io.ReadAll(hrsp.Body)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -460,7 +467,7 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	buf, err = io.ReadAll(hrsp.Body)
+	buf, err := io.ReadAll(hrsp.Body)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -491,7 +498,9 @@ func TestNativeServer(t *testing.T) {
 	)
 
 	h := &Handler{t: t}
-	pb.RegisterTestServer(srv, h)
+	if err := pb.RegisterTestServer(srv, h); err != nil {
+		t.Fatal(err)
+	}
 
 	// start server
 	if err := srv.Start(); err != nil {
@@ -633,7 +642,7 @@ func TestHTTPHandler(t *testing.T) {
 	// create server mux
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`hello world`))
+		_, _ = w.Write([]byte(`hello world`))
 	})
 
 	// create handler
@@ -692,7 +701,7 @@ func TestHTTPServer(t *testing.T) {
 	// create server mux
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`hello world`))
+		_, _ = w.Write([]byte(`hello world`))
 	})
 
 	// create server

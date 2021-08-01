@@ -89,7 +89,9 @@ func initial(t *testing.T) (server.Server, client.Client) {
 	)
 
 	h := &testServer{}
-	gpb.RegisterTestServer(s, h)
+	if err := gpb.RegisterTestServer(s, h); err != nil {
+		t.Fatal(err)
+	}
 
 	if err := s.Init(); err != nil {
 		t.Fatalf("failed to init: %v", err)
@@ -118,7 +120,9 @@ func check(t *testing.T, addr string, path string, expected string, timeout bool
 	if err != nil {
 		t.Fatalf("Failed to created http.Request: %v", err)
 	}
-	defer rsp.Body.Close()
+	defer func() {
+		_ = rsp.Body.Close()
+	}()
 
 	buf, err := ioutil.ReadAll(rsp.Body)
 	if err != nil {
@@ -140,7 +144,9 @@ func check(t *testing.T, addr string, path string, expected string, timeout bool
 
 func TestApiTimeout(t *testing.T) {
 	s, c := initial(t)
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	router := rregister.NewRouter(
 		router.WithHandler(rpc.Handler),
@@ -167,14 +173,19 @@ func TestApiTimeout(t *testing.T) {
 		log.Println(hsrv.ListenAndServe())
 	}()
 
-	defer hsrv.Close()
+	defer func() {
+		_ = hsrv.Close()
+	}()
+
 	time.Sleep(1 * time.Second)
 	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"Id":"go.micro.client","Code":408,"Detail":"context deadline exceeded","Status":"Request Timeout"}`, true)
 }
 
 func TestRouterRegisterPcre(t *testing.T) {
 	s, c := initial(t)
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	router := rregister.NewRouter(
 		router.WithHandler(rpc.Handler),
@@ -208,7 +219,9 @@ func TestRouterRegisterPcre(t *testing.T) {
 
 func TestRouterStaticPcre(t *testing.T) {
 	s, c := initial(t)
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),
@@ -244,7 +257,9 @@ func TestRouterStaticPcre(t *testing.T) {
 	go func() {
 		log.Println(hsrv.ListenAndServe())
 	}()
-	defer hsrv.Close()
+	defer func() {
+		hsrv.Close()
+	}()
 
 	time.Sleep(1 * time.Second)
 	check(t, hsrv.Addr, "http://%s/api/v0/test/call", `{"msg":"Hello "}`, false)
@@ -252,7 +267,9 @@ func TestRouterStaticPcre(t *testing.T) {
 
 func TestRouterStaticGpath(t *testing.T) {
 	s, c := initial(t)
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),
@@ -285,7 +302,9 @@ func TestRouterStaticGpath(t *testing.T) {
 	go func() {
 		log.Println(hsrv.ListenAndServe())
 	}()
-	defer hsrv.Close()
+	defer func() {
+		_ = hsrv.Close()
+	}()
 
 	time.Sleep(1 * time.Second)
 	check(t, hsrv.Addr, "http://%s/api/v0/test/call/TEST", `{"msg":"Hello TEST"}`, false)
@@ -296,7 +315,9 @@ func TestRouterStaticPcreInvalid(t *testing.T) {
 	var err error
 
 	s, c := initial(t)
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	router := rstatic.NewRouter(
 		router.WithHandler(rpc.Handler),

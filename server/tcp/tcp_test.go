@@ -65,14 +65,6 @@ func TestTCPServer(t *testing.T) {
 		t.Fatalf("Expected 1 node got %d: %+v", len(service[0].Nodes), service[0].Nodes)
 	}
 
-	go func() {
-		<-h.done
-		// stop server
-		if err := srv.Stop(); err != nil {
-			t.Fatal(err)
-		}
-	}()
-
 	c, err := net.DialTimeout("tcp", srv.Options().Address, 5*time.Second)
 	if err != nil {
 		t.Fatal(err)
@@ -80,6 +72,12 @@ func TestTCPServer(t *testing.T) {
 	defer c.Close()
 
 	if _, err = c.Write([]byte("test")); err != nil {
+		t.Fatal(err)
+	}
+
+	<-h.done
+	// stop server
+	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
 	}
 }

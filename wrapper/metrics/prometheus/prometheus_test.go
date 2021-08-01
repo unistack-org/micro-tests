@@ -1,3 +1,5 @@
+// +build ignore
+
 package prometheus_test
 
 import (
@@ -14,7 +16,7 @@ import (
 	srv "github.com/unistack-org/micro-server-grpc/v3"
 	"github.com/unistack-org/micro/v3/broker"
 	"github.com/unistack-org/micro/v3/client"
-	errors "github.com/unistack-org/micro/v3/errors"
+	"github.com/unistack-org/micro/v3/errors"
 	"github.com/unistack-org/micro/v3/register"
 	"github.com/unistack-org/micro/v3/router"
 	"github.com/unistack-org/micro/v3/server"
@@ -39,7 +41,6 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 }
 
 func TestPrometheusMetrics(t *testing.T) {
-	t.Skip("not implemented now")
 	// setup
 	reg := register.NewRegister()
 	brk := broker.NewBroker(broker.Register(reg))
@@ -78,14 +79,16 @@ func TestPrometheusMetrics(t *testing.T) {
 		*testHandler
 	}
 
-	s.Handle(
-		s.NewHandler(&Test{new(testHandler)}),
-	)
+	if err := s.Handle(s.NewHandler(&Test{new(testHandler)})); err != nil {
+		t.Fatal(err)
+	}
 
 	if err := s.Start(); err != nil {
 		t.Fatalf("Unexpected error starting server: %v", err)
 	}
-	defer s.Stop()
+	defer func() {
+		_ = s.Stop()
+	}()
 
 	req := c.NewRequest(name, "Test.Method", &TestRequest{IsError: false}, client.RequestContentType("application/json"))
 	rsp := TestResponse{}
