@@ -362,6 +362,8 @@ github.com/unistack-org/micro-api-router-register/v3 v3.2.2 h1:O8tIP+NFqyp/3F8vY
 github.com/unistack-org/micro-api-router-register/v3 v3.2.2/go.mod h1:MZeqvmekQB/avrTRajp86+s7GuHkQ8HAee+hZtY+dWw=
 github.com/unistack-org/micro-api-router-static/v3 v3.2.1 h1:FMcEb8NYYX72OyQuMKHbtdEQV+eOFbmKyvwSY8cgan8=
 github.com/unistack-org/micro-api-router-static/v3 v3.2.1/go.mod h1:vP8VMZrJtlimEQOgYnLJsjnaUMeULNMPBkHEK5DA7G0=
+github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe h1:uhXdevTWfyH83V9X56obz467ddVO9VIl/qhCRrN6MWw=
+github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe/go.mod h1:YlRoI+1nS7q5TyHLn+wBc7qqhUy4tFkAFJKtyyoVnmQ=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0 h1:53BD9KpD8zhKa+wz8gHnzxRkpnME6elbb6cj2NCRDtM=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0/go.mod h1:GHDcF7/N3Oidw03u9nhju5iuxHI7pGBIxlaDABqufvA=
 github.com/unistack-org/micro-client-http/v3 v3.4.8 h1:Wc8twac/nuXL7DW1RygUFhdGKo9w78b9qjk1hl1a8Kk=

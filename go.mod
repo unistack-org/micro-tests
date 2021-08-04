@@ -9,7 +9,7 @@ require (
 	github.com/unistack-org/micro-api-handler-rpc/v3 v3.3.0
 	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
-	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.1
+	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
 	github.com/unistack-org/micro-client-http/v3 v3.4.8
@@ -43,6 +43,6 @@ require (
 //replace github.com/unistack-org/micro-server-http/v3 => ../micro-server-http
 //replace github.com/unistack-org/micro-client-http/v3 => ../micro-client-http
 //replace github.com/unistack-org/micro-client-drpc/v3 => ../micro-client-drpc
-replace github.com/unistack-org/micro-broker-segmentio/v3 => ../micro-broker-segmentio
+//replace github.com/unistack-org/micro-broker-segmentio/v3 => ../micro-broker-segmentio
 
 //replace github.com/unistack-org/micro-proto => ../micro-proto
