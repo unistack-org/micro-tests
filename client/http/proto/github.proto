@@ -11,12 +11,16 @@ service Github {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "LookupUser";
       responses: {
-        key: "default";
-        value: {
-          description: "Error response";
-          schema: { json_schema: { ref: ".github.Error"; } }
-        }
-      }
+        response_code: {
+          name: "default";
+          value: {
+            json_reference: {
+              description: "Error response";
+              _ref: ".github.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { get: "/users/{username}"; };
   };
@@ -24,12 +28,16 @@ service Github {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "LookupUserWithoutPath";
       responses: {
-        key: "default";
-        value: {
-          description: "Error response";
-          schema: { json_schema: { ref: ".github.Error"; } }
-        }
-      }
+        response_code: {
+          name: "default";
+          value: {
+            json_reference: {
+              description: "Error response";
+              _ref: ".github.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { get: "/{username}"; };
   };

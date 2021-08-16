@@ -14,15 +14,7 @@ import (
 var (
 	TestName = "Test"
 
-	TestEndpoints = []api.Endpoint{
-		api.Endpoint{
-			Name:    "Test.Call",
-			Path:    []string{"/api/v0/test/call/TEST"},
-			Method:  []string{"POST"},
-			Body:    "*",
-			Handler: "rpc",
-		},
-	}
+	TestEndpoints = []api.Endpoint{}
 )
 
 func NewTestEndpoints() []api.Endpoint {

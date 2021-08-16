@@ -14,17 +14,17 @@ service TestDouble {
 	rpc CallDouble(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "Call";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/testdouble/call/name/{name}"; body: "*"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -35,17 +35,17 @@ service Test {
 	rpc CallRepeatedString(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "CallRepeatedString";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_string/{string_ids}"; body: "*"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -53,17 +53,17 @@ service Test {
 	rpc CallRepeatedInt64(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "CallRepeatedInt64";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_int64/{int64_ids}"; body: "*"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -74,17 +74,17 @@ service Test {
 	rpc Call(CallReq) returns (CallRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "Call";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -92,17 +92,17 @@ service Test {
 	rpc CallError(CallReq1) returns (CallRsp1) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "CallError";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/test/callerror/{name}"; body: "*"; };
   };

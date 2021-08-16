@@ -4,27 +4,27 @@ package test;
 
 option go_package = "github.com/unistack-org/micro-tests/flow/proto;pb";
 
-import "tag/tag.proto";
+//import "tag/tag.proto";
 import "api/annotations.proto";
 import "openapiv2/annotations.proto";
-import "google/protobuf/wrappers.proto";
+//import "google/protobuf/wrappers.proto";
 
 service TestService {
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "LookupUser";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { get: "/v1/user/{name}"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -32,17 +32,17 @@ service TestService {
 	rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "UpdateUser";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { put: "/v1/user/{name}"; body:"*"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -50,17 +50,17 @@ service TestService {
 	rpc DeleteUser(DeleteUserReq) returns (DeleteUserRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "DeleteUser";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { delete: "/v1/user/{name}"; };
 		option (micro.api.micro_method) = { timeout: 5; };
@@ -68,17 +68,17 @@ service TestService {
 	rpc MailUser(MailUserReq) returns (MailUserRsp) {
 		option (micro.openapiv2.openapiv2_operation) = {
       operation_id: "MailUser";
-        responses: {
-          key: "default";
+      responses: {
+        response_code: {
+          name: "default";
           value: {
-            description: "Error response";
-            schema: {
-              json_schema: {
-                ref: ".test.Error";
-              }
-            }
-          }
-        }
+            json_reference: {
+              description: "Error response";
+              _ref: ".test.Error";
+            };
+          };
+        };
+      };
     };
 		option (micro.api.http) = { post: "/v1/user/{name}/mail"; body:"*"; };
 		option (micro.api.micro_method) = { timeout: 5; };

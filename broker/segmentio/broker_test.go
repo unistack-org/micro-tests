@@ -113,7 +113,7 @@ func TestConsumerGroup(t *testing.T) {
 				t.Fatal(err)
 			}
 			//log.Printf("publish %d", i)
-			time.Sleep(200 * time.Millisecond)
+			time.Sleep(600 * time.Millisecond)
 		}
 	}()
 	fmt.Printf("prefill complete\n")
@@ -127,6 +127,7 @@ func TestConsumerGroup(t *testing.T) {
 			wait.Store(false)
 		}
 		atomic.AddUint64(&cnt, 1)
+		fmt.Printf("processing mesage")
 		return msg.Ack()
 	}
 
@@ -134,11 +135,13 @@ func TestConsumerGroup(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer sub1.Unsubscribe(ctx)
 
 	sub2, err := brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer sub2.Unsubscribe(ctx)
 
 	fmt.Printf("wait for ready\n")
 	for {
@@ -147,47 +150,50 @@ func TestConsumerGroup(t *testing.T) {
 		}
 		time.Sleep(1 * time.Second)
 	}
-
-	time.Sleep(5 * time.Second)
-	fmt.Printf("unsub\n")
-	if err := sub1.Unsubscribe(ctx); err != nil {
-		t.Fatal(err)
-	}
-	time.Sleep(9 * time.Second)
-	sub1, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	t1 := time.NewTicker(10 * time.Second)
-	defer t1.Stop()
-	t2 := time.NewTicker(30 * time.Second)
-	defer t2.Stop()
-
-	for {
-		select {
-		case <-t1.C:
-			fmt.Printf("unsub from sub2\n")
-			if err := sub2.Unsubscribe(ctx); err != nil {
-				t.Fatal(err)
-			}
-			fmt.Printf("sub1\n")
-			sub1, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
-			if err != nil {
-				t.Fatal(err)
-			}
-		case <-t2.C:
-			fmt.Printf("unsub from sub1\n")
-			if err := sub1.Unsubscribe(ctx); err != nil {
-				t.Fatal(err)
-			}
-			fmt.Printf("sub2\n")
-			sub2, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
-			if err != nil {
-				t.Fatal(err)
-			}
+	/*
+		time.Sleep(5 * time.Second)
+		fmt.Printf("unsub\n")
+		if err := sub1.Unsubscribe(ctx); err != nil {
+			t.Fatal(err)
 		}
-	}
+		time.Sleep(9 * time.Second)
+		sub1, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
+		if err != nil {
+			t.Fatal(err)
+		}
+	*/
+	/*
+		t1 := time.NewTicker(10 * time.Second)
+		defer t1.Stop()
+		t2 := time.NewTicker(30 * time.Second)
+		defer t2.Stop()
+
+			for {
+				select {
+				case <-t1.C:
+					fmt.Printf("unsub from sub2\n")
+					if err := sub2.Unsubscribe(ctx); err != nil {
+						t.Fatal(err)
+					}
+					fmt.Printf("sub1\n")
+					sub1, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
+					if err != nil {
+						t.Fatal(err)
+					}
+				case <-t2.C:
+					fmt.Printf("unsub from sub1\n")
+					if err := sub1.Unsubscribe(ctx); err != nil {
+						t.Fatal(err)
+					}
+					fmt.Printf("sub2\n")
+					sub2, err = brk.Subscribe(ctx, topic, fn, broker.SubscribeGroup("test"), broker.SubscribeBodyOnly(true), broker.SubscribeAutoAck(true))
+					if err != nil {
+						t.Fatal(err)
+					}
+				}
+			}
+	*/
+	select {}
 }
 
 func TestSub(t *testing.T) {
