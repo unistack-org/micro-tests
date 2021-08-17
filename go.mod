@@ -5,9 +5,7 @@ go 1.16
 require (
 	github.com/VictoriaMetrics/metrics v1.17.3 // indirect
 	github.com/armon/go-metrics v0.3.9 // indirect
-	github.com/evanphx/json-patch/v5 v5.5.0 // indirect
 	github.com/fatih/color v1.12.0 // indirect
-	github.com/gobwas/ws v1.1.0 // indirect
 	github.com/hashicorp/consul/api v1.9.1 // indirect
 	github.com/hashicorp/go-hclog v0.16.2 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
@@ -21,9 +19,6 @@ require (
 	github.com/segmentio/kafka-go v0.4.17
 	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
-	github.com/unistack-org/micro-api-handler-rpc/v3 v3.3.0
-	github.com/unistack-org/micro-api-router-register/v3 v3.2.2
-	github.com/unistack-org/micro-api-router-static/v3 v3.2.1
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
@@ -44,15 +39,16 @@ require (
 	github.com/unistack-org/micro-server-grpc/v3 v3.3.7
 	github.com/unistack-org/micro-server-http/v3 v3.4.2
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
+	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
 	github.com/unistack-org/micro/v3 v3.6.2
+	github.com/zeebo/assert v1.3.0
 	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20210816143620-e15ff196659d
 	google.golang.org/grpc v1.40.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.24
