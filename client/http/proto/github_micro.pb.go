@@ -14,13 +14,13 @@ var (
 	GithubName = "Github"
 
 	GithubEndpoints = []api.Endpoint{
-		api.Endpoint{
+		{
 			Name:    "Github.LookupUser",
 			Path:    []string{"/users/{username}"},
 			Method:  []string{"GET"},
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "Github.LookupUserWithoutPath",
 			Path:    []string{"/{username}"},
 			Method:  []string{"GET"},

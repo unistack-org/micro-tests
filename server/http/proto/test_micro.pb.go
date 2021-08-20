@@ -14,7 +14,7 @@ var (
 	TestDoubleName = "TestDouble"
 
 	TestDoubleEndpoints = []api.Endpoint{
-		api.Endpoint{
+		{
 			Name:    "TestDouble.CallDouble",
 			Path:    []string{"/v1/testdouble/call/name/{name}"},
 			Method:  []string{"POST"},
@@ -40,28 +40,28 @@ var (
 	TestName = "Test"
 
 	TestEndpoints = []api.Endpoint{
-		api.Endpoint{
+		{
 			Name:    "Test.CallRepeatedString",
 			Path:    []string{"/v1/test/call_repeated_string/{string_ids}"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "Test.CallRepeatedInt64",
 			Path:    []string{"/v1/test/call_repeated_int64/{int64_ids}"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "Test.Call",
 			Path:    []string{"/v1/test/call/{name}"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "Test.CallError",
 			Path:    []string{"/v1/test/callerror/{name}"},
 			Method:  []string{"POST"},

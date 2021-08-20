@@ -14,26 +14,26 @@ var (
 	TestServiceName = "TestService"
 
 	TestServiceEndpoints = []api.Endpoint{
-		api.Endpoint{
+		{
 			Name:    "TestService.LookupUser",
 			Path:    []string{"/v1/user/{name}"},
 			Method:  []string{"GET"},
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "TestService.UpdateUser",
 			Path:    []string{"/v1/user/{name}"},
 			Method:  []string{"PUT"},
 			Body:    "*",
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "TestService.DeleteUser",
 			Path:    []string{"/v1/user/{name}"},
 			Method:  []string{"DELETE"},
 			Handler: "rpc",
 		},
-		api.Endpoint{
+		{
 			Name:    "TestService.MailUser",
 			Path:    []string{"/v1/user/{name}/mail"},
 			Method:  []string{"POST"},
