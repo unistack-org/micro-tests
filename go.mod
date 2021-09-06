@@ -41,7 +41,7 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
-	github.com/unistack-org/micro/v3 v3.6.2
+	github.com/unistack-org/micro/v3 v3.7.0
 	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
