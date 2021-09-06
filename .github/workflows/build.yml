@@ -25,7 +25,7 @@ jobs:
     - name: test
       env:
         INTEGRATION_TESTS: yes
-      run: go test -mod readonly ./...
+      run: go test -mod readonly -v ./...
   lint:
     name: lint
     runs-on: ubuntu-latest
