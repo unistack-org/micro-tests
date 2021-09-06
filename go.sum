@@ -394,8 +394,8 @@ github.com/unistack-org/micro-config-vault/v3 v3.5.0/go.mod h1:GJKV/gu55BWq3eCNw
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3 h1:eKe0IjMm5e02rkhALo1FcG6UxYKOsJ5HU1loGKAUyPs=
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3/go.mod h1:cDz4YigqJ3e3/2A8ze5SdJA8Z7KJf/s0VlIA6w97EHw=
 github.com/unistack-org/micro-proto v0.0.5/go.mod h1:EuI7UlfGXmT1hy6WacULib9LbNgRnDYQvTCFoLgKM2I=
-github.com/unistack-org/micro-proto v0.0.8 h1:g4UZGQGeYGI3CFJtjuEm47aouYPviG8SDhSifl0831w=
-github.com/unistack-org/micro-proto v0.0.8/go.mod h1:GYO53DWmeldRIo90cAdQx8bLr/WJMxW62W4ja74p1Ac=
+github.com/unistack-org/micro-proto v0.0.9 h1:KrWLS4FUX7UAWNAilQf70uad6ZPf/0EudeddCXllRVc=
+github.com/unistack-org/micro-proto v0.0.9/go.mod h1:Cckwmzd89gvS7ThxzZp9kQR/EOdksFQcsTAtDDyKwrg=
 github.com/unistack-org/micro-router-register/v3 v3.2.2 h1:lYCymDHkJfhZWYQ4+Sb7Fu+NlqoysQCnpJytHGhdnws=
 github.com/unistack-org/micro-router-register/v3 v3.2.2/go.mod h1:Y9Qtlg4NHqq5rR6X6Jm+04LoSJMi7/OOCm2mRueZYTE=
 github.com/unistack-org/micro-server-grpc/v3 v3.3.7 h1:rrN3vV10VRF697+hT6tVVNyoTb3pejTOCH77+1mrYsM=
@@ -587,8 +587,6 @@ google.golang.org/grpc v1.37.1/go.mod h1:NREThFqKR1f3iQ6oBuvc5LadQuXVGo9rkm5ZGrQ
 google.golang.org/grpc v1.39.0/go.mod h1:PImNr+rS9TWYb2O4/emRugxiyHZ5JyHW5F+RPnDzfrE=
 google.golang.org/grpc v1.40.0 h1:AGJ0Ih4mHjSeibYkFGh1dD9KJ/eOtZ93I6hoHhukQ5Q=
 google.golang.org/grpc v1.40.0/go.mod h1:ogyxbiOoUXAkP+4+xa6PZSE9DZgIHtSpzjDTB9KAK34=
-google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 h1:M1YKkFIboKNieVO5DLUEVzQfGwJD30Nv2jfUgzb5UcE=
-google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
 google.golang.org/protobuf v0.0.0-20200221191635-4d8936d0db64/go.mod h1:kwYJMbMJ01Woi6D6+Kah6886xMZcty6N08ah7+eCXa0=
 google.golang.org/protobuf v0.0.0-20200228230310-ab0ca4ff8a60/go.mod h1:cfTl7dwQJ+fmap5saPgwCLgHXTUD7jkjRqWcaiX5VyM=
