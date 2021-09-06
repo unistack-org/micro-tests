@@ -369,8 +369,8 @@ github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916da
 github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe/go.mod h1:YlRoI+1nS7q5TyHLn+wBc7qqhUy4tFkAFJKtyyoVnmQ=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0 h1:53BD9KpD8zhKa+wz8gHnzxRkpnME6elbb6cj2NCRDtM=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0/go.mod h1:GHDcF7/N3Oidw03u9nhju5iuxHI7pGBIxlaDABqufvA=
-github.com/unistack-org/micro-client-http/v3 v3.4.8 h1:Wc8twac/nuXL7DW1RygUFhdGKo9w78b9qjk1hl1a8Kk=
-github.com/unistack-org/micro-client-http/v3 v3.4.8/go.mod h1:7BwMcYaW5/FGRZalZ/AeEksvRVTDg7rn+fOjRrHUNLE=
+github.com/unistack-org/micro-client-http/v3 v3.4.10 h1:yRV3q8mTVYS871N5KaCdoyXhxjJEJHMDQKCXIkcvlw0=
+github.com/unistack-org/micro-client-http/v3 v3.4.10/go.mod h1:cazA+Z8AIl1RCMruxKfqzpgHfVbDTVmCxeo1ZEjKTDc=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2 h1:7A4d65Cc7p3LkWudenIiv6Lqo4dwvRHzLG5HY71g8SQ=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2/go.mod h1:Dz2iQKF0WmHqqGfWlq7sRjkl9/afanKI5Z6YvLOVoJo=
 github.com/unistack-org/micro-codec-json/v3 v3.2.5 h1:WOilhbL0YSu58iIQIIxpawRYZyx6CR16tCpbX4ai3Vc=
@@ -414,7 +414,6 @@ github.com/unistack-org/micro/v3 v3.3.19/go.mod h1:LXmPfbJnJNvL0kQs8HfnkV3Wya2Wb
 github.com/unistack-org/micro/v3 v3.4.7/go.mod h1:LXmPfbJnJNvL0kQs8HfnkV3Wya2Wb+C7keVq++RCZnk=
 github.com/unistack-org/micro/v3 v3.4.11/go.mod h1:1ZkwpEqpiHiVhM2hiF9DamtpsF04oFybFhEQ4zEMcro=
 github.com/unistack-org/micro/v3 v3.5.1/go.mod h1:1ZkwpEqpiHiVhM2hiF9DamtpsF04oFybFhEQ4zEMcro=
-github.com/unistack-org/micro/v3 v3.5.4/go.mod h1:1ZkwpEqpiHiVhM2hiF9DamtpsF04oFybFhEQ4zEMcro=
 github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh11trhr79zWYeTM=
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
