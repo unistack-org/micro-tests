@@ -22,7 +22,7 @@ require (
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
-	github.com/unistack-org/micro-client-http/v3 v3.4.8
+	github.com/unistack-org/micro-client-http/v3 v3.4.10
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.2
 	github.com/unistack-org/micro-codec-json/v3 v3.2.5
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5
@@ -42,14 +42,12 @@ require (
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
 	github.com/unistack-org/micro/v3 v3.6.2
-	github.com/zeebo/assert v1.3.0
 	golang.org/x/crypto v0.0.0-20210813211128-0a44fdfbc16e // indirect
 	golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d // indirect
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20210816143620-e15ff196659d
 	google.golang.org/grpc v1.40.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.24
