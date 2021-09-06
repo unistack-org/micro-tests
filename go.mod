@@ -37,7 +37,7 @@ require (
 	github.com/unistack-org/micro-proto v0.0.9
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.3.7
-	github.com/unistack-org/micro-server-http/v3 v3.4.2
+	github.com/unistack-org/micro-server-http/v3 v3.4.4
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
