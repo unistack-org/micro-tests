@@ -15,7 +15,7 @@ require (
 	github.com/miekg/dns v1.1.38 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/encoding v0.2.19 // indirect
-	github.com/segmentio/kafka-go v0.4.17
+	github.com/segmentio/kafka-go v0.4.18
 	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/twmb/franz-go v1.0.0
