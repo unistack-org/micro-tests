@@ -234,9 +234,9 @@ github.com/kisielk/errcheck v1.2.0/go.mod h1:/BMXB+zMLi60iA8Vv6Ksmxu/1UDYcXs4uQL
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/klauspost/compress v1.9.8/go.mod h1:RyIbtBH6LamlWaDj8nUwkbUhJ87Yi3uG0guNDohfE1A=
 github.com/klauspost/compress v1.13.1/go.mod h1:8dP1Hq4DHOhN9w426knH3Rhby4rFm6D8eO+e+Dq5Gzg=
-github.com/klauspost/compress v1.13.4/go.mod h1:8dP1Hq4DHOhN9w426knH3Rhby4rFm6D8eO+e+Dq5Gzg=
-github.com/klauspost/compress v1.13.5 h1:9O69jUPDcsT9fEm74W92rZL9FQY7rCdaXVneq+yyzl4=
 github.com/klauspost/compress v1.13.5/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=
+github.com/klauspost/compress v1.13.6 h1:P76CopJELS0TiO2mebmnzgWaajssP/EszplttgQxcgc=
+github.com/klauspost/compress v1.13.6/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=
 github.com/klauspost/cpuid/v2 v2.0.5/go.mod h1:FInQzS24/EEf25PyTYn52gqo7WaD8xa0213Md/qVLRg=
 github.com/klauspost/cpuid/v2 v2.0.9 h1:lgaqFMSdTdQYdZ04uHyN2d/eKdOMyi2YLSvlQIBFYa4=
 github.com/klauspost/cpuid/v2 v2.0.9/go.mod h1:FInQzS24/EEf25PyTYn52gqo7WaD8xa0213Md/qVLRg=
@@ -376,17 +376,15 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
-github.com/twmb/franz-go v0.11.0/go.mod h1:a8tUwwic5WYy32hMT7QUrsuwQ9b/AwN3Ub61PoEQagg=
 github.com/twmb/franz-go v1.0.0 h1:JcsqEImDhr7H/eQx/V58fwzjmVi2FRwz6dyylmdJ0NU=
 github.com/twmb/franz-go v1.0.0/go.mod h1:cdFLk8d/5/ox88y38xgiDKP3Yo338OO0t5QbTEM2K6I=
-github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210829174113-fcaaf3f18f2f/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210901051457-3c197a133ddd/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
-github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210901054312-f2002b3e2313 h1:iS6Upu5PnhziQaIUHg2eXHLvjHGwmk+1eK1WGIl7gOU=
-github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210901054312-f2002b3e2313/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
+github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b h1:7d6eRt9HEqXVxMzD2fry9qtJ0kRkgeJ5olqW9K+aXv8=
+github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/go-rbtree v1.0.0 h1:KxN7dXJ8XaZ4cvmHV1qqXTshxX3EBvX/toG5+UR49Mg=
 github.com/twmb/go-rbtree v1.0.0/go.mod h1:UlIAI8gu3KRPkXSobZnmJfVwCJgEhD/liWzT5ppzIyc=
-github.com/unistack-org/micro-broker-kgo/v3 v3.7.1 h1:mqUwsvoxG6DuH90QrZV5h8uy7d/1hc3UQWiFOwbXxIE=
-github.com/unistack-org/micro-broker-kgo/v3 v3.7.1/go.mod h1:4P6UeBObkOg00lzuMVlgx/nyTBmWqwJj1tYfvLadAew=
+github.com/unistack-org/micro-broker-kgo/v3 v3.7.2 h1:mejU+QRLBp1MCqek9WTAC+oKBjo3yOExBG32VoYYVYI=
+github.com/unistack-org/micro-broker-kgo/v3 v3.7.2/go.mod h1:aN4FToXU0SJQa188vvNH1t7QbD94kJKORvWMVPBI4Mo=
 github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe h1:uhXdevTWfyH83V9X56obz467ddVO9VIl/qhCRrN6MWw=
 github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe/go.mod h1:YlRoI+1nS7q5TyHLn+wBc7qqhUy4tFkAFJKtyyoVnmQ=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0 h1:53BD9KpD8zhKa+wz8gHnzxRkpnME6elbb6cj2NCRDtM=
@@ -416,7 +414,6 @@ github.com/unistack-org/micro-config-vault/v3 v3.5.0/go.mod h1:GJKV/gu55BWq3eCNw
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3 h1:eKe0IjMm5e02rkhALo1FcG6UxYKOsJ5HU1loGKAUyPs=
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3/go.mod h1:cDz4YigqJ3e3/2A8ze5SdJA8Z7KJf/s0VlIA6w97EHw=
 github.com/unistack-org/micro-proto v0.0.5/go.mod h1:EuI7UlfGXmT1hy6WacULib9LbNgRnDYQvTCFoLgKM2I=
-github.com/unistack-org/micro-proto v0.0.8/go.mod h1:GYO53DWmeldRIo90cAdQx8bLr/WJMxW62W4ja74p1Ac=
 github.com/unistack-org/micro-proto v0.0.9 h1:KrWLS4FUX7UAWNAilQf70uad6ZPf/0EudeddCXllRVc=
 github.com/unistack-org/micro-proto v0.0.9/go.mod h1:Cckwmzd89gvS7ThxzZp9kQR/EOdksFQcsTAtDDyKwrg=
 github.com/unistack-org/micro-router-register/v3 v3.2.2 h1:lYCymDHkJfhZWYQ4+Sb7Fu+NlqoysQCnpJytHGhdnws=
@@ -441,7 +438,6 @@ github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh1
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.2/go.mod h1:X8UIH1JK4/jYN/CtvxJ6d+HrfqzmoVQc1no8Homy+ww=
-github.com/unistack-org/micro/v3 v3.7.0/go.mod h1:xXGbjNQShqlth0hv+q7ijGvciXGVqxUnVdkFm0t95rk=
 github.com/unistack-org/micro/v3 v3.7.1 h1:gjCon1U8i9upNgw9+iEgbZh2LCeBizDYotQ+THHV0lo=
 github.com/unistack-org/micro/v3 v3.7.1/go.mod h1:gBoY6gvzeFiJTZ4FgDttGNSs4Y1+1PRg2cV1yTRMSlg=
 github.com/urfave/cli v0.0.0-20171014202726-7bc6a0acffa5/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
@@ -521,7 +517,6 @@ golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4/go.mod h1:RxMgew5VJxzue5/jJ
 golang.org/x/sync v0.0.0-20190227155943-e225da77a7e6/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20190423024810-112230192c58/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
-golang.org/x/sync v0.0.0-20210220032951-036812b2e83c h1:5KslGYwFpkhGh+Q16bwMP3cOontH8FOep7tGV86Y7SQ=
 golang.org/x/sync v0.0.0-20210220032951-036812b2e83c/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 golang.org/x/sys v0.0.0-20180823144017-11551d06cbcc/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/sys v0.0.0-20180830151530-49385e6e1522/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
