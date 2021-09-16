@@ -4,13 +4,14 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	mid "github.com/unistack-org/micro/v3/util/id"
 )
 
 func TestHasNoCollisions(t *testing.T) {
 	tries := 100_000
 	used := make(map[string]bool, tries)
 	for i := 0; i < tries; i++ {
-		id := Must()
+		id := mid.Must()
 		require.False(t, used[id], "shouldn't return colliding IDs")
 		used[id] = true
 	}
@@ -22,7 +23,7 @@ func TestFlatDistribution(t *testing.T) {
 	size := 10
 	chars := make(map[rune]int)
 	for i := 0; i < tries; i++ {
-		id := Must(Alphabet(alphabet), Size(size))
+		id := mid.Must(mid.Alphabet(alphabet), mid.Size(size))
 		for _, r := range id {
 			chars[r]++
 		}
@@ -36,6 +37,6 @@ func TestFlatDistribution(t *testing.T) {
 // Benchmark id generator
 func BenchmarkNanoid(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		_, _ = New()
+		_, _ = mid.New()
 	}
 }
