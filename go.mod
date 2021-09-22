@@ -25,7 +25,7 @@ require (
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
 	github.com/unistack-org/micro-client-http/v3 v3.4.10
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.2
-	github.com/unistack-org/micro-codec-json/v3 v3.2.5
+	github.com/unistack-org/micro-codec-json/v3 v3.7.7
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5
 	github.com/unistack-org/micro-codec-proto/v3 v3.2.5
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3
@@ -42,7 +42,7 @@ require (
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
-	github.com/unistack-org/micro/v3 v3.7.1
+	github.com/unistack-org/micro/v3 v3.7.3
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20210816143620-e15ff196659d
