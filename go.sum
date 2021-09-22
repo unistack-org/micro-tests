@@ -398,8 +398,8 @@ github.com/unistack-org/micro-codec-grpc/v3 v3.2.2 h1:7A4d65Cc7p3LkWudenIiv6Lqo4
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2/go.mod h1:Dz2iQKF0WmHqqGfWlq7sRjkl9/afanKI5Z6YvLOVoJo=
 github.com/unistack-org/micro-codec-json/v3 v3.2.5 h1:WOilhbL0YSu58iIQIIxpawRYZyx6CR16tCpbX4ai3Vc=
 github.com/unistack-org/micro-codec-json/v3 v3.2.5/go.mod h1:LSzfrD9GYWCl6KOyihywx1wlbOgStrpyy3NVHNZAvHA=
-github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5 h1:gqLJxPfOUynUWsQ+uTYU5SYy5mYvHsWMrO7nzsixWmw=
-github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5/go.mod h1:7SJWugxuWMtlqZgcS+cWsE3rEuK6S9d9QMBjCT3aFRM=
+github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.4 h1:O76l63wYmcI9Aboro9agikvvRciPL2K4KQQyuw1aoeo=
+github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.4/go.mod h1:ZNLweURseIJ5HuyOQw/6yAgcEZza9xuOEeTtV3sQqdM=
 github.com/unistack-org/micro-codec-proto/v3 v3.2.5 h1:EQ+O5uyhT7LTzbZS6OwpOew3kCblb5u+WIdvc1cGUvw=
 github.com/unistack-org/micro-codec-proto/v3 v3.2.5/go.mod h1:JIxxon5hCA0qLnBG6fzZy4G7SXgAdBjXqRCOIZj3WI8=
 github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3 h1:yy14uZiALyTd+zvJCnr3UG1xUaVVYcviJmPR/3f2BD4=
@@ -441,8 +441,9 @@ github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh1
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.2/go.mod h1:X8UIH1JK4/jYN/CtvxJ6d+HrfqzmoVQc1no8Homy+ww=
-github.com/unistack-org/micro/v3 v3.7.1 h1:gjCon1U8i9upNgw9+iEgbZh2LCeBizDYotQ+THHV0lo=
 github.com/unistack-org/micro/v3 v3.7.1/go.mod h1:gBoY6gvzeFiJTZ4FgDttGNSs4Y1+1PRg2cV1yTRMSlg=
+github.com/unistack-org/micro/v3 v3.7.3 h1:7dCv7WuTYp47jZ/doVCXDNMnY75imprbmwSnmchTSJY=
+github.com/unistack-org/micro/v3 v3.7.3/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
 github.com/urfave/cli v0.0.0-20171014202726-7bc6a0acffa5/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
 github.com/valyala/fastrand v1.0.0 h1:LUKT9aKer2dVQNUi3waewTbKV+7H17kvWFNKs2ObdkI=
 github.com/valyala/fastrand v1.0.0/go.mod h1:HWqCzkrkg6QXT8V2EXWvXCoow7vLwOFN002oeRzjapQ=
