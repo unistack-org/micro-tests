@@ -396,8 +396,9 @@ github.com/unistack-org/micro-client-http/v3 v3.4.10 h1:yRV3q8mTVYS871N5KaCdoyXh
 github.com/unistack-org/micro-client-http/v3 v3.4.10/go.mod h1:cazA+Z8AIl1RCMruxKfqzpgHfVbDTVmCxeo1ZEjKTDc=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2 h1:7A4d65Cc7p3LkWudenIiv6Lqo4dwvRHzLG5HY71g8SQ=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2/go.mod h1:Dz2iQKF0WmHqqGfWlq7sRjkl9/afanKI5Z6YvLOVoJo=
-github.com/unistack-org/micro-codec-json/v3 v3.2.5 h1:WOilhbL0YSu58iIQIIxpawRYZyx6CR16tCpbX4ai3Vc=
 github.com/unistack-org/micro-codec-json/v3 v3.2.5/go.mod h1:LSzfrD9GYWCl6KOyihywx1wlbOgStrpyy3NVHNZAvHA=
+github.com/unistack-org/micro-codec-json/v3 v3.7.8 h1:SyLSsVwBd8zua/jOEEc5lwr4Sg03lAMOAduWeQG18ms=
+github.com/unistack-org/micro-codec-json/v3 v3.7.8/go.mod h1:CDsPCSrehY38kRykTvjCncqMfXFhwpGLiPPjSBjC6e8=
 github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5 h1:gqLJxPfOUynUWsQ+uTYU5SYy5mYvHsWMrO7nzsixWmw=
 github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5/go.mod h1:7SJWugxuWMtlqZgcS+cWsE3rEuK6S9d9QMBjCT3aFRM=
 github.com/unistack-org/micro-codec-proto/v3 v3.7.4 h1:rj90bweyp7Ds8Jh6s+ObKIZ4yULLBezwxBigZVgqzyU=
