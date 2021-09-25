@@ -26,7 +26,7 @@ require (
 	github.com/unistack-org/micro-client-http/v3 v3.4.10
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.2
 	github.com/unistack-org/micro-codec-json/v3 v3.7.8
-	github.com/unistack-org/micro-codec-jsonpb/v3 v3.2.5
+	github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5
 	github.com/unistack-org/micro-codec-proto/v3 v3.7.4
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.1.0
