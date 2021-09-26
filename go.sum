@@ -403,8 +403,8 @@ github.com/unistack-org/micro-codec-proto/v3 v3.7.4 h1:rj90bweyp7Ds8Jh6s+ObKIZ4y
 github.com/unistack-org/micro-codec-proto/v3 v3.7.4/go.mod h1:Id4UEQe5e/qEffvj8I7if8/GT9uew29PV9Uzp0swaV4=
 github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3 h1:yy14uZiALyTd+zvJCnr3UG1xUaVVYcviJmPR/3f2BD4=
 github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3/go.mod h1:9idbxekGjbxEpBm4EfRhd4lKiTEyeR818qSiCSjTQR0=
-github.com/unistack-org/micro-codec-urlencode/v3 v3.1.0 h1:Aiu5oLOQkvMCQzrgJfTGFpDjmpSKGKBqP4cmPTpNwHM=
-github.com/unistack-org/micro-codec-urlencode/v3 v3.1.0/go.mod h1:/fshHAmJkzTT0chV6VJvs0JDoT4v7y23qxvrBZeoygw=
+github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4 h1:hCBaqskrFSUk7lapC7IZn8xhr5XYCt65cE9dIBrBwp4=
+github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4/go.mod h1:XTVxbYnj++tQpoX3G2CuR5TbBcJJfMYXHdIYM2XVx3M=
 github.com/unistack-org/micro-codec-xml/v3 v3.2.2 h1:xJMMcNjfyFNHA4bzRBrB9EvVf4GJ5Hl0egi5V4SJ3KE=
 github.com/unistack-org/micro-codec-xml/v3 v3.2.2/go.mod h1:75yGkasLbY2QsVnjzXiovlXPgsm+ddA43IKspWS5vNo=
 github.com/unistack-org/micro-config-consul/v3 v3.6.0 h1:RZZO+l6sQ3PqTb9uOJC0lGC/Ady+9Ag+05or3I1XbOA=
