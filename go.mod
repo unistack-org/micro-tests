@@ -23,7 +23,7 @@ require (
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
-	github.com/unistack-org/micro-client-http/v3 v3.4.10
+	github.com/unistack-org/micro-client-http/v3 v3.7.3
 	github.com/unistack-org/micro-codec-grpc/v3 v3.2.2
 	github.com/unistack-org/micro-codec-json/v3 v3.7.8
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5
