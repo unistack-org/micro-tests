@@ -30,7 +30,7 @@ require (
 	github.com/unistack-org/micro-codec-proto/v3 v3.7.4
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
-	github.com/unistack-org/micro-codec-xml/v3 v3.2.2
+	github.com/unistack-org/micro-codec-xml/v3 v3.7.5
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
 	github.com/unistack-org/micro-config-env/v3 v3.5.0
 	github.com/unistack-org/micro-config-vault/v3 v3.5.0
