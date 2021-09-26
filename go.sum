@@ -377,17 +377,15 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
-github.com/twmb/franz-go v1.0.0/go.mod h1:cdFLk8d/5/ox88y38xgiDKP3Yo338OO0t5QbTEM2K6I=
 github.com/twmb/franz-go v1.1.0 h1:WR4EbNx7L4eLyTgQmbp3Bg9fX3eW6jHWYj087n07rRc=
 github.com/twmb/franz-go v1.1.0/go.mod h1:KerrVhzNpasYrWJLr2Yj6Cui43f1BxH4U9SJEDVOjqQ=
-github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210901051457-3c197a133ddd/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914042331-106aef61b693/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b h1:7d6eRt9HEqXVxMzD2fry9qtJ0kRkgeJ5olqW9K+aXv8=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/go-rbtree v1.0.0 h1:KxN7dXJ8XaZ4cvmHV1qqXTshxX3EBvX/toG5+UR49Mg=
 github.com/twmb/go-rbtree v1.0.0/go.mod h1:UlIAI8gu3KRPkXSobZnmJfVwCJgEhD/liWzT5ppzIyc=
-github.com/unistack-org/micro-broker-kgo/v3 v3.7.2 h1:mejU+QRLBp1MCqek9WTAC+oKBjo3yOExBG32VoYYVYI=
-github.com/unistack-org/micro-broker-kgo/v3 v3.7.2/go.mod h1:aN4FToXU0SJQa188vvNH1t7QbD94kJKORvWMVPBI4Mo=
+github.com/unistack-org/micro-broker-kgo/v3 v3.7.3 h1:i7BQFPlMgTuer/3KG+OgcxYmlDWXWNHB6oUBJEaPOq8=
+github.com/unistack-org/micro-broker-kgo/v3 v3.7.3/go.mod h1:7hRX0VK2Gspja0blI/uv7IVLdzMcr6CsP8rnRGkWLBg=
 github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe h1:uhXdevTWfyH83V9X56obz467ddVO9VIl/qhCRrN6MWw=
 github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe/go.mod h1:YlRoI+1nS7q5TyHLn+wBc7qqhUy4tFkAFJKtyyoVnmQ=
 github.com/unistack-org/micro-client-grpc/v3 v3.4.0 h1:53BD9KpD8zhKa+wz8gHnzxRkpnME6elbb6cj2NCRDtM=
@@ -396,7 +394,7 @@ github.com/unistack-org/micro-client-http/v3 v3.4.10 h1:yRV3q8mTVYS871N5KaCdoyXh
 github.com/unistack-org/micro-client-http/v3 v3.4.10/go.mod h1:cazA+Z8AIl1RCMruxKfqzpgHfVbDTVmCxeo1ZEjKTDc=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2 h1:7A4d65Cc7p3LkWudenIiv6Lqo4dwvRHzLG5HY71g8SQ=
 github.com/unistack-org/micro-codec-grpc/v3 v3.2.2/go.mod h1:Dz2iQKF0WmHqqGfWlq7sRjkl9/afanKI5Z6YvLOVoJo=
-github.com/unistack-org/micro-codec-json/v3 v3.2.5/go.mod h1:LSzfrD9GYWCl6KOyihywx1wlbOgStrpyy3NVHNZAvHA=
+github.com/unistack-org/micro-codec-json/v3 v3.7.7/go.mod h1:Gk0pKcPu1nf9jmSjuyn8yehaIpJsx8AqD+hh69OzWlI=
 github.com/unistack-org/micro-codec-json/v3 v3.7.8 h1:SyLSsVwBd8zua/jOEEc5lwr4Sg03lAMOAduWeQG18ms=
 github.com/unistack-org/micro-codec-json/v3 v3.7.8/go.mod h1:CDsPCSrehY38kRykTvjCncqMfXFhwpGLiPPjSBjC6e8=
 github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5 h1:pSiCUeBqZlSFkmkArmp1XEgXSWFSi1Ny4tdNnPV4xZE=
@@ -442,7 +440,7 @@ github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh1
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.2/go.mod h1:X8UIH1JK4/jYN/CtvxJ6d+HrfqzmoVQc1no8Homy+ww=
-github.com/unistack-org/micro/v3 v3.7.1/go.mod h1:gBoY6gvzeFiJTZ4FgDttGNSs4Y1+1PRg2cV1yTRMSlg=
+github.com/unistack-org/micro/v3 v3.7.3/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
 github.com/unistack-org/micro/v3 v3.7.4 h1:nRk7f58v0VsiW7aKL0UQaFCQxFoursHQLoWdeZ1RYbg=
 github.com/unistack-org/micro/v3 v3.7.4/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
 github.com/urfave/cli v0.0.0-20171014202726-7bc6a0acffa5/go.mod h1:70zkFmudgCuE/ngEzBv17Jvp/497gISqfk5gWijbERA=
@@ -512,7 +510,6 @@ golang.org/x/net v0.0.0-20210423184538-5f58ad60dda6/go.mod h1:OJAsFXCWl8Ukc7SiCT
 golang.org/x/net v0.0.0-20210510120150-4163338589ed/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210614182718-04defd469f4e/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
-golang.org/x/net v0.0.0-20210825183410-e898025ed96a/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210913180222-943fd674d43e h1:+b/22bPvDYt4NPDcy4xAGCmON713ONAWFeY3Z7I3tR8=
 golang.org/x/net v0.0.0-20210913180222-943fd674d43e/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
