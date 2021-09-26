@@ -19,7 +19,7 @@ require (
 	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/twmb/franz-go v1.1.0
-	github.com/unistack-org/micro-broker-kgo/v3 v3.7.2
+	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
 	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
@@ -29,7 +29,7 @@ require (
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5
 	github.com/unistack-org/micro-codec-proto/v3 v3.7.4
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3
-	github.com/unistack-org/micro-codec-urlencode/v3 v3.1.0
+	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
 	github.com/unistack-org/micro-codec-xml/v3 v3.2.2
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
 	github.com/unistack-org/micro-config-env/v3 v3.5.0
@@ -46,7 +46,7 @@ require (
 	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20210816143620-e15ff196659d
-	google.golang.org/grpc v1.40.0
+	google.golang.org/grpc v1.41.0
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.26
