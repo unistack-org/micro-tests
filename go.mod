@@ -14,7 +14,6 @@ require (
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/miekg/dns v1.1.38 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/encoding v0.2.19 // indirect
 	github.com/segmentio/kafka-go v0.4.20
 	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
@@ -28,7 +27,7 @@ require (
 	github.com/unistack-org/micro-codec-json/v3 v3.7.8
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5
 	github.com/unistack-org/micro-codec-proto/v3 v3.7.4
-	github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3
+	github.com/unistack-org/micro-codec-segmentio/v3 v3.7.4
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
 	github.com/unistack-org/micro-codec-xml/v3 v3.2.2
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
