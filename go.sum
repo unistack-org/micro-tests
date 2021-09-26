@@ -377,8 +377,9 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
-github.com/twmb/franz-go v1.1.0 h1:WR4EbNx7L4eLyTgQmbp3Bg9fX3eW6jHWYj087n07rRc=
 github.com/twmb/franz-go v1.1.0/go.mod h1:KerrVhzNpasYrWJLr2Yj6Cui43f1BxH4U9SJEDVOjqQ=
+github.com/twmb/franz-go v1.1.1 h1:XR3JGvsRlvvTPakMcsW8vkubaHdtR4Vwy1RTiiiFshs=
+github.com/twmb/franz-go v1.1.1/go.mod h1:KerrVhzNpasYrWJLr2Yj6Cui43f1BxH4U9SJEDVOjqQ=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914042331-106aef61b693/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b h1:7d6eRt9HEqXVxMzD2fry9qtJ0kRkgeJ5olqW9K+aXv8=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20210914174821-2f676c0a574b/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
@@ -440,6 +441,7 @@ github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh1
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.2/go.mod h1:X8UIH1JK4/jYN/CtvxJ6d+HrfqzmoVQc1no8Homy+ww=
+github.com/unistack-org/micro/v3 v3.7.1/go.mod h1:gBoY6gvzeFiJTZ4FgDttGNSs4Y1+1PRg2cV1yTRMSlg=
 github.com/unistack-org/micro/v3 v3.7.3/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
 github.com/unistack-org/micro/v3 v3.7.4 h1:nRk7f58v0VsiW7aKL0UQaFCQxFoursHQLoWdeZ1RYbg=
 github.com/unistack-org/micro/v3 v3.7.4/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=

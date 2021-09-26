@@ -18,7 +18,7 @@ require (
 	github.com/segmentio/kafka-go v0.4.20
 	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
-	github.com/twmb/franz-go v1.1.0
+	github.com/twmb/franz-go v1.1.1
 	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
