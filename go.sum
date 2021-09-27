@@ -407,8 +407,8 @@ github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3 h1:yy14uZiALyTd+zvJCnr3U
 github.com/unistack-org/micro-codec-segmentio/v3 v3.2.3/go.mod h1:9idbxekGjbxEpBm4EfRhd4lKiTEyeR818qSiCSjTQR0=
 github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4 h1:hCBaqskrFSUk7lapC7IZn8xhr5XYCt65cE9dIBrBwp4=
 github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4/go.mod h1:XTVxbYnj++tQpoX3G2CuR5TbBcJJfMYXHdIYM2XVx3M=
-github.com/unistack-org/micro-codec-xml/v3 v3.2.2 h1:xJMMcNjfyFNHA4bzRBrB9EvVf4GJ5Hl0egi5V4SJ3KE=
-github.com/unistack-org/micro-codec-xml/v3 v3.2.2/go.mod h1:75yGkasLbY2QsVnjzXiovlXPgsm+ddA43IKspWS5vNo=
+github.com/unistack-org/micro-codec-xml/v3 v3.7.5 h1:PZru4J954v+VSfAXGje7ZgeVQy2/EppTgPR4IlbKvao=
+github.com/unistack-org/micro-codec-xml/v3 v3.7.5/go.mod h1:PRBPQQd1ABE/Hq5ceoAD1E7QnXOXXKJLcCFDMz4eWTs=
 github.com/unistack-org/micro-config-consul/v3 v3.6.0 h1:RZZO+l6sQ3PqTb9uOJC0lGC/Ady+9Ag+05or3I1XbOA=
 github.com/unistack-org/micro-config-consul/v3 v3.6.0/go.mod h1:Z+xhwFxTXdCofL6Qa7NeKMGt8GrXDUNeKyRMBJbtUAg=
 github.com/unistack-org/micro-config-env/v3 v3.5.0 h1:MNDQ0oxB+Gh2cwfGsUqZIAzlocv/lsw9IHYO2naksyU=
@@ -442,6 +442,7 @@ github.com/unistack-org/micro/v3 v3.5.6/go.mod h1:P8k8nuM0RYUdX6TNxO4yzq3tjtrvh1
 github.com/unistack-org/micro/v3 v3.5.9/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.0/go.mod h1:zQnZPEy842kQNcyjmVys6tdMjty4PHdyUUKYm1wrg1s=
 github.com/unistack-org/micro/v3 v3.6.2/go.mod h1:X8UIH1JK4/jYN/CtvxJ6d+HrfqzmoVQc1no8Homy+ww=
+github.com/unistack-org/micro/v3 v3.7.1/go.mod h1:gBoY6gvzeFiJTZ4FgDttGNSs4Y1+1PRg2cV1yTRMSlg=
 github.com/unistack-org/micro/v3 v3.7.3/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
 github.com/unistack-org/micro/v3 v3.7.4 h1:nRk7f58v0VsiW7aKL0UQaFCQxFoursHQLoWdeZ1RYbg=
 github.com/unistack-org/micro/v3 v3.7.4/go.mod h1:78vy7ggElJD+ayx8ruhJsY+SkGUupfR32LXrg1UObvg=
