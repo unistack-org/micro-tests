@@ -21,13 +21,13 @@ require (
 	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
-	github.com/unistack-org/micro-client-grpc/v3 v3.4.0
+	github.com/unistack-org/micro-client-grpc/v3 v3.7.4
 	github.com/unistack-org/micro-client-http/v3 v3.7.3
-	github.com/unistack-org/micro-codec-grpc/v3 v3.2.2
+	github.com/unistack-org/micro-codec-grpc/v3 v3.7.4
 	github.com/unistack-org/micro-codec-json/v3 v3.7.8
 	github.com/unistack-org/micro-codec-jsonpb/v3 v3.7.5
 	github.com/unistack-org/micro-codec-proto/v3 v3.7.4
-	github.com/unistack-org/micro-codec-segmentio/v3 v3.7.4
+	github.com/unistack-org/micro-codec-segmentio/v3 v3.7.5
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
 	github.com/unistack-org/micro-codec-xml/v3 v3.7.5
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
@@ -36,15 +36,16 @@ require (
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3
 	github.com/unistack-org/micro-proto v0.0.9
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
-	github.com/unistack-org/micro-server-grpc/v3 v3.3.7
+	github.com/unistack-org/micro-server-grpc/v3 v3.7.4
 	github.com/unistack-org/micro-server-http/v3 v3.4.4
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
 	github.com/unistack-org/micro/v3 v3.7.4
-	golang.org/x/sys v0.0.0-20210816183151-1e6c022a8912 // indirect
+	golang.org/x/net v0.0.0-20210924151903-3ad01bbaa167 // indirect
+	golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20210816143620-e15ff196659d
+	google.golang.org/genproto v0.0.0-20210924002016-3dee208752a0
 	google.golang.org/grpc v1.41.0
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
