@@ -31,7 +31,7 @@ require (
 	github.com/unistack-org/micro-codec-xml/v3 v3.7.5
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
 	github.com/unistack-org/micro-config-env/v3 v3.5.0
-	github.com/unistack-org/micro-config-vault/v3 v3.5.0
+	github.com/unistack-org/micro-config-vault/v3 v3.7.6
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3
 	github.com/unistack-org/micro-proto v0.0.9
 	github.com/unistack-org/micro-router-register/v3 v3.7.8

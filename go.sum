@@ -409,8 +409,8 @@ github.com/unistack-org/micro-config-consul/v3 v3.6.0 h1:RZZO+l6sQ3PqTb9uOJC0lGC
 github.com/unistack-org/micro-config-consul/v3 v3.6.0/go.mod h1:Z+xhwFxTXdCofL6Qa7NeKMGt8GrXDUNeKyRMBJbtUAg=
 github.com/unistack-org/micro-config-env/v3 v3.5.0 h1:MNDQ0oxB+Gh2cwfGsUqZIAzlocv/lsw9IHYO2naksyU=
 github.com/unistack-org/micro-config-env/v3 v3.5.0/go.mod h1:+op0d+FbHFWcvRQxvKVV78D5Iu1ZxhmdVq8rpumyl8Y=
-github.com/unistack-org/micro-config-vault/v3 v3.5.0 h1:tH0Bin7axMir2rmiocQ92qAlhTjezsVAL7qUlDN64uY=
-github.com/unistack-org/micro-config-vault/v3 v3.5.0/go.mod h1:GJKV/gu55BWq3eCNwoZ4pDcGxuNvWs/3Glz5VXQCSAc=
+github.com/unistack-org/micro-config-vault/v3 v3.7.6 h1:2Cs8+npPK25sLyat+i2aHa6B8ERZ+cl5reRikwQ54cA=
+github.com/unistack-org/micro-config-vault/v3 v3.7.6/go.mod h1:DY6qMQnZ+oR7yEgb24e9IX9B8X/k6iL48Z/6sxmDq3M=
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3 h1:eKe0IjMm5e02rkhALo1FcG6UxYKOsJ5HU1loGKAUyPs=
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3/go.mod h1:cDz4YigqJ3e3/2A8ze5SdJA8Z7KJf/s0VlIA6w97EHw=
 github.com/unistack-org/micro-proto v0.0.5/go.mod h1:EuI7UlfGXmT1hy6WacULib9LbNgRnDYQvTCFoLgKM2I=
@@ -503,7 +503,6 @@ golang.org/x/net v0.0.0-20210226172049-e18ecbb05110/go.mod h1:m0MpNAwzfU5UDzcl9v
 golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4/go.mod h1:p54w0d4576C0XHj96bSt6lcn1PtDYWL6XObtHCRCNQM=
 golang.org/x/net v0.0.0-20210423184538-5f58ad60dda6/go.mod h1:OJAsFXCWl8Ukc7SiCT/9KSuxbyM7479/AVlXFRxuMCk=
 golang.org/x/net v0.0.0-20210510120150-4163338589ed/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
-golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210913180222-943fd674d43e/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210928044308-7d9f5e0b762b/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/net v0.0.0-20210929193557-e81a3d93ecf6 h1:Z04ewVs7JhXaYkmDhBERPi41gnltfQpMWDnTnQbaCqk=
