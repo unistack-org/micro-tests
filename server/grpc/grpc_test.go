@@ -31,7 +31,7 @@ type testServer struct {
 func NewServerHandlerWrapper() server.HandlerWrapper {
 	return func(fn server.HandlerFunc) server.HandlerFunc {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			//fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
+			// fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
 			return fn(ctx, req, rsp)
 		}
 	}
@@ -39,7 +39,7 @@ func NewServerHandlerWrapper() server.HandlerWrapper {
 
 func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
 	if req.Name == "Error" {
-		return &errors.Error{Id: "id", Code: 99, Detail: "detail"}
+		return &errors.Error{ID: "id", Code: 99, Detail: "detail"}
 	}
 	rsp.Msg = "Hello " + req.Name
 	rsp.Broken = &pb.Broken{Field: "12345"}

@@ -20,7 +20,7 @@ require (
 	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
 	github.com/unistack-org/micro-broker-segmentio/v3 v3.4.3-0.20210804134048-7916dafb4dfe
 	//github.com/unistack-org/micro-client-drpc/v3 v3.0.0-00010101000000-000000000000
-	github.com/unistack-org/micro-client-grpc/v3 v3.7.4
+	github.com/unistack-org/micro-client-grpc/v3 v3.7.8
 	github.com/unistack-org/micro-client-http/v3 v3.7.3
 	github.com/unistack-org/micro-codec-grpc/v3 v3.7.4
 	github.com/unistack-org/micro-codec-json/v3 v3.7.8
@@ -34,19 +34,18 @@ require (
 	github.com/unistack-org/micro-config-vault/v3 v3.5.0
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3
 	github.com/unistack-org/micro-proto v0.0.9
-	github.com/unistack-org/micro-router-register/v3 v3.2.2
+	github.com/unistack-org/micro-router-register/v3 v3.7.8
 	github.com/unistack-org/micro-server-grpc/v3 v3.7.4
 	github.com/unistack-org/micro-server-http/v3 v3.7.6
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
-	github.com/unistack-org/micro/v3 v3.7.6
+	github.com/unistack-org/micro/v3 v3.7.8
 	golang.org/x/net v0.0.0-20210929193557-e81a3d93ecf6 // indirect
-	golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 // indirect
+	golang.org/x/sys v0.0.0-20210930212924-f542c8878de8 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20210929214142-896c89f843d2
+	google.golang.org/genproto v0.0.0-20210930144712-2e2e1008e8a3
 	google.golang.org/grpc v1.41.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.26

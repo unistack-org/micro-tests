@@ -27,7 +27,7 @@ type testServer struct {
 
 func (g *testServer) Call(ctx context.Context, in *pb.Request) (*pb.Response, error) {
 	if in.Name == "Error" {
-		return nil, &errors.Error{Id: "id", Code: 99, Detail: "detail"}
+		return nil, &errors.Error{ID: "id", Code: 99, Detail: "detail"}
 	}
 	return &pb.Response{Msg: "Hello " + in.Name}, nil
 }
@@ -135,7 +135,7 @@ func TestGRPCClient(t *testing.T) {
 			t.Fatalf("invalid error received %#+v\n", err)
 		}
 
-		if verr.Code != 99 && verr.Id != "id" && verr.Detail != "detail" {
+		if verr.Code != 99 && verr.ID != "id" && verr.Detail != "detail" {
 			t.Fatalf("invalid error received %#+v\n", verr)
 		}
 	}

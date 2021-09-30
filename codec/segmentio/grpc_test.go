@@ -25,7 +25,7 @@ type testServer struct {
 
 func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
 	if req.Name == "Error" {
-		return &errors.Error{Id: "id", Code: 99, Detail: "detail"}
+		return &errors.Error{ID: "id", Code: 99, Detail: "detail"}
 	}
 	rsp.Msg = "Hello " + req.Name
 	return nil
