@@ -15,7 +15,6 @@ require (
 	github.com/miekg/dns v1.1.38 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.20
-	github.com/silas/dag v0.0.0-20210626123444-3804bac2d6d4 // indirect
 	github.com/stretchr/testify v1.7.0
 	github.com/twmb/franz-go v1.1.1
 	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
@@ -37,16 +36,17 @@ require (
 	github.com/unistack-org/micro-proto v0.0.9
 	github.com/unistack-org/micro-router-register/v3 v3.2.2
 	github.com/unistack-org/micro-server-grpc/v3 v3.7.4
-	github.com/unistack-org/micro-server-http/v3 v3.4.4
+	github.com/unistack-org/micro-server-http/v3 v3.7.6
 	github.com/unistack-org/micro-server-tcp/v3 v3.3.2
 	github.com/unistack-org/micro-wrapper-recovery/v3 v3.0.0
 	github.com/unistack-org/micro-wrapper-trace-opentracing/v3 v3.3.0
-	github.com/unistack-org/micro/v3 v3.7.4
-	golang.org/x/net v0.0.0-20210924151903-3ad01bbaa167 // indirect
+	github.com/unistack-org/micro/v3 v3.7.6
+	golang.org/x/net v0.0.0-20210929193557-e81a3d93ecf6 // indirect
 	golang.org/x/sys v0.0.0-20210927094055-39ccf1dd6fa6 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20210924002016-3dee208752a0
+	google.golang.org/genproto v0.0.0-20210929214142-896c89f843d2
 	google.golang.org/grpc v1.41.0
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.26

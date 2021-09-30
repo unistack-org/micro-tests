@@ -42,14 +42,14 @@ var (
 	TestEndpoints = []api.Endpoint{
 		{
 			Name:    "Test.CallRepeatedString",
-			Path:    []string{"/v1/test/call_repeated_string/{string_ids}"},
+			Path:    []string{"/v1/test/call_repeated_string"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",
 		},
 		{
 			Name:    "Test.CallRepeatedInt64",
-			Path:    []string{"/v1/test/call_repeated_int64/{int64_ids}"},
+			Path:    []string{"/v1/test/call_repeated_int64"},
 			Method:  []string{"POST"},
 			Body:    "*",
 			Handler: "rpc",

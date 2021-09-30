@@ -86,7 +86,7 @@ func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts 
 	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
-		v3.Path("/v1/test/call_repeated_string/{string_ids}"),
+		v3.Path("/v1/test/call_repeated_string"),
 		v3.Body("*"),
 	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))
@@ -106,7 +106,7 @@ func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts .
 	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
-		v3.Path("/v1/test/call_repeated_int64/{int64_ids}"),
+		v3.Path("/v1/test/call_repeated_int64"),
 		v3.Body("*"),
 	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))

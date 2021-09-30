@@ -572,7 +572,7 @@ func TestNativeServer(t *testing.T) {
 		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error"}`, s)
 	}
 
-	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated_string/?string_ids=123&string_ids=321", service[0].Nodes[0].Address), "application/json", nil)
+	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated_string?string_ids=123&string_ids=321", service[0].Nodes[0].Address), "application/json", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
