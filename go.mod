@@ -4,14 +4,7 @@ go 1.16
 
 require (
 	github.com/VictoriaMetrics/metrics v1.17.3 // indirect
-	github.com/armon/go-metrics v0.3.9 // indirect
-	github.com/fatih/color v1.12.0 // indirect
-	github.com/hashicorp/consul/api v1.9.1 // indirect
-	github.com/hashicorp/go-hclog v0.16.2 // indirect
-	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
-	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
-	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/miekg/dns v1.1.38 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.20
@@ -29,7 +22,7 @@ require (
 	github.com/unistack-org/micro-codec-segmentio/v3 v3.7.5
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
 	github.com/unistack-org/micro-codec-xml/v3 v3.7.5
-	github.com/unistack-org/micro-config-consul/v3 v3.6.0
+	github.com/unistack-org/micro-config-consul/v3 v3.7.7
 	github.com/unistack-org/micro-config-env/v3 v3.5.0
 	github.com/unistack-org/micro-config-vault/v3 v3.5.0
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3
