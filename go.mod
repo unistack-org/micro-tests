@@ -30,7 +30,7 @@ require (
 	github.com/unistack-org/micro-codec-urlencode/v3 v3.7.4
 	github.com/unistack-org/micro-codec-xml/v3 v3.7.5
 	github.com/unistack-org/micro-config-consul/v3 v3.6.0
-	github.com/unistack-org/micro-config-env/v3 v3.5.0
+	github.com/unistack-org/micro-config-env/v3 v3.7.6
 	github.com/unistack-org/micro-config-vault/v3 v3.5.0
 	github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3
 	github.com/unistack-org/micro-proto v0.0.9
@@ -46,7 +46,6 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/genproto v0.0.0-20210929214142-896c89f843d2
 	google.golang.org/grpc v1.41.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	storj.io/drpc v0.0.26

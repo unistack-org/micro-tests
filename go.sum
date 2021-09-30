@@ -413,8 +413,8 @@ github.com/unistack-org/micro-codec-xml/v3 v3.7.5 h1:PZru4J954v+VSfAXGje7ZgeVQy2
 github.com/unistack-org/micro-codec-xml/v3 v3.7.5/go.mod h1:PRBPQQd1ABE/Hq5ceoAD1E7QnXOXXKJLcCFDMz4eWTs=
 github.com/unistack-org/micro-config-consul/v3 v3.6.0 h1:RZZO+l6sQ3PqTb9uOJC0lGC/Ady+9Ag+05or3I1XbOA=
 github.com/unistack-org/micro-config-consul/v3 v3.6.0/go.mod h1:Z+xhwFxTXdCofL6Qa7NeKMGt8GrXDUNeKyRMBJbtUAg=
-github.com/unistack-org/micro-config-env/v3 v3.5.0 h1:MNDQ0oxB+Gh2cwfGsUqZIAzlocv/lsw9IHYO2naksyU=
-github.com/unistack-org/micro-config-env/v3 v3.5.0/go.mod h1:+op0d+FbHFWcvRQxvKVV78D5Iu1ZxhmdVq8rpumyl8Y=
+github.com/unistack-org/micro-config-env/v3 v3.7.6 h1:PgqnywUVn5FP6hN35UxR/AnYvxsKjcg49pdEi9UfZ0Q=
+github.com/unistack-org/micro-config-env/v3 v3.7.6/go.mod h1:/y4Tty9CWh0BG3IciGbRSaKKqWEADN5nLoziOD6OWc4=
 github.com/unistack-org/micro-config-vault/v3 v3.5.0 h1:tH0Bin7axMir2rmiocQ92qAlhTjezsVAL7qUlDN64uY=
 github.com/unistack-org/micro-config-vault/v3 v3.5.0/go.mod h1:GJKV/gu55BWq3eCNwoZ4pDcGxuNvWs/3Glz5VXQCSAc=
 github.com/unistack-org/micro-meter-victoriametrics/v3 v3.3.3 h1:eKe0IjMm5e02rkhALo1FcG6UxYKOsJ5HU1loGKAUyPs=
@@ -616,8 +616,6 @@ google.golang.org/grpc v1.39.0/go.mod h1:PImNr+rS9TWYb2O4/emRugxiyHZ5JyHW5F+RPnD
 google.golang.org/grpc v1.40.0/go.mod h1:ogyxbiOoUXAkP+4+xa6PZSE9DZgIHtSpzjDTB9KAK34=
 google.golang.org/grpc v1.41.0 h1:f+PlOh7QV4iIJkPrx5NQ7qaNGFQ3OTse67yaDHfju4E=
 google.golang.org/grpc v1.41.0/go.mod h1:U3l9uK9J0sini8mHphKoXyaqDA/8VyGnDee1zzIUK6k=
-google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 h1:M1YKkFIboKNieVO5DLUEVzQfGwJD30Nv2jfUgzb5UcE=
-google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0/go.mod h1:6Kw0yEErY5E/yWrBtf03jp27GLLJujG4z/JK95pnjjw=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
 google.golang.org/protobuf v0.0.0-20200221191635-4d8936d0db64/go.mod h1:kwYJMbMJ01Woi6D6+Kah6886xMZcty6N08ah7+eCXa0=
 google.golang.org/protobuf v0.0.0-20200228230310-ab0ca4ff8a60/go.mod h1:cfTl7dwQJ+fmap5saPgwCLgHXTUD7jkjRqWcaiX5VyM=
