@@ -14,7 +14,7 @@ require (
 	github.com/mattn/go-isatty v0.0.13 // indirect
 	github.com/miekg/dns v1.1.38 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/kafka-go v0.4.20
+	github.com/segmentio/kafka-go v0.4.21
 	github.com/stretchr/testify v1.7.0
 	github.com/twmb/franz-go v1.1.1
 	github.com/unistack-org/micro-broker-kgo/v3 v3.7.3
