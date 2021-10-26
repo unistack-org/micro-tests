@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/unistack-org/micro-tests/client/drpc/proto;pb";
+option go_package = "go.unistack.org/micro-tests/client/drpc/proto;pb";
 
 package Test;
 

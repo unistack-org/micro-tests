@@ -7,13 +7,75 @@ option go_package="/proto;pb";
 import "api/annotations.proto";
 import "codec/frame.proto";
 import "tag/tag.proto";
+import "openapiv3/annotations.proto";
+
+option (micro.openapiv3.openapiv3_swagger) = {
+  info: {
+    title: "test title";
+    version: "0.0.5";
+    description: "test desc";
+  };
+	servers: {
+    url: "{proto}://{sub}.example.com/v1";
+    description: "server";
+		variables: {
+			additional_properties: {
+				name: "proto";
+				value: {
+				  enum: ["http", "https"];
+				  default: "http";
+				  description: "protocols"
+				};
+			};
+			additional_properties: {
+			  name: "sub";
+				value: {
+					enum: ["test", "prod"];
+          default: "test";
+          description: "subdomain";
+				};
+			};
+		};
+	};
+	servers: {
+    url: "https://other.example.com/v1";
+    description: "other test server";
+ 	};
+};
 
 service TestService {
 	rpc TestEndpoint(Request) returns (Response) {
 		option (micro.api.http) = {
 			get: "/users/test"
 		};
-	}
+		option (micro.openapiv3.openapiv3_operation) = {
+			operation_id: "TestEndpoint";
+			parameters: {
+				parameter: {
+				  name: "client_uid";
+				  in: "header";
+				  schema: {
+						schema: {
+					  	type: "string";
+						};
+					};
+				  required: true;
+			  };
+		  };
+			parameters: {
+				parameter: {
+				  name: "csrftoken";
+				  in: "cookie";
+				  schema: {
+						schema: {
+					  	type: "string";
+						};
+					};
+				  required: true;
+			  };
+		  };
+		};
+	};
 	rpc UserByID(Request) returns (Response) {
 		option (micro.api.http) = {
 			get: "/users/{id}"
@@ -66,6 +128,7 @@ message ResponseImage {}
 
 message Request {
 	string id = 1;
+        string client_uid = 2;
 }
 
 message Response {

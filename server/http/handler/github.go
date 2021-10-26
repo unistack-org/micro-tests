@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	httpsrv "github.com/unistack-org/micro-server-http/v3"
-	pb "github.com/unistack-org/micro-tests/client/http/proto"
+	httpsrv "go.unistack.org/micro-server-http/v3"
+	pb "go.unistack.org/micro-tests/client/http/proto"
 )
 
 type GithubHandler struct{}

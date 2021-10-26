@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package gobreaker
@@ -7,10 +8,10 @@ import (
 	"testing"
 
 	"github.com/sony/gobreaker"
-	"github.com/unistack-org/micro/register/memory"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/router"
+	"go.unistack.org/micro/register/memory"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/router"
 )
 
 func TestBreaker(t *testing.T) {

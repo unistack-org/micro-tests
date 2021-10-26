@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package grpc
@@ -8,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	pb "github.com/unistack-org/micro-tests/client/grpc/proto"
+	pb "go.unistack.org/micro-tests/client/grpc/proto"
 	"google.golang.org/grpc"
 	pgrpc "google.golang.org/grpc"
 )

@@ -13,15 +13,15 @@ import (
 	"time"
 
 	"github.com/segmentio/kafka-go"
-	segmentio "github.com/unistack-org/micro-broker-segmentio/v3"
-	victoriameter "github.com/unistack-org/micro-meter-victoriametrics/v3"
-	https "github.com/unistack-org/micro-server-http/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/codec"
-	"github.com/unistack-org/micro/v3/logger"
-	"github.com/unistack-org/micro/v3/meter"
-	meterhandler "github.com/unistack-org/micro/v3/meter/handler"
-	"github.com/unistack-org/micro/v3/server"
+	segmentio "go.unistack.org/micro-broker-segmentio/v3"
+	victoriameter "go.unistack.org/micro-meter-victoriametrics/v3"
+	https "go.unistack.org/micro-server-http/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/codec"
+	"go.unistack.org/micro/v3/logger"
+	"go.unistack.org/micro/v3/meter"
+	meterhandler "go.unistack.org/micro/v3/meter/handler"
+	"go.unistack.org/micro/v3/server"
 )
 
 type lg struct{}
@@ -30,12 +30,10 @@ func (l *lg) Printf(format string, args ...interface{}) {
 	//	logger.Infof(context.Background(), format, args...)
 }
 
-var (
-	bm = &broker.Message{
-		Header: map[string]string{"hkey": "hval"},
-		Body:   []byte(`"body"`),
-	}
-)
+var bm = &broker.Message{
+	Header: map[string]string{"hkey": "hval"},
+	Body:   []byte(`"body"`),
+}
 
 func TestConsumerGroup(t *testing.T) {
 	topic := "test_topic"
@@ -112,7 +110,7 @@ func TestConsumerGroup(t *testing.T) {
 			if err := brk.Publish(ctx, topic, bm); err != nil {
 				t.Fatal(err)
 			}
-			//log.Printf("publish %d", i)
+			// log.Printf("publish %d", i)
 			time.Sleep(600 * time.Millisecond)
 		}
 	}()

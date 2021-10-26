@@ -2,26 +2,22 @@ syntax = "proto3";
 
 package test;
 
-option go_package = "github.com/unistack-org/micro-tests/server/http/proto;pb";
+option go_package = "go.unistack.org/micro-tests/server/http/proto;pb";
 
 import "tag/tag.proto";
 import "api/annotations.proto";
-import "openapiv2/annotations.proto";
+import "openapiv3/annotations.proto";
 import "google/protobuf/wrappers.proto";
 
 service TestDouble {
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc CallDouble(CallReq) returns (CallRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "Call";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -33,16 +29,12 @@ service TestDouble {
 
 service Test {
 	rpc CallRepeatedString(CallReq) returns (CallRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "CallRepeatedString";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -51,16 +43,12 @@ service Test {
 		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc CallRepeatedInt64(CallReq) returns (CallRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "CallRepeatedInt64";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -72,16 +60,12 @@ service Test {
 
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc Call(CallReq) returns (CallRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "Call";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -90,16 +74,12 @@ service Test {
 		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc CallError(CallReq1) returns (CallRsp1) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "CallError";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };

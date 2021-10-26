@@ -8,10 +8,10 @@ import (
 	"net"
 	"testing"
 
-	drpc "github.com/unistack-org/micro-client-drpc/v3"
-	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	pb "github.com/unistack-org/micro-tests/client/drpc/proto"
-	"github.com/unistack-org/micro/v3/client"
+	drpc "go.unistack.org/micro-client-drpc/v3"
+	protocodec "go.unistack.org/micro-codec-proto/v3"
+	pb "go.unistack.org/micro-tests/client/drpc/proto"
+	"go.unistack.org/micro/v3/client"
 	"storj.io/drpc/drpcmux"
 	"storj.io/drpc/drpcserver"
 )

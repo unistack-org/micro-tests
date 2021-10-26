@@ -4,20 +4,16 @@ package github;
 option go_package = "github.com//unistack-org/micro-tests/client/http/proto;pb";
 
 import "api/annotations.proto";
-import "openapiv2/annotations.proto";
+import "openapiv3/annotations.proto";
 
 service Github {
 	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "LookupUser";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".github.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".github.Error";
           };
         };
       };
@@ -25,16 +21,12 @@ service Github {
 		option (micro.api.http) = { get: "/users/{username}"; };
   };
 	rpc LookupUserWithoutPath(LookupUserReq) returns (LookupUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "LookupUserWithoutPath";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".github.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".github.Error";
           };
         };
       };

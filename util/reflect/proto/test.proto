@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package reflect;
 
-option go_package = "github.com/unistack-org/micro-tests/util/reflect/proto;pb";
+option go_package = "go.unistack.org/micro-tests/util/reflect/proto;pb";
 import "google/protobuf/wrappers.proto";
 
 message CallReq {

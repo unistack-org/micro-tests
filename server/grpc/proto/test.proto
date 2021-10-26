@@ -2,12 +2,12 @@ syntax = "proto3";
 
 package helloworld;
 
-option go_package = "github.com/unistack-org/micro-tests/server/grpc/proto;helloworld";
-import "google/api/annotations.proto";
+option go_package = "go.unistack.org/micro-tests/server/grpc/proto;helloworld";
+import "api/annotations.proto";
 
 service Test {
 	rpc Call(Request) returns (Response) {
-    option (google.api.http) = { post: "/api/v0/test/call/TEST"; body: "*"; };
+    option (micro.api.http) = { post: "/api/v0/test/call/TEST"; body: "*"; };
 	};
 }
 

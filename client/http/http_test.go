@@ -11,21 +11,19 @@ import (
 	"net/http"
 	"testing"
 
-	mhttp "github.com/unistack-org/micro-client-http/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	pb "github.com/unistack-org/micro-tests/client/http/proto"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/codec"
-	"github.com/unistack-org/micro/v3/register"
-	"github.com/unistack-org/micro/v3/router"
+	mhttp "go.unistack.org/micro-client-http/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	pb "go.unistack.org/micro-tests/client/http/proto"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/codec"
+	"go.unistack.org/micro/v3/register"
+	"go.unistack.org/micro/v3/router"
 )
 
-var (
-	defaultHTTPCodecs = map[string]codec.Codec{
-		"application/json": jsoncodec.NewCodec(),
-	}
-)
+var defaultHTTPCodecs = map[string]codec.Codec{
+	"application/json": jsoncodec.NewCodec(),
+}
 
 type Message struct {
 	Seq  int64
@@ -73,7 +71,6 @@ func TestNative(t *testing.T) {
 	if rsp.Name != "Vasiliy Tolstov" {
 		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
-
 }
 
 func TestNativeWithoutPath(t *testing.T) {
@@ -88,7 +85,6 @@ func TestNativeWithoutPath(t *testing.T) {
 	if rsp.Name != "Vasiliy Tolstov" {
 		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
-
 }
 
 func TestHTTPClient(t *testing.T) {

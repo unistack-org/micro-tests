@@ -5,17 +5,17 @@ import (
 	"fmt"
 	"testing"
 
-	cli "github.com/unistack-org/micro-client-grpc/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	srv "github.com/unistack-org/micro-server-grpc/v3"
-	recwrapper "github.com/unistack-org/micro-wrapper-recovery/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/register"
-	"github.com/unistack-org/micro/v3/router"
-	"github.com/unistack-org/micro/v3/server"
+	cli "go.unistack.org/micro-client-grpc/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	srv "go.unistack.org/micro-server-grpc/v3"
+	recwrapper "go.unistack.org/micro-wrapper-recovery/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/register"
+	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v3/server"
 )
 
 type Test interface {

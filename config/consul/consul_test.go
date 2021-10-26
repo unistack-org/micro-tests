@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	consul "github.com/unistack-org/micro-config-consul/v3"
-	"github.com/unistack-org/micro/v3/config"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	consul "go.unistack.org/micro-config-consul/v3"
+	"go.unistack.org/micro/v3/config"
 )
 
 type Cfg struct {
@@ -84,5 +84,4 @@ func TestWatch(t *testing.T) {
 	}()
 
 	<-done
-
 }

@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package victoriametrics
@@ -13,13 +14,13 @@ import (
 
 	metrics "github.com/VictoriaMetrics/metrics"
 	"github.com/stretchr/testify/assert"
-	gclient "github.com/unistack-org/micro-client-grpc/v3"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	gserver "github.com/unistack-org/micro-server-grpc/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/router"
-	"github.com/unistack-org/micro/v3/server"
+	gclient "go.unistack.org/micro-client-grpc/v3"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	gserver "go.unistack.org/micro-server-grpc/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v3/server"
 )
 
 type Test interface {

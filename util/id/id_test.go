@@ -6,7 +6,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/stretchr/testify/assert"
-	id "github.com/unistack-org/micro/v3/util/id"
+	id "go.unistack.org/micro/v3/util/id"
 )
 
 func TestGenerate(t *testing.T) {

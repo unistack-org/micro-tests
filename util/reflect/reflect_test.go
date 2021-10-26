@@ -3,8 +3,8 @@ package reflect
 import (
 	"testing"
 
-	pb "github.com/unistack-org/micro-tests/util/reflect/proto"
-	rutil "github.com/unistack-org/micro/v3/util/reflect"
+	pb "go.unistack.org/micro-tests/util/reflect/proto"
+	rutil "go.unistack.org/micro/v3/util/reflect"
 )
 
 func TestFieldName(t *testing.T) {
@@ -50,7 +50,6 @@ func TestMergeBool(t *testing.T) {
 	if !s.Bool {
 		t.Fatalf("merge bool error: %#+v\n", s)
 	}
-
 }
 
 func TestMergeString(t *testing.T) {
@@ -80,7 +79,6 @@ func TestMergeString(t *testing.T) {
 	if s.Bool != "false" {
 		t.Fatalf("merge bool error: %#+v\n", s)
 	}
-
 }
 
 func TestMerge(t *testing.T) {

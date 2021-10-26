@@ -6,19 +6,19 @@ import (
 	"testing"
 	"time"
 
-	httpcli "github.com/unistack-org/micro-client-http/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
-	httpsrv "github.com/unistack-org/micro-server-http/v3"
-	pb "github.com/unistack-org/micro-tests/flow/proto"
-	"github.com/unistack-org/micro/v3"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/flow"
-	"github.com/unistack-org/micro/v3/logger"
-	"github.com/unistack-org/micro/v3/meter"
-	"github.com/unistack-org/micro/v3/server"
-	"github.com/unistack-org/micro/v3/store"
-	"github.com/unistack-org/micro/v3/tracer"
+	httpcli "go.unistack.org/micro-client-http/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	jsonpbcodec "go.unistack.org/micro-codec-jsonpb/v3"
+	httpsrv "go.unistack.org/micro-server-http/v3"
+	pb "go.unistack.org/micro-tests/flow/proto"
+	"go.unistack.org/micro/v3"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/flow"
+	"go.unistack.org/micro/v3/logger"
+	"go.unistack.org/micro/v3/meter"
+	"go.unistack.org/micro/v3/server"
+	"go.unistack.org/micro/v3/store"
+	"go.unistack.org/micro/v3/tracer"
 )
 
 type handler struct{}
@@ -139,5 +139,4 @@ func TestFlow(t *testing.T) {
 	}
 	_ = keys
 	t.Logf("execution id: %s, result: %v", id, err)
-
 }

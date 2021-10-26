@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package ratelimit
@@ -9,18 +10,20 @@ import (
 	"time"
 
 	"github.com/juju/ratelimit"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/network/transport"
-	"github.com/unistack-org/micro/v3/router"
-	"github.com/unistack-org/micro/v3/server"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/network/transport"
+	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v3/server"
 )
 
-type testHandler struct{}
-type TestRequest struct{}
-type TestResponse struct{}
+type (
+	testHandler  struct{}
+	TestRequest  struct{}
+	TestResponse struct{}
+)
 
 func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestResponse) error {
 	return nil
@@ -89,7 +92,7 @@ func TestRateServerLimit(t *testing.T) {
 			server.Register(r),
 			server.Transport(tr),
 			// add broker
-			//server.Broker(b),
+			// server.Broker(b),
 			// add the breaker wrapper
 			server.WrapHandler(NewHandlerWrapper(br, false)),
 		)

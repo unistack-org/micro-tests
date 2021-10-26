@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
-	tcp "github.com/unistack-org/micro-server-tcp/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/logger"
-	"github.com/unistack-org/micro/v3/register"
-	"github.com/unistack-org/micro/v3/server"
+	tcp "go.unistack.org/micro-server-tcp/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/logger"
+	"go.unistack.org/micro/v3/register"
+	"go.unistack.org/micro/v3/server"
 )
 
 type testHandler struct {

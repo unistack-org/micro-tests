@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	mid "github.com/unistack-org/micro/v3/util/id"
+	mid "go.unistack.org/micro/v3/util/id"
 )
 
 func TestHasNoCollisions(t *testing.T) {

@@ -12,16 +12,16 @@ import (
 	"testing"
 	"time"
 
-	"github.com/unistack-org/micro/v3/store/cache"
+	"go.unistack.org/micro/v3/store/cache"
 
-	"github.com/unistack-org/micro/v3/store/memory"
+	"go.unistack.org/micro/v3/store/memory"
 
 	"github.com/kr/pretty"
-	"github.com/unistack-org/micro/v3/store/cockroach"
+	"go.unistack.org/micro/v3/store/cockroach"
 
-	"github.com/unistack-org/micro/v3/store"
+	"go.unistack.org/micro/v3/store"
 
-	"github.com/unistack-org/micro/v3/store/file"
+	"go.unistack.org/micro/v3/store/file"
 
 	"github.com/davecgh/go-spew/spew"
 )

@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package datadog
@@ -8,18 +9,18 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	"github.com/unistack-org/micro/register/memory"
-	"github.com/unistack-org/micro/v3/client"
-	microerr "github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/router"
-	"github.com/unistack-org/micro/v3/server"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	"go.unistack.org/micro/register/memory"
+	"go.unistack.org/micro/v3/client"
+	microerr "go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v3/server"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/mocktracer"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 
-	cli "github.com/unistack-org/micro/v3/client"
-	srv "github.com/unistack-org/micro/v3/server"
+	cli "go.unistack.org/micro/v3/client"
+	srv "go.unistack.org/micro/v3/server"
 )
 
 type Test interface {
@@ -29,6 +30,7 @@ type Test interface {
 type TestRequest struct {
 	IsError bool
 }
+
 type TestResponse struct {
 	Message string
 }

@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package router_test
@@ -13,30 +14,29 @@ import (
 	"testing"
 	"time"
 
-	rpc "github.com/unistack-org/micro-api-handler-rpc/v3"
-	rregister "github.com/unistack-org/micro-api-router-register/v3"
-	rstatic "github.com/unistack-org/micro-api-router-static/v3"
-	gcli "github.com/unistack-org/micro-client-grpc/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	regRouter "github.com/unistack-org/micro-router-register/v3"
-	gsrv "github.com/unistack-org/micro-server-grpc/v3"
-	gpb "github.com/unistack-org/micro-tests/server/grpc/gproto"
-	pb "github.com/unistack-org/micro-tests/server/grpc/proto"
-	"github.com/unistack-org/micro/v3/api"
-	"github.com/unistack-org/micro/v3/api/handler"
-	"github.com/unistack-org/micro/v3/api/router"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/register"
-	rt "github.com/unistack-org/micro/v3/router"
-	"github.com/unistack-org/micro/v3/server"
+	rpc "go.unistack.org/micro-api-handler-rpc/v3"
+	rregister "go.unistack.org/micro-api-router-register/v3"
+	rstatic "go.unistack.org/micro-api-router-static/v3"
+	gcli "go.unistack.org/micro-client-grpc/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	protocodec "go.unistack.org/micro-codec-proto/v3"
+	regRouter "go.unistack.org/micro-router-register/v3"
+	gsrv "go.unistack.org/micro-server-grpc/v3"
+	gpb "go.unistack.org/micro-tests/server/grpc/gproto"
+	pb "go.unistack.org/micro-tests/server/grpc/proto"
+	"go.unistack.org/micro/v3/api"
+	"go.unistack.org/micro/v3/api/handler"
+	"go.unistack.org/micro/v3/api/router"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/register"
+	rt "go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v3/server"
 )
 
 // server is used to implement helloworld.GreeterServer.
-type testServer struct {
-}
+type testServer struct{}
 
 // TestHello implements helloworld.GreeterServer
 func (s *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {

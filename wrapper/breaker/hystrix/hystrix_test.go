@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package hystrix
@@ -7,10 +8,10 @@ import (
 	"testing"
 
 	"github.com/afex/hystrix-go/hystrix"
-	rrouter "github.com/unistack-org/micro-router-register/v3"
-	"github.com/unistack-org/micro/register/memory"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/router"
+	rrouter "go.unistack.org/micro-router-register/v3"
+	"go.unistack.org/micro/register/memory"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/router"
 )
 
 func TestBreaker(t *testing.T) {

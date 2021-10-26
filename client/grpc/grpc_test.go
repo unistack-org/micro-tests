@@ -8,14 +8,14 @@ import (
 	"testing"
 	"time"
 
-	grpc "github.com/unistack-org/micro-client-grpc/v3"
-	protocodec "github.com/unistack-org/micro-codec-proto/v3"
-	regRouter "github.com/unistack-org/micro-router-register/v3"
-	pb "github.com/unistack-org/micro-tests/client/grpc/proto"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/errors"
-	"github.com/unistack-org/micro/v3/register"
-	"github.com/unistack-org/micro/v3/router"
+	grpc "go.unistack.org/micro-client-grpc/v3"
+	protocodec "go.unistack.org/micro-codec-proto/v3"
+	regRouter "go.unistack.org/micro-router-register/v3"
+	pb "go.unistack.org/micro-tests/client/grpc/proto"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v3/register"
+	"go.unistack.org/micro/v3/router"
 	pgrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -176,5 +176,4 @@ func TestGRPCClient(t *testing.T) {
 			t.Fatalf("invalid msg: %v", rsp)
 		}
 	}
-
 }

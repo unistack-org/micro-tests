@@ -12,22 +12,22 @@ import (
 	"strings"
 	"testing"
 
-	httpcli "github.com/unistack-org/micro-client-http/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	jsonpbcodec "github.com/unistack-org/micro-codec-jsonpb/v3"
-	urlencodecodec "github.com/unistack-org/micro-codec-urlencode/v3"
-	xmlcodec "github.com/unistack-org/micro-codec-xml/v3"
-	vmeter "github.com/unistack-org/micro-meter-victoriametrics/v3"
-	httpsrv "github.com/unistack-org/micro-server-http/v3"
-	pb "github.com/unistack-org/micro-tests/server/http/proto"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/logger"
-	lwrapper "github.com/unistack-org/micro/v3/logger/wrapper"
-	"github.com/unistack-org/micro/v3/metadata"
-	handler "github.com/unistack-org/micro/v3/meter/handler"
-	mwrapper "github.com/unistack-org/micro/v3/meter/wrapper"
-	"github.com/unistack-org/micro/v3/register"
-	"github.com/unistack-org/micro/v3/server"
+	httpcli "go.unistack.org/micro-client-http/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	jsonpbcodec "go.unistack.org/micro-codec-jsonpb/v3"
+	urlencodecodec "go.unistack.org/micro-codec-urlencode/v3"
+	xmlcodec "go.unistack.org/micro-codec-xml/v3"
+	vmeter "go.unistack.org/micro-meter-victoriametrics/v3"
+	httpsrv "go.unistack.org/micro-server-http/v3"
+	pb "go.unistack.org/micro-tests/server/http/proto"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/logger"
+	lwrapper "go.unistack.org/micro/v3/logger/wrapper"
+	"go.unistack.org/micro/v3/metadata"
+	handler "go.unistack.org/micro/v3/meter/handler"
+	mwrapper "go.unistack.org/micro/v3/meter/wrapper"
+	"go.unistack.org/micro/v3/register"
+	"go.unistack.org/micro/v3/server"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -36,7 +36,7 @@ type Handler struct {
 }
 
 func multipartHandler(w http.ResponseWriter, r *http.Request) {
-	//fmt.Printf("%#+v\n", r)
+	// fmt.Printf("%#+v\n", r)
 }
 
 func upload(client *http.Client, url string, values map[string]io.Reader) error {
@@ -176,6 +176,7 @@ func (h *Handler) CallRepeatedString(ctx context.Context, req *pb.CallReq, rsp *
 	httpsrv.SetRspCode(ctx, http.StatusCreated)
 	return nil
 }
+
 func (h *Handler) CallRepeatedInt64(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) error {
 	if len(req.Int64Ids) != 2 || req.Int64Ids[0] != 123 {
 		h.t.Fatalf("invalid reflect merging, int64_ids invalid: %v", req.Int64Ids)
@@ -226,7 +227,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-	//server.WrapHandler(NewServerHandlerWrapper()),
+	// server.WrapHandler(NewServerHandlerWrapper()),
 	)
 
 	if err := srv.Init(); err != nil {
@@ -266,7 +267,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	// make request
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), strings.NewReader(data.Encode())) // URL-encoded payload
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-	//req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
+	// req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -326,7 +327,6 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
 	}
-
 }
 
 func TestNativeClientServer(t *testing.T) {
@@ -479,7 +479,6 @@ func TestNativeClientServer(t *testing.T) {
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
 	}
-
 }
 
 func TestNativeServer(t *testing.T) {
@@ -624,7 +623,6 @@ func TestNativeServer(t *testing.T) {
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
 	}
-
 }
 
 func TestHTTPHandler(t *testing.T) {

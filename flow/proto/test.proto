@@ -2,26 +2,22 @@ syntax = "proto3";
 
 package test;
 
-option go_package = "github.com/unistack-org/micro-tests/flow/proto;pb";
+option go_package = "go.unistack.org/micro-tests/flow/proto;pb";
 
 //import "tag/tag.proto";
 import "api/annotations.proto";
-import "openapiv2/annotations.proto";
+import "openapiv3/annotations.proto";
 //import "google/protobuf/wrappers.proto";
 
 service TestService {
   //option (micro.api.micro_service) = { client_wrappers: ["one","two"]; };
 	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "LookupUser";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -30,16 +26,12 @@ service TestService {
 		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "UpdateUser";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -48,16 +40,12 @@ service TestService {
 		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc DeleteUser(DeleteUserReq) returns (DeleteUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "DeleteUser";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };
@@ -66,16 +54,12 @@ service TestService {
 		option (micro.api.micro_method) = { timeout: 5; };
   };
 	rpc MailUser(MailUserReq) returns (MailUserRsp) {
-		option (micro.openapiv2.openapiv2_operation) = {
+		option (micro.openapiv3.openapiv3_operation) = {
       operation_id: "MailUser";
       responses: {
-        response_code: {
-          name: "default";
-          value: {
-            json_reference: {
-              description: "Error response";
-              _ref: ".test.Error";
-            };
+        default: {
+          reference: {
+            _ref: ".test.Error";
           };
         };
       };

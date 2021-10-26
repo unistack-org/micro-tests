@@ -3,10 +3,10 @@ package service
 import (
 	"testing"
 
-	httpcli "github.com/unistack-org/micro-client-http/v3"
-	httpsrv "github.com/unistack-org/micro-server-http/v3"
-	"github.com/unistack-org/micro/v3"
-	"github.com/unistack-org/micro/v3/server"
+	httpcli "go.unistack.org/micro-client-http/v3"
+	httpsrv "go.unistack.org/micro-server-http/v3"
+	"go.unistack.org/micro/v3"
+	"go.unistack.org/micro/v3/server"
 )
 
 func TestHTTPService(t *testing.T) {
@@ -18,5 +18,4 @@ func TestHTTPService(t *testing.T) {
 	if err := svc.Init(); err != nil {
 		t.Fatal(err)
 	}
-
 }

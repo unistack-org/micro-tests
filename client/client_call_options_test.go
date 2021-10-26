@@ -6,17 +6,17 @@ import (
 	"context"
 	"testing"
 
-	"github.com/unistack-org/micro/v3/broker"
-	bmemory "github.com/unistack-org/micro/v3/broker/memory"
-	"github.com/unistack-org/micro/v3/client"
-	"github.com/unistack-org/micro/v3/client/grpc"
-	tmemory "github.com/unistack-org/micro/v3/network/transport/memory"
-	rmemory "github.com/unistack-org/micro/v3/register/memory"
-	"github.com/unistack-org/micro/v3/router"
-	rtreg "github.com/unistack-org/micro/v3/router/register"
-	"github.com/unistack-org/micro/v3/server"
-	grpcsrv "github.com/unistack-org/micro/v3/server/grpc"
-	cw "github.com/unistack-org/micro/v3/util/client"
+	"go.unistack.org/micro/v3/broker"
+	bmemory "go.unistack.org/micro/v3/broker/memory"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/client/grpc"
+	tmemory "go.unistack.org/micro/v3/network/transport/memory"
+	rmemory "go.unistack.org/micro/v3/register/memory"
+	"go.unistack.org/micro/v3/router"
+	rtreg "go.unistack.org/micro/v3/router/register"
+	"go.unistack.org/micro/v3/server"
+	grpcsrv "go.unistack.org/micro/v3/server/grpc"
+	cw "go.unistack.org/micro/v3/util/client"
 )
 
 type TestFoo struct {

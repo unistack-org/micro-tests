@@ -1,0 +1,397 @@
+{
+  "openapi":  "3.0.3",
+  "info":  {
+    "title":  "test title",
+    "description":  "test desc",
+    "version":  "0.0.5"
+  },
+  "servers":  [
+    {
+      "url":  "{proto}://{sub}.example.com/v1",
+      "description":  "server",
+      "variables":  {
+        "additionalProperties":  [
+          {
+            "name":  "proto",
+            "value":  {
+              "enum":  [
+                "http",
+                "https"
+              ],
+              "default":  "http",
+              "description":  "protocols"
+            }
+          },
+          {
+            "name":  "sub",
+            "value":  {
+              "enum":  [
+                "test",
+                "prod"
+              ],
+              "default":  "test",
+              "description":  "subdomain"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "url":  "https://other.example.com/v1",
+      "description":  "other test server"
+    }
+  ],
+  "paths":  {
+    "path":  [
+      {
+        "name":  "/aml",
+        "value":  {
+          "post":  {
+            "operationId":  "TestService_KzAmlRs",
+            "parameters":  [
+              {
+                "parameter":  {
+                  "name":  "kzAmlNewOnlineRs",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              }
+            ],
+            "responses":  {
+              "responseOrReference":  [
+                {
+                  "name":  "200",
+                  "value":  {
+                    "response":  {
+                      "description":  "OK",
+                      "content":  {
+                        "additionalProperties":  [
+                          {
+                            "name":  "application/json",
+                            "value":  {
+                              "schema":  {
+                                "reference":  {
+                                  "Ref":  "#/components/schemas/ResponseAml"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name":  "/users/image/upload",
+        "value":  {
+          "post":  {
+            "operationId":  "TestService_UploadFile",
+            "parameters":  [
+              {
+                "parameter":  {
+                  "name":  "image",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "file_name",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "doc_type",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              }
+            ],
+            "responses":  {
+              "responseOrReference":  [
+                {
+                  "name":  "200",
+                  "value":  {
+                    "response":  {
+                      "description":  "OK",
+                      "content":  {
+                        "additionalProperties":  [
+                          {
+                            "name":  "application/json",
+                            "value":  {
+                              "schema":  {
+                                "reference":  {
+                                  "Ref":  "#/components/schemas/ResponseImage"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name":  "/users/test",
+        "value":  {
+          "get":  {
+            "operationId":  "TestEndpoint",
+            "parameters":  [
+              {
+                "parameter":  {
+                  "name":  "client_uid",
+                  "in":  "header",
+                  "required":  true,
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "csrftoken",
+                  "in":  "cookie",
+                  "required":  true,
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "id",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              }
+            ],
+            "responses":  {
+              "responseOrReference":  [
+                {
+                  "name":  "200",
+                  "value":  {
+                    "response":  {
+                      "description":  "OK",
+                      "content":  {
+                        "additionalProperties":  [
+                          {
+                            "name":  "application/json",
+                            "value":  {
+                              "schema":  {
+                                "reference":  {
+                                  "Ref":  "#/components/schemas/Response"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name":  "/users/{id}",
+        "value":  {
+          "get":  {
+            "operationId":  "TestService_UserByID",
+            "parameters":  [
+              {
+                "parameter":  {
+                  "name":  "id",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "client_uid",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              }
+            ],
+            "responses":  {
+              "responseOrReference":  [
+                {
+                  "name":  "200",
+                  "value":  {
+                    "response":  {
+                      "description":  "OK",
+                      "content":  {
+                        "additionalProperties":  [
+                          {
+                            "name":  "application/json",
+                            "value":  {
+                              "schema":  {
+                                "reference":  {
+                                  "Ref":  "#/components/schemas/Response"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name":  "/users/{id}/image",
+        "value":  {
+          "get":  {
+            "operationId":  "TestService_UserImageByID",
+            "parameters":  [
+              {
+                "parameter":  {
+                  "name":  "id",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              },
+              {
+                "parameter":  {
+                  "name":  "client_uid",
+                  "in":  "query",
+                  "schema":  {
+                    "schema":  {
+                      "type":  "string"
+                    }
+                  }
+                }
+              }
+            ],
+            "responses":  {
+              "responseOrReference":  [
+                {
+                  "name":  "200",
+                  "value":  {
+                    "response":  {
+                      "description":  "OK",
+                      "content":  {
+                        "additionalProperties":  [
+                          {
+                            "name":  "application/octet-stream",
+                            "value":  {}
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "components":  {
+    "schemas":  {
+      "additionalProperties":  [
+        {
+          "name":  "Response",
+          "value":  {
+            "schema":  {
+              "properties":  {
+                "additionalProperties":  [
+                  {
+                    "name":  "encoded_id",
+                    "value":  {
+                      "schema":  {
+                        "type":  "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name":  "ResponseAml",
+          "value":  {
+            "schema":  {
+              "properties":  {
+                "additionalProperties":  [
+                  {
+                    "name":  "resp",
+                    "value":  {
+                      "schema":  {
+                        "type":  "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name":  "ResponseImage",
+          "value":  {
+            "schema":  {
+              "properties":  {}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

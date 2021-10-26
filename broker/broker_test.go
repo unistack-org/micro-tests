@@ -10,11 +10,12 @@ import (
 	"time"
 
 	kg "github.com/twmb/franz-go/pkg/kgo"
-	kgo "github.com/unistack-org/micro-broker-kgo/v3"
-	jsoncodec "github.com/unistack-org/micro-codec-json/v3"
-	"github.com/unistack-org/micro/v3/broker"
-	"github.com/unistack-org/micro/v3/logger"
-	"github.com/unistack-org/micro/v3/metadata"
+	kgo "go.unistack.org/micro-broker-kgo/v3"
+	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	"go.unistack.org/micro/v3/broker"
+	"go.unistack.org/micro/v3/client"
+	"go.unistack.org/micro/v3/logger"
+	"go.unistack.org/micro/v3/metadata"
 )
 
 var (
@@ -43,12 +44,21 @@ func printRate() {
 	fmt.Printf("%0.2f MiB/s; %0.2fk records/s\n", float64(bytes)/(1024*1024), float64(recs)/1000)
 }
 
+func TestOptionPassing(t *testing.T) {
+	opts := []client.PublishOption{kgo.ClientPublishKey([]byte(`test`))}
+	options := client.NewPublishOptions(opts...)
+
+	if !strings.Contains(fmt.Sprintf("%#+v\n", options.Context), "kgo.publishKey") {
+		t.Fatal("context does not have publish key")
+	}
+}
+
 func TestKgo(t *testing.T) {
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
 		t.Skip()
 	}
 
-	logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel), logger.WithCallerSkipCount(3))
+	_ = logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel), logger.WithCallerSkipCount(3))
 	ctx := context.Background()
 
 	var addrs []string
