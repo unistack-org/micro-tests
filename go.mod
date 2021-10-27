@@ -13,7 +13,7 @@ require (
 	go.unistack.org/micro-broker-kgo/v3 v3.8.1
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
 	go.unistack.org/micro-client-grpc/v3 v3.8.0
-	go.unistack.org/micro-client-http/v3 v3.8.1
+	go.unistack.org/micro-client-http/v3 v3.8.2
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
 	go.unistack.org/micro-codec-json/v3 v3.8.0
 	go.unistack.org/micro-codec-jsonpb/v3 v3.8.1
@@ -33,9 +33,8 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.0-00010101000000-000000000000
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.8.5
+	go.unistack.org/micro/v3 v3.8.6
 	google.golang.org/grpc v1.40.0
-	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
 	google.golang.org/protobuf v1.27.1
 	modernc.org/sqlite v1.13.3
 	storj.io/drpc v0.0.26

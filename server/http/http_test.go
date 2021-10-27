@@ -203,6 +203,9 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	if req.Name != "my_name" {
 		h.t.Fatalf("invalid req received: %#+v", req)
 	}
+	if req.Clientid != "1234567890" {
+		h.t.Fatalf("invalid req recevided %#+v", req)
+	}
 	rsp.Rsp = "name_my_name"
 	httpsrv.SetRspCode(ctx, http.StatusCreated)
 	md = metadata.New(1)
@@ -267,6 +270,8 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	// make request
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), strings.NewReader(data.Encode())) // URL-encoded payload
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+req.Header.Add("Clientid", "1234567890")
+req.AddCookie(&http.Cookie{Name:"Csrftoken", Value: "csrftoken"})
 	// req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
 	if err != nil {
 		t.Fatal(err)
@@ -307,8 +312,10 @@ func TestNativeFormUrlencoded(t *testing.T) {
 
 	svc1 := pb.NewTestClient("helloworld", cli)
 	nrsp, err := svc1.Call(ctx, &pb.CallReq{
-		Name: "my_name",
-		Arg1: "arg1val",
+		Name:      "my_name",
+		Arg1:      "arg1val",
+		Clientid:  "1234567890",
+		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
 			&wrapperspb.UInt64Value{Value: 1},
 			&wrapperspb.UInt64Value{Value: 2},
@@ -394,8 +401,11 @@ func TestNativeClientServer(t *testing.T) {
 	cli := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsonpbcodec.NewCodec())), client.WithAddress(fmt.Sprintf("http://%s", service[0].Nodes[0].Address)))
 
 	svc1 := pb.NewTestClient("helloworld", cli)
+
 	rsp, err := svc1.Call(ctx, &pb.CallReq{
-		Name: "my_name",
+		Name:      "my_name",
+		Clientid:  "1234567890",
+		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
 			&wrapperspb.UInt64Value{Value: 1},
 			&wrapperspb.UInt64Value{Value: 2},
@@ -415,6 +425,8 @@ func TestNativeClientServer(t *testing.T) {
 	}
 
 	hb, err := jsonpbcodec.NewCodec().Marshal(&pb.CallReq{
+ Clientid:  "1234567890",
+                Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
 			&wrapperspb.UInt64Value{Value: 1},
 			&wrapperspb.UInt64Value{Value: 2},

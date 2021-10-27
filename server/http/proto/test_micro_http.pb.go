@@ -7,6 +7,7 @@ package pb
 import (
 	context "context"
 	v3 "go.unistack.org/micro-client-http/v3"
+	v31 "go.unistack.org/micro-server-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
@@ -109,6 +110,10 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
+	opts = append(opts,
+		v3.Cookie("Csrftoken", "true"),
+		v3.Header("Clientid", "true"),
+	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
@@ -154,6 +159,10 @@ func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	var cancel context.CancelFunc
 	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
 	defer cancel()
+	v31.FillRequest(ctx, req,
+		v31.Header("Clientid", "true"),
+		v31.Cookie("Csrftoken", "true"),
+	)
 	return h.TestServer.Call(ctx, req, rsp)
 }
 
