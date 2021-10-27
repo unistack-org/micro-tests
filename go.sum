@@ -444,6 +444,8 @@ go.unistack.org/micro-server-tcp/v3 v3.8.0 h1:J6vuctWx/A4FRrY4FuS5KUGPopLEpB8/2c
 go.unistack.org/micro-server-tcp/v3 v3.8.0/go.mod h1:U2LjBk52yxq6QyOmZomS2FJTqca6E0q71UJrW4QgoNk=
 go.unistack.org/micro-wrapper-recovery/v3 v3.8.0 h1:ivobT81NUA/74hshbbXM7iOcgODYDHvD2JOHVas6qxU=
 go.unistack.org/micro-wrapper-recovery/v3 v3.8.0/go.mod h1:22Ik6keu5Q1Pix6M3gMDAYbAa7cr9pfM6l7XbIuKCvg=
+go.unistack.org/micro-wrapper-sql/v3 v3.0.1 h1:lrnSN8GL0c4lkL0ud0PbI6sbRjkQNxE1pQXIccQr+uw=
+go.unistack.org/micro-wrapper-sql/v3 v3.0.1/go.mod h1:yRjdEDz6Ak1ZnlPC0o7pxtCOBuOSdc2BSDQZu/fpbYk=
 go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0 h1:3MboqNLqh+L2Dvj2Azsf+a+HJMkO1Nb8HIBCkcxCrhE=
 go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0/go.mod h1:+QJ8gVq8CG/6RJfj1rCZlHMHTiWrMEIRVFmwlFPxZKM=
 go.unistack.org/micro/v3 v3.8.0/go.mod h1:Tkteri0wiiybbH6aPqay26pZHFIAwL9LXJc2x1Jkakk=
