@@ -25,7 +25,7 @@ require (
 	go.unistack.org/micro-config-env/v3 v3.8.1
 	go.unistack.org/micro-config-vault/v3 v3.8.1
 	go.unistack.org/micro-meter-prometheus/v3 v3.8.0
-	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.2
+	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4
 	go.unistack.org/micro-proto/v3 v3.1.0
 	go.unistack.org/micro-router-register/v3 v3.8.1
 	go.unistack.org/micro-server-grpc/v3 v3.8.0

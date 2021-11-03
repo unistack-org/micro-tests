@@ -458,8 +458,8 @@ go.unistack.org/micro-config-vault/v3 v3.8.1 h1:AtM1s4x5VxVgWhY6BAoHmNqmJ1Q580fe
 go.unistack.org/micro-config-vault/v3 v3.8.1/go.mod h1:eUe4R19VFicFH3aSV8lGapub+/LTnk9O15EWx66vztE=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.0 h1:EcpINL+/3sPwIV+b+5jMfsjfkaNaf7UIdGycfkGGd9A=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.0/go.mod h1:fXuDyvHTS/zYqLBJ8bjW2owt3z6kwD1bqGxiJqMMtLU=
-go.unistack.org/micro-meter-victoriametrics/v3 v3.8.2 h1:1UgzebgfAxKekrv+/W/n9CJs6rzzLtLcmpS3fSRN1ac=
-go.unistack.org/micro-meter-victoriametrics/v3 v3.8.2/go.mod h1:qGYO+fCZvqLsDXCIWPMQscaR9uV+srIivq+L9O519nA=
+go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4 h1:F1ceLyTnJG0ozLP3UyDaNMZtd4jGlq2yflfsrDw1OO8=
+go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4/go.mod h1:Fm4iwZUqO1Q+FMse+PN0gRr1yHLqO34pQj/SijOymYo=
 go.unistack.org/micro-proto/v3 v3.1.0 h1:q39FwjFiRZn+Ux/tt+d3bJTmDtsQQWa+3SLYVo1vLfA=
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-router-register/v3 v3.8.1 h1:7pxbBxT4gk9XfigpHYWHFEljWpwVXm2QndZhX75ZAqU=
@@ -477,7 +477,6 @@ go.unistack.org/micro-wrapper-sql/v3 v3.0.1/go.mod h1:yRjdEDz6Ak1ZnlPC0o7pxtCOBu
 go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0 h1:3MboqNLqh+L2Dvj2Azsf+a+HJMkO1Nb8HIBCkcxCrhE=
 go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0/go.mod h1:+QJ8gVq8CG/6RJfj1rCZlHMHTiWrMEIRVFmwlFPxZKM=
 go.unistack.org/micro/v3 v3.8.0/go.mod h1:Tkteri0wiiybbH6aPqay26pZHFIAwL9LXJc2x1Jkakk=
-go.unistack.org/micro/v3 v3.8.2/go.mod h1:Tkteri0wiiybbH6aPqay26pZHFIAwL9LXJc2x1Jkakk=
 go.unistack.org/micro/v3 v3.8.4/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.5/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.6/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
