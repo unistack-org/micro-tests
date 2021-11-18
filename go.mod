@@ -23,7 +23,7 @@ require (
 	go.unistack.org/micro-codec-xml/v3 v3.8.1
 	go.unistack.org/micro-config-consul/v3 v3.8.0
 	go.unistack.org/micro-config-env/v3 v3.8.1
-	go.unistack.org/micro-config-vault/v3 v3.8.1
+	go.unistack.org/micro-config-vault/v3 v3.8.2
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4
 	go.unistack.org/micro-proto/v3 v3.1.0
 	go.unistack.org/micro-router-register/v3 v3.8.1
@@ -33,7 +33,7 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.8.7
+	go.unistack.org/micro/v3 v3.8.9
 	google.golang.org/grpc v1.41.0
 	google.golang.org/protobuf v1.27.1
 	modernc.org/sqlite v1.13.3
