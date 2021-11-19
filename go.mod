@@ -23,7 +23,7 @@ require (
 	go.unistack.org/micro-codec-xml/v3 v3.8.1
 	go.unistack.org/micro-config-consul/v3 v3.8.1
 	go.unistack.org/micro-config-env/v3 v3.8.1
-	go.unistack.org/micro-config-vault/v3 v3.8.1
+	go.unistack.org/micro-config-vault/v3 v3.8.3
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4
 	go.unistack.org/micro-proto/v3 v3.1.0
 	go.unistack.org/micro-router-register/v3 v3.8.1
