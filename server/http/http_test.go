@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
 	"testing"
 
 	httpcli "go.unistack.org/micro-client-http/v3"
@@ -270,8 +271,8 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	// make request
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), strings.NewReader(data.Encode())) // URL-encoded payload
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-req.Header.Add("Clientid", "1234567890")
-req.AddCookie(&http.Cookie{Name:"Csrftoken", Value: "csrftoken"})
+	req.Header.Add("Clientid", "1234567890")
+	req.AddCookie(&http.Cookie{Name: "Csrftoken", Value: "csrftoken"})
 	// req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
 	if err != nil {
 		t.Fatal(err)
@@ -425,8 +426,8 @@ func TestNativeClientServer(t *testing.T) {
 	}
 
 	hb, err := jsonpbcodec.NewCodec().Marshal(&pb.CallReq{
- Clientid:  "1234567890",
-                Csrftoken: "csrftoken",
+		Clientid:  "1234567890",
+		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
 			&wrapperspb.UInt64Value{Value: 1},
 			&wrapperspb.UInt64Value{Value: 2},
@@ -704,23 +705,39 @@ func TestHTTPHandler(t *testing.T) {
 	}
 }
 
+type handlerSwapper struct {
+	mu      sync.RWMutex
+	handler http.Handler
+}
+
+func (h *handlerSwapper) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	h.mu.RLock()
+	handler := h.handler
+	h.mu.RUnlock()
+	handler.ServeHTTP(w, r)
+}
+
 func TestHTTPServer(t *testing.T) {
 	reg := register.NewRegister()
 	ctx := context.Background()
 
 	// create server mux
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	mux1 := http.NewServeMux()
+	mux1.HandleFunc("/first", func(w http.ResponseWriter, r *http.Request) {
+		_, _ = w.Write([]byte(`hello world`))
+	})
+	mux2 := http.NewServeMux()
+	mux2.HandleFunc("/second", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write([]byte(`hello world`))
 	})
 
+	h := &handlerSwapper{handler: mux1}
 	// create server
 	srv := httpsrv.NewServer(
 		server.Address("127.0.0.1:0"),
 		server.Register(reg),
-		httpsrv.Server(&http.Server{Handler: mux}),
+		httpsrv.Server(&http.Server{Handler: h}),
 		server.Codec("application/json", jsoncodec.NewCodec()),
-		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 	)
 
 	if err := srv.Init(); err != nil {
@@ -747,13 +764,48 @@ func TestHTTPServer(t *testing.T) {
 	}
 
 	// make request
-	rsp, err := http.Get(fmt.Sprintf("http://%s", service[0].Nodes[0].Address))
+	rsp, err := http.Get(fmt.Sprintf("http://%s/first", service[0].Nodes[0].Address))
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer rsp.Body.Close()
 
 	b, err := ioutil.ReadAll(rsp.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if s := string(b); s != "hello world" {
+		t.Fatalf("Expected response %s, got %s", "hello world", s)
+	}
+
+	rsp, err = http.Get(fmt.Sprintf("http://%s/second", service[0].Nodes[0].Address))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if rsp.StatusCode != 404 {
+		t.Fatal("second route must not exists")
+	}
+	h.mu.Lock()
+	h.handler = mux2
+	h.mu.Unlock()
+
+	rsp, err = http.Get(fmt.Sprintf("http://%s/first", service[0].Nodes[0].Address))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer rsp.Body.Close()
+	if rsp.StatusCode != 404 {
+		t.Fatal("first route must not exists")
+	}
+
+	rsp, err = http.Get(fmt.Sprintf("http://%s/second", service[0].Nodes[0].Address))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer rsp.Body.Close()
+
+	b, err = ioutil.ReadAll(rsp.Body)
 	if err != nil {
 		t.Fatal(err)
 	}
