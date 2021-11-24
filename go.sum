@@ -384,8 +384,8 @@ go.unistack.org/micro-codec-xml/v3 v3.8.1 h1:hE211qCnyjdPt33ub1cg4HbHaKtHx0tNDXt
 go.unistack.org/micro-codec-xml/v3 v3.8.1/go.mod h1:sNwBgamgKsumUV06rk8Z+Gutzshfm0VnCYH+YTUCqqU=
 go.unistack.org/micro-config-consul/v3 v3.8.1 h1:9LAzRHjV89e/qP5jEDCFdmW9Dm6SX7u4BbkksL+uXd4=
 go.unistack.org/micro-config-consul/v3 v3.8.1/go.mod h1:GXJySsspDNaPSiUseVxKpDfC1bWqsxiZXFd6T2GdMww=
-go.unistack.org/micro-config-env/v3 v3.8.1 h1:OR/ZB4FWgXHy45jXrh8a3T3j9tmFNs6KGPv7EPelMLs=
-go.unistack.org/micro-config-env/v3 v3.8.1/go.mod h1:Ef2j0gnQO9+T/AG1d2nkDndoRO9jJgQ4iECu8r/yYvs=
+go.unistack.org/micro-config-env/v3 v3.8.2 h1:RwcSRJW5mX7e71Xr18GMGEQWmJQBuQk+gxE3nX3G/xA=
+go.unistack.org/micro-config-env/v3 v3.8.2/go.mod h1:3CSfYNEXi3U+FtOQT9pYD7cGHXMSOJX3We1XZ5rCVvI=
 go.unistack.org/micro-config-vault/v3 v3.8.3 h1:ytAp90oyvMg4wgEGfxYpp6ABcGwNyM+E/+AJ1rQp3uQ=
 go.unistack.org/micro-config-vault/v3 v3.8.3/go.mod h1:rQrSZCRLz0oJIP6nWQnp6MQg3A0GKK8CLc04tHZExTw=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4 h1:F1ceLyTnJG0ozLP3UyDaNMZtd4jGlq2yflfsrDw1OO8=
@@ -412,8 +412,8 @@ go.unistack.org/micro/v3 v3.8.5/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J
 go.unistack.org/micro/v3 v3.8.6/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.7/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.9/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
-go.unistack.org/micro/v3 v3.8.10 h1:ZMKGGalqkZc677S5BmSPTAMZAE4q3u2FuqCrCd1TO7g=
-go.unistack.org/micro/v3 v3.8.10/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
+go.unistack.org/micro/v3 v3.8.11 h1:Wv1YopcYNcsN3bW8Mv8v6AF99s0uKBtWQ1M/Ag8QLec=
+go.unistack.org/micro/v3 v3.8.11/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20181029021203-45a5f77698d3/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
