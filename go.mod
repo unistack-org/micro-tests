@@ -36,6 +36,6 @@ require (
 	go.unistack.org/micro/v3 v3.8.11
 	google.golang.org/grpc v1.42.0
 	google.golang.org/protobuf v1.27.1
-	modernc.org/sqlite v1.14.1
+	modernc.org/sqlite v1.14.2
 	storj.io/drpc v0.0.26
 )
