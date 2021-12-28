@@ -41,6 +41,6 @@ require (
 	google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb // indirect
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
-	modernc.org/sqlite v1.14.1
+	modernc.org/sqlite v1.14.3
 	storj.io/drpc v0.0.26
 )
