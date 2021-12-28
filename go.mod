@@ -7,13 +7,13 @@ go 1.16
 require (
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/kafka-go v0.4.22
+	github.com/segmentio/kafka-go v0.4.25
 	github.com/stretchr/testify v1.7.0
-	github.com/twmb/franz-go v1.2.2
-	go.unistack.org/micro-broker-kgo/v3 v3.8.1
+	github.com/twmb/franz-go v1.2.6
+	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
-	go.unistack.org/micro-client-grpc/v3 v3.8.0
-	go.unistack.org/micro-client-http/v3 v3.8.2
+	go.unistack.org/micro-client-grpc/v3 v3.8.1
+	go.unistack.org/micro-client-http/v3 v3.8.3
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
 	go.unistack.org/micro-codec-json/v3 v3.8.0
 	go.unistack.org/micro-codec-jsonpb/v3 v3.8.1
@@ -21,9 +21,9 @@ require (
 	go.unistack.org/micro-codec-segmentio/v3 v3.8.1
 	go.unistack.org/micro-codec-urlencode/v3 v3.8.1
 	go.unistack.org/micro-codec-xml/v3 v3.8.1
-	go.unistack.org/micro-config-consul/v3 v3.8.0
-	go.unistack.org/micro-config-env/v3 v3.8.1
-	go.unistack.org/micro-config-vault/v3 v3.8.1
+	go.unistack.org/micro-config-consul/v3 v3.8.1
+	go.unistack.org/micro-config-env/v3 v3.8.2
+	go.unistack.org/micro-config-vault/v3 v3.8.3
 	go.unistack.org/micro-meter-prometheus/v3 v3.8.0
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4
 	go.unistack.org/micro-proto/v3 v3.1.0
@@ -34,9 +34,9 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.8.7
-	google.golang.org/grpc v1.41.0
+	go.unistack.org/micro/v3 v3.8.13
+	google.golang.org/grpc v1.42.0
 	google.golang.org/protobuf v1.27.1
-	modernc.org/sqlite v1.13.3
+	modernc.org/sqlite v1.14.1
 	storj.io/drpc v0.0.26
 )
