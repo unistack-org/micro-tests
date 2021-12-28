@@ -111,8 +111,8 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Body("*"),
 	)
 	opts = append(opts,
-		v3.Cookie("Csrftoken", "true"),
 		v3.Header("Clientid", "true"),
+		v3.Cookie("Csrftoken", "true"),
 	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
