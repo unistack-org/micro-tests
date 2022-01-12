@@ -46,6 +46,10 @@ func (s *testClientStream) Close() error {
 	return s.stream.Close()
 }
 
+func (s *testClientStream) CloseSend() error {
+	return s.stream.CloseSend()
+}
+
 func (s *testClientStream) Context() context.Context {
 	return s.stream.Context()
 }

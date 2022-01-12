@@ -160,8 +160,8 @@ func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
 	defer cancel()
 	v31.FillRequest(ctx, req,
-		v31.Header("Clientid", "true"),
 		v31.Cookie("Csrftoken", "true"),
+		v31.Header("Clientid", "true"),
 	)
 	return h.TestServer.Call(ctx, req, rsp)
 }

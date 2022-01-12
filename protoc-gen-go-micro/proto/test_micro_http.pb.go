@@ -30,8 +30,8 @@ func (c *testServiceClient) TestEndpoint(ctx context.Context, req *Request, opts
 		v3.Path("/users/test"),
 	)
 	opts = append(opts,
-		v3.Cookie("csrftoken", "true"),
 		v3.Header("client_uid", "true"),
+		v3.Cookie("csrftoken", "true"),
 	)
 	rsp := &Response{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.TestEndpoint", req), rsp, opts...)
