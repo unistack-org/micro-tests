@@ -441,8 +441,9 @@ go.unistack.org/micro/v3 v3.8.7/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J
 go.unistack.org/micro/v3 v3.8.9/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.11/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.12/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
-go.unistack.org/micro/v3 v3.8.14 h1:gvGAh11n484XuJFt+YFUvDJUwbn/a/6/NdTdTqeUnis=
 go.unistack.org/micro/v3 v3.8.14/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
+go.unistack.org/micro/v3 v3.8.15 h1:9KzaPmWW4CpThOT8tiq8XEG3YLmVV8hztqnzPBmJudQ=
+go.unistack.org/micro/v3 v3.8.15/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20181029021203-45a5f77698d3/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
