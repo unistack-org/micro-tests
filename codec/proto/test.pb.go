@@ -7,10 +7,11 @@
 package pb
 
 import (
+	reflect "reflect"
+
 	codec "go.unistack.org/micro/v3/codec"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
 )
 
 const (
@@ -38,6 +39,7 @@ var file_test_proto_rawDesc = []byte{
 var file_test_proto_goTypes = []interface{}{
 	(*codec.Frame)(nil), // 0: micro.codec.Frame
 }
+
 var file_test_proto_depIdxs = []int32{
 	0, // 0: helloworld.Test.Call:input_type -> micro.codec.Frame
 	0, // 1: helloworld.Test.Call:output_type -> micro.codec.Frame

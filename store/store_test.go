@@ -95,7 +95,6 @@ func TestStoreBasic(t *testing.T) {
 			runStoreTest(tc.s, t)
 		})
 	}
-
 }
 
 func TestStoreTable(t *testing.T) {
@@ -176,7 +175,6 @@ func runStoreTest(s store.Store, t *testing.T) {
 	suffixPrefixExpiryTests(s, t)
 	readTests(s, t)
 	listTests(s, t)
-
 }
 
 func readTests(s store.Store, t *testing.T) {
@@ -285,7 +283,6 @@ func listTests(s store.Store, t *testing.T) {
 	if len(recs) != 2 {
 		t.Fatalf("Expected 2 records, received %d %+v", len(recs), recs)
 	}
-
 }
 
 func expiryTests(s store.Store, t *testing.T) {
@@ -457,9 +454,8 @@ func suffixPrefixExpiryTests(s store.Store, t *testing.T) {
 	} else {
 		if len(results) != 3 {
 			t.Errorf("Expected 3 items, got %d", len(results))
-			//t.Logf("Table test: %v\n", spew.Sdump(results))
+			// t.Logf("Table test: %v\n", spew.Sdump(results))
 		}
-
 	}
 	time.Sleep(time.Millisecond * 100)
 	if results, err := s.Read("foo", store.ReadSuffix()); err != nil {
@@ -467,9 +463,8 @@ func suffixPrefixExpiryTests(s store.Store, t *testing.T) {
 	} else {
 		if len(results) != 2 {
 			t.Errorf("Expected 2 items, got %d", len(results))
-			//t.Logf("Table test: %v\n", spew.Sdump(results))
+			// t.Logf("Table test: %v\n", spew.Sdump(results))
 		}
-
 	}
 	time.Sleep(time.Millisecond * 100)
 	if results, err := s.Read("foo", store.ReadSuffix()); err != nil {

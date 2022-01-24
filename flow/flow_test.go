@@ -138,5 +138,6 @@ func TestFlow(t *testing.T) {
 		t.Fatal(err)
 	}
 	_ = keys
-	t.Logf("execution id: %s, result: %v", id, err)
+	_ = id
+	// t.Logf("execution id: %s, result: %v", id, err)
 }

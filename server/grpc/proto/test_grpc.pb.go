@@ -8,6 +8,7 @@ package helloworld
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -51,8 +52,7 @@ type TestServer interface {
 }
 
 // UnimplementedTestServer must be embedded to have forward compatible implementations.
-type UnimplementedTestServer struct {
-}
+type UnimplementedTestServer struct{}
 
 func (UnimplementedTestServer) Call(context.Context, *Request) (*Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Call not implemented")

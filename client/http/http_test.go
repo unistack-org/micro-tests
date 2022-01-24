@@ -244,7 +244,7 @@ func TestHTTPClientStream(t *testing.T) {
 
 		// write response
 		rsp := &http.Response{
-			Header:        r.Header,
+			// Header:        r.Header,
 			Body:          ioutil.NopCloser(bytes.NewBuffer(b)),
 			Status:        "200 OK",
 			StatusCode:    200,

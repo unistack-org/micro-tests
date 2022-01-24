@@ -94,7 +94,7 @@ func TestMultipart(t *testing.T) {
 		server.Register(reg),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-		httpsrv.PathHandler("/upload", multipartHandler),
+		httpsrv.PathHandler(http.MethodPost, "/upload", multipartHandler),
 	)
 
 	if err := srv.Init(); err != nil {
@@ -125,7 +125,7 @@ func TestMultipart(t *testing.T) {
 		t.Fatalf("Expected 1 node got %d: %+v", len(service[0].Nodes), service[0].Nodes)
 	}
 
-	t.Logf("test multipart upload")
+	// t.Logf("test multipart upload")
 	values := make(map[string]io.Reader, 2)
 	values["first.txt"] = bytes.NewReader([]byte("first content"))
 	values["second.txt"] = bytes.NewReader([]byte("second content"))
@@ -261,7 +261,6 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		t.Fatalf("Expected 1 node got %d: %+v", len(service[0].Nodes), service[0].Nodes)
 	}
 
-	t.Logf("test net/http client with application/x-www-form-urlencoded")
 	data := url.Values{}
 	data.Set("req", "fookey")
 	data.Set("arg1", "arg1val")
@@ -275,12 +274,12 @@ func TestNativeFormUrlencoded(t *testing.T) {
 	req.AddCookie(&http.Cookie{Name: "Csrftoken", Value: "csrftoken"})
 	// req.Header.Add("Content-Length", strconv.Itoa(len(data.Encode())))
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test net/http client with application/x-www-form-urlencoded err: %v", err)
 	}
 
 	rsp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test net/http client with application/x-www-form-urlencoded err: %v", err)
 	}
 
 	b, err := ioutil.ReadAll(rsp.Body)
@@ -302,7 +301,6 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		t.Fatalf("empty response header: %#+v", rsp.Header)
 	}
 
-	t.Logf("test native client with application/x-www-form-urlencoded")
 	cli := client.NewClientCallOptions(
 		httpcli.NewClient(
 			client.ContentType("application/x-www-form-urlencoded"),
@@ -324,7 +322,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		}},
 	})
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test native client with application/x-www-form-urlencoded err: %v", err)
 	}
 
 	if nrsp.Rsp != "name_my_name" {
@@ -438,16 +436,15 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Logf("test rsp code from net/http client to native micro http server")
 	hr, err := http.NewRequestWithContext(ctx, "POST", fmt.Sprintf("http://%s/v1/test/call/my_name", service[0].Nodes[0].Address), bytes.NewReader(hb))
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test rsp code from net/http client to native micro http server err: %v", err)
 	}
 	hr.Header.Set("Content-Type", "application/json")
 
 	hrsp, err := http.DefaultClient.Do(hr)
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test rsp code from net/http client to native micro http server err: %v", err)
 	}
 	defer func() {
 		_ = hrsp.Body.Close()
@@ -462,17 +459,16 @@ func TestNativeClientServer(t *testing.T) {
 		t.Fatalf("invalid rsp code %#+v", hrsp)
 	}
 
-	t.Logf("test second server")
 	svc2 := pb.NewTestDoubleClient("helloworld", cli)
 	rsp, err = svc2.CallDouble(ctx, &pb.CallReq{
 		Name: "my_name",
 	})
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test second server err: %v", err)
 	}
 
 	if rsp.Rsp != "name_double" {
-		t.Fatalf("invalid response: %#+v\n", rsp)
+		t.Fatalf("test second server invalid response: %#+v\n", rsp)
 	}
 
 	hrsp, err = http.Get(fmt.Sprintf("http://%s/metrics", service[0].Nodes[0].Address))
@@ -610,20 +606,18 @@ func TestNativeServer(t *testing.T) {
 	c := client.NewClientCallOptions(httpcli.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("http://"+service[0].Nodes[0].Address))
 	pbc := pb.NewTestClient("test", c)
 
-	t.Logf("test with string_ids")
 	prsp, err := pbc.CallRepeatedString(context.TODO(), &pb.CallReq{StringIds: []string{"123", "321"}})
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test with string_ids err: %v", err)
 	}
 
 	if prsp.Rsp != "name_my_name" {
 		t.Fatalf("invalid rsp received: %#+v\n", rsp)
 	}
 
-	t.Logf("test with int64_ids")
 	prsp, err = pbc.CallRepeatedInt64(context.TODO(), &pb.CallReq{Int64Ids: []int64{123, 321}})
 	if err != nil {
-		t.Fatal(err)
+		t.Fatalf("test with int64_ids err: %v", err)
 	}
 
 	if prsp.Rsp != "name_my_name" {

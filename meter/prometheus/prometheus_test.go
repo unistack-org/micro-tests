@@ -5,11 +5,11 @@ import (
 	"context"
 	"testing"
 
+	prometheus "go.unistack.org/micro-meter-prometheus/v3"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/meter"
 	"go.unistack.org/micro/v3/meter/wrapper"
-	prometheus "go.unistack.org/micro-meter-prometheus/v3"
 )
 
 func TestWrapper(t *testing.T) {

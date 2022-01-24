@@ -55,7 +55,8 @@ func TestOptionPassing(t *testing.T) {
 
 func TestKgo(t *testing.T) {
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
-		t.Skip()
+		return
+		// t.Skip()
 	}
 
 	_ = logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel), logger.WithCallerSkipCount(3))

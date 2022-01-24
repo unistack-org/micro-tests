@@ -7,14 +7,15 @@
 package pb
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	_ "go.unistack.org/micro-proto/v3/api"
 	_ "go.unistack.org/micro-proto/v3/openapiv3"
 	_ "go.unistack.org/micro-proto/v3/tag"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -493,16 +494,19 @@ func file_test_proto_rawDescGZIP() []byte {
 	return file_test_proto_rawDescData
 }
 
-var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_test_proto_goTypes = []interface{}{
-	(*CallReq)(nil),                // 0: test.CallReq
-	(*Nested)(nil),                 // 1: test.Nested
-	(*CallRsp)(nil),                // 2: test.CallRsp
-	(*CallReq1)(nil),               // 3: test.CallReq1
-	(*CallRsp1)(nil),               // 4: test.CallRsp1
-	(*Error)(nil),                  // 5: test.Error
-	(*wrapperspb.UInt64Value)(nil), // 6: google.protobuf.UInt64Value
-}
+var (
+	file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+	file_test_proto_goTypes  = []interface{}{
+		(*CallReq)(nil),                // 0: test.CallReq
+		(*Nested)(nil),                 // 1: test.Nested
+		(*CallRsp)(nil),                // 2: test.CallRsp
+		(*CallReq1)(nil),               // 3: test.CallReq1
+		(*CallRsp1)(nil),               // 4: test.CallRsp1
+		(*Error)(nil),                  // 5: test.Error
+		(*wrapperspb.UInt64Value)(nil), // 6: google.protobuf.UInt64Value
+	}
+)
+
 var file_test_proto_depIdxs = []int32{
 	1, // 0: test.CallReq.nested:type_name -> test.Nested
 	6, // 1: test.Nested.uint64_args:type_name -> google.protobuf.UInt64Value

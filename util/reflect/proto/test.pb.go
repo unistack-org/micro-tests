@@ -7,11 +7,12 @@
 package pb
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -194,12 +195,15 @@ func file_test_proto_rawDescGZIP() []byte {
 	return file_test_proto_rawDescData
 }
 
-var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_test_proto_goTypes = []interface{}{
-	(*CallReq)(nil),                // 0: reflect.CallReq
-	(*Nested)(nil),                 // 1: reflect.Nested
-	(*wrapperspb.UInt64Value)(nil), // 2: google.protobuf.UInt64Value
-}
+var (
+	file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+	file_test_proto_goTypes  = []interface{}{
+		(*CallReq)(nil),                // 0: reflect.CallReq
+		(*Nested)(nil),                 // 1: reflect.Nested
+		(*wrapperspb.UInt64Value)(nil), // 2: google.protobuf.UInt64Value
+	}
+)
+
 var file_test_proto_depIdxs = []int32{
 	1, // 0: reflect.CallReq.nested:type_name -> reflect.Nested
 	2, // 1: reflect.Nested.uint64_args:type_name -> google.protobuf.UInt64Value

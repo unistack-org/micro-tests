@@ -9,7 +9,6 @@ import (
 )
 
 func TestRequestPayloadFromRequest(t *testing.T) {
-
 	jsonUrlBytes := []byte(`{"key1":"val1","key2":"val2","name":"Test"}`)
 
 	t.Run("extracting a json from a POST request with url params", func(t *testing.T) {
@@ -58,7 +57,6 @@ func TestRequestPayloadFromRequest(t *testing.T) {
 	})
 
 	t.Run("extracting params from a GET request", func(t *testing.T) {
-
 		r, err := http.NewRequest("GET", "http://localhost/my/path", nil)
 		if err != nil {
 			t.Fatalf("Failed to created http.Request: %v", err)
@@ -78,7 +76,6 @@ func TestRequestPayloadFromRequest(t *testing.T) {
 	})
 
 	t.Run("GET request with no params", func(t *testing.T) {
-
 		r, err := http.NewRequest("GET", "http://localhost/my/path", nil)
 		if err != nil {
 			t.Fatalf("Failed to created http.Request: %v", err)

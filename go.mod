@@ -2,10 +2,6 @@ module go.unistack.org/micro-tests
 
 go 1.16
 
-//replace go.unistack.org/micro/v3 => ../micro
-
-//replace go.unistack.org/micro-wrapper-sql/v3 => ../micro-wrapper-sql
-
 require (
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/opentracing/opentracing-go v1.2.0
@@ -31,7 +27,7 @@ require (
 	go.unistack.org/micro-proto/v3 v3.2.0
 	go.unistack.org/micro-router-register/v3 v3.8.1
 	go.unistack.org/micro-server-grpc/v3 v3.8.0
-	go.unistack.org/micro-server-http/v3 v3.9.2
+	go.unistack.org/micro-server-http/v3 v3.9.3
 	go.unistack.org/micro-server-tcp/v3 v3.8.0
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
@@ -43,5 +39,5 @@ require (
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
 	modernc.org/sqlite v1.14.5
-	storj.io/drpc v0.0.26
+	storj.io/drpc v0.0.27
 )

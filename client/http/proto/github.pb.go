@@ -7,12 +7,13 @@
 package pb
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	_ "go.unistack.org/micro-proto/v3/api"
 	_ "go.unistack.org/micro-proto/v3/openapiv3"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -225,12 +226,15 @@ func file_github_proto_rawDescGZIP() []byte {
 	return file_github_proto_rawDescData
 }
 
-var file_github_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_github_proto_goTypes = []interface{}{
-	(*LookupUserReq)(nil), // 0: github.LookupUserReq
-	(*LookupUserRsp)(nil), // 1: github.LookupUserRsp
-	(*Error)(nil),         // 2: github.Error
-}
+var (
+	file_github_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+	file_github_proto_goTypes  = []interface{}{
+		(*LookupUserReq)(nil), // 0: github.LookupUserReq
+		(*LookupUserRsp)(nil), // 1: github.LookupUserRsp
+		(*Error)(nil),         // 2: github.Error
+	}
+)
+
 var file_github_proto_depIdxs = []int32{
 	0, // 0: github.Github.LookupUser:input_type -> github.LookupUserReq
 	0, // 1: github.Github.LookupUserWithoutPath:input_type -> github.LookupUserReq

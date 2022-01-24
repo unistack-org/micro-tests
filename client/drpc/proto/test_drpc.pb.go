@@ -7,6 +7,7 @@ package pb
 import (
 	context "context"
 	errors "errors"
+
 	proto "google.golang.org/protobuf/proto"
 	drpc "storj.io/drpc"
 	drpcerr "storj.io/drpc/drpcerr"

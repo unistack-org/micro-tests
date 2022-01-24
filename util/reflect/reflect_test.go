@@ -61,9 +61,8 @@ func TestMergeString(t *testing.T) {
 	mp["bool"] = true
 	s := &str{}
 
-	t.Logf("merge with true")
 	if err := rutil.Merge(s, mp, rutil.Tags([]string{"json"})); err != nil {
-		t.Fatal(err)
+		t.Fatalf("merge with true err: %v", err)
 	}
 
 	if s.Bool != "true" {
@@ -71,9 +70,8 @@ func TestMergeString(t *testing.T) {
 	}
 
 	mp["bool"] = false
-	t.Logf("merge with false")
 	if err := rutil.Merge(s, mp, rutil.Tags([]string{"json"})); err != nil {
-		t.Fatal(err)
+		t.Fatalf("merge with falst err: %v", err)
 	}
 
 	if s.Bool != "false" {

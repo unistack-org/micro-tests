@@ -1,8 +1,8 @@
 // +build ignore
 
-/*
 package drpc
 
+/*
 import (
 	"context"
 	"net"

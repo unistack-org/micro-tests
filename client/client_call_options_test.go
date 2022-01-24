@@ -19,8 +19,7 @@ import (
 	cw "go.unistack.org/micro/v3/util/client"
 )
 
-type TestFoo struct {
-}
+type TestFoo struct{}
 
 type TestReq struct{}
 

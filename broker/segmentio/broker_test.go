@@ -38,7 +38,8 @@ var bm = &broker.Message{
 func TestConsumerGroup(t *testing.T) {
 	topic := "test_topic"
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
-		t.Skip()
+		return
+		// t.Skip()
 	}
 
 	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel)); err != nil {
@@ -197,7 +198,8 @@ func TestConsumerGroup(t *testing.T) {
 func TestSub(t *testing.T) {
 	topic := "test_topic"
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
-		t.Skip()
+		return
+		// t.Skip()
 	}
 
 	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel)); err != nil {
@@ -508,7 +510,8 @@ func BenchmarkPubSub(b *testing.B) {
 
 func TestPubSub(t *testing.T) {
 	if tr := os.Getenv("INTEGRATION_TESTS"); len(tr) > 0 {
-		t.Skip()
+		return
+		// t.Skip()
 	}
 
 	if err := logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel)); err != nil {

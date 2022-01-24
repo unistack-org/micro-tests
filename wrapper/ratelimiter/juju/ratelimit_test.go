@@ -15,6 +15,7 @@ import (
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
 	"go.unistack.org/micro/v3/network/transport"
+	"go.unistack.org/micro/v3/register"
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 )

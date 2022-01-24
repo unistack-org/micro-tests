@@ -6,11 +6,12 @@ package pb
 
 import (
 	context "context"
+	http "net/http"
+
 	v3 "go.unistack.org/micro-client-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
-	http "net/http"
 )
 
 type githubClient struct {

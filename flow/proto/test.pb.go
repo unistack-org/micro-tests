@@ -7,12 +7,13 @@
 package pb
 
 import (
+	reflect "reflect"
+	sync "sync"
+
 	_ "go.unistack.org/micro-proto/v3/api"
 	_ "go.unistack.org/micro-proto/v3/openapiv3"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (
@@ -503,18 +504,21 @@ func file_test_proto_rawDescGZIP() []byte {
 	return file_test_proto_rawDescData
 }
 
-var file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-var file_test_proto_goTypes = []interface{}{
-	(*MailUserReq)(nil),   // 0: test.MailUserReq
-	(*MailUserRsp)(nil),   // 1: test.MailUserRsp
-	(*UpdateUserReq)(nil), // 2: test.UpdateUserReq
-	(*UpdateUserRsp)(nil), // 3: test.UpdateUserRsp
-	(*DeleteUserReq)(nil), // 4: test.DeleteUserReq
-	(*DeleteUserRsp)(nil), // 5: test.DeleteUserRsp
-	(*LookupUserReq)(nil), // 6: test.LookupUserReq
-	(*LookupUserRsp)(nil), // 7: test.LookupUserRsp
-	(*Error)(nil),         // 8: test.Error
-}
+var (
+	file_test_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+	file_test_proto_goTypes  = []interface{}{
+		(*MailUserReq)(nil),   // 0: test.MailUserReq
+		(*MailUserRsp)(nil),   // 1: test.MailUserRsp
+		(*UpdateUserReq)(nil), // 2: test.UpdateUserReq
+		(*UpdateUserRsp)(nil), // 3: test.UpdateUserRsp
+		(*DeleteUserReq)(nil), // 4: test.DeleteUserReq
+		(*DeleteUserRsp)(nil), // 5: test.DeleteUserRsp
+		(*LookupUserReq)(nil), // 6: test.LookupUserReq
+		(*LookupUserRsp)(nil), // 7: test.LookupUserRsp
+		(*Error)(nil),         // 8: test.Error
+	}
+)
+
 var file_test_proto_depIdxs = []int32{
 	6, // 0: test.TestService.LookupUser:input_type -> test.LookupUserReq
 	2, // 1: test.TestService.UpdateUser:input_type -> test.UpdateUserReq
