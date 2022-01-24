@@ -31,13 +31,12 @@ require (
 	go.unistack.org/micro-proto/v3 v3.1.1
 	go.unistack.org/micro-router-register/v3 v3.8.1
 	go.unistack.org/micro-server-grpc/v3 v3.8.0
-	go.unistack.org/micro-server-http/v3 v3.8.1
+	go.unistack.org/micro-server-http/v3 v3.9.2
 	go.unistack.org/micro-server-tcp/v3 v3.8.0
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
 	go.unistack.org/micro/v3 v3.8.18
-	golang.org/x/net v0.0.0-20220114011407-0dd24b26b47d // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/tools v0.1.5 // indirect
 	google.golang.org/genproto v0.0.0-20220118154757-00ab72f36ad5 // indirect
