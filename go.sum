@@ -1015,5 +1015,5 @@ modernc.org/z v1.3.0/go.mod h1:+mvgLH814oDjtATDdT3rs84JnUIpkvAF5B8AVkNlE2g=
 rsc.io/binaryregexp v0.2.0/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
 rsc.io/quote/v3 v3.1.0/go.mod h1:yEA65RcK8LyAZtP9Kv3t0HmxON59tX3rD+tICJqUlj0=
 rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
-storj.io/drpc v0.0.27 h1:5XDCuciLfSUAizxWW9d29MQKuwBTX1G6+kp60LgzHWA=
-storj.io/drpc v0.0.27/go.mod h1:6rcOyR/QQkSTX/9L5ZGtlZaE2PtXTTZl8d+ulSeeYEg=
+storj.io/drpc v0.0.28 h1:t8v3Sk7b8NiMIwgKYJCKDyu21x+yCRASOnIpBywl6vs=
+storj.io/drpc v0.0.28/go.mod h1:6rcOyR/QQkSTX/9L5ZGtlZaE2PtXTTZl8d+ulSeeYEg=
