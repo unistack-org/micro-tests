@@ -510,7 +510,6 @@ go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4 h1:F1ceLyTnJG0ozLP3UyDaNMZ
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4/go.mod h1:Fm4iwZUqO1Q+FMse+PN0gRr1yHLqO34pQj/SijOymYo=
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-proto/v3 v3.1.1/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
-go.unistack.org/micro-proto/v3 v3.2.0/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
 go.unistack.org/micro-proto/v3 v3.2.1 h1:z7+V97LcAwMbBiYStmf8b6fFk2UPJTzni+rxNqk4NrI=
 go.unistack.org/micro-proto/v3 v3.2.1/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
 go.unistack.org/micro-router-register/v3 v3.8.1 h1:7pxbBxT4gk9XfigpHYWHFEljWpwVXm2QndZhX75ZAqU=
@@ -538,8 +537,8 @@ go.unistack.org/micro/v3 v3.8.12/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54
 go.unistack.org/micro/v3 v3.8.14/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
 go.unistack.org/micro/v3 v3.8.16/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
 go.unistack.org/micro/v3 v3.8.18/go.mod h1:ueDiiOe3fRW9kL0Fbh4OWw/R/SQhMd6vUcAV/WHYRWw=
-go.unistack.org/micro/v3 v3.8.19 h1:nGRUTO4WKpI0V9hY2pUUageoOREY3X/f0hshyUpK+OA=
-go.unistack.org/micro/v3 v3.8.19/go.mod h1:cij0rjC01Ajh2aBbcVXYB61KGyPymxpeTJ/PVQycgHE=
+go.unistack.org/micro/v3 v3.8.20 h1:ZKqkb1IY3sNLgcEN3fxOkVgwxBP3vz8m+p297qLxx9w=
+go.unistack.org/micro/v3 v3.8.20/go.mod h1:aBOCQ6SkAwKMRI7Q1CIsQA2S88ibyJfweJZlT1M2qpE=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20181029021203-45a5f77698d3/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
