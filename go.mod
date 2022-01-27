@@ -38,5 +38,5 @@ require (
 	google.golang.org/grpc v1.43.0
 	google.golang.org/protobuf v1.27.1
 	modernc.org/sqlite v1.14.5
-	storj.io/drpc v0.0.27
+	storj.io/drpc v0.0.29
 )
