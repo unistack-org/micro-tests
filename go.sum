@@ -35,8 +35,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
-github.com/VictoriaMetrics/metrics v1.18.0 h1:vov5NxDHRSXFbdiH4dYLYEjKLoAXXSQ7hcnG8TSD9JQ=
-github.com/VictoriaMetrics/metrics v1.18.0/go.mod h1:ArjwVz7WpgpegX/JpB0zpNF2h2232kErkEnzH1sxMmA=
+github.com/VictoriaMetrics/metrics v1.18.1 h1:OZ0+kTTto8oPfHnVAnTOoyl0XlRhRkoQrD2n2cOuRw0=
+github.com/VictoriaMetrics/metrics v1.18.1/go.mod h1:ArjwVz7WpgpegX/JpB0zpNF2h2232kErkEnzH1sxMmA=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
@@ -507,8 +507,8 @@ go.unistack.org/micro-config-vault/v3 v3.8.3 h1:ytAp90oyvMg4wgEGfxYpp6ABcGwNyM+E
 go.unistack.org/micro-config-vault/v3 v3.8.3/go.mod h1:rQrSZCRLz0oJIP6nWQnp6MQg3A0GKK8CLc04tHZExTw=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.1 h1:C26yE+8Im/wnpRfMAsB9DJLdDru2qtHiF9QZpUSOPao=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.1/go.mod h1:DRYX6LfXZkhD8CfOUTKaP46fmiWsHefsPIlB3uruRfM=
-go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4 h1:F1ceLyTnJG0ozLP3UyDaNMZtd4jGlq2yflfsrDw1OO8=
-go.unistack.org/micro-meter-victoriametrics/v3 v3.8.4/go.mod h1:Fm4iwZUqO1Q+FMse+PN0gRr1yHLqO34pQj/SijOymYo=
+go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6 h1:Zrh7RDu7IuaCTb2MG4HQ4B8ePe5HpwX+rfq9QHwwkUQ=
+go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6/go.mod h1:mZu8a/71EWh+sjuVvvZEsUNkrhrnSddXIwE3/E9NVIg=
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-proto/v3 v3.1.1/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-proto/v3 v3.2.1/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
@@ -532,7 +532,6 @@ go.unistack.org/micro/v3 v3.8.0/go.mod h1:Tkteri0wiiybbH6aPqay26pZHFIAwL9LXJc2x1
 go.unistack.org/micro/v3 v3.8.4/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.5/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.6/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
-go.unistack.org/micro/v3 v3.8.7/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.9/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.11/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.12/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
