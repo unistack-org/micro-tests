@@ -259,8 +259,8 @@ github.com/hashicorp/memberlist v0.2.2 h1:5+RffWKwqJ71YPu9mWsF7ZOscZmwfasdA8kbdC
 github.com/hashicorp/memberlist v0.2.2/go.mod h1:MS2lj3INKhZjWNqd3N0m3J+Jxf3DAOnAH9VT3Sh9MUE=
 github.com/hashicorp/serf v0.9.5 h1:EBWvyu9tcRszt3Bxp3KNssBMP1KuHWyO51lz9+786iM=
 github.com/hashicorp/serf v0.9.5/go.mod h1:UWDWwZeL5cuWDJdl0C6wrvrUwEqtQ4ZKBKKENpqIUyk=
-github.com/hashicorp/vault/api v1.3.0 h1:uDy39PLSvy6gtKyjOCRPizy2QdFiIYSWBR2pxCEzYL8=
-github.com/hashicorp/vault/api v1.3.0/go.mod h1:EabNQLI0VWbWoGlA+oBLC8PXmR9D60aUVgQGvangFWQ=
+github.com/hashicorp/vault/api v1.3.1 h1:pkDkcgTh47PRjY1NEFeofqR4W/HkNUi9qIakESO2aRM=
+github.com/hashicorp/vault/api v1.3.1/go.mod h1:QeJoWxMFt+MsuWcYhmwRLwKEXrjwAFFywzhptMsTIUw=
 github.com/hashicorp/vault/sdk v0.3.0 h1:kR3dpxNkhh/wr6ycaJYqp6AFT/i2xaftbfnwZduTKEY=
 github.com/hashicorp/vault/sdk v0.3.0/go.mod h1:aZ3fNuL5VNydQk8GcLJ2TV8YCRVvyaakYkhZRoVuhj0=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb h1:b5rjCoWHc7eqmAS4/qyk21ZsHyb6Mxv/jykxvNTkU4M=
@@ -503,8 +503,8 @@ go.unistack.org/micro-config-consul/v3 v3.8.1 h1:9LAzRHjV89e/qP5jEDCFdmW9Dm6SX7u
 go.unistack.org/micro-config-consul/v3 v3.8.1/go.mod h1:GXJySsspDNaPSiUseVxKpDfC1bWqsxiZXFd6T2GdMww=
 go.unistack.org/micro-config-env/v3 v3.8.2 h1:RwcSRJW5mX7e71Xr18GMGEQWmJQBuQk+gxE3nX3G/xA=
 go.unistack.org/micro-config-env/v3 v3.8.2/go.mod h1:3CSfYNEXi3U+FtOQT9pYD7cGHXMSOJX3We1XZ5rCVvI=
-go.unistack.org/micro-config-vault/v3 v3.8.3 h1:ytAp90oyvMg4wgEGfxYpp6ABcGwNyM+E/+AJ1rQp3uQ=
-go.unistack.org/micro-config-vault/v3 v3.8.3/go.mod h1:rQrSZCRLz0oJIP6nWQnp6MQg3A0GKK8CLc04tHZExTw=
+go.unistack.org/micro-config-vault/v3 v3.8.4 h1:Z3vXMurW1mQ5Gpwex7Tf/4vb0YSiAZUFK5MvCOHdCGE=
+go.unistack.org/micro-config-vault/v3 v3.8.4/go.mod h1:LYy5hBXzKCwsuaNCkj841n3elt0rKicsR2bDq3kTLNI=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.1 h1:C26yE+8Im/wnpRfMAsB9DJLdDru2qtHiF9QZpUSOPao=
 go.unistack.org/micro-meter-prometheus/v3 v3.8.1/go.mod h1:DRYX6LfXZkhD8CfOUTKaP46fmiWsHefsPIlB3uruRfM=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6 h1:Zrh7RDu7IuaCTb2MG4HQ4B8ePe5HpwX+rfq9QHwwkUQ=
