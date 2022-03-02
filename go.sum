@@ -513,8 +513,8 @@ go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6/go.mod h1:mZu8a/71EWh+sjuV
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-proto/v3 v3.1.1/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
 go.unistack.org/micro-proto/v3 v3.2.1/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
-go.unistack.org/micro-proto/v3 v3.2.5 h1:qaMr9oaO8J2X9nvcZfQ+JriuEFfoMzRvFfQdKoVlWgU=
-go.unistack.org/micro-proto/v3 v3.2.5/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
+go.unistack.org/micro-proto/v3 v3.2.7 h1:zG6d69kHc+oij2lwQ3AfrCgdjiEVRG2A7TlsxjusWs4=
+go.unistack.org/micro-proto/v3 v3.2.7/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
 go.unistack.org/micro-router-register/v3 v3.8.1 h1:7pxbBxT4gk9XfigpHYWHFEljWpwVXm2QndZhX75ZAqU=
 go.unistack.org/micro-router-register/v3 v3.8.1/go.mod h1:JKRDKYMl6A/ZqIux2D4txgerRfT+HJdPbo0Ik6nKo98=
 go.unistack.org/micro-server-grpc/v3 v3.8.0 h1:/cP4WBftiO7Vlj9D5YUShqmnw7CxyobXZCVshs5YfY8=
