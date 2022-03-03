@@ -11,7 +11,7 @@ require (
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
 	go.unistack.org/micro-client-grpc/v3 v3.8.2
-	go.unistack.org/micro-client-http/v3 v3.8.4
+	go.unistack.org/micro-client-http/v3 v3.8.5
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
 	go.unistack.org/micro-codec-json/v3 v3.8.0
 	go.unistack.org/micro-codec-jsonpb/v3 v3.8.1
