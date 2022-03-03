@@ -6,12 +6,11 @@ package pb
 
 import (
 	context "context"
-	http "net/http"
-
 	v3 "go.unistack.org/micro-client-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
+	http "net/http"
 )
 
 type githubClient struct {
@@ -24,6 +23,11 @@ func NewGithubClient(name string, c client.Client) GithubClient {
 }
 
 func (c *githubClient) LookupUser(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodGet),
 		v3.Path("/users/{username}"),
@@ -37,6 +41,11 @@ func (c *githubClient) LookupUser(ctx context.Context, req *LookupUserReq, opts 
 }
 
 func (c *githubClient) LookupUserWithoutPath(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodGet),
 		v3.Path("/{username}"),

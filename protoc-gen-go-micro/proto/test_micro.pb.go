@@ -6,7 +6,6 @@ package pb
 
 import (
 	context "context"
-
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	codec "go.unistack.org/micro/v3/codec"
@@ -16,6 +15,13 @@ var (
 	TestServiceName = "TestService"
 
 	TestServiceEndpoints = []api.Endpoint{
+		{
+			Name:    "TestService.TestMultipart",
+			Path:    []string{"/users/multipart"},
+			Method:  []string{"POST"},
+			Body:    "*",
+			Handler: "rpc",
+		},
 		{
 			Name:    "TestService.TestEndpoint",
 			Path:    []string{"/users/test"},
@@ -54,6 +60,7 @@ func NewTestServiceEndpoints() []api.Endpoint {
 }
 
 type TestServiceClient interface {
+	TestMultipart(ctx context.Context, req *MultipartReq, opts ...client.CallOption) (*MultipartRsp, error)
 	TestEndpoint(ctx context.Context, req *Request, opts ...client.CallOption) (*Response, error)
 	UserByID(ctx context.Context, req *Request, opts ...client.CallOption) (*Response, error)
 	UserImageByID(ctx context.Context, req *Request, opts ...client.CallOption) (*codec.Frame, error)
@@ -62,6 +69,7 @@ type TestServiceClient interface {
 }
 
 type TestServiceServer interface {
+	TestMultipart(ctx context.Context, req *MultipartReq, rsp *MultipartRsp) error
 	TestEndpoint(ctx context.Context, req *Request, rsp *Response) error
 	UserByID(ctx context.Context, req *Request, rsp *Response) error
 	UserImageByID(ctx context.Context, req *Request, rsp *codec.Frame) error

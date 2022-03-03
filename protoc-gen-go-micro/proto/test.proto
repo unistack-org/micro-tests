@@ -44,6 +44,30 @@ option (micro.openapiv3.openapiv3_swagger) = {
 };
 
 service TestService {
+	rpc TestMultipart(MultipartReq) returns (MultipartRsp) {
+		option (micro.api.http) = {
+			post: "/users/multipart"; body: "*";
+		};
+		option (micro.openapiv3.openapiv3_operation) = {
+			operation_id: "TestMultipart";
+			request_body: {
+				request_body: {
+					content: {
+						additional_properties: {
+							name: "multipart/form-data";
+							value: {
+								schema: {
+									reference: {
+										_ref: ".MultipartReq";
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
 	rpc TestEndpoint(Request) returns (Response) {
 		option (micro.api.http) = {
 			get: "/users/test"
@@ -96,6 +120,15 @@ service TestService {
 			post: "/aml"
 		};
 	}
+};
+
+message MultipartReq {
+  string prefix = 1;
+	bytes body = 2;
+};
+
+message MultipartRsp {
+
 };
 
 message RequestAml {

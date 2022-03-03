@@ -6,14 +6,13 @@ package pb
 
 import (
 	context "context"
-	http "net/http"
-	time "time"
-
 	v3 "go.unistack.org/micro-client-http/v3"
 	v31 "go.unistack.org/micro-server-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
+	http "net/http"
+	time "time"
 )
 
 type testDoubleClient struct {
@@ -26,6 +25,11 @@ func NewTestDoubleClient(name string, c client.Client) TestDoubleClient {
 }
 
 func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/testdouble/call/name/{name}"),
@@ -76,6 +80,11 @@ func NewTestClient(name string, c client.Client) TestClient {
 }
 
 func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/call_repeated_string"),
@@ -91,6 +100,11 @@ func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts 
 }
 
 func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/call_repeated_int64"),
@@ -106,14 +120,19 @@ func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts .
 }
 
 func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.CallOption) (*CallRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/call/{name}"),
 		v3.Body("*"),
 	)
 	opts = append(opts,
-		v3.Header("Clientid", "true"),
 		v3.Cookie("Csrftoken", "true"),
+		v3.Header("Clientid", "true"),
 	)
 	opts = append(opts, client.WithRequestTimeout(time.Second*5))
 	rsp := &CallRsp{}
@@ -125,6 +144,11 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 }
 
 func (c *testClient) CallError(ctx context.Context, req *CallReq1, opts ...client.CallOption) (*CallRsp1, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/test/callerror/{name}"),
@@ -161,8 +185,8 @@ func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
 	defer cancel()
 	v31.FillRequest(ctx, req,
-		v31.Cookie("Csrftoken", "true"),
 		v31.Header("Clientid", "true"),
+		v31.Cookie("Csrftoken", "true"),
 	)
 	return h.TestServer.Call(ctx, req, rsp)
 }

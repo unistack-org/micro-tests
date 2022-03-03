@@ -6,14 +6,13 @@ package pb
 
 import (
 	context "context"
-	http "net/http"
-
 	v3 "go.unistack.org/micro-client-http/v3"
 	v31 "go.unistack.org/micro-server-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	codec "go.unistack.org/micro/v3/codec"
 	server "go.unistack.org/micro/v3/server"
+	http "net/http"
 )
 
 type testServiceClient struct {
@@ -23,6 +22,20 @@ type testServiceClient struct {
 
 func NewTestServiceClient(name string, c client.Client) TestServiceClient {
 	return &testServiceClient{c: c, name: name}
+}
+
+func (c *testServiceClient) TestMultipart(ctx context.Context, req *MultipartReq, opts ...client.CallOption) (*MultipartRsp, error) {
+	opts = append(opts,
+		v3.Method(http.MethodPost),
+		v3.Path("/users/multipart"),
+		v3.Body("*"),
+	)
+	rsp := &MultipartRsp{}
+	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.TestMultipart", req), rsp, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return rsp, nil
 }
 
 func (c *testServiceClient) TestEndpoint(ctx context.Context, req *Request, opts ...client.CallOption) (*Response, error) {
@@ -98,6 +111,10 @@ type testServiceServer struct {
 	TestServiceServer
 }
 
+func (h *testServiceServer) TestMultipart(ctx context.Context, req *MultipartReq, rsp *MultipartRsp) error {
+	return h.TestServiceServer.TestMultipart(ctx, req, rsp)
+}
+
 func (h *testServiceServer) TestEndpoint(ctx context.Context, req *Request, rsp *Response) error {
 	v31.FillRequest(ctx, req,
 		v31.Header("client_uid", "true"),
@@ -124,6 +141,7 @@ func (h *testServiceServer) KzAmlRs(ctx context.Context, req *RequestAml, rsp *R
 
 func RegisterTestServiceServer(s server.Server, sh TestServiceServer, opts ...server.HandlerOption) error {
 	type testService interface {
+		TestMultipart(ctx context.Context, req *MultipartReq, rsp *MultipartRsp) error
 		TestEndpoint(ctx context.Context, req *Request, rsp *Response) error
 		UserByID(ctx context.Context, req *Request, rsp *Response) error
 		UserImageByID(ctx context.Context, req *Request, rsp *codec.Frame) error

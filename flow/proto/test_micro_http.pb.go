@@ -6,13 +6,12 @@ package pb
 
 import (
 	context "context"
-	http "net/http"
-	time "time"
-
 	v3 "go.unistack.org/micro-client-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
+	http "net/http"
+	time "time"
 )
 
 type testServiceClient struct {
@@ -25,6 +24,11 @@ func NewTestServiceClient(name string, c client.Client) TestServiceClient {
 }
 
 func (c *testServiceClient) LookupUser(ctx context.Context, req *LookupUserReq, opts ...client.CallOption) (*LookupUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodGet),
 		v3.Path("/v1/user/{name}"),
@@ -39,6 +43,11 @@ func (c *testServiceClient) LookupUser(ctx context.Context, req *LookupUserReq, 
 }
 
 func (c *testServiceClient) UpdateUser(ctx context.Context, req *UpdateUserReq, opts ...client.CallOption) (*UpdateUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPut),
 		v3.Path("/v1/user/{name}"),
@@ -54,6 +63,11 @@ func (c *testServiceClient) UpdateUser(ctx context.Context, req *UpdateUserReq, 
 }
 
 func (c *testServiceClient) DeleteUser(ctx context.Context, req *DeleteUserReq, opts ...client.CallOption) (*DeleteUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodDelete),
 		v3.Path("/v1/user/{name}"),
@@ -68,6 +82,11 @@ func (c *testServiceClient) DeleteUser(ctx context.Context, req *DeleteUserReq, 
 }
 
 func (c *testServiceClient) MailUser(ctx context.Context, req *MailUserReq, opts ...client.CallOption) (*MailUserRsp, error) {
+	errmap := make(map[string]interface{}, 1)
+	errmap["default"] = &Error{}
+	opts = append(opts,
+		v3.ErrorMap(errmap),
+	)
 	opts = append(opts,
 		v3.Method(http.MethodPost),
 		v3.Path("/v1/user/{name}/mail"),

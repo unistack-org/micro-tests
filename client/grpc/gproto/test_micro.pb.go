@@ -6,7 +6,6 @@ package helloworld
 
 import (
 	context "context"
-
 	proto "go.unistack.org/micro-tests/client/grpc/proto"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
