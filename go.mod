@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/kafka-go v0.4.28
+	github.com/segmentio/kafka-go v0.4.29
 	github.com/stretchr/testify v1.7.0
 	github.com/twmb/franz-go v1.4.0
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
@@ -33,7 +33,6 @@ require (
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
 	go.unistack.org/micro/v3 v3.8.21
-	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
 	golang.org/x/sys v0.0.0-20220227234510-4e6760a101f9 // indirect
 	golang.org/x/tools v0.1.5 // indirect
 	google.golang.org/genproto v0.0.0-20220302033224-9aa15565e42a // indirect
