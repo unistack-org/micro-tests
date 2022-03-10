@@ -19,6 +19,7 @@ import (
 	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/register"
 	"go.unistack.org/micro/v3/router"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 var defaultHTTPCodecs = map[string]codec.Codec{
@@ -63,7 +64,7 @@ func TestNative(t *testing.T) {
 	c := client.NewClientCallOptions(mhttp.NewClient(client.ContentType("application/json"), client.Codec("application/json", jsoncodec.NewCodec())), client.WithAddress("https://api.github.com"))
 	gh := pb.NewGithubClient("github", c)
 
-	rsp, err := gh.LookupUser(context.TODO(), &pb.LookupUserReq{Username: "vtolstov"})
+	rsp, err := gh.LookupUser(context.TODO(), &pb.LookupUserReq{Username: "vtolstov", Str: wrapperspb.String("test")})
 	if err != nil {
 		t.Fatal(err)
 	}

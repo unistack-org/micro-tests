@@ -5,6 +5,7 @@ option go_package = "github.com//unistack-org/micro-tests/client/http/proto;pb";
 
 import "api/annotations.proto";
 import "openapiv3/annotations.proto";
+import "google/protobuf/wrappers.proto";
 
 service Github {
 	rpc LookupUser(LookupUserReq) returns (LookupUserRsp) {
@@ -38,6 +39,7 @@ service Github {
 
 message LookupUserReq {
   string username = 1;
+  google.protobuf.StringValue str = 2;
 };
 
 message LookupUserRsp {
