@@ -387,8 +387,8 @@ github.com/prometheus/client_golang v1.0.0/go.mod h1:db9x61etRT2tGnBNRi70OPL5Fsn
 github.com/prometheus/client_golang v1.4.0/go.mod h1:e9GMxYsXl05ICDXkRhurwBS4Q3OK1iX/F2sw+iXX5zU=
 github.com/prometheus/client_golang v1.7.1/go.mod h1:PY5Wy2awLA44sXw4AOSfFBetzPP4j5+D6mVACh+pe2M=
 github.com/prometheus/client_golang v1.11.0/go.mod h1:Z6t4BnS23TR94PD6BsDNk8yVqroYurpAkEiz0P2BEV0=
-github.com/prometheus/client_golang v1.12.0 h1:C+UIj/QWtmqY13Arb8kwMt5j34/0Z2iKamrJ+ryC0Gg=
-github.com/prometheus/client_golang v1.12.0/go.mod h1:3Z9XVyYiZYEO+YQWt3RD2R3jrbd179Rt297l4aS6nDY=
+github.com/prometheus/client_golang v1.12.1 h1:ZiaPsmm9uiBeaSMRznKsCDNtPCS0T3JVDGF+06gjBzk=
+github.com/prometheus/client_golang v1.12.1/go.mod h1:3Z9XVyYiZYEO+YQWt3RD2R3jrbd179Rt297l4aS6nDY=
 github.com/prometheus/client_model v0.0.0-20180712105110-5c3871d89910/go.mod h1:MbSGuTsp3dbXC40dX6PRTWyKYBIrTGTE9sqQNg2J8bo=
 github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
@@ -509,8 +509,8 @@ go.unistack.org/micro-config-env/v3 v3.8.2 h1:RwcSRJW5mX7e71Xr18GMGEQWmJQBuQk+gx
 go.unistack.org/micro-config-env/v3 v3.8.2/go.mod h1:3CSfYNEXi3U+FtOQT9pYD7cGHXMSOJX3We1XZ5rCVvI=
 go.unistack.org/micro-config-vault/v3 v3.8.4 h1:Z3vXMurW1mQ5Gpwex7Tf/4vb0YSiAZUFK5MvCOHdCGE=
 go.unistack.org/micro-config-vault/v3 v3.8.4/go.mod h1:LYy5hBXzKCwsuaNCkj841n3elt0rKicsR2bDq3kTLNI=
-go.unistack.org/micro-meter-prometheus/v3 v3.8.1 h1:C26yE+8Im/wnpRfMAsB9DJLdDru2qtHiF9QZpUSOPao=
-go.unistack.org/micro-meter-prometheus/v3 v3.8.1/go.mod h1:DRYX6LfXZkhD8CfOUTKaP46fmiWsHefsPIlB3uruRfM=
+go.unistack.org/micro-meter-prometheus/v3 v3.8.3 h1:OYrZ0Y2Jbs8c4bWAK4AX6cE+Ienn+fOJ7u8NzgoRfc0=
+go.unistack.org/micro-meter-prometheus/v3 v3.8.3/go.mod h1:4QkecbBLW6mQEvWqfow0K6l7VWyeNpWIrODQmblULMk=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6 h1:Zrh7RDu7IuaCTb2MG4HQ4B8ePe5HpwX+rfq9QHwwkUQ=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6/go.mod h1:mZu8a/71EWh+sjuVvvZEsUNkrhrnSddXIwE3/E9NVIg=
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
@@ -540,7 +540,6 @@ go.unistack.org/micro/v3 v3.8.9/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J
 go.unistack.org/micro/v3 v3.8.11/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.12/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.14/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
-go.unistack.org/micro/v3 v3.8.16/go.mod h1:zEbgew93bFhU+gANJubbbnPP1LtDTQRbM/17QXTbTrY=
 go.unistack.org/micro/v3 v3.8.21 h1:8vYxtIlPnCBZ888BrQSP6+b0CFQcn5FiaqDpI5XqorQ=
 go.unistack.org/micro/v3 v3.8.21/go.mod h1:aBOCQ6SkAwKMRI7Q1CIsQA2S88ibyJfweJZlT1M2qpE=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
