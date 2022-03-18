@@ -510,8 +510,8 @@ go.unistack.org/micro-config-env/v3 v3.8.2 h1:RwcSRJW5mX7e71Xr18GMGEQWmJQBuQk+gx
 go.unistack.org/micro-config-env/v3 v3.8.2/go.mod h1:3CSfYNEXi3U+FtOQT9pYD7cGHXMSOJX3We1XZ5rCVvI=
 go.unistack.org/micro-config-vault/v3 v3.8.4 h1:Z3vXMurW1mQ5Gpwex7Tf/4vb0YSiAZUFK5MvCOHdCGE=
 go.unistack.org/micro-config-vault/v3 v3.8.4/go.mod h1:LYy5hBXzKCwsuaNCkj841n3elt0rKicsR2bDq3kTLNI=
-go.unistack.org/micro-meter-prometheus/v3 v3.8.3 h1:OYrZ0Y2Jbs8c4bWAK4AX6cE+Ienn+fOJ7u8NzgoRfc0=
-go.unistack.org/micro-meter-prometheus/v3 v3.8.3/go.mod h1:4QkecbBLW6mQEvWqfow0K6l7VWyeNpWIrODQmblULMk=
+go.unistack.org/micro-meter-prometheus/v3 v3.8.4 h1:0tnkJvLtcJlFKABw91iai5k/vezktoFrYo3hgL3Q8LY=
+go.unistack.org/micro-meter-prometheus/v3 v3.8.4/go.mod h1:4QkecbBLW6mQEvWqfow0K6l7VWyeNpWIrODQmblULMk=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6 h1:Zrh7RDu7IuaCTb2MG4HQ4B8ePe5HpwX+rfq9QHwwkUQ=
 go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6/go.mod h1:mZu8a/71EWh+sjuVvvZEsUNkrhrnSddXIwE3/E9NVIg=
 go.unistack.org/micro-proto/v3 v3.1.0/go.mod h1:DpRhYCBXlmSJ/AAXTmntvlh7kQkYU6eFvlmYAx4BQS8=
