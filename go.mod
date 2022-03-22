@@ -8,7 +8,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.30
 	github.com/stretchr/testify v1.7.1
-	github.com/twmb/franz-go v1.4.0
+	github.com/twmb/franz-go v1.4.1
 	github.com/zeebo/errs v1.3.0 // indirect
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
@@ -42,6 +42,6 @@ require (
 	google.golang.org/genproto v0.0.0-20220317150908-0efb43f6373e // indirect
 	google.golang.org/grpc v1.45.0
 	google.golang.org/protobuf v1.27.1
-	modernc.org/sqlite v1.15.2
+	modernc.org/sqlite v1.15.3
 	storj.io/drpc v0.0.30
 )
