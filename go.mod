@@ -29,17 +29,17 @@ require (
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6
 	go.unistack.org/micro-proto/v3 v3.2.7
 	go.unistack.org/micro-router-register/v3 v3.8.1
-	go.unistack.org/micro-server-grpc/v3 v3.8.0
-	go.unistack.org/micro-server-http/v3 v3.9.5
-	go.unistack.org/micro-server-tcp/v3 v3.8.0
+	go.unistack.org/micro-server-grpc/v3 v3.9.0
+	go.unistack.org/micro-server-http/v3 v3.10.0
+	go.unistack.org/micro-server-tcp/v3 v3.9.0
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.8.21
+	go.unistack.org/micro/v3 v3.9.1
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f
 	golang.org/x/sys v0.0.0-20220319134239-a9b59b0215f8 // indirect
 	golang.org/x/tools v0.1.5 // indirect
-	google.golang.org/genproto v0.0.0-20220317150908-0efb43f6373e // indirect
+	google.golang.org/genproto v0.0.0-20220322021311-435b647f9ef2 // indirect
 	google.golang.org/grpc v1.45.0
 	google.golang.org/protobuf v1.28.0
 	modernc.org/sqlite v1.15.3
