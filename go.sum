@@ -525,8 +525,8 @@ go.unistack.org/micro-proto/v3 v3.2.7 h1:zG6d69kHc+oij2lwQ3AfrCgdjiEVRG2A7Tlsxju
 go.unistack.org/micro-proto/v3 v3.2.7/go.mod h1:ZltVWNECD5yK+40+OCONzGw4OtmSdTpVi8/KFgo9dqM=
 go.unistack.org/micro-router-register/v3 v3.8.1 h1:7pxbBxT4gk9XfigpHYWHFEljWpwVXm2QndZhX75ZAqU=
 go.unistack.org/micro-router-register/v3 v3.8.1/go.mod h1:JKRDKYMl6A/ZqIux2D4txgerRfT+HJdPbo0Ik6nKo98=
-go.unistack.org/micro-server-grpc/v3 v3.9.0 h1:go8MeKzSfbwaoyqy19FxziOn95jY7Ls8IqFkQ6MDcIw=
-go.unistack.org/micro-server-grpc/v3 v3.9.0/go.mod h1:XhdNB9ISbs+KQh1d0imFxv9NWKkINPPpCw+XjplGTTo=
+go.unistack.org/micro-server-grpc/v3 v3.9.1 h1:m628vG57K9lsNe5fwofSoOnfQOXVSxLtxE146tYVQSY=
+go.unistack.org/micro-server-grpc/v3 v3.9.1/go.mod h1:UK3UbPTaRN9IUh3kTAKDKWlhDT6zXnx6jIfj+ZE7NVA=
 go.unistack.org/micro-server-http/v3 v3.10.0 h1:C8S2qvPevQVMvKY+G6fQTGk75wE8YDtSJMB9QU2mras=
 go.unistack.org/micro-server-http/v3 v3.10.0/go.mod h1:Jn3+hWZyd26s5GnCdbRO85mDN0WJWstUmKK76mFsIHg=
 go.unistack.org/micro-server-tcp/v3 v3.9.0 h1:7y56HYeksu9nrfYu/Z3w2MMsp7955pZ+cxb1uM3IEaU=
