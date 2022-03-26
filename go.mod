@@ -35,7 +35,7 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.9.1
+	go.unistack.org/micro/v3 v3.9.2
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f
 	golang.org/x/sys v0.0.0-20220319134239-a9b59b0215f8 // indirect
 	golang.org/x/tools v0.1.5 // indirect
