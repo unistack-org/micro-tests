@@ -3,7 +3,6 @@ module go.unistack.org/micro-tests
 go 1.16
 
 require (
-	github.com/google/gnostic v0.6.7 // indirect
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.30
@@ -29,7 +28,7 @@ require (
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6
 	go.unistack.org/micro-proto/v3 v3.2.7
 	go.unistack.org/micro-router-register/v3 v3.9.0
-	go.unistack.org/micro-server-grpc/v3 v3.9.1
+	go.unistack.org/micro-server-grpc/v3 v3.9.2
 	go.unistack.org/micro-server-http/v3 v3.10.0
 	go.unistack.org/micro-server-tcp/v3 v3.9.0
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.0
