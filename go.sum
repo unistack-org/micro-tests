@@ -166,8 +166,9 @@ github.com/google/btree v1.0.0/go.mod h1:lNA+9X1NB3Zf8V7Ke586lFgjr2dZNuvo3lPJSGZ
 github.com/google/btree v1.0.1 h1:gK4Kx5IaGY9CD5sPJ36FHiBJ6ZXl0kilRiiCj+jdYp4=
 github.com/google/btree v1.0.1/go.mod h1:xXMiIv4Fb/0kKde4SpL7qlzvu5cMJDRkFDxJfI9uaxA=
 github.com/google/gnostic v0.6.6/go.mod h1:Nm8234We1lq6iB9OmlgNv3nH91XLLVZHCDayfA3xq+E=
-github.com/google/gnostic v0.6.8 h1:bT56GPYBWh1tvBuBEd94qcS3+60b+y0HQur0ITkGuCk=
 github.com/google/gnostic v0.6.8/go.mod h1:Nm8234We1lq6iB9OmlgNv3nH91XLLVZHCDayfA3xq+E=
+github.com/google/gnostic v0.6.9 h1:ZK/5VhkoX835RikCHpSUJV9a+S3e1zLh59YnyWeBW+0=
+github.com/google/gnostic v0.6.9/go.mod h1:Nm8234We1lq6iB9OmlgNv3nH91XLLVZHCDayfA3xq+E=
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/google/go-cmp v0.3.0/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMywk6iLU=
 github.com/google/go-cmp v0.3.1/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMywk6iLU=
@@ -493,8 +494,8 @@ go.unistack.org/micro-broker-kgo/v3 v3.8.2 h1:R01WNiWTosGbENw+uIkYVPHtnExi9SMmo6
 go.unistack.org/micro-broker-kgo/v3 v3.8.2/go.mod h1:Oe9qb01J9cRWYeJd9w+IzItV187FK+6Y0aMynp3AL+Q=
 go.unistack.org/micro-broker-segmentio/v3 v3.8.0 h1:Nm9BaS4eD6kuewHRGmUd/QFbdv4FDtWpPzv1Z3zaTPE=
 go.unistack.org/micro-broker-segmentio/v3 v3.8.0/go.mod h1:Q3mavh0ZoNRO6mw31USvE760lDWB1nQHWiE64F6s8rs=
-go.unistack.org/micro-client-drpc/v3 v3.8.0 h1:71vCUb3swAyph0Qajw6eIzCwRP3LvK/u7w7Vk+9t+Vc=
-go.unistack.org/micro-client-drpc/v3 v3.8.0/go.mod h1:pjgkBp0Ij5PVXiFfaUjtOXKkVBlR3Wcnbdbz6NLYjQ0=
+go.unistack.org/micro-client-drpc/v3 v3.8.1 h1:xn1Qdz5LxQvZ+PdGAC2C2H7n6t+iF07Bt3OgoHtGfzU=
+go.unistack.org/micro-client-drpc/v3 v3.8.1/go.mod h1:QdpJeUw/qjl00f3zULBubAQD5sGMNqfKXbCVJoNVsEk=
 go.unistack.org/micro-client-grpc/v3 v3.8.5 h1:wtqrVyIiO5YC8JlNKkk5vhYyzxiJ1AIcDM4TIY1Uiuw=
 go.unistack.org/micro-client-grpc/v3 v3.8.5/go.mod h1:U0RdPXp9KWkX1VHld7vRa0cxV3DOBlcNvKk6exEtxvQ=
 go.unistack.org/micro-client-http/v3 v3.8.7 h1:Sgdq9BF7Kp/5t3gUpPTEmHywFFwrV24myMXovCglRiY=
