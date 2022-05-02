@@ -11,7 +11,7 @@ require (
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
 	go.unistack.org/micro-client-drpc/v3 v3.8.1
-	go.unistack.org/micro-client-grpc/v3 v3.8.5
+	go.unistack.org/micro-client-grpc/v3 v3.8.6
 	go.unistack.org/micro-client-http/v3 v3.8.8
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
 	go.unistack.org/micro-codec-json/v3 v3.8.0
@@ -34,10 +34,8 @@ require (
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.1
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
 	go.unistack.org/micro/v3 v3.9.7
-	golang.org/x/net v0.0.0-20220225172249-27dd8689420f
-	golang.org/x/sys v0.0.0-20220319134239-a9b59b0215f8 // indirect
+	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4
 	golang.org/x/tools v0.1.5 // indirect
-	google.golang.org/genproto v0.0.0-20220322021311-435b647f9ef2 // indirect
 	google.golang.org/grpc v1.46.0
 	google.golang.org/protobuf v1.28.0
 	modernc.org/sqlite v1.17.0
