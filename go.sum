@@ -452,13 +452,12 @@ github.com/stretchr/testify v1.7.1 h1:5TQK59W5E3v0r2duFAb7P95B6hEeOyEnHRa8MjYSMT
 github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
 github.com/twmb/franz-go v1.2.6/go.mod h1:P+i2DnBaec1o0z9EI8CyAM/WAjG99CHI3oCAhZDoy48=
-github.com/twmb/franz-go v1.5.2 h1:2IwsTronFdgTtyitQxTL8WE0xrPiev1A77i5ps09Pmc=
-github.com/twmb/franz-go v1.5.2/go.mod h1:ZKQ5AtqBbdc783bLCay7nDc21lJnIIA8mFJYhLMF19E=
+github.com/twmb/franz-go v1.5.3 h1:uhknJZs/fiANWcyTqYMKxAtOPYb1xkC22y5dRKewlvo=
+github.com/twmb/franz-go v1.5.3/go.mod h1:eqHYpAuvlTArOdZ1XtPYyOQ1uUb40CSZwbpL3ccjibI=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20211127185622-3b34db0c6d1e/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v0.0.0-20211207071611-6a03ca9e400b/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
 github.com/twmb/franz-go/pkg/kmsg v1.0.0 h1:dQdaXLDUEb+XkSUqw2/GvMEGdw1o89X2fOiFjlhztyA=
 github.com/twmb/franz-go/pkg/kmsg v1.0.0/go.mod h1:SxG/xJKhgPu25SamAq0rrucfp7lbzCpEXOC+vH/ELrY=
-github.com/twmb/go-rbtree v1.0.0 h1:KxN7dXJ8XaZ4cvmHV1qqXTshxX3EBvX/toG5+UR49Mg=
 github.com/twmb/go-rbtree v1.0.0/go.mod h1:UlIAI8gu3KRPkXSobZnmJfVwCJgEhD/liWzT5ppzIyc=
 github.com/unistack-org/micro-proto v0.0.9/go.mod h1:Cckwmzd89gvS7ThxzZp9kQR/EOdksFQcsTAtDDyKwrg=
 github.com/valyala/fastrand v1.1.0 h1:f+5HkLW4rsgzdNoleUOB69hyT9IlD2ZQh9GyDMfb5G8=
