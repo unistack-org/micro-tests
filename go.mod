@@ -6,7 +6,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.31
-	github.com/stretchr/testify v1.7.1
+	github.com/stretchr/testify v1.7.3
 	github.com/twmb/franz-go v1.5.2
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
