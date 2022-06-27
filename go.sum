@@ -497,8 +497,8 @@ go.unistack.org/micro-broker-segmentio/v3 v3.8.0 h1:Nm9BaS4eD6kuewHRGmUd/QFbdv4F
 go.unistack.org/micro-broker-segmentio/v3 v3.8.0/go.mod h1:Q3mavh0ZoNRO6mw31USvE760lDWB1nQHWiE64F6s8rs=
 go.unistack.org/micro-client-drpc/v3 v3.8.1 h1:xn1Qdz5LxQvZ+PdGAC2C2H7n6t+iF07Bt3OgoHtGfzU=
 go.unistack.org/micro-client-drpc/v3 v3.8.1/go.mod h1:QdpJeUw/qjl00f3zULBubAQD5sGMNqfKXbCVJoNVsEk=
-go.unistack.org/micro-client-grpc/v3 v3.8.6 h1:Fqc/moD3geiPDxvpvC2kj2O17mkPeRXVo72l06JOFj0=
-go.unistack.org/micro-client-grpc/v3 v3.8.6/go.mod h1:xll5kABezUx9sPVZPan9Sc8/9tQ7Cs/lTSv0qHeglSE=
+go.unistack.org/micro-client-grpc/v3 v3.8.7 h1:Y/Rf4BIuj/ufBV85fSsuM5gMmkyOsLFYtajNuZFDoA4=
+go.unistack.org/micro-client-grpc/v3 v3.8.7/go.mod h1:giRubECeaZiPjk6lGZjHv2M7dQ4SdFL/hXfastu42dE=
 go.unistack.org/micro-client-http/v3 v3.8.8 h1:gu05P9QgcYW3lDX2VuoILsVW2of9eUeTaYuAUs0u5io=
 go.unistack.org/micro-client-http/v3 v3.8.8/go.mod h1:o0IvvnnvW7ufh7tB3cS5FWeyug/H+eppwEyF/+PvWoc=
 go.unistack.org/micro-codec-grpc/v3 v3.8.1 h1:vZrR07L8NKziG1dtzCBKoooaHpV3oP2c7rh93ClbUGI=
@@ -862,7 +862,6 @@ google.golang.org/grpc v1.40.0/go.mod h1:ogyxbiOoUXAkP+4+xa6PZSE9DZgIHtSpzjDTB9K
 google.golang.org/grpc v1.41.0/go.mod h1:U3l9uK9J0sini8mHphKoXyaqDA/8VyGnDee1zzIUK6k=
 google.golang.org/grpc v1.44.0/go.mod h1:k+4IHHFw41K8+bbowsex27ge2rCb65oeWqe4jJ590SU=
 google.golang.org/grpc v1.45.0/go.mod h1:lN7owxKUQEqMfSyQikvvk5tf/6zMPsrK+ONuO11+0rQ=
-google.golang.org/grpc v1.46.0/go.mod h1:vN9eftEi1UMyUsIF80+uQXhHjbXYbm0uXoFCACuMGWk=
 google.golang.org/grpc v1.47.0 h1:9n77onPX5F3qfFCqjy9dhn8PbNQsIKeVU04J9G7umt8=
 google.golang.org/grpc v1.47.0/go.mod h1:vN9eftEi1UMyUsIF80+uQXhHjbXYbm0uXoFCACuMGWk=
 google.golang.org/protobuf v0.0.0-20200109180630-ec00e32a8dfd/go.mod h1:DFci5gLYBciE7Vtevhsrf46CRTquxDuWsQurQQe4oz8=
