@@ -38,6 +38,6 @@ require (
 	golang.org/x/tools v0.1.5 // indirect
 	google.golang.org/grpc v1.49.0
 	google.golang.org/protobuf v1.28.1
-	modernc.org/sqlite v1.18.2
+	modernc.org/sqlite v1.19.1
 	storj.io/drpc v0.0.32
 )
