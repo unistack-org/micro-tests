@@ -7,7 +7,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/segmentio/kafka-go v0.4.35
 	github.com/stretchr/testify v1.8.0
-	github.com/twmb/franz-go v1.7.1
+	github.com/twmb/franz-go v1.8.0
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
 	go.unistack.org/micro-client-drpc/v3 v3.8.1
