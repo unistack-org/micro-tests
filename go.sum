@@ -923,8 +923,8 @@ go.unistack.org/micro-router-register/v3 v3.9.0 h1:1TFfUmKwy39zmkqp+a82WvGdpaxJF
 go.unistack.org/micro-router-register/v3 v3.9.0/go.mod h1:pt4a4hOJn8tniXObwDSAx1cdYR75k35FIp9fiqdWxNc=
 go.unistack.org/micro-server-grpc/v3 v3.9.5 h1:9euxtjSFwism4V6yoMBPCNOtpZE8ZRHkMhJo+MVr78g=
 go.unistack.org/micro-server-grpc/v3 v3.9.5/go.mod h1:DajwUr3NrlGnenX8UXtwwvb9A0xVAsIwNe4Twlf5QDE=
-go.unistack.org/micro-server-http/v3 v3.10.2 h1:0Mxn/Wje+GDhGG5j5gjCGxIfA4bj6SbQYHGYOJBYkNE=
-go.unistack.org/micro-server-http/v3 v3.10.2/go.mod h1:iA6isUkzOcP6EIrsVWluKP8LfwSZDwVKi4Jk/ecWZtw=
+go.unistack.org/micro-server-http/v3 v3.10.3 h1:h+78b0VdYhtr154+nh+lasPctdNN7rFHiW1OCYEFQ8o=
+go.unistack.org/micro-server-http/v3 v3.10.3/go.mod h1:6cmPPw7Yvi5kIP0G3P2EeYI6+1upQEt9Y1zUx5+PmOY=
 go.unistack.org/micro-server-tcp/v3 v3.9.0 h1:7y56HYeksu9nrfYu/Z3w2MMsp7955pZ+cxb1uM3IEaU=
 go.unistack.org/micro-server-tcp/v3 v3.9.0/go.mod h1:78fKJoNXkK4bJO0crdwJh8a+3jcDF6sM0g5ah3Tn6w4=
 go.unistack.org/micro-wrapper-recovery/v3 v3.8.0 h1:ivobT81NUA/74hshbbXM7iOcgODYDHvD2JOHVas6qxU=
@@ -944,8 +944,8 @@ go.unistack.org/micro/v3 v3.9.0/go.mod h1:7ssIWk+PJXvb2nSl8NUnQRs32JJEId2IDi9Pob
 go.unistack.org/micro/v3 v3.9.2/go.mod h1:7ssIWk+PJXvb2nSl8NUnQRs32JJEId2IDi9PobrQlKo=
 go.unistack.org/micro/v3 v3.9.7/go.mod h1:E1pmj0cNC7P+QVX1sElRBMiNaQVTjDoEtYlbqZY84c4=
 go.unistack.org/micro/v3 v3.9.8/go.mod h1:SKr1XwfDLsytOixTDei+Ek/tr2OpIjLd9Rg5ET9RqXs=
-go.unistack.org/micro/v3 v3.9.10/go.mod h1:LrBm9Fsf4MbY8DlUbdwRTYJosMkN8wrtOQHoYBlMkz8=
 go.unistack.org/micro/v3 v3.9.13/go.mod h1:gI4RkJKHLPW7KV6h4+ZBOZD997MRvFRXMPQIHpozikI=
+go.unistack.org/micro/v3 v3.9.18/go.mod h1:gI4RkJKHLPW7KV6h4+ZBOZD997MRvFRXMPQIHpozikI=
 go.unistack.org/micro/v3 v3.9.19 h1:HFeHr20hnrs60EnlKWwrvQLTXILu3qhmHqs98jlqmqk=
 go.unistack.org/micro/v3 v3.9.19/go.mod h1:gI4RkJKHLPW7KV6h4+ZBOZD997MRvFRXMPQIHpozikI=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
