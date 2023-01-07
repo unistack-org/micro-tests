@@ -183,7 +183,8 @@ func TestGRPCServer(t *testing.T) {
 	// create client
 	gc := gclient.NewClient(
 		client.ContentType("application/grpc"),
-		client.Codec("application/grpc", protocodec.NewCodec()), client.Router(rtr), client.Register(r), client.Broker(b))
+		client.Codec("application/grpc", protocodec.NewCodec()),
+		client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr), client.Register(r), client.Broker(b))
 
 	c := gpb.NewTestClient("helloworld", gc)
 

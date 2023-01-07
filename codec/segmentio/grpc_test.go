@@ -36,8 +36,14 @@ func TestGRPCServer(t *testing.T) {
 
 	r := register.NewRegister()
 	b := broker.NewBroker(broker.Register(r))
-	s := gserver.NewServer(server.Codec("application/grpc+proto", protocodec.NewCodec()),
-		server.Address("127.0.0.1:0"), server.Register(r), server.Name("helloworld"), gserver.Reflection(true))
+	s := gserver.NewServer(
+		server.Codec("application/grpc+proto", protocodec.NewCodec()),
+		server.Codec("application/grpc", protocodec.NewCodec()),
+		server.Address("127.0.0.1:0"),
+		server.Register(r),
+		server.Name("helloworld"),
+		gserver.Reflection(true),
+	)
 	// create router
 	rtr := regRouter.NewRouter(router.Register(r))
 
@@ -62,7 +68,13 @@ func TestGRPCServer(t *testing.T) {
 	}()
 
 	// create client
-	c := gclient.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr), client.Register(r), client.Broker(b))
+	c := gclient.NewClient(
+		client.Codec("application/grpc+proto", protocodec.NewCodec()),
+		client.Codec("application/grpc", protocodec.NewCodec()),
+		client.Router(rtr),
+		client.Register(r),
+		client.Broker(b),
+	)
 
 	testMethods := []string{
 		"Test.Call",

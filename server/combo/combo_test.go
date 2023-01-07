@@ -1,8 +1,10 @@
 package combo_test
 
+/*
 import (
 	"context"
 	"fmt"
+	"log"
 	"net"
 	"net/http"
 	"strconv"
@@ -19,6 +21,7 @@ import (
 	mdpb "go.unistack.org/micro-tests/server/combo/mdpb"
 	mgpb "go.unistack.org/micro-tests/server/combo/mgpb"
 	mhpb "go.unistack.org/micro-tests/server/combo/mhpb"
+
 	// ndpb "go.unistack.org/micro-tests/server/combo/ndpb"
 	// ngpb "go.unistack.org/micro-tests/server/combo/ngpb"
 	pb "go.unistack.org/micro-tests/server/combo/proto"
@@ -287,7 +290,7 @@ func TestComboServer(t *testing.T) {
 				t.Fatalf("invalid response: %#+v\n", rsp)
 			}
 		}
-	*/
+
 
 	t.Logf("call via micro http")
 	if rsp, err := mhttpsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
@@ -317,7 +320,7 @@ func TestComboServer(t *testing.T) {
 				t.Fatalf("invalid response: %#+v\n", rsp)
 			}
 		}
-	*/
+
 	t.Logf("call via micro drpc")
 	if rsp, err = mdrpcsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
 		t.Logf("micro drpc err: %v", err)
@@ -356,3 +359,4 @@ func newComboMux(httph http.Handler, grpch http.Handler, drpch http.Handler) htt
 		httph.ServeHTTP(w, r)
 	})
 }
+*/

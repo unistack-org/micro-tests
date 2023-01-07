@@ -94,7 +94,12 @@ func TestGRPCClient(t *testing.T) {
 	rtr := regRouter.NewRouter(router.Register(r))
 
 	// create client
-	c := grpc.NewClient(client.Codec("application/grpc+proto", protocodec.NewCodec()), client.Router(rtr))
+	c := grpc.NewClient(
+		client.Codec("application/grpc", protocodec.NewCodec()),
+		client.Codec("application/grpc+proto", protocodec.NewCodec()),
+		// client.ContentType("application/grpc"),
+		client.Router(rtr),
+	)
 
 	testMethods := []string{
 		"/helloworld.Test/Call",
