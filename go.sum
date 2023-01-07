@@ -886,8 +886,8 @@ go.unistack.org/micro-broker-segmentio/v3 v3.8.0 h1:Nm9BaS4eD6kuewHRGmUd/QFbdv4F
 go.unistack.org/micro-broker-segmentio/v3 v3.8.0/go.mod h1:Q3mavh0ZoNRO6mw31USvE760lDWB1nQHWiE64F6s8rs=
 go.unistack.org/micro-client-drpc/v3 v3.8.1 h1:xn1Qdz5LxQvZ+PdGAC2C2H7n6t+iF07Bt3OgoHtGfzU=
 go.unistack.org/micro-client-drpc/v3 v3.8.1/go.mod h1:QdpJeUw/qjl00f3zULBubAQD5sGMNqfKXbCVJoNVsEk=
-go.unistack.org/micro-client-grpc/v3 v3.8.7 h1:Y/Rf4BIuj/ufBV85fSsuM5gMmkyOsLFYtajNuZFDoA4=
-go.unistack.org/micro-client-grpc/v3 v3.8.7/go.mod h1:giRubECeaZiPjk6lGZjHv2M7dQ4SdFL/hXfastu42dE=
+go.unistack.org/micro-client-grpc/v3 v3.9.0 h1:zf4rMji5E9MMGFIZuuK7+D+YB1jBccC1wAnXsh4JGiU=
+go.unistack.org/micro-client-grpc/v3 v3.9.0/go.mod h1:iwt/NPgc9Hrt3UQEZhGYh+8cEqyupZXU8I+qqzMQ064=
 go.unistack.org/micro-client-http/v3 v3.9.0 h1:m2DO59EzwbWFkF3gzvUBAUoKsmH0sZ+hPrwAoDa2EvE=
 go.unistack.org/micro-client-http/v3 v3.9.0/go.mod h1:+IwOy028UpLcbRQSo+DZgGPa+CODHFAN7YGA85bdJ1M=
 go.unistack.org/micro-codec-grpc/v3 v3.8.1 h1:vZrR07L8NKziG1dtzCBKoooaHpV3oP2c7rh93ClbUGI=

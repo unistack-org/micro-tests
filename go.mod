@@ -12,7 +12,7 @@ require (
 	go.unistack.org/micro-broker-kgo/v3 v3.8.2
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
 	go.unistack.org/micro-client-drpc/v3 v3.8.1
-	go.unistack.org/micro-client-grpc/v3 v3.8.7
+	go.unistack.org/micro-client-grpc/v3 v3.9.0
 	go.unistack.org/micro-client-http/v3 v3.9.0
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
 	go.unistack.org/micro-codec-json/v3 v3.8.0
