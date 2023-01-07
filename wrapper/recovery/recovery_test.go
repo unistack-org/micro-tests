@@ -65,7 +65,7 @@ func TestRecovery(t *testing.T) {
 		server.Register(reg),
 		server.Broker(brk),
 		server.WrapHandler(
-			recwrapper.NewHandlerWrapper(rfn),
+			recwrapper.NewServerHandlerWrapper(recwrapper.ServerHandlerFn(rfn)),
 		),
 	)
 

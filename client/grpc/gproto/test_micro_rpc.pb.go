@@ -9,6 +9,7 @@ import (
 	proto "go.unistack.org/micro-tests/client/grpc/proto"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
+	metadata "go.unistack.org/micro/v3/metadata"
 	server "go.unistack.org/micro/v3/server"
 )
 
@@ -60,6 +61,10 @@ func (s *testClientStream) SendMsg(msg interface{}) error {
 
 func (s *testClientStream) RecvMsg(msg interface{}) error {
 	return s.stream.Recv(msg)
+}
+
+func (s *testClientStream) Header() metadata.Metadata {
+	return s.stream.Response().Header()
 }
 
 func (s *testClientStream) Send(msg *proto.Request) error {

@@ -23,7 +23,7 @@ service TestDouble {
       };
     };
 		option (micro.api.http) = { post: "/v1/testdouble/call/name/{name}"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 };
 
@@ -40,7 +40,7 @@ service Test {
       };
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_string"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 	rpc CallRepeatedInt64(CallReq) returns (CallRsp) {
 		option (micro.openapiv3.openapiv3_operation) = {
@@ -54,7 +54,7 @@ service Test {
       };
     };
 		option (micro.api.http) = { post: "/v1/test/call_repeated_int64"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 
 
@@ -95,7 +95,7 @@ service Test {
 		  };
 		};
 		option (micro.api.http) = { post: "/v1/test/call/{name}"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 	rpc CallError(CallReq1) returns (CallRsp1) {
 		option (micro.openapiv3.openapiv3_operation) = {

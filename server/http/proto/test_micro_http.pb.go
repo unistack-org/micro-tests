@@ -35,7 +35,8 @@ func (c *testDoubleClient) CallDouble(ctx context.Context, req *CallReq, opts ..
 		v3.Path("/v1/testdouble/call/name/{name}"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestDouble.CallDouble", req), rsp, opts...)
 	if err != nil {
@@ -50,7 +51,8 @@ type testDoubleServer struct {
 
 func (h *testDoubleServer) CallDouble(ctx context.Context, req *CallReq, rsp *CallRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestDoubleServer.CallDouble(ctx, req, rsp)
 }
@@ -90,7 +92,8 @@ func (c *testClient) CallRepeatedString(ctx context.Context, req *CallReq, opts 
 		v3.Path("/v1/test/call_repeated_string"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedString", req), rsp, opts...)
 	if err != nil {
@@ -110,7 +113,8 @@ func (c *testClient) CallRepeatedInt64(ctx context.Context, req *CallReq, opts .
 		v3.Path("/v1/test/call_repeated_int64"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.CallRepeatedInt64", req), rsp, opts...)
 	if err != nil {
@@ -134,7 +138,8 @@ func (c *testClient) Call(ctx context.Context, req *CallReq, opts ...client.Call
 		v3.Cookie("Csrftoken", "true"),
 		v3.Header("Clientid", "true"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
@@ -168,21 +173,24 @@ type testServer struct {
 
 func (h *testServer) CallRepeatedString(ctx context.Context, req *CallReq, rsp *CallRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServer.CallRepeatedString(ctx, req, rsp)
 }
 
 func (h *testServer) CallRepeatedInt64(ctx context.Context, req *CallReq, rsp *CallRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServer.CallRepeatedInt64(ctx, req, rsp)
 }
 
 func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	v31.FillRequest(ctx, req,
 		v31.Header("Clientid", "true"),

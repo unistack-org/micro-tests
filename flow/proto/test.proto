@@ -23,7 +23,7 @@ service TestService {
       };
     };
 		option (micro.api.http) = { get: "/v1/user/{name}"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 	rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {
 		option (micro.openapiv3.openapiv3_operation) = {
@@ -37,7 +37,7 @@ service TestService {
       };
     };
 		option (micro.api.http) = { put: "/v1/user/{name}"; body:"*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 	rpc DeleteUser(DeleteUserReq) returns (DeleteUserRsp) {
 		option (micro.openapiv3.openapiv3_operation) = {
@@ -51,7 +51,7 @@ service TestService {
       };
     };
 		option (micro.api.http) = { delete: "/v1/user/{name}"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 	rpc MailUser(MailUserReq) returns (MailUserRsp) {
 		option (micro.openapiv3.openapiv3_operation) = {
@@ -65,7 +65,7 @@ service TestService {
       };
     };
 		option (micro.api.http) = { post: "/v1/user/{name}/mail"; body:"*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 };
 

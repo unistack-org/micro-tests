@@ -104,7 +104,7 @@ func TestFlow(t *testing.T) {
 	steps := []flow.Step{
 		flow.NewCallStep("test", pb.TestServiceName, "LookupUser", flow.StepID("test.TestService.LookupUser")),
 		flow.NewCallStep("test", pb.TestServiceName, "UpdateUser", flow.StepRequires("test.TestService.LookupUser")),
-		flow.NewCallStep("test", pb.TestServiceName, "DeleteUser", flow.StepRequires("test.TestService.UpdateUser")),
+		flow.NewCallStep("test", pb.TestServiceName, "DeleteUser", flow.StepRequires("test.TestService.LookupUser")),
 		flow.NewCallStep("test", pb.TestServiceName, "MailUser", flow.StepRequires("test.TestService.UpdateUser")),
 	}
 	w, err := f.WorkflowCreate(ctx, "test", steps...)

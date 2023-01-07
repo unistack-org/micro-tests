@@ -23,7 +23,8 @@ func NewTestClient(name string, c client.Client) TestClient {
 }
 
 func (c *testClient) Call(ctx context.Context, req *proto.CallReq, opts ...client.CallOption) (*proto.CallRsp, error) {
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &proto.CallRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "Test.Call", req), rsp, opts...)
 	if err != nil {
@@ -38,7 +39,8 @@ type testServer struct {
 
 func (h *testServer) Call(ctx context.Context, req *proto.CallReq, rsp *proto.CallRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServer.Call(ctx, req, rsp)
 }

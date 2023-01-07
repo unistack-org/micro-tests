@@ -23,7 +23,7 @@ service Test {
       };
 		};
 		option (micro.api.http) = { post: "/v1/call"; body: "*"; };
-		option (micro.api.micro_method) = { timeout: 5; };
+		option (micro.api.micro_method) = { timeout: "5s"; };
   };
 };
 

@@ -7,10 +7,10 @@ package pb
 import (
 	context "context"
 	v3 "go.unistack.org/micro-client-http/v3"
+	codec "go.unistack.org/micro-proto/v3/codec"
 	v31 "go.unistack.org/micro-server-http/v3"
 	api "go.unistack.org/micro/v3/api"
 	client "go.unistack.org/micro/v3/client"
-	codec "go.unistack.org/micro/v3/codec"
 	server "go.unistack.org/micro/v3/server"
 	http "net/http"
 )
@@ -117,8 +117,8 @@ func (h *testServiceServer) TestMultipart(ctx context.Context, req *MultipartReq
 
 func (h *testServiceServer) TestEndpoint(ctx context.Context, req *Request, rsp *Response) error {
 	v31.FillRequest(ctx, req,
-		v31.Header("client_uid", "true"),
 		v31.Cookie("csrftoken", "true"),
+		v31.Header("client_uid", "true"),
 	)
 	return h.TestServiceServer.TestEndpoint(ctx, req, rsp)
 }

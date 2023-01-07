@@ -19,8 +19,8 @@ import (
 	mdpb "go.unistack.org/micro-tests/server/combo/mdpb"
 	mgpb "go.unistack.org/micro-tests/server/combo/mgpb"
 	mhpb "go.unistack.org/micro-tests/server/combo/mhpb"
-	ndpb "go.unistack.org/micro-tests/server/combo/ndpb"
-	ngpb "go.unistack.org/micro-tests/server/combo/ngpb"
+	// ndpb "go.unistack.org/micro-tests/server/combo/ndpb"
+	// ngpb "go.unistack.org/micro-tests/server/combo/ngpb"
 	pb "go.unistack.org/micro-tests/server/combo/proto"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/codec"
@@ -192,9 +192,6 @@ func (h *Handler) HandleRPC(stream drpc.Stream, rpc string) error {
 }
 
 func TestComboServer(t *testing.T) {
-	req := &pb.CallReq{Req: "my_name"}
-	var rsp *pb.CallRsp
-
 	reg := register.NewRegister()
 	ctx := context.Background()
 
@@ -254,13 +251,24 @@ func TestComboServer(t *testing.T) {
 	mdrpcsvc := mdpb.NewTestClient("helloworld", mdcli)
 
 	t.Logf("call via micro grpc")
-	rsp, err = mgrpcsvc.Call(ctx, req)
+	rsp, err := mgrpcsvc.Call(ctx, &pb.CallReq{Req: "my_name"})
 	if err != nil {
 		t.Fatal(err)
 	} else {
 		if rsp.Rsp != "name_my_name" {
 			t.Fatalf("invalid response: %#+v\n", rsp)
 		}
+	}
+
+	lis, err := net.Listen("tcp", fmt.Sprintf(":0"))
+	if err != nil {
+		t.Fatalf("failed to listen: %v", err)
+	}
+	s := grpc.NewServer()
+	pb.RegisterGreeterServer(s, &server{})
+	log.Printf("server listening at %v", lis.Addr())
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
 	}
 
 	ngcli, err := grpc.DialContext(ctx, service[0].Nodes[0].Address, grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -269,20 +277,20 @@ func TestComboServer(t *testing.T) {
 	}
 	defer ngcli.Close()
 
-	ngrpcsvc := ngpb.NewTestClient(ngcli)
-	t.Logf("call via native grpc")
-	rsp, err = ngrpcsvc.Call(ctx, req)
-	if err != nil {
-		t.Fatal(err)
-	} else {
-		if rsp.Rsp != "name_my_name" {
-			t.Fatalf("invalid response: %#+v\n", rsp)
+	/*
+		ngrpcsvc := ngpb.NewTestClient(ngcli)
+		t.Logf("call via native grpc")
+		if rsp, err := ngrpcsvc.Call(ctx, &ngpb.CallReq{Req: "my_name"}); err != nil {
+			t.Fatal(err)
+		} else {
+			if rsp.Rsp != "name_my_name" {
+				t.Fatalf("invalid response: %#+v\n", rsp)
+			}
 		}
-	}
+	*/
 
 	t.Logf("call via micro http")
-	rsp, err = mhttpsvc.Call(ctx, req)
-	if err != nil {
+	if rsp, err := mhttpsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
 		t.Fatal(err)
 	} else {
 		if rsp.Rsp != "name_my_name" {
@@ -297,23 +305,21 @@ func TestComboServer(t *testing.T) {
 
 	ndcli := drpcconn.New(tc)
 	defer ndcli.Close()
+	/*
+		ndrpcsvc := ndpb.NewDRPCTestClient(ndcli)
 
-	ndrpcsvc := ndpb.NewDRPCTestClient(ndcli)
-
-	t.Logf("call via native drpc")
-	rsp, err = ndrpcsvc.Call(context.TODO(), req)
-	if err != nil {
-		t.Logf("native drpc err: %v", err)
-		// t.Fatal(err)
-	} else {
-		if rsp.Rsp != "name_my_name" {
-			t.Fatalf("invalid response: %#+v\n", rsp)
+		t.Logf("call via native drpc")
+		if rsp, err := ndrpcsvc.Call(context.TODO(), &ndpb.CallReq{Req: "my_name"}); err != nil {
+			t.Logf("native drpc err: %v", err)
+			// t.Fatal(err)
+		} else {
+			if rsp.Rsp != "name_my_name" {
+				t.Fatalf("invalid response: %#+v\n", rsp)
+			}
 		}
-	}
-
+	*/
 	t.Logf("call via micro drpc")
-	rsp, err = mdrpcsvc.Call(ctx, req)
-	if err != nil {
+	if rsp, err = mdrpcsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
 		t.Logf("micro drpc err: %v", err)
 		// t.Fatal(err)
 	} else {

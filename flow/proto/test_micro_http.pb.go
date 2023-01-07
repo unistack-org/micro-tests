@@ -33,7 +33,8 @@ func (c *testServiceClient) LookupUser(ctx context.Context, req *LookupUserReq, 
 		v3.Method(http.MethodGet),
 		v3.Path("/v1/user/{name}"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &LookupUserRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.LookupUser", req), rsp, opts...)
 	if err != nil {
@@ -53,7 +54,8 @@ func (c *testServiceClient) UpdateUser(ctx context.Context, req *UpdateUserReq, 
 		v3.Path("/v1/user/{name}"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &UpdateUserRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.UpdateUser", req), rsp, opts...)
 	if err != nil {
@@ -72,7 +74,8 @@ func (c *testServiceClient) DeleteUser(ctx context.Context, req *DeleteUserReq, 
 		v3.Method(http.MethodDelete),
 		v3.Path("/v1/user/{name}"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &DeleteUserRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.DeleteUser", req), rsp, opts...)
 	if err != nil {
@@ -92,7 +95,8 @@ func (c *testServiceClient) MailUser(ctx context.Context, req *MailUserReq, opts
 		v3.Path("/v1/user/{name}/mail"),
 		v3.Body("*"),
 	)
-	opts = append(opts, client.WithRequestTimeout(time.Second*5))
+	td := time.Duration(5000000000)
+	opts = append(opts, client.WithRequestTimeout(td))
 	rsp := &MailUserRsp{}
 	err := c.c.Call(ctx, c.c.NewRequest(c.name, "TestService.MailUser", req), rsp, opts...)
 	if err != nil {
@@ -107,28 +111,32 @@ type testServiceServer struct {
 
 func (h *testServiceServer) LookupUser(ctx context.Context, req *LookupUserReq, rsp *LookupUserRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServiceServer.LookupUser(ctx, req, rsp)
 }
 
 func (h *testServiceServer) UpdateUser(ctx context.Context, req *UpdateUserReq, rsp *UpdateUserRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServiceServer.UpdateUser(ctx, req, rsp)
 }
 
 func (h *testServiceServer) DeleteUser(ctx context.Context, req *DeleteUserReq, rsp *DeleteUserRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServiceServer.DeleteUser(ctx, req, rsp)
 }
 
 func (h *testServiceServer) MailUser(ctx context.Context, req *MailUserReq, rsp *MailUserRsp) error {
 	var cancel context.CancelFunc
-	ctx, cancel = context.WithTimeout(ctx, time.Second*5)
+	td := time.Duration(5000000000)
+	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	return h.TestServiceServer.MailUser(ctx, req, rsp)
 }
