@@ -3,6 +3,7 @@ module go.unistack.org/micro-tests
 go 1.16
 
 require (
+	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/VictoriaMetrics/metrics v1.23.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
@@ -30,10 +31,12 @@ require (
 	github.com/segmentio/kafka-go v0.4.38
 	github.com/stretchr/testify v1.8.1
 	github.com/twmb/franz-go v1.11.0
+	github.com/uber/jaeger-client-go v2.30.0+incompatible
+	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
+	github.com/zeebo/errs v1.3.0 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	go.unistack.org/micro-broker-kgo/v3 v3.8.3
 	go.unistack.org/micro-broker-segmentio/v3 v3.8.0
-	go.unistack.org/micro-client-drpc/v3 v3.8.1
 	go.unistack.org/micro-client-grpc/v3 v3.10.0
 	go.unistack.org/micro-client-http/v3 v3.9.0
 	go.unistack.org/micro-codec-grpc/v3 v3.8.1
@@ -56,9 +59,8 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
 	go.unistack.org/micro-wrapper-sql/v3 v3.0.2
 	go.unistack.org/micro-wrapper-trace-opentracing/v3 v3.8.0
-	go.unistack.org/micro/v3 v3.10.0
+	go.unistack.org/micro/v3 v3.10.1
 	golang.org/x/crypto v0.5.0 // indirect
-	golang.org/x/net v0.5.0
 	golang.org/x/time v0.3.0 // indirect
 	google.golang.org/genproto v0.0.0-20230106154932-a12b697841d9 // indirect
 	google.golang.org/grpc v1.51.0
