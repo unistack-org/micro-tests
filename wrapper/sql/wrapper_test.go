@@ -16,6 +16,7 @@ import (
 	"github.com/uber/jaeger-client-go"
 	"github.com/uber/jaeger-client-go/config"
 	vmeter "go.unistack.org/micro-meter-victoriametrics/v3"
+	ot "go.unistack.org/micro-tracer-opentracing/v3"
 	wrapper "go.unistack.org/micro-wrapper-sql/v3"
 	"go.unistack.org/micro/v3/logger"
 	"go.unistack.org/micro/v3/meter"
@@ -65,12 +66,10 @@ func TestWrapper(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	tr, c := initJaeger("Test tracing")
+	tr, c := initJaeger(fmt.Sprintf("Test tracing %s", time.Now().Format(time.RFC1123Z)))
 	defer c.Close()
 	opentracing.SetGlobalTracer(tr)
-	tracer.DefaultTracer = &opentracingTracer{
-		tracer: tr,
-	}
+	tracer.DefaultTracer = ot.NewTracer(ot.Tracer(tr))
 	if err := tracer.DefaultTracer.Init(); err != nil {
 		logger.Fatal(ctx, err)
 	}
@@ -81,7 +80,7 @@ func TestWrapper(t *testing.T) {
 		wrapper.LoggerLevel(logger.DebugLevel),
 		wrapper.LoggerEnabled(true),
 	))
-	wdb, err := sql.Open("micro-wrapper-sql", ":memory:")
+	wdb, err := sql.Open("micro-wrapper-sql", "test.db?cache=shared&mode=memory")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -92,42 +91,38 @@ func TestWrapper(t *testing.T) {
 	defer cancel()
 
 	wrapper.NewStatsMeter(ctx, db, wrapper.DatabaseHost("localhost"), wrapper.DatabaseName("memory"))
-	if _, err := wdb.ExecContext(wrapper.QueryName(ctx, "schema create"), schema); err != nil {
-		t.Fatal(err)
-	}
 
-	fmt.Printf("begintx\n")
-	tx1, err := wdb.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelReadCommitted})
-	if err != nil {
-		t.Fatal(err)
-	}
-	tx2, err := wdb.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelReadCommitted})
+	tx, err := wdb.BeginTx(ctx, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Printf("exec1\n")
-	if _, err := tx1.ExecContext(wrapper.QueryName(ctx, "insert one"), "INSERT OR REPLACE INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist1", "Last1", "Email1"); err != nil {
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "schema create"), schema); err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Printf("exec none\n")
+	if err := tx.Commit(); err != nil {
+		t.Fatal(err)
+	}
+
+	tx, err = wdb.BeginTx(ctx, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "insert one"), "INSERT INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist1", "Last1", "Email1"); err != nil {
+		t.Fatal(err)
+	}
+
 	if _, err := wdb.ExecContext(wrapper.QueryName(ctx, "double schema"), schema); err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Printf("exec2\n")
-	if _, err := tx2.ExecContext(wrapper.QueryName(ctx, "insert two"), "INSERT OR REPLACE INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist2", "Last2", "Email2"); err != nil {
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "insert two"), "INSERT INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist2", "Last2", "Email2"); err != nil {
 		t.Fatal(err)
 	}
 
-	fmt.Printf("commit1\n")
-	if err := tx1.Commit(); err != nil {
-		t.Fatal(err)
-	}
-
-	fmt.Printf("commit2\n")
-	if err := tx2.Commit(); err != nil {
+	if err := tx.Commit(); err != nil {
 		t.Fatal(err)
 	}
 
@@ -138,6 +133,7 @@ func TestWrapper(t *testing.T) {
 
 	_ = peoples
 	time.Sleep(1 * time.Second)
+
 	mbuf := bytes.NewBuffer(nil)
 	_ = meter.DefaultMeter.Write(mbuf, meter.WriteProcessMetrics(true))
 
@@ -155,7 +151,7 @@ func TestWrapper(t *testing.T) {
 		[]byte(`"took":`),
 	} {
 		if !bytes.Contains(buf.Bytes(), tcase) {
-			t.Fatalf("micro-wrapper-sql logger output contains invalid output: %s", buf.Bytes())
+			t.Fatalf("micro-wrapper-sql logger output miss %s in output: %s", tcase, buf.Bytes())
 		}
 	}
 
