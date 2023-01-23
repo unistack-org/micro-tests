@@ -960,8 +960,8 @@ go.unistack.org/micro-router-register/v3 v3.9.0 h1:1TFfUmKwy39zmkqp+a82WvGdpaxJF
 go.unistack.org/micro-router-register/v3 v3.9.0/go.mod h1:pt4a4hOJn8tniXObwDSAx1cdYR75k35FIp9fiqdWxNc=
 go.unistack.org/micro-server-grpc/v3 v3.10.1 h1:53OGnSOKSRN5SGu8oOvrbf+zh85+fLqctXIGB9jBAi0=
 go.unistack.org/micro-server-grpc/v3 v3.10.1/go.mod h1:9XEDMLU3lkBRo0GJv/xrWQPraKy7NyK0HhG4XkaJIC8=
-go.unistack.org/micro-server-http/v3 v3.10.4 h1:7weVJBK0SnL6WQgaAjk1cUSbf3KHHuEBFn1lANgwxJo=
-go.unistack.org/micro-server-http/v3 v3.10.4/go.mod h1:c8BSQT4Vty9CnKjpZ7NebsZETyxXXDkklWL/GEF00kA=
+go.unistack.org/micro-server-http/v3 v3.10.5 h1:5JHsWnDpiudg6pt0Kxd8yEOoeiOJT5zwKH3GpwIAxuc=
+go.unistack.org/micro-server-http/v3 v3.10.5/go.mod h1:5INhYukE35tjodxs9Zd82lQw90eRnGP5RJFyHe0o/oE=
 go.unistack.org/micro-server-tcp/v3 v3.9.0 h1:7y56HYeksu9nrfYu/Z3w2MMsp7955pZ+cxb1uM3IEaU=
 go.unistack.org/micro-server-tcp/v3 v3.9.0/go.mod h1:78fKJoNXkK4bJO0crdwJh8a+3jcDF6sM0g5ah3Tn6w4=
 go.unistack.org/micro-tracer-opentracing/v3 v3.10.1 h1:IF1kzISQuHQBKfy6mqWifBm7sbpNYccH1KM5DOyW2Hg=
