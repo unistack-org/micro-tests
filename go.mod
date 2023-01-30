@@ -46,7 +46,7 @@ require (
 	go.unistack.org/micro-router-register/v3 v3.9.0
 	go.unistack.org/micro-server-grpc/v3 v3.10.1
 	go.unistack.org/micro-server-http/v3 v3.10.5
-	go.unistack.org/micro-server-tcp/v3 v3.9.0
+	go.unistack.org/micro-server-tcp/v3 v3.10.0
 	go.unistack.org/micro-tracer-opentracing/v3 v3.10.1
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
 	go.unistack.org/micro-wrapper-sql/v3 v3.10.2
