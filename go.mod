@@ -30,7 +30,7 @@ require (
 	github.com/prometheus/procfs v0.9.0 // indirect
 	github.com/segmentio/kafka-go v0.4.38
 	github.com/stretchr/testify v1.8.1
-	github.com/twmb/franz-go v1.11.0
+	github.com/twmb/franz-go v1.11.5
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/zeebo/errs v1.3.0 // indirect
