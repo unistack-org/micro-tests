@@ -80,15 +80,22 @@ func TestWrapper(t *testing.T) {
 		wrapper.LoggerLevel(logger.DebugLevel),
 		wrapper.LoggerEnabled(true),
 	))
-	wdb, err := sql.Open("micro-wrapper-sql", "test.db?cache=shared&mode=memory")
+	wdb, err := sql.Open("micro-wrapper-sql", ":memory:")
 	if err != nil {
 		t.Fatal(err)
 	}
 
+	if err = wdb.PingContext(ctx); err != nil {
+		t.Fatal(err)
+	}
 	db := sqlx.NewDb(wdb, "sqlite")
 	var cancel func()
 	ctx, cancel = context.WithCancel(ctx)
 	defer cancel()
+
+	if err = db.PingContext(ctx); err != nil {
+		t.Fatal(err)
+	}
 
 	wrapper.NewStatsMeter(ctx, db, wrapper.DatabaseHost("localhost"), wrapper.DatabaseName("memory"))
 
