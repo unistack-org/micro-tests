@@ -7,8 +7,22 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/ptypes/wrappers"
+	pb "go.unistack.org/micro-tests/client/grpc/proto"
 	"go.unistack.org/micro/v3/logger/unwrap"
 )
+
+func TestProtoMessage(t *testing.T) {
+	type Response struct {
+		Val *pb.Response `logger:"take"`
+	}
+	val := &Response{Val: &pb.Response{Msg: "test"}}
+
+	buf := fmt.Sprintf("%#v", unwrap.Unwrap(val, unwrap.Tagged(true)))
+	cmp := `&unwrap_test.Response{Val:(*helloworld.Response){Msg:"test"}}`
+	if strings.Compare(buf, cmp) != 0 {
+		t.Fatalf("not proper written \n%s\n%s", cmp, buf)
+	}
+}
 
 func TestWrappers(t *testing.T) {
 	type CustomerInfo struct {
