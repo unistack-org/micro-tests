@@ -933,8 +933,8 @@ go.unistack.org/micro-tracer-opentracing/v3 v3.10.1 h1:IF1kzISQuHQBKfy6mqWifBm7s
 go.unistack.org/micro-tracer-opentracing/v3 v3.10.1/go.mod h1:yyboddzXPXA9NMCJgIUS4wI5elUwmpA7Zy5pS/mwoAY=
 go.unistack.org/micro-wrapper-recovery/v3 v3.8.3 h1:F+b+xBSupV09S9AuT5ljh8X9uMezv8yCI3jDXw4I7A4=
 go.unistack.org/micro-wrapper-recovery/v3 v3.8.3/go.mod h1:kInEBE89SfkK3doRam+oSGb6udSj/mTM4UkUQ5nAyzU=
-go.unistack.org/micro-wrapper-sql/v3 v3.10.2 h1:Q8AUAYvQcXDCMqZWcfQq1GM4ZKNjbr56VdkY+TPxmS0=
-go.unistack.org/micro-wrapper-sql/v3 v3.10.2/go.mod h1:uCE0uofpwUou6KRnt13Sh565gGx99p3FOUcJW0aa69E=
+go.unistack.org/micro-wrapper-sql/v3 v3.10.3 h1:7JWwkCU8d5r7ew1KHvrelQ0al9XqKvljzg4MjukZjV8=
+go.unistack.org/micro-wrapper-sql/v3 v3.10.3/go.mod h1:CXyh36oCtQoIDyrPOSFmDgGDTqnEPibK585nIlbkmOM=
 go.unistack.org/micro/v3 v3.8.0/go.mod h1:Tkteri0wiiybbH6aPqay26pZHFIAwL9LXJc2x1Jkakk=
 go.unistack.org/micro/v3 v3.8.4/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=
 go.unistack.org/micro/v3 v3.8.5/go.mod h1:KMMmOmbgo/D52/rCAbqeKbBsgEEbSKM69he54J3ZIuA=

@@ -55,7 +55,7 @@ func initJaeger(service string) (opentracing.Tracer, io.Closer) {
 	return tracer, closer
 }
 
-func TestWrapper(t *testing.T) {
+func TestSqliteWrapper(t *testing.T) {
 	ctx := context.Background()
 	wrapper.DefaultMeterStatsInterval = 100 * time.Millisecond
 	meter.DefaultMeter = vmeter.NewMeter()
@@ -164,3 +164,115 @@ func TestWrapper(t *testing.T) {
 
 	t.Logf("%s", buf.Bytes())
 }
+
+/*
+func TestPostgresWrapper(t *testing.T) {
+	ctx := context.Background()
+	wrapper.DefaultMeterStatsInterval = 100 * time.Millisecond
+	meter.DefaultMeter = vmeter.NewMeter()
+	buf := bytes.NewBuffer(nil)
+	logger.DefaultLogger = logger.NewLogger(logger.WithLevel(logger.DebugLevel), logger.WithOutput(buf))
+
+	if err := logger.DefaultLogger.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	tr, c := initJaeger(fmt.Sprintf("Test tracing %s", time.Now().Format(time.RFC1123Z)))
+	defer c.Close()
+	opentracing.SetGlobalTracer(tr)
+	tracer.DefaultTracer = ot.NewTracer(ot.Tracer(tr))
+	if err := tracer.DefaultTracer.Init(); err != nil {
+		logger.Fatal(ctx, err)
+	}
+
+	sql.Register("micro-wrapper-sql", wrapper.NewWrapper(&sqlite.Driver{},
+		wrapper.DatabaseHost("localhost"),
+		wrapper.DatabaseName("memory"),
+		wrapper.LoggerLevel(logger.DebugLevel),
+		wrapper.LoggerEnabled(true),
+	))
+	wdb, err := sql.Open("micro-wrapper-sql", ":memory:")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if err = wdb.PingContext(ctx); err != nil {
+		t.Fatal(err)
+	}
+	db := sqlx.NewDb(wdb, "sqlite")
+	var cancel func()
+	ctx, cancel = context.WithCancel(ctx)
+	defer cancel()
+
+	if err = db.PingContext(ctx); err != nil {
+		t.Fatal(err)
+	}
+
+	wrapper.NewStatsMeter(ctx, db, wrapper.DatabaseHost("localhost"), wrapper.DatabaseName("memory"))
+
+	tx, err := wdb.BeginTx(ctx, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "schema create"), schema); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := tx.Commit(); err != nil {
+		t.Fatal(err)
+	}
+
+	tx, err = wdb.BeginTx(ctx, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "insert one"), "INSERT INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist1", "Last1", "Email1"); err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := wdb.ExecContext(wrapper.QueryName(ctx, "double schema"), schema); err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := tx.ExecContext(wrapper.QueryName(ctx, "insert two"), "INSERT INTO person (first_name, last_name, email) VALUES ($1, $2, $3)", "Fist2", "Last2", "Email2"); err != nil {
+		t.Fatal(err)
+	}
+
+	if err := tx.Commit(); err != nil {
+		t.Fatal(err)
+	}
+
+	var peoples []*Person
+	if err := sqlx.SelectContext(wrapper.QueryName(ctx, "get_all_person"), db, &peoples, "SELECT * FROM person limit 2"); err != nil {
+		t.Fatal(err)
+	}
+
+	_ = peoples
+	time.Sleep(1 * time.Second)
+
+	mbuf := bytes.NewBuffer(nil)
+	_ = meter.DefaultMeter.Write(mbuf, meter.WriteProcessMetrics(true))
+
+	if !bytes.Contains(mbuf.Bytes(), []byte(`micro_sql_idle_connections`)) {
+		t.Fatalf("micro-wrapper-sql meter output contains invalid output: %s", buf.Bytes())
+	}
+
+	for _, tcase := range [][]byte{
+		[]byte(`"method":"ExecContext"`),
+		[]byte(`"method":"Open"`),
+		[]byte(`"method":"BeginTx"`),
+		[]byte(`"method":"Commit"`),
+		[]byte(`"method":"QueryContext"`),
+		[]byte(`"query":"get_all_person"`),
+		[]byte(`"took":`),
+	} {
+		if !bytes.Contains(buf.Bytes(), tcase) {
+			t.Fatalf("micro-wrapper-sql logger output miss %s in output: %s", tcase, buf.Bytes())
+		}
+	}
+
+	t.Logf("%s", buf.Bytes())
+}
+*/
