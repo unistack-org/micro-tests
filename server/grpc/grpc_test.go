@@ -107,7 +107,7 @@ func TestGRPCServer(t *testing.T) {
 		server.Address("127.0.0.1:0"),
 		server.Codec("text/plain", codec.NewCodec()),
 	)
-	if err = health.RegisterHealthServer(srv, health.NewHandler(health.Version("0.0.1"))); err != nil {
+	if err = health.RegisterHealthServiceServer(srv, health.NewHandler(health.Version("0.0.1"))); err != nil {
 		t.Fatalf("cant register health handler: %v", err)
 	}
 

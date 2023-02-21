@@ -316,9 +316,9 @@ func TestNativeFormUrlencoded(t *testing.T) {
 		Clientid:  "1234567890",
 		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
-			&wrapperspb.UInt64Value{Value: 1},
-			&wrapperspb.UInt64Value{Value: 2},
-			&wrapperspb.UInt64Value{Value: 3},
+			{Value: 1},
+			{Value: 2},
+			{Value: 3},
 		}},
 	})
 	if err != nil {
@@ -375,7 +375,7 @@ func TestNativeClientServer(t *testing.T) {
 	if err := pb.RegisterTestDoubleServer(srv, h); err != nil {
 		t.Fatal(err)
 	}
-	if err := handler.RegisterMeterServer(srv, handler.NewHandler(handler.Meter(srv.Options().Meter))); err != nil {
+	if err := handler.RegisterMeterServiceServer(srv, handler.NewHandler(handler.Meter(srv.Options().Meter))); err != nil {
 		t.Fatal(err)
 	}
 	// start server
@@ -406,9 +406,9 @@ func TestNativeClientServer(t *testing.T) {
 		Clientid:  "1234567890",
 		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
-			&wrapperspb.UInt64Value{Value: 1},
-			&wrapperspb.UInt64Value{Value: 2},
-			&wrapperspb.UInt64Value{Value: 3},
+			{Value: 1},
+			{Value: 2},
+			{Value: 3},
 		}},
 	})
 	if err != nil {
@@ -427,9 +427,9 @@ func TestNativeClientServer(t *testing.T) {
 		Clientid:  "1234567890",
 		Csrftoken: "csrftoken",
 		Nested: &pb.Nested{Uint64Args: []*wrapperspb.UInt64Value{
-			&wrapperspb.UInt64Value{Value: 1},
-			&wrapperspb.UInt64Value{Value: 2},
-			&wrapperspb.UInt64Value{Value: 3},
+			{Value: 1},
+			{Value: 2},
+			{Value: 3},
 		}},
 	})
 	if err != nil {

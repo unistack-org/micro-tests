@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/golang/protobuf/ptypes/wrappers"
 	pb "go.unistack.org/micro-tests/client/grpc/proto"
 	"go.unistack.org/micro/v3/logger/unwrap"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func TestProtoMessage(t *testing.T) {
@@ -26,12 +26,12 @@ func TestProtoMessage(t *testing.T) {
 
 func TestWrappers(t *testing.T) {
 	type CustomerInfo struct {
-		MainPhone    *wrappers.StringValue `logger:"take"`
-		BankClientId string                `logger:"take"`
-		NullString   sql.NullString        `logger:"take"`
+		MainPhone    *wrapperspb.StringValue `logger:"take"`
+		BankClientId string                  `logger:"take"`
+		NullString   sql.NullString          `logger:"take"`
 	}
 
-	c := &CustomerInfo{MainPhone: &wrappers.StringValue{Value: "+712334"}, BankClientId: "12345", NullString: sql.NullString{String: "test"}}
+	c := &CustomerInfo{MainPhone: &wrapperspb.StringValue{Value: "+712334"}, BankClientId: "12345", NullString: sql.NullString{String: "test"}}
 
 	buf := fmt.Sprintf("%#v", unwrap.Unwrap(c, unwrap.Tagged(true)))
 	cmp := `&unwrap_test.CustomerInfo{MainPhone:(*wrapperspb.StringValue){Value:"+712334"}, BankClientId:"12345", NullString:(sql.NullString){String:"test"}}`

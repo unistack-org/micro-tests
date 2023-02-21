@@ -2,27 +2,31 @@ syntax = "proto3";
 
 package helloworld;
 
-option go_package = "go.unistack.org/micro-tests/server/grpc/proto;helloworld";
 import "api/annotations.proto";
 
+option go_package = "go.unistack.org/micro-tests/server/grpc/proto;helloworld";
+
 service Test {
-	rpc Call(Request) returns (Response) {
-    option (micro.api.http) = { post: "/api/v0/test/call/TEST"; body: "*"; };
-	};
+  rpc Call(Request) returns (Response) {
+    option (micro.api.http) = {
+      post: "/api/v0/test/call/TEST";
+      body: "*";
+    };
+  }
 }
 
 message Request {
   string uuid = 1;
-	string name = 2;
+  string name = 2;
 
-	Broken broken = 4;
-};
+  Broken broken = 4;
+}
 
 message Broken {
   string field = 1;
-};
+}
 
 message Response {
-	string msg = 1;
-Broken broken = 4;
-};
+  string msg = 1;
+  Broken broken = 4;
+}

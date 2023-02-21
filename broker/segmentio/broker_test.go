@@ -60,7 +60,7 @@ func TestConsumerGroup(t *testing.T) {
 	if err := s.Init(); err != nil {
 		t.Fatal(err)
 	}
-	if err := meterhandler.RegisterMeterServer(s, meterhandler.NewHandler()); err != nil {
+	if err := meterhandler.RegisterMeterServiceServer(s, meterhandler.NewHandler()); err != nil {
 		t.Fatal(err)
 	}
 
@@ -220,7 +220,7 @@ func TestSub(t *testing.T) {
 	if err := s.Init(); err != nil {
 		t.Fatal(err)
 	}
-	if err := meterhandler.RegisterMeterServer(s, meterhandler.NewHandler()); err != nil {
+	if err := meterhandler.RegisterMeterServiceServer(s, meterhandler.NewHandler()); err != nil {
 		t.Fatal(err)
 	}
 
@@ -355,7 +355,7 @@ func BenchmarkPub(b *testing.B) {
 	if err := s.Init(); err != nil {
 		b.Fatal(err)
 	}
-	if err := meterhandler.RegisterMeterServer(s, meterhandler.NewHandler()); err != nil {
+	if err := meterhandler.RegisterMeterServiceServer(s, meterhandler.NewHandler()); err != nil {
 		b.Fatal(err)
 	}
 
@@ -532,7 +532,7 @@ func TestPubSub(t *testing.T) {
 	if err := s.Init(); err != nil {
 		t.Fatal(err)
 	}
-	if err := meterhandler.RegisterMeterServer(s, meterhandler.NewHandler()); err != nil {
+	if err := meterhandler.RegisterMeterServiceServer(s, meterhandler.NewHandler()); err != nil {
 		t.Fatal(err)
 	}
 

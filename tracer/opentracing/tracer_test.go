@@ -17,7 +17,6 @@ import (
 	rrouter "go.unistack.org/micro-router-register/v3"
 	srv "go.unistack.org/micro-server-grpc/v3"
 	ot "go.unistack.org/micro-tracer-opentracing/v3"
-	"go.unistack.org/micro/v3/api"
 	"go.unistack.org/micro/v3/broker"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
@@ -156,11 +155,12 @@ func TestClient(t *testing.T) {
 			}
 
 			nopts := []server.HandlerOption{
-				api.WithEndpoint(&api.Endpoint{
-					Name:    "Test.Method",
-					Method:  []string{"POST"},
-					Handler: "rpc",
-				}),
+				server.EndpointMetadata("Test", map[string]string{
+					"Name":    "Test.Method",
+					"Method":  "POST",
+					"Handler": "rpc",
+				},
+				),
 			}
 
 			if err := s.Handle(s.NewHandler(&Test{new(testHandler)}, nopts...)); err != nil {
@@ -206,6 +206,5 @@ func TestClient(t *testing.T) {
 				}
 			*/
 		})
-
 	}
 }
