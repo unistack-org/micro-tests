@@ -46,7 +46,7 @@ require (
 	go.unistack.org/micro-tracer-opentracing/v3 v3.10.1
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
 	go.unistack.org/micro-wrapper-sql/v3 v3.10.3
-	go.unistack.org/micro/v3 v3.10.13
+	go.unistack.org/micro/v3 v3.10.14
 	golang.org/x/crypto v0.6.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	google.golang.org/genproto v0.0.0-20230216225411-c8e22ba71e44 // indirect
