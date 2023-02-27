@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/vault/api v1.9.0 // indirect
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/kafka-go v0.4.38
+	github.com/segmentio/kafka-go v0.4.39
 	github.com/stretchr/testify v1.8.1
 	github.com/twmb/franz-go v1.12.1
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
