@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package test.v1.proto;
+
+option go_package = "go.unistack.org/micro-tests/server/combo/proto;pb";
+
+import "tag/tag.proto";
+import "api/annotations.proto";
+import "openapiv3/annotations.proto";
+import "google/protobuf/wrappers.proto";
+
+service Test {
+	rpc Call(CallReq) returns (CallRsp) {
+    option (micro.openapiv3.openapiv3_operation) = {
+			operation_id: "Call";
+      responses: {
+        default: {
+          reference: {
+            _ref: ".test.v1.proto.Error";
+          };
+        };
+      };
+		};
+		option (micro.api.http) = { post: "/Call"; body: "*"; };
+  };
+};
+
+message CallReq {
+  string req = 1;
+};
+
+message CallRsp {
+  string rsp = 1;
+};
+
+message Error {
+	string err = 1;
+};

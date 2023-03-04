@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package test.v1;
+package test.v1.ngpb;
 
-option go_package = "go.unistack.org/micro-tests/server/combo/proto;pb";
+option go_package = "go.unistack.org/micro-tests/server/combo/ngpb;pb";
 
 import "tag/tag.proto";
 import "api/annotations.proto";

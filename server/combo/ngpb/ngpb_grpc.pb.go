@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.21.12
-// source: test.proto
+// source: ngpb.proto
 
 package pb
 
@@ -36,7 +36,7 @@ func NewTestClient(cc grpc.ClientConnInterface) TestClient {
 
 func (c *testClient) Call(ctx context.Context, in *CallReq, opts ...grpc.CallOption) (*CallRsp, error) {
 	out := new(CallRsp)
-	err := c.cc.Invoke(ctx, "/test.v1.Test/Call", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/test.v1.ngpb.Test/Call", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,7 +82,7 @@ func _Test_Call_Handler(srv interface{}, ctx context.Context, dec func(interface
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/test.v1.Test/Call",
+		FullMethod: "/test.v1.ngpb.Test/Call",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TestServer).Call(ctx, req.(*CallReq))
@@ -94,7 +94,7 @@ func _Test_Call_Handler(srv interface{}, ctx context.Context, dec func(interface
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Test_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "test.v1.Test",
+	ServiceName: "test.v1.ngpb.Test",
 	HandlerType: (*TestServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -103,5 +103,5 @@ var Test_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "test.proto",
+	Metadata: "ngpb.proto",
 }
