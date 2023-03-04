@@ -20,12 +20,12 @@ import (
 	xmlcodec "go.unistack.org/micro-codec-xml/v3"
 	vmeter "go.unistack.org/micro-meter-victoriametrics/v3"
 	httpsrv "go.unistack.org/micro-server-http/v3"
+	meterhandler "go.unistack.org/micro-server-http/v3/handler/meter"
 	pb "go.unistack.org/micro-tests/server/http/proto"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/logger"
 	lwrapper "go.unistack.org/micro/v3/logger/wrapper"
 	"go.unistack.org/micro/v3/metadata"
-	handler "go.unistack.org/micro/v3/meter/handler"
 	mwrapper "go.unistack.org/micro/v3/meter/wrapper"
 	"go.unistack.org/micro/v3/register"
 	"go.unistack.org/micro/v3/server"
@@ -375,7 +375,7 @@ func TestNativeClientServer(t *testing.T) {
 	if err := pb.RegisterTestDoubleServer(srv, h); err != nil {
 		t.Fatal(err)
 	}
-	if err := handler.RegisterMeterServiceServer(srv, handler.NewHandler(handler.Meter(srv.Options().Meter))); err != nil {
+	if err := meterhandler.RegisterMeterServiceServer(srv, meterhandler.NewHandler(meterhandler.Meter(srv.Options().Meter))); err != nil {
 		t.Fatal(err)
 	}
 	// start server

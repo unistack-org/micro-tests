@@ -40,13 +40,13 @@ require (
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6
 	go.unistack.org/micro-proto/v3 v3.3.1
 	go.unistack.org/micro-router-register/v3 v3.9.0
-	go.unistack.org/micro-server-grpc/v3 v3.10.1
-	go.unistack.org/micro-server-http/v3 v3.10.11
+	go.unistack.org/micro-server-grpc/v3 v3.10.3
+	go.unistack.org/micro-server-http/v3 v3.10.12
 	go.unistack.org/micro-server-tcp/v3 v3.10.0
 	go.unistack.org/micro-tracer-opentracing/v3 v3.10.1
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
 	go.unistack.org/micro-wrapper-sql/v3 v3.10.3
-	go.unistack.org/micro/v3 v3.10.13
+	go.unistack.org/micro/v3 v3.10.14
 	golang.org/x/crypto v0.6.0 // indirect
 	golang.org/x/time v0.3.0 // indirect
 	google.golang.org/genproto v0.0.0-20230216225411-c8e22ba71e44 // indirect

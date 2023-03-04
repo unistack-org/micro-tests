@@ -16,11 +16,11 @@ import (
 	segmentio "go.unistack.org/micro-broker-segmentio/v3"
 	victoriameter "go.unistack.org/micro-meter-victoriametrics/v3"
 	https "go.unistack.org/micro-server-http/v3"
+	meterhandler "go.unistack.org/micro-server-http/v3/handler/meter"
 	"go.unistack.org/micro/v3/broker"
 	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/logger"
 	"go.unistack.org/micro/v3/meter"
-	meterhandler "go.unistack.org/micro/v3/meter/handler"
 	"go.unistack.org/micro/v3/server"
 )
 
