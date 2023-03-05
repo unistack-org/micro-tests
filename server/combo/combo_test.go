@@ -3,6 +3,8 @@ package combo_test
 import (
 	"context"
 	"embed"
+	"fmt"
+	"io"
 	"io/fs"
 	"net/http"
 	"strings"
@@ -145,13 +147,10 @@ func TestComboServer(t *testing.T) {
 	mgrpcsvc := mgpb.NewTestClient("helloworld", mgcli)
 
 	t.Logf("call via micro grpc")
-	rsp, err := mgrpcsvc.Call(ctx, &pb.CallReq{Req: "my_name"})
-	if err != nil {
+	if rsp, err := mgrpcsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
 		t.Fatal(err)
-	} else {
-		if rsp.Rsp != "name_my_name" {
-			t.Fatalf("invalid response: %#+v\n", rsp)
-		}
+	} else if rsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid response: %#+v\n", rsp)
 	}
 
 	ngcli, err := grpc.DialContext(ctx, service[0].Nodes[0].Address, grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -164,20 +163,47 @@ func TestComboServer(t *testing.T) {
 	t.Logf("call via native grpc")
 	if rsp, err := ngrpcsvc.Call(ctx, &ngpb.CallReq{Req: "my_name"}); err != nil {
 		t.Fatal(err)
-	} else {
-		if rsp.Rsp != "name_my_name" {
-			t.Fatalf("invalid response: %#+v\n", rsp)
-		}
+	} else if rsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid response: %#+v\n", rsp)
 	}
 
 	t.Logf("call via micro http")
 	if rsp, err := mhttpsvc.Call(ctx, &pb.CallReq{Req: "my_name"}); err != nil {
 		t.Fatal(err)
-	} else {
-		if rsp.Rsp != "name_my_name" {
-			t.Fatalf("invalid response: %#+v\n", rsp)
-		}
+	} else if rsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid response: %#+v\n", rsp)
 	}
 
-	select {}
+	var hreq *http.Request
+	hreq, err = http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("http://%s/swagger-ui/index.html", service[0].Nodes[0].Address), nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var hrsp *http.Response
+	hrsp, err = http.DefaultClient.Do(hreq)
+	if err != nil || hrsp.StatusCode != http.StatusOK {
+		t.Fatalf("error rsp: %v err: %v", hrsp, err)
+	}
+
+	hreq, err = http.NewRequestWithContext(ctx, http.MethodPost, fmt.Sprintf("http://%s/Call", service[0].Nodes[0].Address), strings.NewReader(`{"req":"my_name"}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	hreq.Header.Add("Content-Type", "application/json")
+
+	hrsp, err = http.DefaultClient.Do(hreq)
+	if err != nil || hrsp.StatusCode != http.StatusOK {
+		t.Fatalf("error rsp: %v err: %v", hrsp, err)
+	}
+	defer hrsp.Body.Close()
+	buf, err := io.ReadAll(hrsp.Body)
+	if err != nil {
+		t.Fatalf("read body fail: %v", err)
+	}
+	rsp := &pb.CallRsp{}
+	if err = jsonpbcodec.NewCodec().Unmarshal(buf, rsp); err != nil {
+		t.Fatal(err)
+	} else if rsp.Rsp != "name_my_name" {
+		t.Fatalf("invalid response: %#+v\n", rsp)
+	}
 }
