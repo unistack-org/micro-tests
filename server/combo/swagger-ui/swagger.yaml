@@ -1,0 +1,50 @@
+# Generated with protoc-gen-go-micro
+
+openapi: 3.0.3
+info:
+    title: Test API
+    version: 0.0.1
+paths:
+    /Call:
+        post:
+            tags:
+                - Test
+            operationId: Call
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CallReq'
+                required: true
+            responses:
+                default:
+                    description: Default
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CallRsp'
+components:
+    schemas:
+        CallReq:
+            type: object
+            properties:
+                req:
+                    type: string
+        CallRsp:
+            type: object
+            properties:
+                rsp:
+                    type: string
+        Error:
+            type: object
+            properties:
+                err:
+                    type: string
+tags:
+    - name: Test
