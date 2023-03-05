@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	gclient "go.unistack.org/micro-client-grpc/v3"
+	jsonpbcodec "go.unistack.org/micro-codec-jsonpb/v3"
 	protocodec "go.unistack.org/micro-codec-proto/v3"
 	regRouter "go.unistack.org/micro-router-register/v3"
 	gserver "go.unistack.org/micro-server-grpc/v3"
@@ -105,7 +106,8 @@ func TestGRPCServer(t *testing.T) {
 
 	srv := httpsrv.NewServer(
 		server.Address("127.0.0.1:0"),
-		server.Codec("text/plain", codec.NewCodec()),
+		server.Codec("application/json", jsonpbcodec.NewCodec()),
+		server.Codec("text/plain", jsonpbcodec.NewCodec()),
 	)
 	if err = health.RegisterHealthServiceServer(srv, health.NewHandler(health.Version("0.0.1"))); err != nil {
 		t.Fatalf("cant register health handler: %v", err)
@@ -137,11 +139,13 @@ func TestGRPCServer(t *testing.T) {
 		}
 	}()
 
-	hr, err := http.NewRequestWithContext(ctx, "GET", "http://"+srv.Options().Address+"/version", nil)
+	t.Logf("get version info from http://" + srv.Options().Address + "/version")
+	hr, err := http.NewRequestWithContext(ctx, http.MethodGet, "http://"+srv.Options().Address+"/version", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
-	hr.Header.Set("Content-Type", "text/plain")
+
+	hr.Header.Set("Content-Type", "application/json")
 	rsp, err := http.DefaultClient.Do(hr)
 	if err != nil {
 		t.Fatal(err)
