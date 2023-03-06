@@ -885,8 +885,8 @@ go.unistack.org/micro-codec-segmentio/v3 v3.8.1 h1:e8/8aDlTfSFM7T3azEGxUE9xQ6FPi
 go.unistack.org/micro-codec-segmentio/v3 v3.8.1/go.mod h1:d7xjN5JwqNXTHi9wVLZimOcKjXtZzScLbgCKeBuosPM=
 go.unistack.org/micro-codec-urlencode/v3 v3.8.1 h1:p1VzzvuQnbm2CQnn/qr7NDiuaEuM6eXuh2oExWIUFmk=
 go.unistack.org/micro-codec-urlencode/v3 v3.8.1/go.mod h1:TxaelCAvvXLyZpMIhZUvsMi6Xy2J3rvKKI7WOQhb5wI=
-go.unistack.org/micro-codec-xml/v3 v3.8.1 h1:hE211qCnyjdPt33ub1cg4HbHaKtHx0tNDXtq5xwLjQ4=
-go.unistack.org/micro-codec-xml/v3 v3.8.1/go.mod h1:sNwBgamgKsumUV06rk8Z+Gutzshfm0VnCYH+YTUCqqU=
+go.unistack.org/micro-codec-xml/v3 v3.10.0 h1:hE48K9wGOcjWu/Fz38M0K0p9QZ+7QWBVHJq3AsysRaM=
+go.unistack.org/micro-codec-xml/v3 v3.10.0/go.mod h1:ec8JBYqOtewe+V+MemJDKcvz5hdKv92LOkmEOgQmtMI=
 go.unistack.org/micro-config-consul/v3 v3.8.2 h1:oKcyYYqLwbriy+Kv5I//I+o8QBPhPhJermciG0zvrks=
 go.unistack.org/micro-config-consul/v3 v3.8.2/go.mod h1:tnTkU8i3b0pw/KF0MiZ0nOTLSvgi3/2+ev/7+dRZUx0=
 go.unistack.org/micro-config-env/v3 v3.8.3 h1:NYuo+mHIm2uE2fZGIaP+nYi31InyTJRmD/wjEr2YsO0=
