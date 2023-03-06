@@ -30,7 +30,7 @@ require (
 	go.unistack.org/micro-codec-json/v3 v3.8.0
 	go.unistack.org/micro-codec-jsonpb/v3 v3.8.1
 	go.unistack.org/micro-codec-proto/v3 v3.8.1
-	go.unistack.org/micro-codec-segmentio/v3 v3.8.1
+	go.unistack.org/micro-codec-segmentio/v3 v3.10.0
 	go.unistack.org/micro-codec-urlencode/v3 v3.8.1
 	go.unistack.org/micro-codec-xml/v3 v3.8.1
 	go.unistack.org/micro-config-consul/v3 v3.8.2
@@ -56,6 +56,8 @@ require (
 	storj.io/drpc v0.0.32
 )
 
+require golang.org/x/net v0.7.0
+
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
@@ -80,7 +82,6 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/klauspost/compress v1.15.15 // indirect
-	github.com/klauspost/cpuid/v2 v2.0.6 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.17 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
@@ -98,15 +99,14 @@ require (
 	github.com/prometheus/procfs v0.9.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
-	github.com/segmentio/asm v1.0.1 // indirect
-	github.com/segmentio/encoding v0.2.21 // indirect
+	github.com/segmentio/asm v1.2.0 // indirect
+	github.com/segmentio/encoding v0.3.6 // indirect
 	github.com/silas/dag v0.0.0-20211117232152-9d50aa809f35 // indirect
 	github.com/twmb/franz-go/pkg/kmsg v1.4.0 // indirect
 	github.com/valyala/fastrand v1.1.0 // indirect
 	github.com/valyala/histogram v1.2.0 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
