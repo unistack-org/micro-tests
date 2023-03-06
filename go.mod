@@ -32,7 +32,7 @@ require (
 	go.unistack.org/micro-codec-proto/v3 v3.8.1
 	go.unistack.org/micro-codec-segmentio/v3 v3.8.1
 	go.unistack.org/micro-codec-urlencode/v3 v3.8.1
-	go.unistack.org/micro-codec-xml/v3 v3.8.1
+	go.unistack.org/micro-codec-xml/v3 v3.10.0
 	go.unistack.org/micro-config-consul/v3 v3.8.2
 	go.unistack.org/micro-config-env/v3 v3.8.3
 	go.unistack.org/micro-config-vault/v3 v3.8.4
@@ -55,6 +55,8 @@ require (
 	modernc.org/sqlite v1.20.3
 	storj.io/drpc v0.0.32
 )
+
+require golang.org/x/net v0.7.0
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -105,7 +107,6 @@ require (
 	github.com/valyala/fastrand v1.1.0 // indirect
 	github.com/valyala/histogram v1.2.0 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
