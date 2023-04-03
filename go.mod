@@ -1,6 +1,6 @@
 module go.unistack.org/micro-tests
 
-go 1.18
+go 1.19
 
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
@@ -57,7 +57,7 @@ require (
 )
 
 require (
-	go.unistack.org/micro-client-mock/v3 v3.0.0
+	go.unistack.org/micro-client-mock/v3 v3.0.1
 	golang.org/x/net v0.8.0
 )
 

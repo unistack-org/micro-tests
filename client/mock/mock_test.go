@@ -21,7 +21,7 @@ func TestCallWithoutError(t *testing.T) {
 	reqbuf := []byte(`{"username": "vtolstov"}`)
 	rspbuf := []byte(`{"name": "Vasiliy Tolstov"}`)
 	er := c.ExpectRequest(c.NewRequest("github", "Github.LookupUser", reqbuf))
-	er.WillReturnResponse(rspbuf)
+	er.WillReturnResponse("application/json", rspbuf)
 	er.WillDelayFor(10 * time.Millisecond)
 
 	gh := pb.NewGithubClient("github", c)
@@ -49,7 +49,7 @@ func TestCallWithtError(t *testing.T) {
 	reqbuf := []byte(`{"username": "vtolstov"}`)
 	rspbuf := []byte(`{"name": "Vasiliy Tolstov"}`)
 	er := c.ExpectRequest(c.NewRequest("github", "Github.LookupUser", reqbuf))
-	er.WillReturnResponse(rspbuf)
+	er.WillReturnResponse("application/json", rspbuf)
 	er.WillDelayFor(10 * time.Millisecond)
 	er.WillReturnError(errors.InternalServerError("test", "internal server error"))
 

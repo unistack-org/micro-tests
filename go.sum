@@ -869,8 +869,8 @@ go.unistack.org/micro-client-grpc/v3 v3.10.0 h1:RaXxV81s8cjPkZ0CLqJAJGZSpbxb0g7n
 go.unistack.org/micro-client-grpc/v3 v3.10.0/go.mod h1:BAmD+1zy0F6fih1arsW/IKp9BJKTkpp22zQfbX3M5E0=
 go.unistack.org/micro-client-http/v3 v3.9.0 h1:m2DO59EzwbWFkF3gzvUBAUoKsmH0sZ+hPrwAoDa2EvE=
 go.unistack.org/micro-client-http/v3 v3.9.0/go.mod h1:+IwOy028UpLcbRQSo+DZgGPa+CODHFAN7YGA85bdJ1M=
-go.unistack.org/micro-client-mock/v3 v3.0.0 h1:8Q4TXTAfKp3IFwvCHTwPmigCKcPDPNOimNzVb/ysgRM=
-go.unistack.org/micro-client-mock/v3 v3.0.0/go.mod h1:UwTnK2oPeN7nwXNCwgwlRttCPIH2GldxkQql02eB3Fg=
+go.unistack.org/micro-client-mock/v3 v3.0.1 h1:wd10/8B6fioYOoGiHToHkuieLCB2O6yULTnDbUSHdQc=
+go.unistack.org/micro-client-mock/v3 v3.0.1/go.mod h1:UwTnK2oPeN7nwXNCwgwlRttCPIH2GldxkQql02eB3Fg=
 go.unistack.org/micro-codec-grpc/v3 v3.10.0 h1:N8XtNVeYBUcrQfcaY0b+PS7TaI7Wi6g5ZrEDeK77y34=
 go.unistack.org/micro-codec-grpc/v3 v3.10.0/go.mod h1:NLU7KfhAA2Es9zI5BuwFFpPW1Y20F5/9/ZX2bK0nils=
 go.unistack.org/micro-codec-json/v3 v3.10.0 h1:vSREYR9yM5R9bzCWAY9Wip+sYzLjUB2UIEJAWtpWNbg=
