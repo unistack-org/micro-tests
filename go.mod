@@ -15,7 +15,7 @@ require (
 	github.com/hashicorp/vault/api v1.9.0 // indirect
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/segmentio/kafka-go v0.4.38
+	github.com/segmentio/kafka-go v0.4.40
 	github.com/stretchr/testify v1.8.1
 	github.com/twmb/franz-go v1.12.1
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
@@ -55,6 +55,8 @@ require (
 	modernc.org/sqlite v1.20.3
 	storj.io/drpc v0.0.32
 )
+
+require golang.org/x/net v0.7.0
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -105,7 +107,6 @@ require (
 	github.com/valyala/fastrand v1.1.0 // indirect
 	github.com/valyala/histogram v1.2.0 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
-	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.5.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
 	golang.org/x/tools v0.1.12 // indirect
