@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"strings"
 	"sync"
@@ -217,7 +218,13 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 
 func (h *Handler) CallError(ctx context.Context, req *pb.CallReq1, rsp *pb.CallRsp1) error {
 	httpsrv.SetRspCode(ctx, http.StatusBadRequest)
-	return httpsrv.SetError(&pb.Error{Msg: "my_error"})
+	switch req.Name {
+	case "my_name":
+		return httpsrv.SetError(&pb.Error{Msg: "my_error"})
+	case "my_name_test":
+		return httpsrv.SetError(&pb.Error{Msg: "my_error_test"})
+	}
+	return httpsrv.SetError(&pb.Error{Msg: "unknown"})
 }
 
 func TestNativeFormUrlencoded(t *testing.T) {
@@ -510,6 +517,15 @@ func TestNativeServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	if err := srv.Init(); err != nil {
+		t.Fatal(err)
+	}
+
+	fn, err := srv.HTTPHandlerFunc(h.CallError)
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	// start server
 	if err := srv.Start(); err != nil {
 		t.Fatal(err)
@@ -578,6 +594,19 @@ func TestNativeServer(t *testing.T) {
 
 	if s := string(b); s != `{"msg":"my_error"}` {
 		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error"}`, s)
+	}
+
+	rr := httptest.NewRecorder()
+	rq, err := http.NewRequestWithContext(context.TODO(), http.MethodPost, "/v1/test/callerror/my_name_test", nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	fn(rr, rq)
+	if rr.Code != http.StatusBadRequest {
+		t.Fatalf("invalid status received: %s\n", rr.Body.String())
+	}
+	if s := rr.Body.String(); s != `{"msg":"my_error_test"}` {
+		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error_test"}`, s)
 	}
 
 	rsp, err = http.Post(fmt.Sprintf("http://%s/v1/test/call_repeated_string?string_ids=123&string_ids=321", service[0].Nodes[0].Address), "application/json", nil)
