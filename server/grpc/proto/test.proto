@@ -13,6 +13,7 @@ service Test {
       body: "*";
     };
   }
+  rpc StreamCall(stream Request) returns (stream Response) {};
 }
 
 message Request {

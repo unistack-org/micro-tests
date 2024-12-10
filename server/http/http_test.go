@@ -24,10 +24,7 @@ import (
 	meterhandler "go.unistack.org/micro-server-http/v3/handler/meter"
 	pb "go.unistack.org/micro-tests/server/http/proto"
 	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/logger"
-	lwrapper "go.unistack.org/micro/v3/logger/wrapper"
 	"go.unistack.org/micro/v3/metadata"
-	mwrapper "go.unistack.org/micro/v3/meter/wrapper"
 	"go.unistack.org/micro/v3/register"
 	"go.unistack.org/micro/v3/server"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
@@ -363,8 +360,6 @@ func TestNativeClientServer(t *testing.T) {
 		server.Register(reg),
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-		server.WrapHandler(mwrapper.NewHandlerWrapper(mwrapper.Meter(m))),
-		server.WrapHandler(lwrapper.NewServerHandlerWrapper(lwrapper.WithEnabled(false), lwrapper.WithLevel(logger.ErrorLevel))),
 		httpsrv.Middleware(mwf),
 		server.WrapHandler(NewServerHandlerWrapper(t)),
 	)

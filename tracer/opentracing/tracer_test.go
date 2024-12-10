@@ -24,7 +24,6 @@ import (
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 	mt "go.unistack.org/micro/v3/tracer"
-	otwrapper "go.unistack.org/micro/v3/tracer/wrapper"
 )
 
 type Test interface {
@@ -124,7 +123,6 @@ func TestClient(t *testing.T) {
 				client.Codec("application/grpc+json", jsoncodec.NewCodec()),
 				client.Codec("application/json", jsoncodec.NewCodec()),
 				client.Router(rt),
-				client.Wrap(otwrapper.NewClientWrapper(otwrapper.WithTracer(mtr))),
 			)
 
 			if err := c.Init(); err != nil {
@@ -139,8 +137,7 @@ func TestClient(t *testing.T) {
 				server.ID(serverID),
 				server.Register(reg),
 				server.Broker(brk),
-				server.WrapSubscriber(otwrapper.NewServerSubscriberWrapper(otwrapper.WithTracer(mtr))),
-				server.WrapHandler(otwrapper.NewServerHandlerWrapper(otwrapper.WithTracer(mtr))),
+				server.Tracer(mtr),
 				server.Address("127.0.0.1:0"),
 			)
 			if err := s.Init(); err != nil {

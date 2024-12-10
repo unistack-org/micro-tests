@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package main;
+
+import "google/protobuf/empty.proto";
+
+service TestService {
+    rpc DoWork (google.protobuf.Empty) returns (WorkResponse);
+}
+
+message WorkResponse {
+    string message = 1;
+}

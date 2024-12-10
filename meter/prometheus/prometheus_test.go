@@ -9,22 +9,15 @@ import (
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/meter"
-	"go.unistack.org/micro/v3/meter/wrapper"
 )
 
 func TestWrapper(t *testing.T) {
 	m := prometheus.NewMeter() // meter.Labels("test_key", "test_val"))
-
-	w := wrapper.NewClientWrapper(
-		wrapper.ServiceName("svc1"),
-		wrapper.ServiceVersion("0.0.1"),
-		wrapper.ServiceID("12345"),
-		wrapper.Meter(m),
-	)
+	_ = m.Init()
 
 	ctx := context.Background()
 
-	c := client.NewClient(client.Wrap(w))
+	c := client.NewClient()
 	if err := c.Init(); err != nil {
 		t.Fatal(err)
 	}
@@ -34,7 +27,7 @@ func TestWrapper(t *testing.T) {
 	_, _ = rsp, err
 	buf := bytes.NewBuffer(nil)
 	_ = m.Write(buf, meter.WriteProcessMetrics(false), meter.WriteFDMetrics(false))
-	if !bytes.Contains(buf.Bytes(), []byte(`micro_client_request_inflight{micro_endpoint="svc2.Service.Method"} 0`)) {
+	if !bytes.Contains(buf.Bytes(), []byte(`micro_client_request_inflight{endpoint="svc2.Service.Method"} 0`)) {
 		t.Fatalf("invalid metrics output: %s", buf.Bytes())
 	}
 }

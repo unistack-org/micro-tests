@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package="/proto;pb";
+
+
+message Item1 {
+  string key1 = 1;
+}
+
+message Message1 {
+  repeated Item1 items = 1;
+}
+
+message Item2 {
+  string key1 = 1;
+  string key2 = 2;
+}
+
+message Message2 {
+  repeated Item2 items = 1;
+}

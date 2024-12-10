@@ -75,7 +75,7 @@ func TestComboServer(t *testing.T) {
 
 	h := &Handler{t: t}
 
-	_ = logger.DefaultLogger.Init(logger.WithCallerSkipCount(3))
+	_ = logger.DefaultLogger.Init()
 
 	// create grpc server
 	gsrv := grpcsrv.NewServer(
