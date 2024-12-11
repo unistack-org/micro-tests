@@ -59,7 +59,7 @@ func TestKgo(t *testing.T) {
 		// t.Skip()
 	}
 
-	_ = logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel), logger.WithCallerSkipCount(3))
+	_ = logger.DefaultLogger.Init(logger.WithLevel(logger.TraceLevel))
 	ctx := context.Background()
 
 	var addrs []string

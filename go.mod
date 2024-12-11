@@ -37,7 +37,7 @@ require (
 	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6
 	go.unistack.org/micro-proto/v3 v3.4.1
 	go.unistack.org/micro-router-register/v3 v3.9.0
-	go.unistack.org/micro-server-grpc/v3 v3.10.3
+	go.unistack.org/micro-server-grpc/v3 v3.10.26
 	go.unistack.org/micro-server-tcp/v3 v3.10.0
 	go.unistack.org/micro-tracer-opentracing/v3 v3.10.1
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
@@ -118,6 +118,7 @@ require (
 	github.com/valyala/histogram v1.2.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
+	go.unistack.org/micro-codec-urlencode/v3 v3.10.2 // indirect
 	golang.org/x/exp v0.0.0-20241210194714-1829a127f884 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
