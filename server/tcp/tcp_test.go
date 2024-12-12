@@ -10,13 +10,13 @@ import (
 
 	tcp "go.unistack.org/micro-server-tcp/v3"
 	"go.unistack.org/micro/v3/broker"
-	"go.unistack.org/micro/v3/logger"
 	"go.unistack.org/micro/v3/register"
 	"go.unistack.org/micro/v3/server"
 )
 
 type testHandler struct {
-	done chan struct{}
+	done  chan struct{}
+	cherr chan error
 }
 
 func TestTCPServer(t *testing.T) {
@@ -35,7 +35,7 @@ func TestTCPServer(t *testing.T) {
 	srv := tcp.NewServer(server.Register(reg), server.Broker(brk), server.Address("127.0.0.1:65000"))
 
 	// create handler
-	h := &testHandler{done: make(chan struct{})}
+	h := &testHandler{cherr: make(chan error), done: make(chan struct{})}
 
 	// register handler
 	if err := srv.Handle(srv.NewHandler(h)); err != nil {
@@ -75,7 +75,13 @@ func TestTCPServer(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	<-h.done
+	select {
+	case <-h.done:
+		break
+	case err := <-h.cherr:
+		t.Fatal(err)
+	}
+
 	// stop server
 	if err := srv.Stop(); err != nil {
 		t.Fatal(err)
@@ -95,7 +101,7 @@ func (h *testHandler) Serve(c net.Conn) {
 		if err != nil && err == io.EOF {
 			return
 		} else if err != nil {
-			logger.Fatal(context.TODO(), err.Error())
+			h.cherr <- err
 		}
 		fmt.Printf("%s", buf[:n])
 		close(h.done)
