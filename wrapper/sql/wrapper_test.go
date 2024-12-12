@@ -71,7 +71,7 @@ func TestSqliteWrapper(t *testing.T) {
 	opentracing.SetGlobalTracer(tr)
 	tracer.DefaultTracer = ot.NewTracer(ot.Tracer(tr))
 	if err := tracer.DefaultTracer.Init(); err != nil {
-		logger.Fatal(ctx, err)
+		t.Fatal(ctx, err)
 	}
 
 	sql.Register("micro-wrapper-sql", wrapper.NewWrapper(&sqlite.Driver{},

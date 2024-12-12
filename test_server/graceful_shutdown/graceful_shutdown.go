@@ -55,7 +55,7 @@ func startServer(ctx context.Context) {
 		fmt.Printf("wait for ctx.Done\n")
 		<-ctx.Done()
 		fmt.Printf("wait for Stop\n")
-		svc.Stop(ctx)
+		svc.Stop()
 		fmt.Printf("Stopped\n")
 	}()
 
@@ -69,7 +69,7 @@ func TestClient() {
 	defer cancel()
 
 	log.Printf("create grpc conn\n")
-	conn, _ := grpc.Dial("localhost:1234", grpc.WithInsecure(), grpc.WithBlock())
+	conn, _ := grpc.NewClient("localhost:1234", grpc.WithInsecure(), grpc.WithBlock())
 	defer conn.Close()
 	cli := NewTestServiceClient(conn)
 

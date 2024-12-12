@@ -1,7 +1,6 @@
 package codec
 
 import (
-	"fmt"
 	"testing"
 
 	jsoncodec "go.unistack.org/micro-codec-json/v3"
@@ -20,5 +19,7 @@ func TestFrame(t *testing.T) {
 	if err := c.Unmarshal(data, dst); err != nil {
 		t.Fatal(err)
 	}
-	fmt.Printf("xxx %s\n", dst.Frame)
+	if string(dst.Frame.Data) != `{"first":"second"}` {
+		t.Fatalf("frame %s", dst.Frame.Data)
+	}
 }

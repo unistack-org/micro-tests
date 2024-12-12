@@ -6,7 +6,6 @@ toolchain go1.23.4
 
 require (
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
-	github.com/VictoriaMetrics/metrics v1.23.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
@@ -25,7 +24,6 @@ require (
 	go.unistack.org/micro-broker-kgo/v3 v3.8.3
 	go.unistack.org/micro-client-grpc/v3 v3.10.0
 	go.unistack.org/micro-client-http/v3 v3.9.14
-	go.unistack.org/micro-codec-grpc/v3 v3.10.0
 	go.unistack.org/micro-codec-json/v3 v3.10.0
 	go.unistack.org/micro-codec-jsonpb/v3 v3.10.0
 	go.unistack.org/micro-codec-proto/v3 v3.10.0
@@ -33,16 +31,12 @@ require (
 	go.unistack.org/micro-config-consul/v3 v3.8.2
 	go.unistack.org/micro-config-env/v3 v3.8.3
 	go.unistack.org/micro-config-vault/v3 v3.8.4
-	go.unistack.org/micro-meter-prometheus/v3 v3.8.4
-	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.6
 	go.unistack.org/micro-proto/v3 v3.4.1
 	go.unistack.org/micro-router-register/v3 v3.9.0
 	go.unistack.org/micro-server-grpc/v3 v3.10.26
 	go.unistack.org/micro-server-tcp/v3 v3.10.0
 	go.unistack.org/micro-tracer-opentracing/v3 v3.10.1
 	go.unistack.org/micro-wrapper-recovery/v3 v3.8.3
-	go.unistack.org/micro-wrapper-sql/v3 v3.10.3
-	go.unistack.org/micro/v3 v3.11.14
 	golang.org/x/crypto v0.30.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	google.golang.org/grpc v1.68.1
@@ -53,7 +47,13 @@ require (
 
 require (
 	go.unistack.org/micro-client-mock/v3 v3.0.1
+	go.unistack.org/micro-codec-urlencode/v3 v3.10.2
+	go.unistack.org/micro-codec-xml/v3 v3.10.1
+	go.unistack.org/micro-meter-prometheus/v3 v3.8.17
+	go.unistack.org/micro-meter-victoriametrics/v3 v3.8.9
 	go.unistack.org/micro-server-http/v3 v3.11.37
+	go.unistack.org/micro-wrapper-sql/v3 v3.10.15
+	go.unistack.org/micro/v3 v3.11.14
 	golang.org/x/net v0.32.0
 )
 
@@ -72,7 +72,6 @@ require (
 	github.com/fatih/color v1.17.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.0.4 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
-	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/gnostic v0.7.0 // indirect
 	github.com/google/gnostic-models v0.6.9 // indirect
 	github.com/google/uuid v1.6.0 // indirect
@@ -118,7 +117,8 @@ require (
 	github.com/valyala/histogram v1.2.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
-	go.unistack.org/micro-codec-urlencode/v3 v3.10.2 // indirect
+	go.unistack.org/metrics v0.0.1 // indirect
+	go.unistack.org/micro-wrapper-requestid/v3 v3.9.3 // indirect
 	golang.org/x/exp v0.0.0-20241210194714-1829a127f884 // indirect
 	golang.org/x/mod v0.22.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
