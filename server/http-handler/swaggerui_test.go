@@ -8,7 +8,7 @@ import (
 )
 
 func TestTemplate(t *testing.T) {
-	// t.Skip()
+	t.Skip()
 	h := http.NewServeMux()
 	h.HandleFunc("/", swaggerui.Handler(""))
 	if err := http.ListenAndServe(":8080", h); err != nil {
