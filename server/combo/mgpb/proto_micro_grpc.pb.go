@@ -45,6 +45,5 @@ func RegisterTestServer(s server.Server, sh proto.TestServer, opts ...server.Han
 		test
 	}
 	h := &testServer{sh}
-	var nopts []server.HandlerOption
-	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
+	return s.Handle(s.NewHandler(&Test{h}, opts...))
 }

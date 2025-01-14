@@ -30,7 +30,7 @@ func (c *testClient) Call(ctx context.Context, req *proto.Request, opts ...clien
 	return rsp, nil
 }
 
-func (c *testClient) StreamCall(ctx context.Context, opts ...client.CallOption) (Test_StreamCallClient, error) {
+func (c *testClient) StreamCall(ctx context.Context, opts ...client.CallOption) (proto.Test_StreamCallClient, error) {
 	stream, err := c.c.Stream(ctx, c.c.NewRequest(c.name, "Test.StreamCall", &proto.Request{}), opts...)
 	if err != nil {
 		return nil, err
@@ -40,6 +40,18 @@ func (c *testClient) StreamCall(ctx context.Context, opts ...client.CallOption) 
 
 type testClientStreamCall struct {
 	stream client.Stream
+}
+
+func (s *testClientStreamCall) CloseAndRecv() (*proto.Response, error) {
+	msg := &proto.Response{}
+	err := s.RecvMsg(msg)
+	if err == nil {
+		err = s.Close()
+	}
+	if err != nil {
+		return nil, err
+	}
+	return msg, nil
 }
 
 func (s *testClientStreamCall) Close() error {
@@ -94,6 +106,13 @@ type testStreamCallStream struct {
 	stream server.Stream
 }
 
+func (s *testStreamCallStream) SendAndClose(msg *proto.Response) error {
+	err := s.SendMsg(msg)
+	if err == nil {
+		err = s.stream.Close()
+	}
+	return err
+}
 func (s *testStreamCallStream) Close() error {
 	return s.stream.Close()
 }
@@ -131,6 +150,5 @@ func RegisterTestServer(s server.Server, sh proto.TestServer, opts ...server.Han
 		test
 	}
 	h := &testServer{sh}
-	var nopts []server.HandlerOption
-	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
+	return s.Handle(s.NewHandler(&Test{h}, opts...))
 }

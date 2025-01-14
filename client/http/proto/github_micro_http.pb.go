@@ -98,7 +98,6 @@ func RegisterGithubServer(s server.Server, sh GithubServer, opts ...server.Handl
 		github
 	}
 	h := &githubServer{sh}
-	var nopts []server.HandlerOption
-	nopts = append(nopts, v3.HandlerEndpoints(GithubServerEndpoints))
-	return s.Handle(s.NewHandler(&Github{h}, append(nopts, opts...)...))
+	opts = append(opts, v3.HandlerEndpoints(GithubServerEndpoints))
+	return s.Handle(s.NewHandler(&Github{h}, opts...))
 }

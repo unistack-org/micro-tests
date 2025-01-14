@@ -58,6 +58,5 @@ func RegisterTestServiceServer(s server.Server, sh TestServiceServer, opts ...se
 		testService
 	}
 	h := &testServiceServer{sh}
-	var nopts []server.HandlerOption
-	return s.Handle(s.NewHandler(&TestService{h}, append(nopts, opts...)...))
+	return s.Handle(s.NewHandler(&TestService{h}, opts...))
 }

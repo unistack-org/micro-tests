@@ -7,13 +7,8 @@ package pb
 import (
 	context "context"
 	_ "go.unistack.org/micro-client-http/v3"
-	v3 "go.unistack.org/micro-server-http/v3"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
-)
-
-var (
-	TestServerEndpoints = []v3.EndpointMetadata{}
 )
 
 type testClient struct {
@@ -50,7 +45,5 @@ func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOp
 		test
 	}
 	h := &testServer{sh}
-	var nopts []server.HandlerOption
-	nopts = append(nopts, v3.HandlerEndpoints(TestServerEndpoints))
-	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
+	return s.Handle(s.NewHandler(&Test{h}, opts...))
 }

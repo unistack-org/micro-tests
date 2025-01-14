@@ -76,9 +76,8 @@ func RegisterTestDoubleServer(s server.Server, sh TestDoubleServer, opts ...serv
 		testDouble
 	}
 	h := &testDoubleServer{sh}
-	var nopts []server.HandlerOption
-	nopts = append(nopts, v3.HandlerEndpoints(TestDoubleServerEndpoints))
-	return s.Handle(s.NewHandler(&TestDouble{h}, append(nopts, opts...)...))
+	opts = append(opts, v3.HandlerEndpoints(TestDoubleServerEndpoints))
+	return s.Handle(s.NewHandler(&TestDouble{h}, opts...))
 }
 
 var (
@@ -235,8 +234,8 @@ func (h *testServer) Call(ctx context.Context, req *CallReq, rsp *CallRsp) error
 	ctx, cancel = context.WithTimeout(ctx, td)
 	defer cancel()
 	v3.FillRequest(ctx, req,
-		v3.Header("Clientid", "true"),
 		v3.Cookie("Csrftoken", "true"),
+		v3.Header("Clientid", "true"),
 	)
 	return h.TestServer.Call(ctx, req, rsp)
 }
@@ -256,7 +255,6 @@ func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOp
 		test
 	}
 	h := &testServer{sh}
-	var nopts []server.HandlerOption
-	nopts = append(nopts, v3.HandlerEndpoints(TestServerEndpoints))
-	return s.Handle(s.NewHandler(&Test{h}, append(nopts, opts...)...))
+	opts = append(opts, v3.HandlerEndpoints(TestServerEndpoints))
+	return s.Handle(s.NewHandler(&Test{h}, opts...))
 }
