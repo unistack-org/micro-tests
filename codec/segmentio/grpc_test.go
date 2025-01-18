@@ -9,21 +9,17 @@ import (
 	protocodec "go.unistack.org/micro-codec-segmentio/v3/proto"
 	regRouter "go.unistack.org/micro-router-register/v3"
 	gserver "go.unistack.org/micro-server-grpc/v3"
-	gpb "go.unistack.org/micro-tests/server/grpc/gproto"
-	pb "go.unistack.org/micro-tests/server/grpc/proto"
-	"go.unistack.org/micro/v3/broker"
+	gpb "go.unistack.org/micro-tests/codec/segmentio/proto"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 )
 
-type testServer struct {
-	pb.UnimplementedTestServer
-}
+type testServer struct{}
 
-func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
+func (g *testServer) Call(ctx context.Context, req *gpb.Request, rsp *gpb.Response) error {
 	if req.Name == "Error" {
 		return &errors.Error{ID: "id", Code: 99, Detail: "detail"}
 	}
@@ -34,15 +30,13 @@ func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 func TestGRPCServer(t *testing.T) {
 	var err error
 
-	r := register.NewRegister()
-	b := broker.NewBroker(broker.Register(r))
+	r := mregister.NewRegister()
 	s := gserver.NewServer(
 		server.Codec("application/grpc+proto", protocodec.NewCodec()),
 		server.Codec("application/grpc", protocodec.NewCodec()),
 		server.Address("127.0.0.1:0"),
 		server.Register(r),
 		server.Name("helloworld"),
-		gserver.Reflection(true),
 	)
 	// create router
 	rtr := regRouter.NewRouter(router.Register(r))
@@ -73,7 +67,6 @@ func TestGRPCServer(t *testing.T) {
 		client.Codec("application/grpc", protocodec.NewCodec()),
 		client.Router(rtr),
 		client.Register(r),
-		client.Broker(b),
 	)
 
 	testMethods := []string{
@@ -81,13 +74,13 @@ func TestGRPCServer(t *testing.T) {
 	}
 
 	for _, method := range testMethods {
-		req := c.NewRequest("helloworld", method, &pb.Request{
+		req := c.NewRequest("helloworld", method, &gpb.Request{
 			Name: "John",
 		})
 
-		rsp := pb.Response{}
+		rsp := &gpb.Response{}
 
-		err = c.Call(context.TODO(), req, &rsp)
+		err = c.Call(context.TODO(), req, rsp)
 		if err != nil {
 			t.Fatalf("method: %s err: %v", method, err)
 		}

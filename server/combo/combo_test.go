@@ -22,7 +22,7 @@ import (
 	pb "go.unistack.org/micro-tests/server/combo/proto"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/logger"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/server"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
@@ -70,7 +70,7 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 }
 
 func TestComboServer(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	h := &Handler{t: t}
@@ -111,7 +111,7 @@ func TestComboServer(t *testing.T) {
 	hs := &http.Server{Handler: h2c.NewHandler(newComboMux(hsrv, gsrv.GRPCServer(), nil), &http2.Server{})}
 
 	// init http server
-	if err := hsrv.Init(httpsrv.Server(hs)); err != nil {
+	if err := hsrv.Init(httpsrv.HTTPServer(hs)); err != nil {
 		t.Fatal(err)
 	}
 

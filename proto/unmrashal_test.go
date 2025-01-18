@@ -1,7 +1,6 @@
 package pb
 
 import (
-	"fmt"
 	"testing"
 
 	cp "go.unistack.org/micro-codec-proto/v3"
@@ -20,7 +19,9 @@ func TestMarshalUnmarshal(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, item := range msg1.Items {
-		fmt.Printf("item %#+v\n", item)
-	}
+	/*
+		for _, item := range msg1.Items {
+			fmt.Printf("item %#+v\n", item)
+		}
+	*/
 }

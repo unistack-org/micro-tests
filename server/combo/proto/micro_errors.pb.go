@@ -11,7 +11,7 @@ var (
 	marshaler = protojson.MarshalOptions{}
 )
 
-func (m *Error) Error() string {
+func (m *ErrorRsp) Error() string {
 	buf, _ := marshaler.Marshal(m)
 	return string(buf)
 }

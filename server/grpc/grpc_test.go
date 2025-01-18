@@ -18,11 +18,10 @@ import (
 	pb "go.unistack.org/micro-tests/server/grpc/proto"
 	"go.unistack.org/micro/v3/broker"
 	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/errors"
 	"go.unistack.org/micro/v3/logger"
 	"go.unistack.org/micro/v3/metadata"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 	"google.golang.org/grpc"
@@ -39,8 +38,8 @@ type testnServer struct {
 	pb.UnimplementedTestServer
 }
 
-func NewServerHandlerWrapper() server.HandlerWrapper {
-	return func(fn server.HandlerFunc) server.HandlerFunc {
+func NewServerHandlerWrapper() server.HookHandler {
+	return func(fn server.FuncHandler) server.FuncHandler {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
 			// fmt.Printf("wrap ctx: %#+v req: %#+v\n", ctx, req)
 			return fn(ctx, req, rsp)
@@ -59,6 +58,10 @@ func (g *testServer) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 	rsp.Msg = "Hello " + req.Name
 	rsp.Broken = &pb.Broken{Field: "12345"}
 
+	return nil
+}
+
+func (g *testServer) StreamCall(ctx context.Context, stream gpb.Test_StreamCallStream) error {
 	return nil
 }
 
@@ -81,11 +84,10 @@ func (g *testnServer) Call(ctx context.Context, req *pb.Request) (*pb.Response, 
 
 func TestGRPCServer(t *testing.T) {
 	var err error
-	codec.DefaultMaxMsgSize = 8 * 1024 * 1024
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	_ = logger.DefaultLogger.Init(logger.WithLevel(logger.ErrorLevel))
-	r := register.NewRegister()
+	r := mregister.NewRegister()
 	b := broker.NewBroker(broker.Register(r))
 	s := gserver.NewServer(
 		server.Codec("application/grpc+proto", protocodec.NewCodec()),
@@ -93,8 +95,8 @@ func TestGRPCServer(t *testing.T) {
 		server.Address("127.0.0.1:0"),
 		server.Register(r),
 		server.Name("helloworld"),
-		gserver.Reflection(true),
-		server.WrapHandler(NewServerHandlerWrapper()),
+		// gserver.Reflection(true),
+		server.Hooks(server.HookHandler(NewServerHandlerWrapper())),
 	)
 	// create router
 	rtr := regRouter.NewRouter(router.Register(r))

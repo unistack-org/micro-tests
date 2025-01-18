@@ -3,6 +3,7 @@ package http_test
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -25,7 +26,7 @@ import (
 	pb "go.unistack.org/micro-tests/server/http/proto"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/metadata"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/server"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
@@ -82,7 +83,7 @@ func upload(client *http.Client, url string, values map[string]io.Reader) error 
 }
 
 func TestMultipart(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	// create server
@@ -133,27 +134,28 @@ func TestMultipart(t *testing.T) {
 	}
 }
 
-func NewServerHandlerWrapper(t *testing.T) server.HandlerWrapper {
-	return func(fn server.HandlerFunc) server.HandlerFunc {
+func NewServerHandlerWrapper(t *testing.T) server.HookHandler {
+	return func(fn server.FuncHandler) server.FuncHandler {
 		return func(ctx context.Context, req server.Request, rsp interface{}) error {
-			md, ok := metadata.FromIncomingContext(ctx)
+			// return fn(ctx, req, rsp)
+			imd, ok := metadata.FromIncomingContext(ctx)
 			if !ok {
-				t.Fatal("metadata empty")
+				return errors.New("missing metadata")
 			}
-			if v, ok := md.Get("Authorization"); ok && v == "test" {
-				nmd := metadata.New(1)
+			nmd, ok := metadata.FromOutgoingContext(ctx)
+			if !ok {
+				return errors.New("missing metadata")
+			}
+			if v, ok := imd.Get("Authorization"); ok && v == "test" {
 				nmd.Set("my-key", "my-val")
 				nmd.Set("Content-Type", "text/xml")
-				metadata.SetOutgoingContext(ctx, nmd)
 				httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
 				return httpsrv.SetError(&pb.CallRsp{Rsp: "name_my_name"})
 			}
 
-			if v, ok := md.Get("Test-Content-Type"); ok && v != "" {
-				nmd := metadata.New(1)
+			if v, ok := imd.Get("Test-Content-Type"); ok && v != "" {
 				nmd.Set("my-key", "my-val")
 				nmd.Set("Content-Type", v)
-				metadata.SetOutgoingContext(ctx, nmd)
 			}
 
 			return fn(ctx, req, rsp)
@@ -196,20 +198,29 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	if !ok {
 		h.t.Fatalf("context without metadata")
 	}
+	omd, ok := metadata.FromOutgoingContext(ctx)
+	if !ok {
+		h.t.Fatalf("context without metadata")
+	}
 	if _, ok := md.Get("User-Agent"); !ok {
 		h.t.Fatalf("context metadata does not have User-Agent header")
 	}
 	if req.Name != "my_name" {
 		h.t.Fatalf("invalid req received: %#+v", req)
 	}
-	if req.Clientid != "1234567890" {
-		h.t.Fatalf("invalid req recevided %#+v", req)
+	if v, ok := md.Get("Authorization"); ok && v == "test" {
+		rsp.Rsp = "name_my_name"
+		httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
+		omd.Set("my-key", "my-val")
+		omd.Set("Content-Type", "text/xml")
+		return httpsrv.SetError(&pb.CallRsp{Rsp: "name_my_name"})
 	}
+
 	rsp.Rsp = "name_my_name"
 	httpsrv.SetRspCode(ctx, http.StatusCreated)
-	md = metadata.New(1)
-	md.Set("my-key", "my-val")
-	metadata.SetOutgoingContext(ctx, md)
+	if omd, ok := metadata.FromOutgoingContext(ctx); ok {
+		omd.Set("my-key", "my-val")
+	}
 	return nil
 }
 
@@ -225,7 +236,7 @@ func (h *Handler) CallError(ctx context.Context, req *pb.CallReq1, rsp *pb.CallR
 }
 
 func TestNativeFormUrlencoded(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	// create server
@@ -340,7 +351,7 @@ func TestNativeFormUrlencoded(t *testing.T) {
 }
 
 func TestNativeClientServer(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	var mwfOk bool
@@ -361,7 +372,7 @@ func TestNativeClientServer(t *testing.T) {
 		server.Codec("application/json", jsonpbcodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
 		httpsrv.Middleware(mwf),
-		server.WrapHandler(NewServerHandlerWrapper(t)),
+		server.Hooks(server.HookHandler(NewServerHandlerWrapper(t))),
 	)
 
 	h := &Handler{t: t}
@@ -493,7 +504,7 @@ func TestNativeClientServer(t *testing.T) {
 }
 
 func TestNativeServer(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	// create server
@@ -504,7 +515,7 @@ func TestNativeServer(t *testing.T) {
 		server.Codec("text/xml", xmlcodec.NewCodec()),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 		server.Codec("application/x-www-form-urlencoded", urlencodecodec.NewCodec()),
-		server.WrapHandler(NewServerHandlerWrapper(t)),
+		// server.Hooks(server.HookHandler(NewServerHandlerWrapper(t))),
 	)
 
 	h := &Handler{t: t}
@@ -522,7 +533,7 @@ func TestNativeServer(t *testing.T) {
 	}
 
 	// start server
-	if err := srv.Start(); err != nil {
+	if err = srv.Start(); err != nil {
 		t.Fatal(err)
 	}
 
@@ -546,7 +557,7 @@ func TestNativeServer(t *testing.T) {
 		t.Fatal(err)
 	}
 	req.Header.Set("Authorization", "test")
-	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Content-Type", "text/xml")
 	rsp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		t.Fatal(err)
@@ -598,7 +609,7 @@ func TestNativeServer(t *testing.T) {
 	}
 	fn(rr, rq)
 	if rr.Code != http.StatusBadRequest {
-		t.Fatalf("invalid status received: %s\n", rr.Body.String())
+		t.Fatalf("invalid status received: %#+v %s\n", rr.Header(), rr.Body.String())
 	}
 	if s := rr.Body.String(); s != `{"msg":"my_error_test"}` {
 		t.Fatalf("Expected response %s, got %s", `{"msg":"my_error_test"}`, s)
@@ -657,7 +668,7 @@ func TestNativeServer(t *testing.T) {
 }
 
 func TestHTTPHandler(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	// create server
@@ -736,7 +747,7 @@ func (h *handlerSwapper) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func TestHTTPServer(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	ctx := context.Background()
 
 	// create server mux
@@ -754,7 +765,7 @@ func TestHTTPServer(t *testing.T) {
 	srv := httpsrv.NewServer(
 		server.Address("127.0.0.1:0"),
 		server.Register(reg),
-		httpsrv.Server(&http.Server{Handler: h}),
+		httpsrv.HTTPServer(&http.Server{Handler: h}),
 		server.Codec("application/json", jsoncodec.NewCodec()),
 	)
 

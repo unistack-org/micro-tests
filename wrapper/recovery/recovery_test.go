@@ -10,10 +10,9 @@ import (
 	rrouter "go.unistack.org/micro-router-register/v3"
 	srv "go.unistack.org/micro-server-grpc/v3"
 	recwrapper "go.unistack.org/micro-wrapper-recovery/v3"
-	"go.unistack.org/micro/v3/broker"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 )
@@ -38,8 +37,7 @@ func (t *testHandler) Method(ctx context.Context, req *TestRequest, rsp *TestRes
 
 func TestRecovery(t *testing.T) {
 	// setup
-	reg := register.NewRegister()
-	brk := broker.NewBroker(broker.Register(reg))
+	reg := mregister.NewRegister()
 
 	name := "test"
 	id := "id-1234567890"
@@ -63,9 +61,8 @@ func TestRecovery(t *testing.T) {
 		server.Version(version),
 		server.ID(id),
 		server.Register(reg),
-		server.Broker(brk),
-		server.WrapHandler(
-			recwrapper.NewServerHandlerWrapper(recwrapper.ServerHandlerFn(rfn)),
+		server.Hooks(
+			server.HookHandler(recwrapper.NewHook(recwrapper.ServerHandlerFunc(rfn)).ServerHandler),
 		),
 	)
 

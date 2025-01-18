@@ -20,7 +20,7 @@ import (
 	"go.unistack.org/micro/v3/broker"
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	"go.unistack.org/micro/v3/server"
 	mt "go.unistack.org/micro/v3/tracer"
@@ -104,7 +104,7 @@ func TestClient(t *testing.T) {
 			defer cl.Close()
 			opentracing.SetGlobalTracer(tr)
 
-			reg := register.NewRegister()
+			reg := mregister.NewRegister()
 			brk := broker.NewBroker(broker.Register(reg))
 
 			serverName := "service"

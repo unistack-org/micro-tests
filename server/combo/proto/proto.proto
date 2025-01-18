@@ -16,7 +16,7 @@ service Test {
       responses: {
         default: {
           reference: {
-            _ref: ".test.v1.proto.Error";
+            _ref: ".test.v1.proto.ErrorRsp";
           };
         };
       };
@@ -33,6 +33,6 @@ message CallRsp {
   string rsp = 1;
 };
 
-message Error {
+message ErrorRsp {
 	string err = 1;
 };

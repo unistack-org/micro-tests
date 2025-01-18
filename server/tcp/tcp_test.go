@@ -10,7 +10,7 @@ import (
 
 	tcp "go.unistack.org/micro-server-tcp/v3"
 	"go.unistack.org/micro/v3/broker"
-	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/server"
 )
 
@@ -22,7 +22,7 @@ type testHandler struct {
 func TestTCPServer(t *testing.T) {
 	ctx := context.Background()
 
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	if err := reg.Init(); err != nil {
 		t.Fatal(err)
 	}

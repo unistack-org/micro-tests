@@ -37,7 +37,7 @@ func NewTestClient(name string, c client.Client) proto.TestClient {
 
 func (c *testClient) Call(ctx context.Context, req *proto.CallReq, opts ...client.CallOption) (*proto.CallRsp, error) {
 	errmap := make(map[string]interface{}, 1)
-	errmap["default"] = &proto.Error{}
+	errmap["default"] = &proto.ErrorRsp{}
 	opts = append(opts,
 		v31.ErrorMap(errmap),
 	)

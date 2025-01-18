@@ -2,9 +2,11 @@ package combo
 
 //go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go_out=paths=source_relative:./proto proto/proto.proto"
 
-//go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='micro|grpc',standalone=true,debug=true,paths=source_relative:./mgpb proto/proto.proto"
+//go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='micro',standalone=false,debug=true,paths=source_relative:./proto proto/proto.proto"
 
-//go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='micro|http',standalone=true,debug=true,paths=source_relative:./mhpb proto/proto.proto"
+//go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='grpc',standalone=true,debug=true,paths=source_relative:./mgpb proto/proto.proto"
+
+//go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='http',standalone=true,debug=true,paths=source_relative:./mhpb proto/proto.proto"
 
 //go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='openapiv3',openapi_file=./apidocs.swagger.yaml,standalone=true,debug=true,paths=source_relative:./proto proto/proto.proto"
 
@@ -13,8 +15,6 @@ package combo
 
 ////go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go_out=paths=source_relative:./ndpb proto/proto.proto"
 ////go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-drpc_out=json=false,paths=source_relative:./ndpb proto/proto.proto"
-
-////go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='micro|http',standalone=true,debug=true,paths=source_relative:./mhpb proto/proto.proto"
 
 ////go:generate sh -c "protoc -I./proto -I. -I$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3) --go-micro_out=components='micro|drpc',standalone=true,debug=true,paths=source_relative:./mdpb proto/proto.proto"
 

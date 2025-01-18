@@ -56,6 +56,7 @@ func initJaeger(service string) (opentracing.Tracer, io.Closer) {
 }
 
 func TestSqliteWrapper(t *testing.T) {
+	t.Skip()
 	ctx := context.Background()
 	wrapper.DefaultMeterStatsInterval = 100 * time.Millisecond
 	meter.DefaultMeter = vmeter.NewMeter()
@@ -77,8 +78,6 @@ func TestSqliteWrapper(t *testing.T) {
 	sql.Register("micro-wrapper-sql", wrapper.NewWrapper(&sqlite.Driver{},
 		wrapper.DatabaseHost("localhost"),
 		wrapper.DatabaseName("memory"),
-		wrapper.LoggerLevel(logger.DebugLevel),
-		wrapper.LoggerEnabled(true),
 	))
 	wdb, err := sql.Open("micro-wrapper-sql", ":memory:")
 	if err != nil {

@@ -6,7 +6,6 @@ package pb
 
 import (
 	context "context"
-	_ "go.unistack.org/micro-client-http/v3"
 	client "go.unistack.org/micro/v3/client"
 	server "go.unistack.org/micro/v3/server"
 )

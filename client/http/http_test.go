@@ -18,6 +18,7 @@ import (
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/codec"
 	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
@@ -89,7 +90,7 @@ func TestNativeWithoutPath(t *testing.T) {
 }
 
 func TestHTTPClient(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -179,7 +180,7 @@ func TestHTTPClient(t *testing.T) {
 }
 
 func TestHTTPClientStream(t *testing.T) {
-	reg := register.NewRegister()
+	reg := mregister.NewRegister()
 	rtr := rrouter.NewRouter(router.Register(reg))
 
 	ctx, cancel := context.WithCancel(context.Background())

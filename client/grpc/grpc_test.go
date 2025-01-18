@@ -15,6 +15,7 @@ import (
 	"go.unistack.org/micro/v3/client"
 	"go.unistack.org/micro/v3/errors"
 	"go.unistack.org/micro/v3/register"
+	mregister "go.unistack.org/micro/v3/register/memory"
 	"go.unistack.org/micro/v3/router"
 	pgrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -71,7 +72,7 @@ func TestGRPCClient(t *testing.T) {
 	defer s.Stop()
 
 	// create mock register
-	r := register.NewRegister()
+	r := mregister.NewRegister()
 
 	// register service
 	if err := r.Register(ctx, &register.Service{

@@ -17,7 +17,7 @@ type testClient struct {
 	name string
 }
 
-func NewTestClient(name string, c client.Client) proto.TestClient {
+func NewTestClient(name string, c client.Client) TestClient {
 	return &testClient{c: c, name: name}
 }
 
@@ -30,7 +30,7 @@ func (c *testClient) Call(ctx context.Context, req *proto.Request, opts ...clien
 	return rsp, nil
 }
 
-func (c *testClient) StreamCall(ctx context.Context, opts ...client.CallOption) (proto.Test_StreamCallClient, error) {
+func (c *testClient) StreamCall(ctx context.Context, opts ...client.CallOption) (Test_StreamCallClient, error) {
 	stream, err := c.c.Stream(ctx, c.c.NewRequest(c.name, "Test.StreamCall", &proto.Request{}), opts...)
 	if err != nil {
 		return nil, err
@@ -91,7 +91,7 @@ func (s *testClientStreamCall) Recv() (*proto.Response, error) {
 }
 
 type testServer struct {
-	proto.TestServer
+	TestServer
 }
 
 func (h *testServer) Call(ctx context.Context, req *proto.Request, rsp *proto.Response) error {
@@ -141,7 +141,7 @@ func (s *testStreamCallStream) Recv() (*proto.Request, error) {
 	return msg, nil
 }
 
-func RegisterTestServer(s server.Server, sh proto.TestServer, opts ...server.HandlerOption) error {
+func RegisterTestServer(s server.Server, sh TestServer, opts ...server.HandlerOption) error {
 	type test interface {
 		Call(ctx context.Context, req *proto.Request, rsp *proto.Response) error
 		StreamCall(ctx context.Context, stream server.Stream) error
