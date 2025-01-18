@@ -2,9 +2,6 @@ module go.unistack.org/micro-tests
 
 go 1.23.4
 
-replace (
-go.unistack.org/micro-server-grpc/v3 => ../micro-server-grpc
-)
 
 require (
 	github.com/jmoiron/sqlx v1.4.0
