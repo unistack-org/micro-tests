@@ -9,8 +9,8 @@ package helloworld
 import (
 	context "context"
 	proto "go.unistack.org/micro-tests/client/grpc/proto"
-	client "go.unistack.org/micro/v3/client"
-	metadata "go.unistack.org/micro/v3/metadata"
+	client "go.unistack.org/micro/v4/client"
+	metadata "go.unistack.org/micro/v4/metadata"
 )
 
 var (

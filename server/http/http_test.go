@@ -15,19 +15,19 @@ import (
 	"sync"
 	"testing"
 
-	httpcli "go.unistack.org/micro-client-http/v3"
-	jsoncodec "go.unistack.org/micro-codec-json/v3"
-	jsonpbcodec "go.unistack.org/micro-codec-jsonpb/v3"
-	urlencodecodec "go.unistack.org/micro-codec-urlencode/v3"
-	xmlcodec "go.unistack.org/micro-codec-xml/v3"
-	vmeter "go.unistack.org/micro-meter-victoriametrics/v3"
-	httpsrv "go.unistack.org/micro-server-http/v3"
-	meterhandler "go.unistack.org/micro-server-http/v3/handler/meter"
+	httpcli "go.unistack.org/micro-client-http/v4"
+	jsoncodec "go.unistack.org/micro-codec-json/v4"
+	jsonpbcodec "go.unistack.org/micro-codec-jsonpb/v4"
+	urlencodecodec "go.unistack.org/micro-codec-urlencode/v4"
+	xmlcodec "go.unistack.org/micro-codec-xml/v4"
+	vmeter "go.unistack.org/micro-meter-victoriametrics/v4"
+	httpsrv "go.unistack.org/micro-server-http/v4"
+	meterhandler "go.unistack.org/micro-server-http/v4/handler/meter"
 	pb "go.unistack.org/micro-tests/server/http/proto"
-	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/metadata"
-	mregister "go.unistack.org/micro/v3/register/memory"
-	"go.unistack.org/micro/v3/server"
+	"go.unistack.org/micro/v4/client"
+	"go.unistack.org/micro/v4/metadata"
+	mregister "go.unistack.org/micro/v4/register/memory"
+	"go.unistack.org/micro/v4/server"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -146,14 +146,14 @@ func NewServerHandlerWrapper(t *testing.T) server.HookHandler {
 			if !ok {
 				return errors.New("missing metadata")
 			}
-			if v, ok := imd.Get("Authorization"); ok && v == "test" {
+			if v, ok := imd.GetJoined("Authorization"); ok && v == "test" {
 				nmd.Set("my-key", "my-val")
 				nmd.Set("Content-Type", "text/xml")
 				httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
 				return httpsrv.SetError(&pb.CallRsp{Rsp: "name_my_name"})
 			}
 
-			if v, ok := imd.Get("Test-Content-Type"); ok && v != "" {
+			if v, ok := imd.GetJoined("Test-Content-Type"); ok && v != "" {
 				nmd.Set("my-key", "my-val")
 				nmd.Set("Content-Type", v)
 			}
@@ -208,7 +208,7 @@ func (h *Handler) Call(ctx context.Context, req *pb.CallReq, rsp *pb.CallRsp) er
 	if req.Name != "my_name" {
 		h.t.Fatalf("invalid req received: %#+v", req)
 	}
-	if v, ok := md.Get("Authorization"); ok && v == "test" {
+	if v, ok := md.GetJoined("Authorization"); ok && v == "test" {
 		rsp.Rsp = "name_my_name"
 		httpsrv.SetRspCode(ctx, http.StatusUnauthorized)
 		omd.Set("my-key", "my-val")

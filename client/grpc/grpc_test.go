@@ -8,15 +8,15 @@ import (
 	"testing"
 	"time"
 
-	grpc "go.unistack.org/micro-client-grpc/v3"
-	protocodec "go.unistack.org/micro-codec-proto/v3"
-	regRouter "go.unistack.org/micro-router-register/v3"
+	grpc "go.unistack.org/micro-client-grpc/v4"
+	protocodec "go.unistack.org/micro-codec-proto/v4"
+	regRouter "go.unistack.org/micro-router-register/v4"
 	pb "go.unistack.org/micro-tests/client/grpc/proto"
-	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/errors"
-	"go.unistack.org/micro/v3/register"
-	mregister "go.unistack.org/micro/v3/register/memory"
-	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v4/client"
+	"go.unistack.org/micro/v4/errors"
+	"go.unistack.org/micro/v4/register"
+	mregister "go.unistack.org/micro/v4/register/memory"
+	"go.unistack.org/micro/v4/router"
 	pgrpc "google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -82,9 +82,6 @@ func TestGRPCClient(t *testing.T) {
 			{
 				ID:      "test-1",
 				Address: l.Addr().String(),
-				Metadata: map[string]string{
-					"protocol": "grpc",
-				},
 			},
 		},
 	}); err != nil {

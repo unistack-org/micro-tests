@@ -9,7 +9,7 @@ package pb
 import (
 	context "context"
 	codec "go.unistack.org/micro-proto/v3/codec"
-	client "go.unistack.org/micro/v3/client"
+	client "go.unistack.org/micro/v4/client"
 )
 
 var (

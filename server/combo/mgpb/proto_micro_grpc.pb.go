@@ -7,8 +7,8 @@ package pb
 import (
 	context "context"
 	proto "go.unistack.org/micro-tests/server/combo/proto"
-	client "go.unistack.org/micro/v3/client"
-	server "go.unistack.org/micro/v3/server"
+	client "go.unistack.org/micro/v4/client"
+	server "go.unistack.org/micro/v4/server"
 )
 
 type testClient struct {

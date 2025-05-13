@@ -6,11 +6,11 @@ package pb
 
 import (
 	context "context"
-	v31 "go.unistack.org/micro-client-http/v3"
+	v31 "go.unistack.org/micro-client-http/v4"
 	codec "go.unistack.org/micro-proto/v3/codec"
-	v3 "go.unistack.org/micro-server-http/v3"
-	client "go.unistack.org/micro/v3/client"
-	server "go.unistack.org/micro/v3/server"
+	v3 "go.unistack.org/micro-server-http/v4"
+	client "go.unistack.org/micro/v4/client"
+	server "go.unistack.org/micro/v4/server"
 	http "net/http"
 )
 

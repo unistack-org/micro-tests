@@ -2,19 +2,18 @@ package recovery_test
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
-	cli "go.unistack.org/micro-client-grpc/v3"
-	jsoncodec "go.unistack.org/micro-codec-json/v3"
-	rrouter "go.unistack.org/micro-router-register/v3"
-	srv "go.unistack.org/micro-server-grpc/v3"
-	recwrapper "go.unistack.org/micro-wrapper-recovery/v3"
-	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/errors"
-	mregister "go.unistack.org/micro/v3/register/memory"
-	"go.unistack.org/micro/v3/router"
-	"go.unistack.org/micro/v3/server"
+	cli "go.unistack.org/micro-client-grpc/v4"
+	jsoncodec "go.unistack.org/micro-codec-json/v4"
+	rrouter "go.unistack.org/micro-router-register/v4"
+	srv "go.unistack.org/micro-server-grpc/v4"
+	recwrapper "go.unistack.org/micro-wrapper-recovery/v4"
+	"go.unistack.org/micro/v4/client"
+	"go.unistack.org/micro/v4/errors"
+	mregister "go.unistack.org/micro/v4/register/memory"
+	"go.unistack.org/micro/v4/router"
+	"go.unistack.org/micro/v4/server"
 )
 
 type Test interface {
@@ -92,5 +91,5 @@ func TestRecovery(t *testing.T) {
 		t.Fatalf("panic happens, but handler not return err")
 	}
 
-	fmt.Printf("%v\n", err)
+	// fmt.Printf("%v\n", err)
 }

@@ -6,10 +6,10 @@ package pb
 
 import (
 	context "context"
-	_ "go.unistack.org/micro-client-http/v3"
-	client "go.unistack.org/micro/v3/client"
-	codec "go.unistack.org/micro/v3/codec"
-	server "go.unistack.org/micro/v3/server"
+	_ "go.unistack.org/micro-client-http/v4"
+	client "go.unistack.org/micro/v4/client"
+	codec "go.unistack.org/micro/v4/codec"
+	server "go.unistack.org/micro/v4/server"
 )
 
 type testClient struct {

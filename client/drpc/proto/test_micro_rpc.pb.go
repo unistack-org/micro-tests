@@ -6,8 +6,8 @@ package pb
 
 import (
 	context "context"
-	client "go.unistack.org/micro/v3/client"
-	server "go.unistack.org/micro/v3/server"
+	client "go.unistack.org/micro/v4/client"
+	server "go.unistack.org/micro/v4/server"
 )
 
 type testServiceClient struct {

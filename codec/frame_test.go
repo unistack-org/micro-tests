@@ -3,8 +3,8 @@ package codec
 import (
 	"testing"
 
-	jsoncodec "go.unistack.org/micro-codec-json/v3"
-	"go.unistack.org/micro/v3/codec"
+	jsoncodec "go.unistack.org/micro-codec-json/v4"
+	"go.unistack.org/micro/v4/codec"
 )
 
 func TestFrame(t *testing.T) {

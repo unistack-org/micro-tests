@@ -4,10 +4,10 @@ import (
 	context "context"
 	http "net/http"
 
-	v3 "go.unistack.org/micro-client-http/v3"
-	v31 "go.unistack.org/micro-server-http/v3"
-	client "go.unistack.org/micro/v3/client"
-	server "go.unistack.org/micro/v3/server"
+	v3 "go.unistack.org/micro-client-http/v4"
+	v31 "go.unistack.org/micro-server-http/v4"
+	client "go.unistack.org/micro/v4/client"
+	server "go.unistack.org/micro/v4/server"
 )
 
 type githubClient struct {

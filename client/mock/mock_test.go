@@ -5,11 +5,11 @@ import (
 	"testing"
 	"time"
 
-	"go.unistack.org/micro-client-mock/v3"
-	jsoncodec "go.unistack.org/micro-codec-json/v3"
+	"go.unistack.org/micro-client-mock/v4"
+	jsoncodec "go.unistack.org/micro-codec-json/v4"
 	pb "go.unistack.org/micro-tests/client/mock/proto"
-	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/errors"
+	"go.unistack.org/micro/v4/client"
+	"go.unistack.org/micro/v4/errors"
 )
 
 func TestCallWithoutError(t *testing.T) {

@@ -11,15 +11,15 @@ import (
 	"net/http"
 	"testing"
 
-	mhttp "go.unistack.org/micro-client-http/v3"
-	jsoncodec "go.unistack.org/micro-codec-json/v3"
-	rrouter "go.unistack.org/micro-router-register/v3"
+	mhttp "go.unistack.org/micro-client-http/v4"
+	jsoncodec "go.unistack.org/micro-codec-json/v4"
+	rrouter "go.unistack.org/micro-router-register/v4"
 	pb "go.unistack.org/micro-tests/client/http/proto"
-	"go.unistack.org/micro/v3/client"
-	"go.unistack.org/micro/v3/codec"
-	"go.unistack.org/micro/v3/register"
-	mregister "go.unistack.org/micro/v3/register/memory"
-	"go.unistack.org/micro/v3/router"
+	"go.unistack.org/micro/v4/client"
+	"go.unistack.org/micro/v4/codec"
+	"go.unistack.org/micro/v4/register"
+	mregister "go.unistack.org/micro/v4/register/memory"
+	"go.unistack.org/micro/v4/router"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -151,9 +151,6 @@ func TestHTTPClient(t *testing.T) {
 			{
 				ID:      "test.service.1",
 				Address: l.Addr().String(),
-				Metadata: map[string]string{
-					"protocol": "http",
-				},
 			},
 		},
 	}); err != nil {
@@ -315,9 +312,6 @@ func TestHTTPClientStream(t *testing.T) {
 			{
 				ID:      "test.service.1",
 				Address: l.Addr().String(),
-				Metadata: map[string]string{
-					"protocol": "http",
-				},
 			},
 		},
 	}); err != nil {

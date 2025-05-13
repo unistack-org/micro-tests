@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	httpsrv "go.unistack.org/micro-server-http/v3"
+	httpsrv "go.unistack.org/micro-server-http/v4"
 	pb "go.unistack.org/micro-tests/client/http/proto"
 )
 

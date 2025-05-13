@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
-INC=$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v3)
-INC_CODEC=$(go list -f '{{ .Dir }}' -m go.unistack.org/micro/v3)
+INC=$(go list -f '{{ .Dir }}' -m go.unistack.org/micro-proto/v4)
+INC_CODEC=$(go list -f '{{ .Dir }}' -m go.unistack.org/micro/v4)
 ARGS="-I${INC}"
 CODEC_ARGS="-I${INC_CODEC}"
 

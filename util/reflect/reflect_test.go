@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	pb "go.unistack.org/micro-tests/util/reflect/proto"
-	rutil "go.unistack.org/micro/v3/util/reflect"
+	rutil "go.unistack.org/micro/v4/util/reflect"
 )
 
 func TestFieldName(t *testing.T) {
