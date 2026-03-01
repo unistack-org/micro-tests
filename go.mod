@@ -33,7 +33,7 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v4 v4.1.0
 	go.unistack.org/micro-wrapper-sql/v4 v4.1.0
 	go.unistack.org/micro/v4 v4.1.13
-	golang.org/x/net v0.40.0
+	golang.org/x/net v0.47.0
 	google.golang.org/grpc v1.72.0
 	google.golang.org/protobuf v1.36.6
 	modernc.org/sqlite v1.34.2
@@ -53,7 +53,6 @@ require (
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/fatih/structtag v1.2.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.0.5 // indirect
 	github.com/goccy/go-yaml v1.17.1 // indirect
 	github.com/google/gnostic v0.7.0 // indirect
@@ -108,15 +107,11 @@ require (
 	go.unistack.org/micro-proto/v4 v4.1.0 // indirect
 	go.unistack.org/micro-wrapper-requestid/v4 v4.1.0 // indirect
 	go.unistack.org/micro/v3 v3.11.38 // indirect
-	go.unistack.org/protoc-gen-go-micro/v4 v4.0.15 // indirect
-	golang.org/x/crypto v0.38.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
-	golang.org/x/mod v0.24.0 // indirect
-	golang.org/x/sync v0.14.0 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
-	golang.org/x/tools v0.33.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250512202823-5a2f75b736a9 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	modernc.org/gc/v3 v3.0.0-20240107210532-573471604cb6 // indirect
