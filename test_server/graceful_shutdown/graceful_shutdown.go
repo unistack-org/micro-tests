@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	sgrpc "go.unistack.org/micro-server-grpc/v4"
-	"go.unistack.org/micro/v4"
-	"go.unistack.org/micro/v4/server"
+	sgrpc "go.unistack.org/micro-server-grpc/v5"
+	"go.unistack.org/micro/v5"
+	"go.unistack.org/micro/v5/server"
 	grpc "google.golang.org/grpc"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )

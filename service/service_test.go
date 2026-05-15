@@ -3,10 +3,10 @@ package service
 import (
 	"testing"
 
-	httpcli "go.unistack.org/micro-client-http/v4"
-	httpsrv "go.unistack.org/micro-server-http/v4"
-	"go.unistack.org/micro/v4"
-	"go.unistack.org/micro/v4/server"
+	httpcli "go.unistack.org/micro-client-http/v5"
+	httpsrv "go.unistack.org/micro-server-http/v5"
+	"go.unistack.org/micro/v5"
+	"go.unistack.org/micro/v5/server"
 )
 
 func TestHTTPService(t *testing.T) {

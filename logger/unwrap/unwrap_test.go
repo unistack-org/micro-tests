@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	pb "go.unistack.org/micro-tests/client/grpc/proto"
-	"go.unistack.org/micro/v4/logger/unwrap"
+	"go.unistack.org/micro/v5/logger/unwrap"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 

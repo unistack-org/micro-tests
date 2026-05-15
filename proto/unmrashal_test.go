@@ -3,7 +3,7 @@ package pb
 import (
 	"testing"
 
-	cp "go.unistack.org/micro-codec-proto/v4"
+	cp "go.unistack.org/micro-codec-proto/v5"
 )
 
 func TestMarshalUnmarshal(t *testing.T) {

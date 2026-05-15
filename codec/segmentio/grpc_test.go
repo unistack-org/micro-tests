@@ -4,17 +4,17 @@ import (
 	"context"
 	"testing"
 
-	gclient "go.unistack.org/micro-client-grpc/v4"
-	//	protocodec "go.unistack.org/micro-codec-proto/v4"
-	protocodec "go.unistack.org/micro-codec-segmentio/v4/proto"
-	regRouter "go.unistack.org/micro-router-register/v4"
-	gserver "go.unistack.org/micro-server-grpc/v4"
+	gclient "go.unistack.org/micro-client-grpc/v5"
+	//	protocodec "go.unistack.org/micro-codec-proto/v5"
+	protocodec "go.unistack.org/micro-codec-segmentio/v5/proto"
+	regRouter "go.unistack.org/micro-router-register/v5"
+	gserver "go.unistack.org/micro-server-grpc/v5"
 	gpb "go.unistack.org/micro-tests/codec/segmentio/proto"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/errors"
-	mregister "go.unistack.org/micro/v4/register/memory"
-	"go.unistack.org/micro/v4/router"
-	"go.unistack.org/micro/v4/server"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/errors"
+	mregister "go.unistack.org/micro/v5/register/memory"
+	"go.unistack.org/micro/v5/router"
+	"go.unistack.org/micro/v5/server"
 )
 
 type testServer struct{}

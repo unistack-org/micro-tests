@@ -8,31 +8,31 @@ require (
 	github.com/stretchr/testify v1.10.0
 	github.com/twmb/franz-go v1.18.1
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
-	go.unistack.org/micro-broker-kgo/v4 v4.0.1
-	go.unistack.org/micro-client-grpc/v4 v4.1.0
-	go.unistack.org/micro-client-http/v4 v4.1.0
-	go.unistack.org/micro-client-mock/v4 v4.1.0
-	go.unistack.org/micro-codec-json/v4 v4.0.0
-	go.unistack.org/micro-codec-jsonpb/v4 v4.0.1
-	go.unistack.org/micro-codec-proto/v4 v4.0.0
-	go.unistack.org/micro-codec-segmentio/v4 v4.1.0
-	go.unistack.org/micro-codec-urlencode/v4 v4.0.0
-	go.unistack.org/micro-codec-xml/v4 v4.0.0
-	go.unistack.org/micro-config-consul/v4 v4.0.4
-	go.unistack.org/micro-config-env/v4 v4.0.3
-	go.unistack.org/micro-config-vault/v4 v4.0.4
-	go.unistack.org/micro-meter-prometheus/v4 v4.1.0
-	go.unistack.org/micro-meter-victoriametrics/v4 v4.1.0
+	go.unistack.org/micro-broker-kgo/v5 v4.0.1
+	go.unistack.org/micro-client-grpc/v5 v4.1.0
+	go.unistack.org/micro-client-http/v5 v4.1.0
+	go.unistack.org/micro-client-mock/v5 v4.1.0
+	go.unistack.org/micro-codec-json/v5 v4.0.0
+	go.unistack.org/micro-codec-jsonpb/v5 v4.0.1
+	go.unistack.org/micro-codec-proto/v5 v4.0.0
+	go.unistack.org/micro-codec-segmentio/v5 v4.1.0
+	go.unistack.org/micro-codec-urlencode/v5 v4.0.0
+	go.unistack.org/micro-codec-xml/v5 v4.0.0
+	go.unistack.org/micro-config-consul/v5 v4.0.4
+	go.unistack.org/micro-config-env/v5 v4.0.3
+	go.unistack.org/micro-config-vault/v5 v4.0.4
+	go.unistack.org/micro-meter-prometheus/v5 v4.1.0
+	go.unistack.org/micro-meter-victoriametrics/v5 v4.1.0
 	go.unistack.org/micro-proto/v3 v3.4.1
-	go.unistack.org/micro-router-register/v4 v4.1.0
-	go.unistack.org/micro-server-grpc/v4 v4.1.2
+	go.unistack.org/micro-router-register/v5 v4.1.0
+	go.unistack.org/micro-server-grpc/v5 v4.1.2
 	go.unistack.org/micro-server-http/v3 v3.11.38
-	go.unistack.org/micro-server-http/v4 v4.1.2
-	go.unistack.org/micro-server-tcp/v4 v4.1.0
-	go.unistack.org/micro-tracer-opentracing/v4 v4.0.8
-	go.unistack.org/micro-wrapper-recovery/v4 v4.1.0
-	go.unistack.org/micro-wrapper-sql/v4 v4.1.0
-	go.unistack.org/micro/v4 v4.1.13
+	go.unistack.org/micro-server-http/v5 v4.1.2
+	go.unistack.org/micro-server-tcp/v5 v4.1.0
+	go.unistack.org/micro-tracer-opentracing/v5 v4.0.8
+	go.unistack.org/micro-wrapper-recovery/v5 v4.1.0
+	go.unistack.org/micro-wrapper-sql/v5 v4.1.0
+	go.unistack.org/micro/v5 v4.1.13
 	golang.org/x/net v0.48.0
 	google.golang.org/grpc v1.79.3
 	google.golang.org/protobuf v1.36.10
@@ -104,8 +104,8 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.unistack.org/micro-client-http/v3 v3.9.15 // indirect
-	go.unistack.org/micro-proto/v4 v4.1.0 // indirect
-	go.unistack.org/micro-wrapper-requestid/v4 v4.1.0 // indirect
+	go.unistack.org/micro-proto/v5 v4.1.0 // indirect
+	go.unistack.org/micro-wrapper-requestid/v5 v4.1.0 // indirect
 	go.unistack.org/micro/v3 v3.11.38 // indirect
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 	golang.org/x/sys v0.39.0 // indirect

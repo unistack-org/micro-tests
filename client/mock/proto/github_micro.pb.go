@@ -3,8 +3,8 @@ package pb
 import (
 	context "context"
 
-	v3 "go.unistack.org/micro-server-http/v4"
-	client "go.unistack.org/micro/v4/client"
+	v3 "go.unistack.org/micro-server-http/v5"
+	client "go.unistack.org/micro/v5/client"
 )
 
 var GithubName = "Github"

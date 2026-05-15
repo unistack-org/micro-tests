@@ -11,15 +11,15 @@ import (
 	"net/http"
 	"testing"
 
-	mhttp "go.unistack.org/micro-client-http/v4"
-	jsoncodec "go.unistack.org/micro-codec-json/v4"
-	rrouter "go.unistack.org/micro-router-register/v4"
+	mhttp "go.unistack.org/micro-client-http/v5"
+	jsoncodec "go.unistack.org/micro-codec-json/v5"
+	rrouter "go.unistack.org/micro-router-register/v5"
 	pb "go.unistack.org/micro-tests/client/http/proto"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/codec"
-	"go.unistack.org/micro/v4/register"
-	mregister "go.unistack.org/micro/v4/register/memory"
-	"go.unistack.org/micro/v4/router"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/codec"
+	"go.unistack.org/micro/v5/register"
+	mregister "go.unistack.org/micro/v5/register/memory"
+	"go.unistack.org/micro/v5/router"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 

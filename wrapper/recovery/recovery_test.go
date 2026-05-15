@@ -4,16 +4,16 @@ import (
 	"context"
 	"testing"
 
-	cli "go.unistack.org/micro-client-grpc/v4"
-	jsoncodec "go.unistack.org/micro-codec-json/v4"
-	rrouter "go.unistack.org/micro-router-register/v4"
-	srv "go.unistack.org/micro-server-grpc/v4"
-	recwrapper "go.unistack.org/micro-wrapper-recovery/v4"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/errors"
-	mregister "go.unistack.org/micro/v4/register/memory"
-	"go.unistack.org/micro/v4/router"
-	"go.unistack.org/micro/v4/server"
+	cli "go.unistack.org/micro-client-grpc/v5"
+	jsoncodec "go.unistack.org/micro-codec-json/v5"
+	rrouter "go.unistack.org/micro-router-register/v5"
+	srv "go.unistack.org/micro-server-grpc/v5"
+	recwrapper "go.unistack.org/micro-wrapper-recovery/v5"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/errors"
+	mregister "go.unistack.org/micro/v5/register/memory"
+	"go.unistack.org/micro/v5/router"
+	"go.unistack.org/micro/v5/server"
 )
 
 type Test interface {

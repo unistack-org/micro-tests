@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	envconfig "go.unistack.org/micro-config-env/v4"
-	"go.unistack.org/micro/v4/config"
+	envconfig "go.unistack.org/micro-config-env/v5"
+	"go.unistack.org/micro/v5/config"
 )
 
 type Config struct {

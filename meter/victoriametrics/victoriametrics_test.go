@@ -5,10 +5,10 @@ import (
 	"context"
 	"testing"
 
-	victoriametrics "go.unistack.org/micro-meter-victoriametrics/v4"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/codec"
-	"go.unistack.org/micro/v4/meter"
+	victoriametrics "go.unistack.org/micro-meter-victoriametrics/v5"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/codec"
+	"go.unistack.org/micro/v5/meter"
 )
 
 func TestWrapper(t *testing.T) {

@@ -8,8 +8,8 @@ package pb
 
 import (
 	context "context"
-	client "go.unistack.org/micro/v4/client"
-	codec "go.unistack.org/micro/v4/codec"
+	client "go.unistack.org/micro/v5/client"
+	codec "go.unistack.org/micro/v5/codec"
 )
 
 var (

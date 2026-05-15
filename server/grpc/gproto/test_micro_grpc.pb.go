@@ -7,9 +7,9 @@ package helloworld
 import (
 	context "context"
 	proto "go.unistack.org/micro-tests/server/grpc/proto"
-	client "go.unistack.org/micro/v4/client"
-	metadata "go.unistack.org/micro/v4/metadata"
-	server "go.unistack.org/micro/v4/server"
+	client "go.unistack.org/micro/v5/client"
+	metadata "go.unistack.org/micro/v5/metadata"
+	server "go.unistack.org/micro/v5/server"
 )
 
 type testClient struct {

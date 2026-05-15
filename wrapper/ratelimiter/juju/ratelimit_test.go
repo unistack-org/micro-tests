@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"github.com/juju/ratelimit"
-	rrouter "go.unistack.org/micro-router-register/v4"
-	"go.unistack.org/micro/v4/broker"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/errors"
-	"go.unistack.org/micro/v4/network/transport"
-	"go.unistack.org/micro/v4/register"
-	"go.unistack.org/micro/v4/router"
-	"go.unistack.org/micro/v4/server"
+	rrouter "go.unistack.org/micro-router-register/v5"
+	"go.unistack.org/micro/v5/broker"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/errors"
+	"go.unistack.org/micro/v5/network/transport"
+	"go.unistack.org/micro/v5/register"
+	"go.unistack.org/micro/v5/router"
+	"go.unistack.org/micro/v5/server"
 )
 
 type (

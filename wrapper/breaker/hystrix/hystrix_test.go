@@ -8,10 +8,10 @@ import (
 	"testing"
 
 	"github.com/afex/hystrix-go/hystrix"
-	rrouter "go.unistack.org/micro-router-register/v4"
+	rrouter "go.unistack.org/micro-router-register/v5"
 	"go.unistack.org/micro/register/memory"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/router"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/router"
 )
 
 func TestBreaker(t *testing.T) {

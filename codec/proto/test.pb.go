@@ -7,7 +7,7 @@
 package pb
 
 import (
-	codec "go.unistack.org/micro/v4/codec"
+	codec "go.unistack.org/micro/v5/codec"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

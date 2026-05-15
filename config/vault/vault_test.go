@@ -6,9 +6,9 @@ import (
 	"os"
 	"testing"
 
-	jsoncodec "go.unistack.org/micro-codec-json/v4"
-	vault "go.unistack.org/micro-config-vault/v4"
-	"go.unistack.org/micro/v4/config"
+	jsoncodec "go.unistack.org/micro-codec-json/v5"
+	vault "go.unistack.org/micro-config-vault/v5"
+	"go.unistack.org/micro/v5/config"
 )
 
 type Config struct {

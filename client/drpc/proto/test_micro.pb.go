@@ -8,7 +8,7 @@ package pb
 
 import (
 	context "context"
-	client "go.unistack.org/micro/v4/client"
+	client "go.unistack.org/micro/v5/client"
 )
 
 var (

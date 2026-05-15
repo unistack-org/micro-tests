@@ -6,17 +6,17 @@ import (
 	"context"
 	"testing"
 
-	"go.unistack.org/micro/v4/broker"
-	bmemory "go.unistack.org/micro/v4/broker/memory"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/client/grpc"
-	tmemory "go.unistack.org/micro/v4/network/transport/memory"
-	rmemory "go.unistack.org/micro/v4/register/memory"
-	"go.unistack.org/micro/v4/router"
-	rtreg "go.unistack.org/micro/v4/router/register"
-	"go.unistack.org/micro/v4/server"
-	grpcsrv "go.unistack.org/micro/v4/server/grpc"
-	cw "go.unistack.org/micro/v4/util/client"
+	"go.unistack.org/micro/v5/broker"
+	bmemory "go.unistack.org/micro/v5/broker/memory"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/client/grpc"
+	tmemory "go.unistack.org/micro/v5/network/transport/memory"
+	rmemory "go.unistack.org/micro/v5/register/memory"
+	"go.unistack.org/micro/v5/router"
+	rtreg "go.unistack.org/micro/v5/router/register"
+	"go.unistack.org/micro/v5/server"
+	grpcsrv "go.unistack.org/micro/v5/server/grpc"
+	cw "go.unistack.org/micro/v5/util/client"
 )
 
 type TestFoo struct{}

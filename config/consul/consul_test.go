@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	jsoncodec "go.unistack.org/micro-codec-json/v4"
-	consul "go.unistack.org/micro-config-consul/v4"
-	"go.unistack.org/micro/v4/config"
+	jsoncodec "go.unistack.org/micro-codec-json/v5"
+	consul "go.unistack.org/micro-config-consul/v5"
+	"go.unistack.org/micro/v5/config"
 )
 
 type Cfg struct {

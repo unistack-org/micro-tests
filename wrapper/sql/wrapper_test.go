@@ -15,12 +15,12 @@ import (
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"
 	"github.com/uber/jaeger-client-go/config"
-	vmeter "go.unistack.org/micro-meter-victoriametrics/v4"
-	ot "go.unistack.org/micro-tracer-opentracing/v4"
-	wrapper "go.unistack.org/micro-wrapper-sql/v4"
-	"go.unistack.org/micro/v4/logger"
-	"go.unistack.org/micro/v4/meter"
-	"go.unistack.org/micro/v4/tracer"
+	vmeter "go.unistack.org/micro-meter-victoriametrics/v5"
+	ot "go.unistack.org/micro-tracer-opentracing/v5"
+	wrapper "go.unistack.org/micro-wrapper-sql/v5"
+	"go.unistack.org/micro/v5/logger"
+	"go.unistack.org/micro/v5/meter"
+	"go.unistack.org/micro/v5/tracer"
 	"modernc.org/sqlite"
 )
 

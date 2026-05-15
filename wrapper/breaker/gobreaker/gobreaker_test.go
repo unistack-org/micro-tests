@@ -9,9 +9,9 @@ import (
 
 	"github.com/sony/gobreaker"
 	"go.unistack.org/micro/register/memory"
-	"go.unistack.org/micro/v4/client"
-	"go.unistack.org/micro/v4/errors"
-	"go.unistack.org/micro/v4/router"
+	"go.unistack.org/micro/v5/client"
+	"go.unistack.org/micro/v5/errors"
+	"go.unistack.org/micro/v5/router"
 )
 
 func TestBreaker(t *testing.T) {
