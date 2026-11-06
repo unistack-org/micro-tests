@@ -33,8 +33,8 @@ require (
 	go.unistack.org/micro-wrapper-recovery/v5 v4.1.0
 	go.unistack.org/micro-wrapper-sql/v5 v4.1.0
 	go.unistack.org/micro/v5 v4.1.13
-	golang.org/x/net v0.48.0
-	google.golang.org/grpc v1.79.3
+	golang.org/x/net v0.55.0
+	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.10
 	modernc.org/sqlite v1.34.2
 	storj.io/drpc v0.0.34
@@ -53,7 +53,7 @@ require (
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.6 // indirect
 	github.com/goccy/go-yaml v1.17.1 // indirect
 	github.com/google/gnostic v0.7.0 // indirect
 	github.com/google/gnostic-models v0.6.9 // indirect
@@ -75,7 +75,7 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/serf v0.10.2 // indirect
 	github.com/hashicorp/vault/api v1.16.0 // indirect
-	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/matoous/go-nanoid v1.5.1 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
